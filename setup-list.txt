@@ -1,0 +1,34 @@
+# List of things to do when setting up a new Linux install using
+# my typical config
+
+#
+# Packages
+#
+
+zsh
+awesome
+awesome-extra
+xfce4-power-manager
+git
+git-flow
+meld
+usbmount
+gparted
+gdebi
+
+#
+# Awesome Setup
+#
+
+Clone my awesome git repo
+Copy repo to ~/.config/awesome
+Set up awesome-gnome session
+Set nautilus to --no-desktop by default
+
+#
+# Manual config
+#
+
+Clone my dotfiles repo
+Copy contents to ~/
+Change default shell to /usr/bin/zsh (chsh)
