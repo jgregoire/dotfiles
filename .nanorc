@@ -1,0 +1,42 @@
+#
+# Created by James 1/28/2013
+#
+
+# Line-by-line scrolling
+set smooth
+
+# Auto-indentation
+unset autoindent
+
+# Set tab size
+set tabsize 4
+
+# Enable mouse use
+#set mouse
+
+# Cut to end of line
+set cut
+
+# General syntax highlighting
+syntax "comments" ".*"
+color brightblue "\#.*"
+
+# Specific Syntax highlighting
+include "/usr/share/nano/nanorc.nanorc"	# Nanorc
+include "/usr/share/nano/sh.nanorc"		# Bash scripts
+include "/usr/share/nano/c.nanorc"		# C/C++
+include "/usr/share/nano/html.nanorc"	# HTML
+include "/usr/share/nano/tex.nanorc"	# Tex
+include "/usr/share/nano/man.nanorc"	# Man-pages
+include "/usr/share/nano/perl.nanorc"	# Perl
+include "/usr/share/nano/php.nanorc"	# PHP
+include "/usr/share/nano/python.nanorc"	# Python
+include "/usr/share/nano/java.nanorc"	# Java
+
+# Specific custom syntax
+include "~/.nano-syntax/zshrc.nanorc"	# zshrc
+include "~/.nano-syntax/conf.nanorc"	# Conf files
+include "~/.nano-syntax/lua.nanorc"		# Lua
+
+
+
