@@ -1,7 +1,7 @@
 ## The following lines were added by compinstall
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
-zstyle :compinstall filename '/home/pi/.zshrc'
+zstyle :compinstall filename '/home/james/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -94,7 +94,8 @@ setopt NUMERIC_GLOB_SORT
 ##
 ## Aliases
 ##
-alias nautilus='nautilus --no-desktop'
+
+alias go='sudo mencoder tv:// -tv driver=v4l2:width=1280:height=720:device=/dev/video0 -nosound -ovc lavc -o capture.avi'
 
 # Add color
 alias ls='pwd; ls -lh --color --group-directories-first'
