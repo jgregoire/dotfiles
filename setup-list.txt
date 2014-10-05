@@ -8,6 +8,8 @@
 zsh
 awesome
 awesome-extra
+xcompmgr
+synergy
 xfce4-power-manager
 git
 git-flow
