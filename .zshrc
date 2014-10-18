@@ -1,3 +1,10 @@
+## Oh-My-Zsh stuff ##
+export ZSH=$HOME/.oh-my-zsh
+ZSH_THEME="agnoster"
+plugins=(git gitfast git-flow)
+
+source $ZSH/oh-my-zsh.sh
+
 ## The following lines were added by compinstall
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
@@ -37,13 +44,14 @@ autoload colors && colors
 #PROMPT="%{$fg[green]%}%n%{$reset_color%}%{$fg_no_bold[yellow]%}@%{$reset_color%}%{$fg[green]%}%M%{$reset_color%} %{$fg_bold[yellow]%}%~%{$reset_color%} > "
 
 # Blues (ymir)
-#PROMPT="%{$fg[cyan]%}%n%{$reset_color%}%{$fg_no_bold[yellow]%}@%{$reset_color%}%{$fg[cyan]%}%M%{$reset_color%} %{$fg_bold[yellow]%}%~%{$reset_color%} > "
+#PROMPT="%{$fg[cyan]%}%n%{$reset_color%}%{$fg_no_bold[magenta]%}@%{$reset_color%}%{$fg[cyan]%}%M%{$reset_color%} %{$fg_bold[magenta]%}%~%{$reset_color%} > "
 
 # Reds (nidhoggr)
-PROMPT="%{$fg[red]%}%n%{$reset_color%}%{$fg[yellow]%}@%{$reset_color%}%{$fg[red]%}%M%{$reset_color%} %{$fg_bold[yellow]%}%~%{$reset_color%} > "
+#PROMPT="%{$fg[red]%}%n%{$reset_color%}%{$fg[yellow]%}@%{$reset_color%}%{$fg[red]%}%M%{$reset_color%} %{$fg_bold[yellow]%}%~%{$reset_color%} > "
 
 # Purples (jormundgand)
 #PROMPT="%{$fg[magenta]%}%n%{$reset_color%}%{$fg[yellow]%}@%{$reset_color%}%{$fg[magenta]%}%M%{$reset_color%} %{$fg_bold[yellow]%}%~%{$reset_color%} > "
+
 
 # Set title style
 case $TERM in
