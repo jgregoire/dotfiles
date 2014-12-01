@@ -13,6 +13,7 @@ synergy
 xfce4-power-manager
 git
 git-flow
+curl
 meld
 usbmount
 gparted
