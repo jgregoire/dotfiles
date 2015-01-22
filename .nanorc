@@ -17,6 +17,12 @@ set tabsize 4
 # Cut to end of line
 set cut
 
+# Remove blank line below title bar
+set morespace
+
+# Mouse support
+set mouse
+
 # General syntax highlighting
 syntax "comments" ".*"
 color brightblue "\#.*"

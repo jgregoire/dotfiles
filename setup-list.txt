@@ -13,6 +13,7 @@ synergy
 xfce4-power-manager
 git
 git-flow
+curl
 meld
 usbmount
 gparted
@@ -34,3 +35,4 @@ Set nautilus to --no-desktop by default
 Clone my dotfiles repo
 Copy contents to ~/
 Change default shell to /usr/bin/zsh (chsh)
+Install powerline fonts
