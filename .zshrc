@@ -1,7 +1,7 @@
 ## Oh-My-Zsh stuff ##
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster"
-plugins=(git gitfast git-flow)
+plugins=(git gitfast git-flow python)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,6 +102,9 @@ setopt NUMERIC_GLOB_SORT
 ##
 ## Aliases
 ##
+
+# BEST ALIAS EVER
+alias fucking='sudo'
 
 alias go='sudo mencoder tv:// -tv driver=v4l2:width=1280:height=720:device=/dev/video0 -nosound -ovc lavc -o capture.avi'
 
