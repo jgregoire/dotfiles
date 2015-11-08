@@ -20,6 +20,14 @@ gparted
 gdebi
 
 #
+# ZSH Setup
+#
+
+Install oh-my-zsh
+Install powerline fonts
+
+
+#
 # Awesome Setup
 #
 
