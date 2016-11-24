@@ -155,11 +155,17 @@ alias lcdu='sudo start-stop-daemon --start --name LCDd.py --exec /home/james/Scr
 alias lcdd='sudo start-stop-daemon --stop --name LCDd.py'
 alias lcdr='lcdd && lcdu'
 
-# Install shit quicker.
+# Install shit quicker, apt edition
 alias agi='sudo apt-get install'
 alias agui='sudo apt-get update && sudo apt-get install'
 alias agu='sudo apt-get update && sudo apt-get upgrade'
 alias agr='sudo apt-get remove'
+
+# Install shit quicker, pacman edition
+alias pacman='pacman --color always'
+alias pacs='sudo pacman -S'
+alias pacr='sudo pacman -R'
+alias pacsu='sudo pacman -Syyu'
 
 ##
 ## Keybinds
