@@ -9,8 +9,10 @@ zsh
 awesome
 awesome-extra
 xcompmgr
-synergy
 xfce4-power-manager
+thunar
+tumbler
+chromium
 git
 git-flow
 curl
