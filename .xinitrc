@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Grab X settings from .Xresources
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+
 # Start power manager in the background
 xfce4-power-manager &
 
