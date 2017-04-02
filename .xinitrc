@@ -17,4 +17,5 @@ xcompmgr -cf -D 2 &
 dropbox &
 
 # All set! Now start the window manager!
+# (Removing 'exec' lets you stay logged in after exiting awesome)
 exec awesome
