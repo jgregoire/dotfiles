@@ -57,3 +57,14 @@
 !! white dark/light
 *color7:                S_base2
 *color15:               S_base3
+
+! Xft Settings
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+! URxvt Setting
+!URxvt.font: xft:SauceCodeProforPowerline:size=10
