@@ -18,7 +18,7 @@ git
 git-flow
 curl
 meld
-usbmount
+udiskie
 gparted
 gdebi
 

@@ -164,8 +164,8 @@ alias agr='sudo apt-get remove'
 # Install shit quicker, pacman edition
 alias pacman='pacman --color always'
 alias pacs='sudo pacman -S'
-alias pacr='sudo pacman -R'
-alias pacsu='sudo pacman -Syyu'
+alias pacr='sudo pacman -Rsn'
+alias pacsu='sudo pacman -Scyyu'
 
 ##
 ## Keybinds

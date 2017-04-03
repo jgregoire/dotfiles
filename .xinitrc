@@ -13,6 +13,9 @@ xcompmgr -cf -D 2 &
 # FUCK. CERTIFIED NFG. DO NOT UNCOMMENT.
 # thunar --daemon
 
+# How about this for automounting?
+udiskie &
+
 # Start Dropbox in the background
 dropbox &
 
