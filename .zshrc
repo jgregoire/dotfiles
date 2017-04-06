@@ -168,6 +168,9 @@ alias pacr='sudo pacman -Rsn'
 alias pacsu='sudo pacman -Syyu'
 alias pacc='sudo pacman -Sc'
 
+# Install shit quicker, AUR edition
+alias auri='makepkg -sirc'
+
 ##
 ## Keybinds
 ##
