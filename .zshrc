@@ -165,7 +165,8 @@ alias agr='sudo apt-get remove'
 alias pacman='pacman --color always'
 alias pacs='sudo pacman -S'
 alias pacr='sudo pacman -Rsn'
-alias pacsu='sudo pacman -Scyyu'
+alias pacsu='sudo pacman -Syyu'
+alias pacc='sudo pacman -Sc'
 
 ##
 ## Keybinds
