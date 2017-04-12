@@ -148,7 +148,7 @@ alias cp='cp -i'
 #alias srt='stty stop undef; stty start undef; screen -dr rtorrent'
 
 # Unless I'm using dtach instead. (Ctrl+\ to return)
-alias drt='dtach -a /tmp/rtorrent.dtach'
+alias drt='dtach -a /home/james/.rtorrent.dtach'
 alias drtu='sudo start-stop-daemon --start --chuid james --name rtorrent --exec /usr/bin/dtach -- -n /home/james/.rtorrent.dtach /usr/bin/rtorrent'
 alias drtd='sudo start-stop-daemon --stop --name rtorrent'
 
