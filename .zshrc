@@ -149,6 +149,8 @@ alias cp='cp -i'
 
 # Unless I'm using dtach instead. (Ctrl+\ to return)
 alias drt='dtach -a /tmp/rtorrent.dtach'
+alias drtu='sudo start-stop-daemon --start --chuid james --name rtorrent --exec /usr/bin/dtach -- -n /home/james/.rtorrent.dtach /usr/bin/rtorrent'
+alias drtd='sudo start-stop-daemon --stop --name rtorrent'
 
 # Start or kill LCD update daemon
 alias lcdu='sudo start-stop-daemon --start --name LCDd.py --exec /home/james/Scripts/LCDd.py'
