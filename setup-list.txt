@@ -23,6 +23,13 @@ gparted
 gdebi
 
 #
+# AUR Packages
+#
+dropbox
+dropbox-cli
+thunar-dropbox
+
+#
 # ZSH Setup
 #
 
