@@ -11,7 +11,8 @@ xcompmgr -cf -D 2 &
 
 # Start file manager as daemon to support automounting, etc.
 # FUCK. CERTIFIED NFG. DO NOT UNCOMMENT.
-# thunar --daemon
+#thunar --daemon
+# We're doing this in rc.lua instead.
 
 # How about this for automounting?
 udiskie &
