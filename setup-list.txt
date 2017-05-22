@@ -6,18 +6,16 @@
 #
 
 zsh
+git
+curl
 awesome
 vicious
-redshift
 xcompmgr
 xfce4-power-manager
 thunar
 tumbler
+ristretto
 chromium
-git
-git-flow
-curl
-meld
 udiskie
 gparted
 gdebi
@@ -28,6 +26,8 @@ gdebi
 dropbox
 dropbox-cli
 thunar-dropbox
+redshift-minimal
+
 
 #
 # ZSH Setup
@@ -43,14 +43,12 @@ Install powerline fonts
 
 Clone my awesome git repo
 Copy repo to ~/.config/awesome
-Set up awesome-gnome session
-Set nautilus to --no-desktop by default
 
 #
 # Manual config
 #
 
 Clone my dotfiles repo
-Copy contents to ~/
+Symlink contents to ~/
 Change default shell to /usr/bin/zsh (chsh)
 Install powerline fonts
