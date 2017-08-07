@@ -173,6 +173,9 @@ alias pacc='sudo pacman -Sc'
 # Install shit quicker, AUR edition
 alias auri='makepkg -sirc'
 
+# Randomize wallpaper
+alias rwp='feh --randomize --bg-fill /mnt/media/Pictures/Desktops/1920'
+
 ##
 ## Keybinds
 ##

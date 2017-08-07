@@ -19,6 +19,7 @@ chromium
 udiskie
 gparted
 gdebi
+dkms
 
 #
 # AUR Packages
@@ -27,6 +28,7 @@ dropbox
 dropbox-cli
 thunar-dropbox
 redshift-minimal
+broadcom-wl-dkms
 
 
 #
