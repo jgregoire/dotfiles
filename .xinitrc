@@ -17,6 +17,9 @@ xcompmgr -cf -D 2 &
 # How about this for automounting?
 udiskie &
 
+# Dat sick wallpaper
+~/.fehbg &
+
 # Start Dropbox in the background
 dropbox &
 

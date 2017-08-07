@@ -20,6 +20,11 @@ udiskie
 gparted
 gdebi
 dkms
+mpd
+ncmpcpp
+pulseaudio
+python-requests
+
 
 #
 # AUR Packages

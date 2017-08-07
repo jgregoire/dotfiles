@@ -1,0 +1,17 @@
+music_directory "~/Music"        # Beets music library folder
+playlist_directory "~/.mpd/playlists"  # Where do playlists live?
+db_file "~/.mpd/database"              
+pid_file "~/.mpd/pid"                  
+state_file "~/.mpd/state"
+sticker_file "~/.mpd/sticker.sql"
+port "6600"                          
+auto_update "yes"
+#restore_paused "yes" # Music was paused when mpd starts, even if it was playing before.
+
+audio_output {
+	type "pulse"
+	name "Heaviside Music"
+	sink "rtp"
+}
+
+
