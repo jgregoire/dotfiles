@@ -176,6 +176,9 @@ alias auri='makepkg -sirc'
 # Randomize wallpaper
 alias rwp='feh --randomize --bg-fill /mnt/media/Pictures/Desktops/1920'
 
+# beet
+alias bim='beet import -m'
+
 ##
 ## Keybinds
 ##

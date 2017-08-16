@@ -14,4 +14,11 @@ audio_output {
 	sink "rtp"
 }
 
-
+audio_output {
+    type        "httpd"
+    name        "My Streaming Radio"
+    encoder     "vorbis"
+    port        "55555"    
+    quality     "6"
+    format      "44100:16:2"    
+}

@@ -23,6 +23,9 @@ udiskie &
 # Start Dropbox in the background
 dropbox &
 
+# Let's make some noise!
+pulseaudio --start
+
 # All set! Now start the window manager!
 # (Removing 'exec' lets you stay logged in after exiting awesome)
 exec awesome
