@@ -6,19 +6,45 @@ state_file "~/.mpd/state"
 sticker_file "~/.mpd/sticker.sql"
 port "6600"                          
 auto_update "yes"
-#restore_paused "yes" # Music was paused when mpd starts, even if it was playing before.
-
-audio_output {
-	type "pulse"
-	name "Heaviside Music"
-	sink "rtp"
-}
+restore_paused "yes" # Music was paused when mpd starts, even if it was playing before.
 
 audio_output {
     type        "httpd"
-    name        "My Streaming Radio"
+    name        "Heaviside Music"
     encoder     "vorbis"
-    port        "55555"    
-    quality     "6"
-    format      "44100:16:2"    
+    port        "8000"    
+    #quality     "6.0"
+    bitrate     "320"
+    format      "44100:16:2"
+    always_on   "yes"
+    tags        "yes"
+}
+
+#audio_output {
+#    type        "shout"
+#    encoding    "ogg"
+#    name        "Heaviside Ice"
+#    host        "localhost"
+#    port        "8000"
+#    mount       "/mpd.ogg"
+#
+#    # This is the source password in icecast.xml
+#    password    "392781"
+#
+#    # Set either quality or bit rate
+#    #quality     "5.0"
+#    bitrate     "320"
+#
+#    format      "44100:16:1"
+#
+#    # Optional Parameters
+#    user        "source"
+#    #description "here is my long description"
+#    #genre       "jazz"
+#} # end of audio_output
+
+# Need this so that mpd still works if icecast is not running
+audio_output {
+    type "null"
+    name "fake out"
 }
