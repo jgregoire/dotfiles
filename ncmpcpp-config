@@ -1,9 +1,5 @@
-##############################################################################
-## This is the example configuration file. Copy it to $HOME/.ncmpcpp/config ##
-## or $XDG_CONFIG_HOME/ncmpcpp/config and set up your preferences.          ##
-##############################################################################
 #
-##### directories ######
+##### Directories ######
 ##
 ## Directory for storing ncmpcpp related files.  Changing it is useful if you
 ## want to store everything somewhere else and provide command line setting for
@@ -18,9 +14,9 @@
 ## MPD clients (eg. ncmpc) also use that location.
 ##
 #
-#lyrics_directory = ~/.lyrics
+#lyrics_directory = ~/Music/.lyrics
 #
-##### connection settings #####
+##### Connection Settings #####
 #
 #mpd_host = localhost
 #
@@ -30,11 +26,11 @@
 #
 ## Needed for tag editor and file operations to work.
 ##
-#mpd_music_dir = ~/music
+mpd_music_dir = ~/Music
 #
 #mpd_crossfade_time = 5
 #
-##### music visualizer #####
+##### Music Visualizer #####
 ##
 ## Note: In order to make music visualizer work you'll need to use mpd fifo
 ## output, whose format parameter has to be set to 44100:16:1 for mono
@@ -90,7 +86,8 @@
 ##
 #visualizer_color = 41, 83, 119, 155, 185, 215, 209, 203, 197, 161
 #
-##### system encoding #####
+
+##### System Encoding #####
 ##
 ## ncmpcpp should detect your charset encoding but if it failed to do so, you
 ## can specify charset encoding you are using here.
@@ -115,7 +112,8 @@
 ##
 #message_delay_time = 5
 #
-##### song format #####
+
+##### Song Format #####
 ##
 ## For a song format you can use:
 ##
@@ -264,7 +262,8 @@
 #
 #song_columns_list_format = (20)[]{a} (6f)[green]{NE} (50)[white]{t|f:Title} (20)[cyan]{b} (7f)[magenta]{l}
 #
-##### various settings #####
+
+##### Various Settings #####
 #
 ##
 ## Note: Custom command that will be executed each time song changes. Useful for
@@ -325,13 +324,13 @@
 #
 ## Available values: classic, alternative.
 ##
-#user_interface = classic
+user_interface = alternative
 #
 #data_fetching_delay = yes
 #
 ## Available values: artist, album_artist, date, genre, composer, performer.
 ##
-#media_library_primary_tag = artist
+media_library_primary_tag = album_artist
 #
 #media_library_albums_split_by_date = yes
 #
@@ -363,7 +362,7 @@
 #
 #generate_win32_compatible_filenames = yes
 #
-#allow_for_physical_item_deletion = no
+allow_for_physical_item_deletion = yes
 #
 ##
 ## Note: If you set this variable, ncmpcpp will try to get info from last.fm in
@@ -413,7 +412,7 @@
 #
 #jump_to_now_playing_song_at_start = yes
 #
-#ask_before_clearing_playlists = yes
+ask_before_clearing_playlists = no
 #
 #clock_display_seconds = no
 #
@@ -431,7 +430,7 @@
 ## Note: if below is enabled, ncmpcpp will ignore leading "The" word while
 ## sorting items in browser, tags in media library, etc.
 ##
-#ignore_leading_the = no
+ignore_leading_the = yes
 #
 ##
 ## Note: if below is enabled, ncmpcpp will ignore diacritics while searching and
