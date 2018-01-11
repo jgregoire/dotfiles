@@ -8,6 +8,7 @@ port "6600"
 auto_update "yes"
 restore_paused "yes" # Music was paused when mpd starts, even if it was playing before.
 
+# Audio stream
 audio_output {
     type        "httpd"
     name        "Heaviside Music"
@@ -18,6 +19,14 @@ audio_output {
     format      "44100:16:2"
     always_on   "yes"
     tags        "yes"
+}
+
+# Output for ncmpcpp visualizer
+audio_output {
+	type		"fifo"
+	name		"Visualizer feed"
+	path		"/tmp/mpd.fifo"
+	format		"44100:16:1"
 }
 
 #audio_output {
