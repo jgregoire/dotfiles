@@ -5,26 +5,38 @@
 # Packages
 #
 
+coreutils
 zsh
 git
 curl
+base-devel
+xorg
 awesome
 vicious
 xcompmgr
 xfce4-power-manager
+sakura
 thunar
 tumbler
 ristretto
+firefox
 chromium
 udiskie
 gparted
 gdebi
 dkms
+alsa-utils
+alsa-plugins
+rsync
 mpd
+beets
 ncmpcpp
-pulseaudio
-python-requests
+mpv
 
+android-file-transfer
+android-tools
+android-udev
+mtpfs
 
 #
 # AUR Packages
