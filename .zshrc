@@ -89,6 +89,15 @@ setopt NUMERIC_GLOB_SORT
 ##
 ## Aliases
 ##
+
+# Fiio Syncing
+alias rsyncfm='rsync -auv --size-only --delete-before /home/james/Music/ /run/media/james/X1/'
+alias rsyncfp='rsync -auv --size-only /var/lib/mpd/playlists/ /run/media/james/X1/.'
+
+# OnePlus Syncing
+alias rsyncpm='rsync -av --size-only --force --del /home/james/Music/ /home/james/OnePlus/Internal\ shared\ storage/Music/.'
+alias rsyncpp='rsync -av --size-only /var/lib/mpd/playlists/ /home/james/OnePlus/Internal\ shared\ storage/Music/.'
+
 # BEST ALIAS EVER
 alias fucking='sudo'
 
@@ -99,6 +108,10 @@ alias ls='pwd; ls -lh --color --group-directories-first'
 alias la='ls -a' # Also show hidden files
 alias lsd='ls /dev | grep sd'
 alias grep='grep --color'
+
+# Exa
+alias exa='pwd; exa -l --group-directories-first'
+alias exaa='exa -a'
 
 ## Nano
 # Nano using line numbers
