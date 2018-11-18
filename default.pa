@@ -10,4 +10,5 @@ load-module module-suspend-on-idle timeout=1
 #load-module module-rtp-recv
 
 # Added by me 11/18/2018 to support mpd user
-load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1/192.168.0.102/192.168.0.103
+load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1;192.168.0.102;192.168.0.103
+#load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1
