@@ -9,6 +9,8 @@ coreutils
 zsh
 git
 curl
+fonts-powerline
+oh-my-zsh
 base-devel
 xorg
 awesome
