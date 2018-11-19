@@ -23,12 +23,12 @@ tumbler
 ristretto
 firefox
 chromium
-udiskie
 gparted
 gdebi
 dkms
-alsa-utils
-alsa-plugins
+pulseaudio
+pulseaudio-lirc
+pulseaudio-zeroconf
 rsync
 mpd
 beets
