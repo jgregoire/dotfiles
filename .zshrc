@@ -90,6 +90,9 @@ setopt NUMERIC_GLOB_SORT
 ## Aliases
 ##
 
+# systemd
+alias ss='sudo systemctl'
+
 # Fiio Syncing
 alias rsyncfm='rsync -auv --size-only --delete-before /home/james/Music/ /run/media/james/X1/'
 alias rsyncfp='rsync -auv --size-only /var/lib/mpd/playlists/ /run/media/james/X1/.'
