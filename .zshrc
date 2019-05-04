@@ -98,10 +98,8 @@ alias rsyncfm='rsync -auv --size-only --delete-before /home/james/Music/ /run/me
 alias rsyncfp='rsync -auv --size-only /var/lib/mpd/playlists/ /run/media/james/X1/.'
 
 # OnePlus Syncing
-#alias rsyncpm='rsync -av --size-only --force --del /home/james/Music/ /home/james/OnePlus/Internal\ shared\ storage/Music/.'
-alias rsyncpm='rsync -av --size-only --force --del /run/media/Old_Arch/home/james/Music/ /home/james/OnePlus/Internal\ shared\ storage/Music/.'
-#alias rsyncpp='rsync -av --size-only /var/lib/mpd/playlists/ /home/james/OnePlus/Internal\ shared\ storage/Music/.'
-alias rsyncpp='rsync -av --size-only /run/media/Old_Arch/var/lib/mpd/playlists/ /home/james/OnePlus/Internal\ shared\ storage/Music/.'
+alias rsyncpm='rsync -av --size-only --force --del /home/james/Music/ /home/james/OnePlus/Internal\ shared\ storage/Music/.'
+alias rsyncpp='rsync -av --size-only /var/lib/mpd/playlists/ /home/james/OnePlus/Internal\ shared\ storage/Music/.'
 
 # BEST ALIAS EVER
 alias fucking='sudo'
@@ -109,13 +107,13 @@ alias fucking='sudo'
 alias go='sudo mencoder tv:// -tv driver=v4l2:width=1280:height=720:device=/dev/video0 -nosound -ovc lavc -o capture.avi'
 
 # Add color
-alias ls='pwd; ls -lh --color --group-directories-first'
+alias ls='ls -lh --color --group-directories-first'
 alias la='ls -a' # Also show hidden files
 alias lsd='ls /dev | grep sd'
 alias grep='grep --color'
 
 # Exa
-alias exa='pwd; exa -l --group-directories-first'
+alias exa='exa -l --group-directories-first'
 alias exaa='exa -a'
 
 ## Nano
