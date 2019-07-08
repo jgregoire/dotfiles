@@ -8,23 +8,23 @@
 coreutils
 zsh
 git
+broadcom-wl-dkms
 curl
 fonts-powerline
 oh-my-zsh
 base-devel
 xorg
 awesome
-vicious
 xcompmgr
 xfce4-power-manager
 sakura
+gvfs
 thunar
 tumbler
 ristretto
 firefox
 chromium
 gparted
-gdebi
 dkms
 pulseaudio
 pulseaudio-lirc
@@ -36,9 +36,6 @@ ncmpcpp
 mpv
 
 android-file-transfer
-android-tools
-android-udev
-mtpfs
 
 #
 # AUR Packages
@@ -47,8 +44,6 @@ dropbox
 dropbox-cli
 thunar-dropbox
 redshift-minimal
-broadcom-wl-dkms
-
 
 #
 # ZSH Setup
