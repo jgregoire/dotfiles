@@ -15,7 +15,7 @@ set tabsize 4
 #set mouse
 
 # Cut to end of line
-set cut
+#set cut
 
 # Remove blank line below title bar
 set morespace
