@@ -19,7 +19,10 @@ xcompmgr
 xfce4-power-manager
 sakura
 gvfs
+gvfs-smb
+sshfs
 thunar
+thunar-volman
 tumbler
 ristretto
 firefox

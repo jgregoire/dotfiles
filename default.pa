@@ -1,11 +1,11 @@
 #! /usr/bin/pulseaudio -nF
 
-load-module module-detect
+#load-module module-detect
 load-module module-udev-detect
-load-module module-native-protocol-unix
+#load-module module-native-protocol-unix
 load-module module-suspend-on-idle timeout=1
-load-module module-zeroconf-publish
-load-module module-zeroconf-discover
+#load-module module-zeroconf-publish
+#load-module module-zeroconf-discover
 
 #load-module module-null-sink sink_name=rtp
 #load-module module-rtp-send source=rtp.monitor
