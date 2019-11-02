@@ -91,7 +91,7 @@ dht = off
 
 # Enable peer exchange (for torrents not marked private)
 #
-peer_exchange = no
+#peer_exchange = no
 
 #
 # Do not modify the following parameters unless you know what you're doing.
