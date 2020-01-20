@@ -170,7 +170,7 @@ alias pacc='sudo pacman -Sc'
 alias auri='makepkg -sirc'
 
 # Randomize wallpaper
-alias rwp='feh --randomize --bg-fill /mnt/media/Pictures/Desktops/1920'
+alias rwp='feh --randomize --bg-fill /home/james/Pictures/Desktops/2560x1440'
 
 # beet
 alias bim='beet import -m'
