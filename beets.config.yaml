@@ -1,5 +1,5 @@
 directory: /home/james/Music
-library: ~/Dropbox/beets/musiclibrary.blb
+library: /home/james/.config/beets/musiclibrary.blb
 import:
     move: yes
 plugins: lastgenre fetchart ftintitle mpdupdate smartplaylist random embedart
