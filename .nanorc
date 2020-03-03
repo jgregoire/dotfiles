@@ -6,7 +6,7 @@
 set smooth
 
 # Auto-indentation
-set autoindent
+#set autoindent
 
 # Set tab size
 set tabsize 4
