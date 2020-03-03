@@ -2,7 +2,7 @@
 
 #load-module module-detect
 load-module module-udev-detect
-#load-module module-native-protocol-unix
+load-module module-native-protocol-unix
 load-module module-suspend-on-idle timeout=1
 #load-module module-zeroconf-publish
 #load-module module-zeroconf-discover
@@ -12,4 +12,4 @@ load-module module-suspend-on-idle timeout=1
 #load-module module-rtp-recv
 
 # Added by me 11/18/2018 for mpd local and network playback
-load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1;192.168.0.0/8
+load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1;192.168.0.0/16
