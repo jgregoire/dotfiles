@@ -5,16 +5,25 @@
 # Packages
 #
 
+intel-ucode
 coreutils
 zsh
 git
+exa
+dkms
 broadcom-wl-dkms
+nvidia-dkms
+nvidia-settings
+networkmanager
 curl
 fonts-powerline
+terminus-font
+ttf-liberation
 oh-my-zsh
 base-devel
 xorg
 awesome
+feh
 xcompmgr
 xfce4-power-manager
 sakura
@@ -22,31 +31,38 @@ gvfs
 gvfs-smb
 sshfs
 thunar
+thunar-archive-plugin
+thunar-media-tags-plugin
 thunar-volman
 tumbler
-ristretto
+usbutils
+woeusb
+#ristretto
 firefox
 chromium
 gparted
-dkms
 pulseaudio
-pulseaudio-lirc
-pulseaudio-zeroconf
 rsync
 mpd
+mpc
 beets
 ncmpcpp
 mpv
-
+lxappearance
+materia-gtk-theme
+sublime-text
 android-file-transfer
 
 #
 # AUR Packages
 #
+awesome-freedesktop-git
+lain-git
 dropbox
 dropbox-cli
 thunar-dropbox
 redshift-minimal
+qimgv
 
 #
 # ZSH Setup
