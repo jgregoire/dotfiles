@@ -15,26 +15,29 @@ broadcom-wl-dkms
 nvidia-dkms
 nvidia-settings
 networkmanager
-curl
 fonts-powerline
 terminus-font
 ttf-liberation
 oh-my-zsh
 base-devel
 xorg
-awesome
 feh
 xcompmgr
+redshift
 xfce4-power-manager
+awesome
 sakura
 gvfs
 gvfs-smb
+gvfs-mtp
+android-file-transfer
 sshfs
 thunar
 thunar-archive-plugin
 thunar-media-tags-plugin
 thunar-volman
 tumbler
+ffmpegthumbnailer
 usbutils
 woeusb
 #ristretto
@@ -42,6 +45,8 @@ firefox
 chromium
 gparted
 pulseaudio
+paprefs
+pavucontrol
 rsync
 mpd
 mpc
@@ -51,7 +56,6 @@ mpv
 lxappearance
 materia-gtk-theme
 sublime-text
-android-file-transfer
 
 #
 # AUR Packages
