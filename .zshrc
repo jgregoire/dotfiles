@@ -96,6 +96,9 @@ alias ssc='sudo systemctl'
 # ncmpcpp remote host
 alias ncmp='ncmpcpp -h 192.168.0.102 -p 6600'
 
+# Launch Oryx in root Opera session.
+alias oryx='sudo opera https://configure.ergodox-ez.com/train 2>/dev/null'
+
 # Fiio Syncing
 #alias rsyncfm='rsync -auv --size-only --delete-before /home/james/Music/ /run/media/james/X1/'
 #alias rsyncfp='rsync -auv --size-only /var/lib/mpd/playlists/ /run/media/james/X1/.'
