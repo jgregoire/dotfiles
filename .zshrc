@@ -173,7 +173,8 @@ alias auri='makepkg -sirc'
 alias rwp='feh --randomize --bg-fill /home/james/Pictures/Desktops/2560x1440'
 
 # beet
-alias bim='beet import -m'
+alias bimm='beet import -m'
+alias bim='beet import'
 
 ##
 ## Keybinds
