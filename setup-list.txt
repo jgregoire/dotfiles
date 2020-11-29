@@ -5,48 +5,68 @@
 # Packages
 #
 
+intel-ucode
 coreutils
 zsh
 git
+exa
+dkms
 broadcom-wl-dkms
-curl
+nvidia-dkms
+nvidia-settings
+networkmanager
 fonts-powerline
+terminus-font
+ttf-liberation
 oh-my-zsh
 base-devel
 xorg
-awesome
+feh
 xcompmgr
+redshift
 xfce4-power-manager
+awesome
 sakura
 gvfs
 gvfs-smb
+gvfs-mtp
+android-file-transfer
 sshfs
 thunar
+thunar-archive-plugin
+thunar-media-tags-plugin
 thunar-volman
 tumbler
-ristretto
+ffmpegthumbnailer
+usbutils
+woeusb
+#ristretto
 firefox
 chromium
 gparted
-dkms
 pulseaudio
-pulseaudio-lirc
-pulseaudio-zeroconf
+paprefs
+pavucontrol
 rsync
 mpd
+mpc
 beets
 ncmpcpp
 mpv
-
-android-file-transfer
+lxappearance
+materia-gtk-theme
+sublime-text
 
 #
 # AUR Packages
 #
+awesome-freedesktop-git
+lain-git
 dropbox
 dropbox-cli
 thunar-dropbox
 redshift-minimal
+qimgv
 
 #
 # ZSH Setup
@@ -71,3 +91,9 @@ Clone my dotfiles repo
 Symlink contents to ~/
 Change default shell to /usr/bin/zsh (chsh)
 Install powerline fonts
+
+#
+# Network Management
+#
+pi-hole
+cloudflared

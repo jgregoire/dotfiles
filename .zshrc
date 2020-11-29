@@ -97,8 +97,8 @@ alias ssc='sudo systemctl'
 alias ncmp='ncmpcpp -h 192.168.0.102 -p 6600'
 
 # Fiio Syncing
-alias rsyncfm='rsync -auv --size-only --delete-before /home/james/Music/ /run/media/james/X1/'
-alias rsyncfp='rsync -auv --size-only /var/lib/mpd/playlists/ /run/media/james/X1/.'
+#alias rsyncfm='rsync -auv --size-only --delete-before /home/james/Music/ /run/media/james/X1/'
+#alias rsyncfp='rsync -auv --size-only /var/lib/mpd/playlists/ /run/media/james/X1/.'
 
 # OnePlus Syncing
 alias rsyncpm='rsync -av --size-only --force --del /home/james/Music/ /home/james/OnePlus/Internal\ shared\ storage/Music/.'
@@ -167,7 +167,7 @@ alias pacsu='sudo pacman -Syyu'
 alias pacc='sudo pacman -Sc'
 
 # Install shit quicker, AUR edition
-alias auri='makepkg -sirc'
+alias auri='makepkg -sic'
 
 # Randomize wallpaper
 alias rwp='feh --randomize --bg-fill /home/james/Pictures/Desktops/2560x1440'
