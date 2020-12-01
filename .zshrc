@@ -99,18 +99,12 @@ alias ncmp='ncmpcpp -h 192.168.0.102 -p 6600'
 # Launch Oryx in root Opera session.
 alias oryx='sudo opera https://configure.ergodox-ez.com/train 2>/dev/null'
 
-# Fiio Syncing
-#alias rsyncfm='rsync -auv --size-only --delete-before /home/james/Music/ /run/media/james/X1/'
-#alias rsyncfp='rsync -auv --size-only /var/lib/mpd/playlists/ /run/media/james/X1/.'
-
 # OnePlus Syncing
 alias rsyncpm='rsync -av --size-only --force --del /home/james/Music/ /home/james/OnePlus/Internal\ shared\ storage/Music/.'
 alias rsyncpp='rsync -av --size-only /var/lib/mpd/playlists/ /home/james/OnePlus/Internal\ shared\ storage/Music/.'
 
 # BEST ALIAS EVER
 alias fucking='sudo'
-
-alias go='sudo mencoder tv:// -tv driver=v4l2:width=1280:height=720:device=/dev/video0 -nosound -ovc lavc -o capture.avi'
 
 # Add color
 alias ls='ls -lh --color --group-directories-first'
@@ -125,14 +119,15 @@ alias exaa='exa -a'
 ## Nano
 # Nano using line numbers
 alias nano='nano -c'
+
 # Nano creates backup when editing
 alias nanob='nano -B -C /home/james/nano-backups'
 
 # Open nano read-only
 alias nanov='nano -v'
 
-# Copy with a progress bar
-alias cpv='rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --'
+# Edit this file
+alias nanoz='nano ~/.zshrc'
 
 # dc undoes cd! \o/
 setopt AUTO_CD
@@ -148,10 +143,6 @@ alias mv='mv -i'
 alias cp='cp -i'
 
 ## Torrent Box Aliases
-# Shortcut to pull up rtorrent 'screen' session (Ctrl+AD to return)
-#alias srt='stty stop undef; stty start undef; screen -dr rtorrent'
-
-# Unless I'm using dtach instead. (Ctrl+\ to return)
 alias drt='dtach -a /home/james/.rtorrent.dtach'
 alias drtu='sudo start-stop-daemon --start --chuid james --name rtorrent --exec /usr/bin/dtach -- -n /home/james/.rtorrent.dtach /usr/bin/rtorrent'
 alias drtd='sudo start-stop-daemon --stop --name rtorrent'
@@ -175,8 +166,12 @@ alias auri='makepkg -sic'
 # Randomize wallpaper
 alias rwp='feh --randomize --bg-fill /home/james/Pictures/Desktops/2560x1440'
 
-# beet
+# beet import
 alias bim='beet import -m'
+
+# Volume control (pulse)
+# e.g. '$ vol 50%'
+alias vol='pactl set-sink-volume 1'
 
 ##
 ## Keybinds

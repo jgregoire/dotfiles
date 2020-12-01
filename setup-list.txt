@@ -24,7 +24,6 @@ xorg
 feh
 xcompmgr
 redshift
-xfce4-power-manager
 awesome
 sakura
 gvfs
@@ -42,7 +41,7 @@ usbutils
 woeusb
 #ristretto
 firefox
-chromium
+opera
 gparted
 pulseaudio
 paprefs
@@ -56,17 +55,22 @@ mpv
 lxappearance
 materia-gtk-theme
 sublime-text
+atril
+zip
+unzip
+p7zip
+xarchiver
+signal-desktop
 
 #
 # AUR Packages
 #
-awesome-freedesktop-git
 lain-git
 dropbox
 dropbox-cli
 thunar-dropbox
-redshift-minimal
 qimgv
+powerkit
 
 #
 # ZSH Setup
