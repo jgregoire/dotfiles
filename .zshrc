@@ -166,8 +166,9 @@ alias auri='makepkg -sic'
 # Randomize wallpaper
 alias rwp='feh --randomize --bg-fill /home/james/Pictures/Desktops/2560x1440'
 
-# beet import
-alias bim='beet import -m'
+# Beets
+alias bimm='beet import -m'
+alias bim='beet import'
 
 # Volume control (pulse)
 # e.g. '$ vol 50%'

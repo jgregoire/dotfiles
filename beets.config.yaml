@@ -1,7 +1,7 @@
 directory: /home/james/Music
 library: /home/james/.config/beets/musiclibrary.blb
 import:
-    move: yes
+    move: no
 plugins: lastgenre fetchart ftintitle mpdupdate smartplaylist random embedart
 embedart:
     auto: yes
