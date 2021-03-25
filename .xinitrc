@@ -1,31 +1,24 @@
-#!/bin/sh
+#~/bin/sh
 
-# Grab X settings from .Xresources
+# Get color scheme from .Xresources
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
-# Start power manager in the background
-xfce4-power-manager &
+# Start power manager
+#xfce4-power-manager
+powerkit &
 
-# Start compositor in the background
+# Start compositor
 xcompmgr -cf -D 2 &
 
-# Start file manager as daemon to support automounting, etc.
-# FUCK. CERTIFIED NFG. DO NOT UNCOMMENT.
-#thunar --daemon
-# We're doing this in rc.lua instead.
+# Start redshift
+# configured in .config/redshift
+redshift &
 
-# How about this for automounting?
-udiskie &
+# Pulseaudio needs to be poked in order to start correctly.
+# So I found this 2 second silent audio file. Playing it causes pulse to start.
+paplay /home/james/Silent/Silent.wav &
 
-# Dat sick wallpaper
-~/.fehbg &
-
-# Start Dropbox in the background
 dropbox &
 
-# Mousewheel config
-imwheel
-
-# All set! Now start the window manager!
-# (Removing 'exec' lets you stay logged in after exiting awesome)
+# Have an awesome time
 exec awesome
