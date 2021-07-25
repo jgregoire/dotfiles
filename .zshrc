@@ -208,4 +208,7 @@ expand-or-complete-with-dots() {
 zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
 
+# This is the greatest program ever.
+eval $(thefuck --alias)
+
 ## That's all, folks!
