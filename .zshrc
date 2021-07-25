@@ -72,13 +72,13 @@ setopt HIST_VERIFY
 ## Other Settings
 ##
 # Stops pesky Ctrl-S halting terminal
-setopt NO_FLOW_CONTROL 
+setopt NO_FLOW_CONTROL
 
 # Don't kill backgrnd processes when exiting shell
 setopt AUTO_CONTINUE
 
 # Watch other users login/out
-watch=notme            
+watch=notme
 
 ##
 ## Globbing Settings
@@ -208,5 +208,10 @@ expand-or-complete-with-dots() {
 zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
 
+# This is the greatest program ever.
+eval $(thefuck --alias)
+
+# WSL likes to start us somewhere besides the home directory. Fix that.
 cd
+
 ## That's all, folks!
