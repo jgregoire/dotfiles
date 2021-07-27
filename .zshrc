@@ -72,13 +72,13 @@ setopt HIST_VERIFY
 ## Other Settings
 ##
 # Stops pesky Ctrl-S halting terminal
-setopt NO_FLOW_CONTROL 
+setopt NO_FLOW_CONTROL
 
 # Don't kill backgrnd processes when exiting shell
 setopt AUTO_CONTINUE
 
 # Watch other users login/out
-watch=notme            
+watch=notme
 
 ##
 ## Globbing Settings
@@ -148,10 +148,10 @@ alias drtu='sudo start-stop-daemon --start --chuid james --name rtorrent --exec 
 alias drtd='sudo start-stop-daemon --stop --name rtorrent'
 
 # Install shit quicker, apt edition
-alias agi='sudo apt-get install'
+alias agi='sudo apt-get install --autoremove'
 alias agui='sudo apt-get update && sudo apt-get install'
 alias agu='sudo apt-get update && sudo apt-get upgrade'
-alias agr='sudo apt-get remove'
+alias agr='sudo apt-get remove --autoremove'
 
 # Install shit quicker, pacman edition
 alias pacman='pacman --color always'
@@ -207,5 +207,11 @@ expand-or-complete-with-dots() {
 }
 zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
+
+# This is the greatest program ever.
+eval $(thefuck --alias)
+
+# WSL likes to start us somewhere besides the home directory. Fix that.
+cd
 
 ## That's all, folks!
