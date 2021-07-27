@@ -148,10 +148,10 @@ alias drtu='sudo start-stop-daemon --start --chuid james --name rtorrent --exec 
 alias drtd='sudo start-stop-daemon --stop --name rtorrent'
 
 # Install shit quicker, apt edition
-alias agi='sudo apt-get install'
+alias agi='sudo apt-get install --autoremove'
 alias agui='sudo apt-get update && sudo apt-get install'
 alias agu='sudo apt-get update && sudo apt-get upgrade'
-alias agr='sudo apt-get remove'
+alias agr='sudo apt-get remove --autoremove'
 
 # Install shit quicker, pacman edition
 alias pacman='pacman --color always'
