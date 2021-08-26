@@ -188,7 +188,7 @@ browser_display_mode = columns
 #seek_time = 1
 #volume_change_step = 2
 #autocenter_mode = no
-#centered_cursor = no
+centered_cursor = yes
 ##
 ## Note: You can specify third character which will be used to build 'empty'
 ## part of progressbar.
@@ -333,7 +333,7 @@ ignore_leading_the = yes
 #empty_tag_color = cyan
 #header_window_color = default
 #volume_color = default
-#state_line_color = default
+state_line_color = default
 state_flags_color = white:b
 main_window_color = yellow
 #color1 = white
@@ -343,7 +343,7 @@ main_window_color = yellow
 #statusbar_color = default
 #statusbar_time_color = default:b
 #player_state_color = default:b
-#alternative_ui_separator_color = black:b
+alternative_ui_separator_color = black:b
 #window_border_color = green
 #active_window_border = red
 
