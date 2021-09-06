@@ -103,7 +103,7 @@ visualizer_color = blue, cyan, green, yellow, magenta, red
 #song_library_format = {%n - }{%t}|{%f}
 #alternative_header_first_line_format = $b$1$aqqu$/a$9 {%t}|{%f} $1$atqq$/a$9$/b
 #alternative_header_second_line_format = {{$4$b%a$/b$9}{ - $7%b$9}{ ($4%y$9)}}|{%D}
-#current_item_prefix = $(yellow)$r
+current_item_prefix = $(yellow)$r
 #current_item_suffix = $/r$(end)
 #current_item_inactive_column_prefix = $(white)$r
 #current_item_inactive_column_suffix = $/r$(end)
@@ -188,7 +188,7 @@ browser_display_mode = columns
 #seek_time = 1
 #volume_change_step = 2
 #autocenter_mode = no
-#centered_cursor = no
+centered_cursor = yes
 ##
 ## Note: You can specify third character which will be used to build 'empty'
 ## part of progressbar.
@@ -333,9 +333,9 @@ ignore_leading_the = yes
 #empty_tag_color = cyan
 #header_window_color = default
 #volume_color = default
-#state_line_color = default
-#state_flags_color = default:b
-#main_window_color = yellow
+state_line_color = default
+state_flags_color = white:b
+main_window_color = yellow
 #color1 = white
 #color2 = green
 #progressbar_color = black:b
@@ -343,7 +343,7 @@ ignore_leading_the = yes
 #statusbar_color = default
 #statusbar_time_color = default:b
 #player_state_color = default:b
-#alternative_ui_separator_color = black:b
+alternative_ui_separator_color = black:b
 #window_border_color = green
 #active_window_border = red
 

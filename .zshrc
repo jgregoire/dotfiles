@@ -72,13 +72,13 @@ setopt HIST_VERIFY
 ## Other Settings
 ##
 # Stops pesky Ctrl-S halting terminal
-setopt NO_FLOW_CONTROL 
+setopt NO_FLOW_CONTROL
 
 # Don't kill backgrnd processes when exiting shell
 setopt AUTO_CONTINUE
 
 # Watch other users login/out
-watch=notme            
+watch=notme
 
 ##
 ## Globbing Settings
@@ -90,9 +90,14 @@ setopt NUMERIC_GLOB_SORT
 ## Aliases
 ##
 
-# Fiio Syncing
-alias rsyncfm='rsync -auv --size-only --delete-before /home/james/Music/ /run/media/james/X1/'
-alias rsyncfp='rsync -auv --size-only /var/lib/mpd/playlists/ /run/media/james/X1/.'
+# systemd
+alias ssc='sudo systemctl'
+
+# ncmpcpp remote host
+alias ncmp='ncmpcpp -h 192.168.0.102 -p 6600'
+
+# Launch Oryx in root Opera session.
+alias oryx='sudo opera https://configure.ergodox-ez.com/train 2>/dev/null'
 
 # OnePlus Syncing
 alias rsyncpm='rsync -av --size-only --force --del /home/james/Music/ /home/james/OnePlus/Internal\ shared\ storage/Music/.'
@@ -101,29 +106,28 @@ alias rsyncpp='rsync -av --size-only /var/lib/mpd/playlists/ /home/james/OnePlus
 # BEST ALIAS EVER
 alias fucking='sudo'
 
-alias go='sudo mencoder tv:// -tv driver=v4l2:width=1280:height=720:device=/dev/video0 -nosound -ovc lavc -o capture.avi'
-
 # Add color
-alias ls='pwd; ls -lh --color --group-directories-first'
+alias ls='ls -lh --color --group-directories-first'
 alias la='ls -a' # Also show hidden files
 alias lsd='ls /dev | grep sd'
 alias grep='grep --color'
 
 # Exa
-alias exa='pwd; exa -l --group-directories-first'
+alias exa='exa -l --group-directories-first'
 alias exaa='exa -a'
 
 ## Nano
 # Nano using line numbers
 alias nano='nano -c'
+
 # Nano creates backup when editing
 alias nanob='nano -B -C /home/james/nano-backups'
 
 # Open nano read-only
 alias nanov='nano -v'
 
-# Copy with a progress bar
-alias cpv='rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --'
+# Edit this file
+alias nanoz='nano ~/.zshrc'
 
 # dc undoes cd! \o/
 setopt AUTO_CD
@@ -139,19 +143,15 @@ alias mv='mv -i'
 alias cp='cp -i'
 
 ## Torrent Box Aliases
-# Shortcut to pull up rtorrent 'screen' session (Ctrl+AD to return)
-#alias srt='stty stop undef; stty start undef; screen -dr rtorrent'
-
-# Unless I'm using dtach instead. (Ctrl+\ to return)
-alias drt='dtach -a /home/xbian/.rtorrent.dtach'
-alias drtu='sudo start-stop-daemon --start --chuid xbian --name rtorrent --exec /usr/bin/dtach -- -n /home/xbian/.rtorrent.dtach /usr/bin/rtorrent'
+alias drt='dtach -a /home/james/.rtorrent.dtach'
+alias drtu='sudo start-stop-daemon --start --chuid james --name rtorrent --exec /usr/bin/dtach -- -n /home/james/.rtorrent.dtach /usr/bin/rtorrent'
 alias drtd='sudo start-stop-daemon --stop --name rtorrent'
 
 # Install shit quicker, apt edition
-alias agi='sudo apt-get install'
+alias agi='sudo apt-get install --autoremove'
 alias agui='sudo apt-get update && sudo apt-get install'
 alias agu='sudo apt-get update && sudo apt-get upgrade'
-alias agr='sudo apt-get remove'
+alias agr='sudo apt-get remove --autoremove'
 
 # Install shit quicker, pacman edition
 alias pacman='pacman --color always'
@@ -161,13 +161,18 @@ alias pacsu='sudo pacman -Syyu'
 alias pacc='sudo pacman -Sc'
 
 # Install shit quicker, AUR edition
-alias auri='makepkg -sirc'
+alias auri='makepkg -sic'
 
 # Randomize wallpaper
-alias rwp='feh --randomize --bg-fill /mnt/media/Pictures/Desktops/1920'
+alias rwp='feh --randomize --bg-fill /home/james/Pictures/Desktops/2560x1440'
 
-# beet
-alias bim='beet import -m'
+# Beets
+alias bimm='beet import -m'
+alias bim='beet import'
+
+# Volume control (pulse)
+# e.g. '$ vol 50%'
+alias vol='pactl set-sink-volume 1'
 
 ##
 ## Keybinds
@@ -202,5 +207,11 @@ expand-or-complete-with-dots() {
 }
 zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
+
+# This is the greatest program ever.
+eval $(thefuck --alias)
+
+# WSL likes to start us somewhere besides the home directory. Fix that.
+cd
 
 ## That's all, folks!

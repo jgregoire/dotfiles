@@ -1,0 +1,10 @@
+directory: /home/james/Music
+library: /home/james/.config/beets/musiclibrary.blb
+import:
+    move: no
+plugins: lastgenre fetchart ftintitle mpdupdate smartplaylist random embedart
+embedart:
+    auto: yes
+mpdupdate:
+    host: localhost
+    port: 6600
