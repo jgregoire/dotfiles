@@ -1,16 +1,27 @@
 directory: /home/james/Music
 library: /home/james/.config/beets/musiclibrary.blb
+
 import:
     move: no
-plugins: lastgenre fetchart ftintitle mpdupdate smartplaylist random embedart replaygain
+
+plugins: lastgenre fetchart ftintitle mpdupdate smartplaylist random embedart replaygain convert
+
 embedart:
     auto: yes
+
 mpdupdate:
     host: localhost
     port: 6600
 
 replaygain:
-    backend: ffmpeg
+    backend: gstreamer
     auto: yes
-	overwrite: yes
-	peak: true
+    overwrite: yes
+
+convert:
+    auto: no
+    embed: yes
+    no_convert: format:FLAC
+    never_convert_lossy_files: yes
+    delete_originals: no
+    format: flac
