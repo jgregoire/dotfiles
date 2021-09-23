@@ -115,6 +115,7 @@ alias grep='grep --color'
 # Exa
 alias exa='exa -l --group-directories-first'
 alias exaa='exa -a'
+alias exag='exa -a --git'
 
 ## Nano
 # Nano using line numbers
