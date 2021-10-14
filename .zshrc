@@ -30,23 +30,6 @@ for dir in $pathdirs; do
 	fi
 done
 
-##
-## Beautify the Terminal
-##
-# Set prompt style
-autoload colors && colors
-# Green and yellow (fafnir)
-#PROMPT="%{$fg[green]%}%n%{$reset_color%}%{$fg_no_bold[yellow]%}@%{$reset_color%}%{$fg[green]%}%M%{$reset_color%} %{$fg_bold[yellow]%}%~%{$reset_color%} > "
-
-# Blues (ymir)
-#PROMPT="%{$fg[cyan]%}%n%{$reset_color%}%{$fg_no_bold[magenta]%}@%{$reset_color%}%{$fg[cyan]%}%M%{$reset_color%} %{$fg_bold[magenta]%}%~%{$reset_color%} > "
-
-# Reds (nidhoggr)
-#PROMPT="%{$fg[red]%}%n%{$reset_color%}%{$fg[yellow]%}@%{$reset_color%}%{$fg[red]%}%M%{$reset_color%} %{$fg_bold[yellow]%}%~%{$reset_color%} > "
-
-# Purples (jormundgand)
-#PROMPT="%{$fg[magenta]%}%n%{$reset_color%}%{$fg[yellow]%}@%{$reset_color%}%{$fg[magenta]%}%M%{$reset_color%} %{$fg_bold[yellow]%}%~%{$reset_color%} > "
-
 # Set title style
 case $TERM in
   *term*)
@@ -129,6 +112,9 @@ alias nanov='nano -v'
 
 # Edit this file
 alias nanoz='nano ~/.zshrc'
+
+# Use neovim instead of vim
+alias vim=nvim
 
 # dc undoes cd! \o/
 setopt AUTO_CD
