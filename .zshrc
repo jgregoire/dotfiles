@@ -113,8 +113,10 @@ alias nanov='nano -v'
 # Edit this file
 alias nanoz='nano ~/.zshrc'
 
+# Use neovim instead of vi
+alias vi='nvim'
 # Use neovim instead of vim
-alias vim=nvim
+alias vim='nvim'
 
 # dc undoes cd! \o/
 setopt AUTO_CD
