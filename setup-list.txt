@@ -16,8 +16,7 @@ nvidia-dkms
 nvidia-settings
 networkmanager
 fonts-powerline
-terminus-font
-ttf-liberation
+iosevka
 oh-my-zsh
 base-devel
 xorg
@@ -25,7 +24,9 @@ feh
 xcompmgr
 redshift
 awesome
-sakura
+alacritty
+nvim
+base16
 gvfs
 gvfs-smb
 gvfs-mtp
@@ -38,12 +39,10 @@ thunar-volman
 tumbler
 ffmpegthumbnailer
 usbutils
-woeusb
-#ristretto
 firefox
 opera
 gparted
-pulseaudio
+pipewire
 paprefs
 pavucontrol
 rsync
