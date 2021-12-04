@@ -57,8 +57,11 @@ set confirm         " Raise a dialogue asking if you wish to save changed files.
 "set visualbell      " Visual bell only, no audible.
 "set t_vb=          " No visual bell, either.
 
-nnoremap <C-L> :nohl<CR><C-L> 
 " Map <C-L> (redraw screen) to also turn off search highlighting until the next search.
+nnoremap <C-L> :nohl<CR><C-L> 
 
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy, which is the default.
 map Y y$
+
+" jk acts like ESC
+inoremap jk <ESC>
