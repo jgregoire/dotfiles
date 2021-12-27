@@ -214,4 +214,12 @@ eval $(thefuck --alias)
 # WSL likes to start us somewhere besides the home directory. Fix that.
 cd
 
+# Make completion work for beets.
+autoload bashcompinit
+bashcompinit
+_get_comp_words_by_ref() { :; }
+compopt() { :; }
+_filedir() { :; }
+eval "$(beet completion)"
+
 ## That's all, folks!
