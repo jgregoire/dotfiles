@@ -1,6 +1,17 @@
 -- Neovim config, Lua edition.
 -- Do not name this init.lua until done.
 
+--require('plugins')
+--vim.cmd([[packadd packer.vim]])
+
+test = '#FF0000'
+
+require('packer').startup(function()
+    use { 'nvim-colorizer.lua', event = 'setup' }
+end)
+
+--require('colorizer').setup()
+
 -- Mouse support
 vim.o.mouse = "a"
 

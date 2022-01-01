@@ -143,7 +143,7 @@ alias agu='sudo apt-get update && sudo apt-get upgrade'
 alias agr='sudo apt-get remove --autoremove'
 
 # Install shit quicker, pacman edition
-alias pacman='pacman --color always'
+alias pacman='pacman --color auto'
 alias pacs='sudo pacman -S'
 alias pacr='sudo pacman -Rsn'
 alias pacsu='sudo pacman -Syyu'
