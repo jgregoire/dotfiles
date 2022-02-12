@@ -1,73 +1,72 @@
 -- Neovim config, Lua edition.
--- Do not name this init.lua until done.
+local o = vim.o
+local w = vim.wo
+local b = vim.bo
+local map = vim.api.nvim_set_keymap
+options = { noremap = true }
 
---require('plugins')
---vim.cmd([[packadd packer.vim]])
+require('norman')
 
 test = '#FF0000'
 
-require('packer').startup(function()
-    use { 'nvim-colorizer.lua', event = 'setup' }
-end)
-
---require('colorizer').setup()
-
 -- Mouse support
-vim.o.mouse = "a"
+o.mouse = "a"
+
 
 -- Confirm save before exit
-vim.o.confirm = true
+o.confirm = true
 
 -- I do not remember what this does
-vim.o.compatible = false
+o.compatible = false
 
 -- Color
-vim.o.termguicolors = true
+o.termguicolors = true
 vim.cmd("colorscheme base16-railscasts")
 
 -- Search 
-vim.o.hlsearch = true
-vim.o.incsearch = true
-vim.o.ignorecase = true
-vim.o.smartcase = true
+o.hlsearch = true
+o.incsearch = true
+o.ignorecase = true
+o.smartcase = true
 
 -- Line numbers by default.
-vim.wo.number = true
-vim.o.ruler = true
-vim.o.scrolloff = 4
-vim.wo.cursorline = true
+w.number = true
+o.ruler = true
+o.scrolloff = 4
+o.cursorline = true
 
-vim.o.title = true
+o.title = true
 
 -- Show matching brackets
-vim.o.showmatch = true
+o.showmatch = true
 
 -- Indentation
 vim.cmd("filetype plugin indent on")
-vim.o.autoindent = true
-vim.bo.expandtab = true
-vim.o.softtabstop = 4
-vim.o.smartindent = true
-vim.o.smarttab = true
-vim.o.shiftwidth = 4
+o.autoindent = true
+b.expandtab = true
+o.softtabstop = 4
+o.smartindent = true
+o.smarttab = true
+o.shiftwidth = 4
 
 -- Completion
-vim.o.wildmenu = true
-vim.o.showcmd = true
-vim.o.cmdheight = 2
+o.wildmenu = true
+o.showcmd = true
+o.cmdheight = 2
 
 -- Keycode timeout
-vim.o.timeout = false
-vim.o.ttimeout = true
-vim.o.ttimeoutlen = 200
+o.timeout = false
+o.ttimeout = true
+o.ttimeoutlen = 200
 
 -- Line breaks
-vim.wo.linebreak = true
-vim.o.showbreak = '+++'
-vim.bo.textwidth = 100
+w.linebreak = true
+o.showbreak = '+++'
+b.textwidth = 100
 
 -- Y yanks to EOL.
-vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true })
-vim.api.nvim_set_keymap('i', 'jk', '<ESC>', { noremap = true })
+map('n', 'Y', 'y$', options)
+
+map('i', 'jk', '<ESC>', options)
 
 vim.cmd('syntax enable')

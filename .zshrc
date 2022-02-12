@@ -204,11 +204,11 @@ eval $(thefuck --alias)
 cd
 
 # Make completion work for beets.
-autoload bashcompinit
-bashcompinit
-_get_comp_words_by_ref() { :; }
-compopt() { :; }
-_filedir() { :; }
-eval "$(beet completion)"
+#autoload bashcompinit
+#bashcompinit
+#_get_comp_words_by_ref() { :; }
+#compopt() { :; }
+#_filedir() { :; }
+#eval "$(beet completion)"
 
 ## That's all, folks!
