@@ -1,10 +1,18 @@
 -- This file contains setup and config for Packer plugins.
 
 -- Setup lspconfig
-local servers = {'sumneko_lua',}
+local servers = {
+    'sumneko_lua',
+    'rls',
+    'arduino_language_server',
+    'bashls',
+    'jsonls',
+    'pylsp',
+    'yamlls',
+}
+
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup({
-        on_attach = on_attach,
         flags = {
             debounce_text_changes = 150,
         }
@@ -49,7 +57,7 @@ cmp.setup({
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
     sources = cmp.config.sources({
-        { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it. 
+        { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
     }, {
         { name = 'buffer' },
     })
