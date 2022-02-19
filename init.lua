@@ -2,16 +2,27 @@
 local o = vim.o
 local w = vim.wo
 local b = vim.bo
+local g = vim.g
+local fn = vim.fn
 local map = vim.api.nvim_set_keymap
 options = { noremap = true }
 
-require('norman')
+o.termguicolors = true
+require('norman') -- Fixes for Norman keyboard layout.
 
-test = '#FF0000'
+-- Packer auto-install on new setups.
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+    packer_bootstrap = fn.system({'git', 'clone', '--depth', '1',
+                                  'https://github.com/wbthomason/packer.nvim', install_path})
+end
+
+require('plugins') -- Packer setup file
+
+require('config') -- Plugin config
 
 -- Mouse support
 o.mouse = "a"
-
 
 -- Confirm save before exit
 o.confirm = true
@@ -20,9 +31,7 @@ o.confirm = true
 o.compatible = false
 
 -- Color
-o.termguicolors = true
 vim.cmd("colorscheme base16-railscasts")
-
 -- Search 
 o.hlsearch = true
 o.incsearch = true
@@ -53,6 +62,7 @@ o.shiftwidth = 4
 o.wildmenu = true
 o.showcmd = true
 o.cmdheight = 2
+o.completeopt = 'menu,menuone,noselect'
 
 -- Keycode timeout
 o.timeout = false
@@ -64,9 +74,19 @@ w.linebreak = true
 o.showbreak = '+++'
 b.textwidth = 100
 
+-- Leader
+g.mapleader = ','
+
 -- Y yanks to EOL.
 map('n', 'Y', 'y$', options)
 
+-- 'jk' exits INSERT mode.
 map('i', 'jk', '<ESC>', options)
 
-vim.cmd('syntax enable')
+--vim.cmd('syntax enable')
+
+-- Telescope
+map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', options)
+map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', options)
+map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', options)
+map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', options)

@@ -1,5 +1,5 @@
 window:
-  opacity: 0.9
+  opacity: 0.75
 
 font:
   normal:
@@ -7,7 +7,7 @@ font:
     family: Iosevka Term
 #    family: Mononoki
 #    family: JetBrains Mono
-#    family: Fira Code
+#    family: Nerd Fonts Fira Code
 #    family: Hack
 #    family: Cascadia Code
 #    family: Anonymous Pro
