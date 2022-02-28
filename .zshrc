@@ -212,3 +212,5 @@ cd
 #eval "$(beet completion)"
 
 ## That's all, folks!
+
+alias luamake=/home/james/Code/lua-language-server/3rd/luamake/luamake

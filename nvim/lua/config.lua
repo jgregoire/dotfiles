@@ -9,6 +9,7 @@ local servers = {
     'jsonls',
     'pylsp',
     'yamlls',
+    'ltex',
 }
 
 for _, lsp in pairs(servers) do

@@ -95,6 +95,14 @@ return require('packer').startup(function(use)
         },
     }
 
+    -- Markdown preview
+    use {
+        'iamcco/markdown-preview.nvim',
+        config = function()
+            require('markdown-preview').setup()
+        end,
+    }
+
     -- Packer bootstrapping
     if packer_bootstrap then
         require('packer').sync()
