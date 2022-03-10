@@ -1,27 +1,9 @@
 -- This file contains setup and config for Packer plugins.
 
 -- Setup lspconfig
-local servers = {
-    'sumneko_lua',
-    'rls',
-    'arduino_language_server',
-    'bashls',
-    'jsonls',
-    'pylsp',
-    'yamlls',
-    'ltex',
-}
 
-for _, lsp in pairs(servers) do
-    require('lspconfig')[lsp].setup({
-        flags = {
-            debounce_text_changes = 150,
-        }
-    })
-end
-
-  -- Setup nvim-cmp.
-  local cmp = require'cmp'
+-- Setup nvim-cmp.
+local cmp = require'cmp'
 
 cmp.setup({
     snippet = {
@@ -80,10 +62,52 @@ cmp.setup.cmdline(':', {
     })
 })
 
--- Setup lspconfig.
+-- Setup lspconfig lua server.
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
+
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 require('lspconfig')['sumneko_lua'].setup {
-    capabilities = capabilities
+    capabilities = capabilities,
+    flags = {
+        debounce_text_changes = 150,
+    },
+    settings = {
+        Lua = {
+            runtime = {
+                version = 'LuaJIT',
+                path = runtime_path,
+            },
+            diagnostics = {
+                globals = { 'vim' },
+            },
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+            telemetry = {
+                enable = false,
+            },
+        },
+    },
 }
+
+local servers = {
+    'rls',
+    'arduino_language_server',
+    'bashls',
+    'jsonls',
+    'pylsp',
+    'yamlls',
+    'ltex',
+}
+
+for _, lsp in pairs(servers) do
+    require('lspconfig')[lsp].setup({
+        capabilities = capabilities,
+        flags = {
+            debounce_text_changes = 150,
+        }
+    })
+end
 
