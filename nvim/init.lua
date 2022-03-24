@@ -5,7 +5,7 @@ local b = vim.bo
 local g = vim.g
 local fn = vim.fn
 local map = vim.api.nvim_set_keymap
-options = { noremap = true }
+local options = { noremap = true }
 
 o.termguicolors = true
 require('norman') -- Fixes for Norman keyboard layout.
@@ -30,9 +30,13 @@ o.confirm = true
 -- I do not remember what this does
 o.compatible = false
 
+-- Detect external change to file and load changes.
+g.autoread = true
+
 -- Color
 vim.cmd("colorscheme base16-railscasts")
--- Search 
+
+-- Search
 o.hlsearch = true
 o.incsearch = true
 o.ignorecase = true
