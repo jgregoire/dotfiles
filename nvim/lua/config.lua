@@ -96,6 +96,7 @@ local servers = {
     'rls',
     'arduino_language_server',
     'bashls',
+    'ccls',
     'jsonls',
     'pylsp',
     'yamlls',
