@@ -1,7 +1,5 @@
 -- This file contains setup and config for Packer plugins.
 
--- Setup lspconfig
-
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 
@@ -68,6 +66,8 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+-- Configure Lua language server.
 require('lspconfig')['sumneko_lua'].setup {
     capabilities = capabilities,
     flags = {
@@ -92,11 +92,20 @@ require('lspconfig')['sumneko_lua'].setup {
     },
 }
 
+-- Configure C/C++/C# language server
+require('lspconfig')['ccls'].setup{
+    init_options = {
+        compilationDatabaseDirectory = "build",
+        index = { threads = 0},
+        clang = { excludeArgs = { "-frounding-math"} },
+    }
+}
+
+-- Setup language servers with default config.
 local servers = {
     'rls',
     'arduino_language_server',
     'bashls',
-    'ccls',
     'jsonls',
     'pylsp',
     'yamlls',
