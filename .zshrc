@@ -120,6 +120,9 @@ alias nanoz='nano ~/.zshrc'
 alias vi='nvim'
 # Use neovim instead of vim
 alias vim='nvim'
+# Use nvim with user rc file for sudo
+alias svi='sudoedit'
+
 
 # dc undoes cd! \o/
 setopt AUTO_CD
