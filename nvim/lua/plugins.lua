@@ -95,6 +95,14 @@ return require('packer').startup(function(use)
         },
     }
 
+    -- Org mode
+    use {
+        'nvim-orgmode/orgmode',
+        config = function()
+            require('orgmode').setup{}
+        end
+    }
+
     -- Packer bootstrapping
     if packer_bootstrap then
         require('packer').sync()

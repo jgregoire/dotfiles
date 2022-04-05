@@ -1,5 +1,28 @@
 -- This file contains setup and config for Packer plugins.
 
+-- Setup Org mode
+require('orgmode').setup_ts_grammar()
+
+require('nvim-treesitter.configs').setup{
+--    highlight = {
+--        enable = true,
+--        disable = { 'org' },
+--        additional_vim_regex_highlighting = { 'org' },
+--    },
+    ensure_installed = { 'org' },
+}
+
+require('orgmode').setup{
+    org_agenda_files = { '~/org-agenda.org' },
+    org_default_notes_file = '~/org-notes.org',
+    mappings = {
+        global = {
+            org_agenda = '<Leader>oa',
+            org_capture = '<Leader>oc',
+        },
+    },
+}
+
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 
@@ -30,6 +53,7 @@ cmp.setup({
         { name = 'luasnip' }, -- For luasnip users.
         -- { name = 'ultisnips' }, -- For ultisnips users.
         -- { name = 'snippy' }, -- For snippy users.
+        { name = 'orgmode' },
     }, {
         { name = 'buffer' },
     }),
