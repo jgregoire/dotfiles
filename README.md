@@ -23,7 +23,6 @@ Arch Linux
     - networkmanager
     - coreutils
     - base-devel
-    - fonts-powerline
     - zsh
     - git
     - oh-my-zsh
@@ -46,15 +45,17 @@ Arch Linux
     - thunar-volman
     - tumbler
     - ffmpegthumbnailer
+    - qimgv (AUR)
     - usbutils
     - firefox
     - opera
+    - ttf-fira-code
+    - ttf-symbola (AUR)
     - awesome
     - lain-git (AUR)
     - dropbox-cli (AUR)
     - thunar-dropbox (AUR)
     - powerkit (AUR)
-    - ttf-iosevka-nerd
     - kitty
     - gparted
     - pipewire
