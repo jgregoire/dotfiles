@@ -35,6 +35,19 @@ map('n', 'E',  'S',     options) -- Substitute line.
 -- Navigation
 map('n', 'p',  '%',     options) -- Jump to matching paren.
 map('n', 'vv', 'zz',    options) -- Center screen on cursor.
+map('n', 'f',  'b',     options) -- Previous word.
+map('n', 'F',  'B',     options) -- Previous Word.
+map('n', 'd',  '^',     options) -- First non-blank character.
+map('n', 'D',  '0',     options) -- Start of line.
+map('n', 'u',  'e',     options) -- End of word.
+map('n', 'U',  'E',     options) -- End of Word.
+map('n', 'r',  'w',     options) -- Next word.
+map('n', 'R',  'W',     options) -- Next Word.
+map('n', 'l',  '$',     options) -- End of line.
+
+-- Search
+map('n', 'f',  'n',     options) -- Find next.
+map('n', 'F',  'N',     options) -- Find prev.
 
 -- Map hjkl to nioh
 o.langmap = 'nh,ik,oj,hl' -- Note up/down are flipped from standard.
