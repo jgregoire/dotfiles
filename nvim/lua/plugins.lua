@@ -1,10 +1,12 @@
 -- Use Packer to manage nvim plugins.
--- Call this file in init.lua
+-- Call this file in init.lua.
+-- Plugins with more intensive setup are configured in config.lua.
 
 return require('packer').startup(function(use)
+    -- Packer will check for updates to itself.
     use 'wbthomason/packer.nvim'
 
-    -- Highlight color codes.
+    -- Highlight color codes like #a4c261 or #da4939 in their actual color.
     use {
         'norcalli/nvim-colorizer.lua',
         config = function()
@@ -31,7 +33,7 @@ return require('packer').startup(function(use)
         end
     }
 
-    -- Fancy icons
+    -- Fancy icons, used for lualine.
     use 'kyazdani42/nvim-web-devicons'
 
     -- Fancier statusline.
@@ -53,9 +55,6 @@ return require('packer').startup(function(use)
     -- Bracket auto-pairing.
     use {
         'windwp/nvim-autopairs',
-        config = function()
-            require('nvim-autopairs').setup()
-        end,
     }
 
     -- Now shit gets real.
