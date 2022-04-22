@@ -3,10 +3,17 @@
 local o = vim.o
 local w = vim.wo
 local b = vim.bo
+local g = vim.g
 
 local map = vim.api.nvim_set_keymap
 
 local options = { noremap = true }
+
+-- Leader key
+g.mapleader = ','
+
+-- 'jk' exits INSERT mode.
+map('i', 'jk', '<ESC>', options)
 
 -- Insert = s
 map('n', 's', 'i', options) -- Insert before cursor.
