@@ -1,6 +1,6 @@
 " nvim-qt specific options.
 if exists(':GuiFont')
-    GuiFont! Iosevka\ Nerd\ Font\ Mono:h14
+    GuiFont! Fira\ Code:h12
 endif
 
 if exists(':GuiTabline')
