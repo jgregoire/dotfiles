@@ -145,3 +145,12 @@ for _, lsp in pairs(servers) do
         }
     })
 end
+
+-- Legendary
+require('legendary').setup({
+    include_builtin = true,
+    include_legendary_cmds = true,
+    keymaps = {}, -- Enter keymaps here. TODO: Make a keymap.
+    commands = {}, -- Enter commands here.
+    autocmds = {},
+})
