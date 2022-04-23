@@ -53,16 +53,21 @@ return require('packer').startup(function(use)
     }
 
     -- Bracket auto-pairing.
+    use { 'windwp/nvim-autopairs' }
+
+    -- Keymap manager
     use {
-        'windwp/nvim-autopairs',
+        'mrjones2014/legendary.nvim',
+        requires = {
+            'nvim-telescope/telescope.nvim',
+            'stevearc/dressing.nvim',
+        }
     }
 
     -- Now shit gets real.
     -- lspconfig
     -- Requires lua-language-server (Arch package)
-    use {
-        'neovim/nvim-lspconfig',
-    }
+    use { 'neovim/nvim-lspconfig' }
 
     -- Treesitter
     use {
