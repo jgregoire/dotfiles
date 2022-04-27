@@ -8,6 +8,8 @@ source $ZSH/oh-my-zsh.sh
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle :compinstall filename '/home/james/.zshrc'
 
+path+=('/home/james/.local/bin')
+
 autoload -Uz compinit
 compinit
 ## End of lines added by compinstall
