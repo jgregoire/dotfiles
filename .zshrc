@@ -1,12 +1,14 @@
 ## Oh-My-Zsh stuff ##
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster"
-plugins=(git gitfast git-flow python)
+plugins=(git gitfast python)
 source $ZSH/oh-my-zsh.sh
 
 ## The following lines were added by compinstall
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle :compinstall filename '/home/james/.zshrc'
+
+path+=('/home/james/.local/bin')
 
 autoload -Uz compinit
 compinit
@@ -36,6 +38,9 @@ case $TERM in
     chpwd () {print -Pn "\e]0;%n@%M %~\a"}
     ;;
 esac
+
+## Set default text editor
+export EDITOR='nvim'
 
 ##
 ## History Settings
@@ -117,6 +122,9 @@ alias nanoz='nano ~/.zshrc'
 alias vi='nvim'
 # Use neovim instead of vim
 alias vim='nvim'
+# Use nvim with user rc file for sudo
+alias svi='sudoedit'
+
 
 # dc undoes cd! \o/
 setopt AUTO_CD

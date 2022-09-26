@@ -5,7 +5,7 @@ local b = vim.bo
 local g = vim.g
 local fn = vim.fn
 local map = vim.api.nvim_set_keymap
-options = { noremap = true }
+local options = { noremap = true }
 
 o.termguicolors = true
 require('norman') -- Fixes for Norman keyboard layout.
@@ -30,9 +30,13 @@ o.confirm = true
 -- I do not remember what this does
 o.compatible = false
 
+-- Detect external change to file and load changes.
+g.autoread = true
+
 -- Color
 vim.cmd("colorscheme base16-railscasts")
--- Search 
+
+-- Search
 o.hlsearch = true
 o.incsearch = true
 o.ignorecase = true
@@ -74,22 +78,8 @@ w.linebreak = true
 o.showbreak = '+++'
 b.textwidth = 100
 
--- Leader
-g.mapleader = ','
-
--- Y yanks to EOL.
-map('n', 'Y', 'y$', options)
-
--- 'jk' exits INSERT mode.
-map('i', 'jk', '<ESC>', options)
-
---vim.cmd('syntax enable')
-
 -- Telescope
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', options)
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', options)
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', options)
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', options)
-
--- Markdown Preview
-map('n', '<leader>mp', '<cmd>MarkdownPreviewToggle', options)

@@ -1,10 +1,12 @@
 -- Use Packer to manage nvim plugins.
--- Call this file in init.lua
+-- Call this file in init.lua.
+-- Plugins with more intensive setup are configured in config.lua.
 
 return require('packer').startup(function(use)
+    -- Packer will check for updates to itself.
     use 'wbthomason/packer.nvim'
 
-    -- Highlight color codes.
+    -- Highlight color codes like #a4c261 or #da4939 in their actual color.
     use {
         'norcalli/nvim-colorizer.lua',
         config = function()
@@ -31,7 +33,7 @@ return require('packer').startup(function(use)
         end
     }
 
-    -- Fancy icons
+    -- Fancy icons, used for lualine.
     use 'kyazdani42/nvim-web-devicons'
 
     -- Fancier statusline.
@@ -51,19 +53,21 @@ return require('packer').startup(function(use)
     }
 
     -- Bracket auto-pairing.
+    use { 'windwp/nvim-autopairs' }
+
+    -- Keymap manager
     use {
-        'windwp/nvim-autopairs',
-        config = function()
-            require('nvim-autopairs').setup()
-        end,
+        'mrjones2014/legendary.nvim',
+        requires = {
+            'nvim-telescope/telescope.nvim',
+            'stevearc/dressing.nvim',
+        }
     }
 
     -- Now shit gets real.
     -- lspconfig
     -- Requires lua-language-server (Arch package)
-    use {
-        'neovim/nvim-lspconfig',
-    }
+    use { 'neovim/nvim-lspconfig' }
 
     -- Treesitter
     use {
@@ -93,6 +97,14 @@ return require('packer').startup(function(use)
             'L3MON4D3/LuaSnip',
             'saadparwaiz1/cmp_luasnip',
         },
+    }
+
+    -- Org mode
+    use {
+        'nvim-orgmode/orgmode',
+        config = function()
+            require('orgmode').setup{}
+        end
     }
 
     -- Packer bootstrapping

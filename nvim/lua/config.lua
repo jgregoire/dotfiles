@@ -1,18 +1,40 @@
 -- This file contains setup and config for Packer plugins.
 
--- Setup lspconfig
+-- Setup Org mode
+require('orgmode').setup_ts_grammar()
+require('nvim-treesitter.configs').setup{
+--    highlight = {
+--        enable = true,
+--        disable = { 'org' },
+--        additional_vim_regex_highlighting = { 'org' },
+--    },
+    ensure_installed = { 'org' },
+}
+require('orgmode').setup{
+    org_agenda_files = { '~/org-agenda.org' },
+    org_default_notes_file = '~/org-notes.org',
+    mappings = {
+        global = {
+            org_agenda = '<Leader>oa',
+            org_capture = '<Leader>oc',
+        },
+    },
+}
+
+-- Autopairs
+require('nvim-autopairs').setup({
+    fast_wrap = {},
+    enable_check_bracket_line = false, -- Don't add pair if it already has close pair in same line.
+    ignored_next_char = "[%w%.]", -- Don't add pair if next char is alphanumeric or '.'
+})
 
 -- Setup nvim-cmp.
-local cmp = require'cmp'
-
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local cmp = require('cmp')
 cmp.setup({
     snippet = {
-      -- REQUIRED - you must specify a snippet engine
         expand = function(args)
-            -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
             require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-            -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-            -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
         end,
     },
     mapping = {
@@ -28,15 +50,21 @@ cmp.setup({
     },
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        -- { name = 'vsnip' }, -- For vsnip users.
         { name = 'luasnip' }, -- For luasnip users.
-        -- { name = 'ultisnips' }, -- For ultisnips users.
-        -- { name = 'snippy' }, -- For snippy users.
+        { name = 'orgmode' },
     }, {
         { name = 'buffer' },
-    })
+    }),
+    enabled = function() -- Disable autocomplete in comments.
+        local context = require'cmp.config.context'
+        if vim.api.nvim_get_mode().mode == 'c' then
+            return true
+        else
+            return not context.in_treesitter_capture("comment")
+            and not context.in_syntax_group("Comment")
+        end
+    end
 })
-
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
     sources = cmp.config.sources({
@@ -45,14 +73,12 @@ cmp.setup.filetype('gitcommit', {
         { name = 'buffer' },
     })
 })
-
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
     sources = {
         { name = 'buffer' }
     }
 })
-
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
     sources = cmp.config.sources({
@@ -61,13 +87,15 @@ cmp.setup.cmdline(':', {
         { name = 'cmdline' }
     })
 })
+-- cmp autopairs support
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
 
 -- Setup lspconfig lua server.
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
-
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- Configure Lua language server.
 require('lspconfig')['sumneko_lua'].setup {
     capabilities = capabilities,
     flags = {
@@ -91,7 +119,15 @@ require('lspconfig')['sumneko_lua'].setup {
         },
     },
 }
-
+-- Configure C/C++/C# language server
+require('lspconfig')['ccls'].setup{
+    init_options = {
+        compilationDatabaseDirectory = "build",
+        index = { threads = 0},
+        clang = { excludeArgs = { "-frounding-math"} },
+    }
+}
+-- Setup language servers with default config.
 local servers = {
     'rls',
     'arduino_language_server',
@@ -101,7 +137,6 @@ local servers = {
     'yamlls',
     'ltex',
 }
-
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup({
         capabilities = capabilities,
@@ -111,3 +146,11 @@ for _, lsp in pairs(servers) do
     })
 end
 
+-- Legendary
+require('legendary').setup({
+    include_builtin = true,
+    include_legendary_cmds = true,
+    keymaps = {}, -- Enter keymaps here. TODO: Make a keymap.
+    commands = {}, -- Enter commands here.
+    autocmds = {},
+})

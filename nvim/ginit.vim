@@ -1,6 +1,7 @@
 " nvim-qt specific options.
 if exists(':GuiFont')
-    GuiFont! Iosevka\ Nerd\ Font\ Mono:h14
+    "GuiFont! Fira\ Code:h12
+    GuiFont FiraCode\ Nerd\ Font\ Mono:h12
 endif
 
 if exists(':GuiTabline')
@@ -9,3 +10,6 @@ endif
 
 GuiAdaptiveStyle Fusion
 GuiRenderLigatures 1
+
+" Color test: #AABB01
+" Ligature Test: --> =/= ~~> != @
