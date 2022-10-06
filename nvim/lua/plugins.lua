@@ -36,6 +36,9 @@ return require('packer').startup(function(use)
     -- Fancy icons, used for lualine.
     use 'kyazdani42/nvim-web-devicons'
 
+    -- Base16 theme support
+    use 'norcalli/nvim-base16.lua'
+
     -- Fancier statusline.
     use {
         'nvim-lualine/lualine.nvim',
