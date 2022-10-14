@@ -37,7 +37,7 @@ return require('packer').startup(function(use)
     use 'kyazdani42/nvim-web-devicons'
 
     -- Base16 theme support
-    use 'norcalli/nvim-base16.lua'
+    use { 'norcalli/nvim-base16.lua' }
 
     -- Fancier statusline.
     use {

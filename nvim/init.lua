@@ -34,7 +34,8 @@ o.compatible = false
 g.autoread = true
 
 -- Color
-vim.cmd("colorscheme base16-railscasts")
+--vim.cmd("colorscheme base16-railscasts")
+--I do this with nvim-base16 plugin now in config.lua.
 
 -- Search
 o.hlsearch = true

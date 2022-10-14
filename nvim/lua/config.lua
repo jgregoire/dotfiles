@@ -28,6 +28,11 @@ require('nvim-autopairs').setup({
     ignored_next_char = "[%w%.]", -- Don't add pair if next char is alphanumeric or '.'
 })
 
+-- Base16
+local base16 = require('base16')
+base16(base16.themes["railscasts"], true)
+
+
 -- Setup nvim-cmp.
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require('cmp')
