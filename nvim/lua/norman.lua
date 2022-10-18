@@ -15,6 +15,11 @@ g.mapleader = ','
 -- 'jk' exits INSERT mode.
 map('i', 'jk', '<ESC>', options)
 
+-- Visual = Ctrl+v
+map('n', '<C-b>', '<C-v>', options) -- Visual Block mode
+map('n', '<C-v>', 'v', options) -- Visual Char Mode
+map('n', '<C-l>', 'V', options) -- Visual Line Mode
+
 -- Insert = s
 map('n', 's', 'i', options) -- Insert before cursor.
 map('n', 'S', 'I', options) -- Insert at beginning of line.
@@ -28,7 +33,8 @@ map('n', 'X',  'd$',    options) -- Cut to end of line
 map('n', 'c',  'y',     options) -- Copy/yank.
 map('n', 'cc', 'yy',    options) -- Copy line.
 map('n', 'C',  'y$',    options) -- Copy to end of line.
-map('n', 'v',  'p',     options) -- Paste before cursor.
+map('n', 'v',  'p',     options) -- Paste after cursor.
+map('n', 'V',  'P',     options) -- Paste before cursor.
 
 -- Change
 map('n', 'g',  'c',     options) -- Change.
@@ -51,6 +57,12 @@ map('n', 'U',  'E',     options) -- End of Word.
 map('n', 'r',  'w',     options) -- Next word.
 map('n', 'R',  'W',     options) -- Next Word.
 map('n', 'l',  '$',     options) -- End of line.
+
+-- Insert Mode Commands
+map('i', '<C-t>', '<C-t>', options) -- Increase line indentation.
+map('i', '<C-T>', '<C-d>', options) -- Decrease line indentation.
+map('i', '<C-f>', '<C-w>', options) -- Delete word before cursor.
+map('i', '<C-d>', '<C-u>', options) -- Delete line before cursor.
 
 -- Search
 map('n', 'f',  'n',     options) -- Find next.
