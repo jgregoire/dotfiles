@@ -21,6 +21,8 @@ require('plugins') -- Packer setup file
 
 require('config') -- Plugin config
 
+require('legendary_config') -- Keymap utility
+
 -- Mouse support
 o.mouse = "a"
 

@@ -21,7 +21,7 @@ map('n', '<C-v>', 'v', options) -- Visual Char Mode
 map('n', '<C-l>', 'V', options) -- Visual Line Mode
 
 -- Insert = s
-map('n', 's', 'i', options) -- Insert before cursor.
+map('n', 's', 'i', { noremap = false }) -- Insert before cursor.
 map('n', 'S', 'I', options) -- Insert at beginning of line.
 
 -- Z, X, C, V for Undo, Cut, Copy, Paste
