@@ -16,8 +16,10 @@ require('legendary').setup({
     keymaps = {
         -- Modes
         { 'jk',     '<ESC>', description = 'Back to Normal mode', mode = { 'i' } },
-        { 's',      'i',     description = 'Insert after cursor', opts = {}, mode = { 'n' } },
+        { 's',      'i',     description = 'Insert before cursor', opts = {}, mode = { 'n' } },
         { 'S',      'I',     description = 'Insert at beginning of line', opts = {}, mode = { 'n' } },
+        { 'a',               description = 'Append after cursor' },
+        { 'A',               description = 'Append at end of line' },
         { '<C-b>',  '<C-v>', description = 'Visual Block mode', mode = { 'n' } },
         { '<C-v>',  'v',     description = 'Visual Char mode', mode = { 'n' } },
         { '<C-l>',  'V',     description = 'Visual Line mode', mode = { 'n' } },
