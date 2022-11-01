@@ -1,4 +1,6 @@
 -- Keymapping for Norman layout
+-- OBSOLETE. SEE legendary_config.lua.
+--
 
 local o = vim.o
 local w = vim.wo
