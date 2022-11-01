@@ -8,7 +8,7 @@ local map = vim.api.nvim_set_keymap
 local options = { noremap = true }
 
 o.termguicolors = true
-require('norman') -- Fixes for Norman keyboard layout.
+--require('norman') -- Fixes for Norman keyboard layout.
 
 -- Packer auto-install on new setups.
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'

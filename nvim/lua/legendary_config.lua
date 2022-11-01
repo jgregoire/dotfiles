@@ -1,6 +1,7 @@
--- Setup for legendary.nvim plugin.
+-- Setup for legendary.nvim plugin and Norman keymap.
 
 vim.g.mapleader = ','
+vim.o.langmap = 'nh,ik,oj,hl'
 
 local std_opts = { noremap = true }
 
