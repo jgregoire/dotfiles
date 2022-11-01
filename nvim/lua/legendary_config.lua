@@ -61,7 +61,12 @@ require('legendary').setup({
         { '<C-d>', '<C-u>', mode = { 'i' }, description = 'Delete line before cursor' },
 
         -- Plugins
-        { '<leader>l', ':Legendary<CR>', mode = { 'n' }, description = "Launch Legendary menu" },
+        { '<leader>l', ':Legendary<CR>', mode = { 'n' },      description = 'Legendary: Launch menu' },
+        { '<C-Space>',                                        description = 'CMP: Complete' },
+        { '<Tab>',                       mode = { 'i', 's' }, description = 'CMP: Previous' },
+        { '<C-Tab>',                     mode = { 'i', 's' }, description = 'CMP: Next' },
+        { '<CR>',                                             description = 'CMP: Confirm' },
+        { '<Esc>',                                            description = 'CMP: Cancel' },
     },
 
     commands = {},
