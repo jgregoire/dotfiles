@@ -6,6 +6,9 @@ return require('packer').startup(function(use)
     -- Packer will check for updates to itself.
     use { 'wbthomason/packer.nvim' }
 
+    -- Speed up nvim launch time.
+    use { 'lewis6991/impatient.nvim' }
+
     -- Highlight color codes like #a4c261 or #da4939 in their actual color.
     use {
         'norcalli/nvim-colorizer.lua',
