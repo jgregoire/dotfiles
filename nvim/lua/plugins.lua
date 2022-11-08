@@ -37,6 +37,7 @@ return require('packer').startup(function(use)
     use 'kyazdani42/nvim-web-devicons'
 
     -- Base16 theme support
+    -- Needed to theme UI elements, to match my terminal color scheme.
     use { 'norcalli/nvim-base16.lua' }
 
     -- Fancier statusline.
