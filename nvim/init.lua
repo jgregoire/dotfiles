@@ -68,7 +68,7 @@ o.shiftwidth = 4
 -- Completion
 o.wildmenu = true
 o.showcmd = true
-o.cmdheight = 2
+o.cmdheight = 1
 o.completeopt = 'menu,menuone,noselect'
 
 -- Keycode timeout
