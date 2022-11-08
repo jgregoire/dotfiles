@@ -4,7 +4,7 @@
 
 return require('packer').startup(function(use)
     -- Packer will check for updates to itself.
-    use 'wbthomason/packer.nvim'
+    use { 'wbthomason/packer.nvim' }
 
     -- Highlight color codes like #a4c261 or #da4939 in their actual color.
     use {
@@ -34,7 +34,7 @@ return require('packer').startup(function(use)
     }
 
     -- Fancy icons, used for lualine.
-    use 'kyazdani42/nvim-web-devicons'
+    use { 'kyazdani42/nvim-web-devicons' }
 
     -- Base16 theme support
     -- Needed to theme UI elements, to match my terminal color scheme.
@@ -106,12 +106,7 @@ return require('packer').startup(function(use)
     }
 
     -- Org mode
-    use {
-        'nvim-orgmode/orgmode',
-        config = function()
-            require('orgmode').setup{}
-        end
-    }
+    use { 'nvim-orgmode/orgmode' }
 
     -- Packer bootstrapping
     if packer_bootstrap then
