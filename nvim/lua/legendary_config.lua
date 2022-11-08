@@ -44,16 +44,22 @@ require('legendary').setup({
         { 'cc', 'yy',    mode = { 'n' }, description = 'Copy line' },
         { 'C',  'y$',    mode = { 'n' }, description = 'Copy to end of line' },
         { 'v',  'p',     mode = { 'n' }, description = 'Paste after cursor' },
-        { 'V',  'V',     mode = { 'n' }, description = 'Paste before cursor' },
+        { 'V',  'P',     mode = { 'n' }, description = 'Paste before cursor' },
         { 'g',  'c',     mode = { 'n' }, description = 'Change character' },
         { 'gg', 'cc',    mode = { 'n' }, description = 'Change entire line' },
         { 'G',  'C',     mode = { 'n' }, description = 'Change to end of line' },
         { 'e',  's',     mode = { 'n' }, description = 'Substitute character' },
         { 'E',  'S',     mode = { 'n' }, description = 'Substitute line' },
 
-        -- Prepositions
-        { 'i',  'i',     mode = { 'o' }, description = 'Inside' },
-        { 'a',  'a',     mode = { 'o' }, description = 'Around' },
+        -- Chording
+        { 'i',           mode = { 'o' }, description = 'Inside (Chording)' },
+        { 'a',           mode = { 'o' }, description = 'Around (Chording)' },
+        { 'w',           mode = { 'o' }, description = 'Word (Chording)' },
+        { 'b',           mode = { 'o' }, description = '( ) Block (Chording)' },
+        { 'B',           mode = { 'o' }, description = '{ } Block (Chording)' },
+        { 't',           mode = { 'o' }, description = '< > Block (Chording)' },
+        { '\'',          mode = { 'o' }, description = 'Single quotes (Chording)' },
+        { '\"',          mode = { 'o' }, description = 'Double quotes (Chording)' },
 
         -- Motions
         { 'p',  '%',     mode = { 'n' }, description = 'Jump to matching paren' },
