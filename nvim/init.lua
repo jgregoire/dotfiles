@@ -4,11 +4,8 @@ local w = vim.wo
 local b = vim.bo
 local g = vim.g
 local fn = vim.fn
-local map = vim.api.nvim_set_keymap
-local options = { noremap = true }
 
 o.termguicolors = true
---require('norman') -- Fixes for Norman keyboard layout.
 
 -- Packer auto-install on new setups.
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -34,10 +31,6 @@ o.compatible = false
 
 -- Detect external change to file and load changes.
 g.autoread = true
-
--- Color
---vim.cmd("colorscheme base16-railscasts")
---I do this with nvim-base16 plugin now in config.lua.
 
 -- Search
 o.hlsearch = true
@@ -81,8 +74,3 @@ w.linebreak = true
 o.showbreak = '+++'
 b.textwidth = 100
 
--- Telescope
-map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', options)
-map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', options)
-map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', options)
-map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', options)

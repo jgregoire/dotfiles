@@ -87,6 +87,10 @@ require('legendary').setup({
         { '<C-Tab>',                     mode = { 'i', 's' }, description = 'CMP: Next' },
         { '<CR>',                                             description = 'CMP: Confirm' },
         { '<Esc>',                                            description = 'CMP: Cancel' },
+        { '<leader>ff', '<cmd>Telescope find_files<cr>', mode = { 'n' }, description = 'Telescope: Find files' },
+        { '<leader>fg', '<cmd>Telescope live_grep<cr>',  mode = { 'n' }, description = 'Telescope: Live grep' },
+        { '<leader>fb', '<cmd>Telescope buffers<cr>',    mode = { 'n' }, description = 'Telescope: Buffers' },
+        { '<leader>ft', '<cmd>Telescope help_tags<cr>',  mode = { 'n' }, description = 'Telescope: Help tags' },
     },
 
     commands = {},
