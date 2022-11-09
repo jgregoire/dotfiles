@@ -31,10 +31,12 @@ require('nvim-autopairs').setup({
 -- Surround
 require('nvim-surround').setup({
     keymaps = {
-        insert = 'bs',
-        insert_line = 'bS',
-        delete = 'xs',
-        change = 'gs',
+        normal          = 'bs',
+        normal_line     = 'bS',
+        normal_cur      = 'Bs',
+        normal_cur_line = 'BS',
+        delete          = 'xs',
+        change          = 'gs',
     }
 })
 
