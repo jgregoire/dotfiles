@@ -64,6 +64,12 @@ return require('packer').startup(function(use)
     -- Bracket auto-pairing.
     use { 'windwp/nvim-autopairs' }
 
+    -- More bracketing smarts.
+    use {
+        'kylechui/nvim-surround',
+        tag = '*', -- '*' for stable, 'main' for latest
+    }
+
     -- Keymap manager
     use {
         'mrjones2014/legendary.nvim',

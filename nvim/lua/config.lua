@@ -28,6 +28,16 @@ require('nvim-autopairs').setup({
     ignored_next_char = "[%w%.]", -- Don't add pair if next char is alphanumeric or '.'
 })
 
+-- Surround
+require('nvim-surround').setup({
+    keymaps = {
+        insert = 'bs',
+        insert_line = 'bS',
+        delete = 'xs',
+        change = 'gs',
+    }
+})
+
 -- Base16
 local base16 = require('base16')
 base16(base16.themes["railscasts"], true)
