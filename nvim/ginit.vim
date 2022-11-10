@@ -1,11 +1,17 @@
 " nvim-qt specific options.
 if exists(':GuiFont')
     "GuiFont! Fira\ Code:h12
-    GuiFont! FiraCode\ Nerd\ Font:h12
+    GuiFont! Fira\ Code\ Nerd\ Font:h12
 endif
 
 if exists(':GuiTabline')
     GuiTabline 1
+endif
+
+if exists('g:neovide')
+    let g:neovide_hide_mouse_when_typing = v:false
+    let g:neovide_remember_window_size = v:true
+    let g:neovide_cursor_vfx_mode = "railgun"
 endif
 
 GuiAdaptiveStyle Fusion
