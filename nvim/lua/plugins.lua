@@ -37,7 +37,7 @@ return require('packer').startup(function(use)
     }
 
     -- Fancy icons, used for lualine.
-    use { 'kyazdani42/nvim-web-devicons' }
+    use { 'nvim-tree/nvim-web-devicons' }
 
     -- Base16 theme support
     -- Needed to theme UI elements, to match my terminal color scheme.
@@ -46,7 +46,7 @@ return require('packer').startup(function(use)
     -- Fancier statusline.
     use {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true },
         config = function()
             require('lualine').setup({
                 options = { theme = 'auto' },
@@ -68,6 +68,12 @@ return require('packer').startup(function(use)
     use {
         'kylechui/nvim-surround',
         tag = '*', -- '*' for stable, 'main' for latest
+    }
+
+    -- Better tabs
+    use {
+	'romgrk/barbar.nvim',
+	wants = { 'nvim-tree/nvim-web-devicons'},
     }
 
     -- Keymap manager

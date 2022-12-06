@@ -44,6 +44,8 @@ require('nvim-surround').setup({
 local base16 = require('base16')
 base16(base16.themes["railscasts"], true)
 
+-- Barbar (tabbing)
+require('bufferline').setup()
 
 -- Setup nvim-cmp.
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
