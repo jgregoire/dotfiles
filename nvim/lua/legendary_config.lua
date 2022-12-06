@@ -13,6 +13,13 @@ require('legendary').setup({
     col_separator_char = '|',
     most_recent_item_at_top = false,
 
+    -- Modifiers:
+    --  C - Ctrl
+    --  S - Shift
+    --  A - Alt
+    --  M - Alt (No meta key)
+    --  A-S-C - Meh
+
     keymaps = {
         -- Modes
         { 'jk',    '<ESC>', mode = { 'i' },      description = 'Back to Normal mode' },
@@ -73,6 +80,15 @@ require('legendary').setup({
         { 'r',  'w',     mode = { 'n' }, description = 'Next word' },
         { 'R',  'W',     mode = { 'n' }, description = 'Next Word' },
         { 'l',  '$',     mode = { 'n' }, description = 'End of line' },
+
+        -- Tabs and such
+        { '<A-t>',     ':tabnew<CR>',   mode = { 'n' }, description = 'Create new tab' },
+        { '<A-q>',     ':tabclose<CR>', mode = { 'n' }, description = 'Close tab' },
+        { '<A-Q>',     ':tabdo -q<CR>', mode = { 'n' }, description = 'Close all tabs' },
+        { '<A-qq>',    ':tabclose<CR>', mode = { 'n'}, description = 'Close other tabs' },
+        { '<A-o>',     ':e ',           mode = { 'n' }, description = 'Open/edit file' },
+        { '<A-Right>', 'gt',            mode = { 'n' }, description = 'Next tab' },
+        { '<A-Left>',  'gT',            mode = { 'n' }, description = 'Previous tab' },
 
         -- Insert Mode Stuff
         { '<C-t>', '<C-t>', mode = { 'i' }, description = 'Increase indent' },

@@ -74,3 +74,5 @@ w.linebreak = true
 o.showbreak = '+++'
 b.textwidth = 100
 
+-- Tabline
+o.showtabline = 2
