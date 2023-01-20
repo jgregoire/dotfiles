@@ -45,7 +45,7 @@ require('legendary').setup({
         { 'v',   'p',     mode = { 'n' },      description = 'Paste after cursor' },
         { 'V',   'P',     mode = { 'n' },      description = 'Paste before cursor' },
         { 's',   'r',     mode = { 'n' },      description = 'Swap character' },
-        { 'ee',  's',     mode = { 'n' },      description = 'Edit character'}
+        { 'ee',  's',     mode = { 'n' },      description = 'Edit character'},
         { 'E',   'R',     mode = { 'n' },      description = 'Replace characters until ESC' },
         { 'eW',  'ciw',   mode = { 'n' },      description = 'Edit entire word' },
         { 'ew',  'cw',    mode = { 'n' },      description = 'Edit to end of word' },
@@ -59,6 +59,8 @@ require('legendary').setup({
         { '<C-n>', '<C-j>', mode = { 'i' }, description = 'Begin new line' },
         { '<C-t>',          mode = { 'i' }, description = 'Indent line' },
         { '<C-d>',          mode = { 'i' }, description = 'De-indent line' },
+        -- This one's a doozy!
+        { '<C-e>', [[<C-\><C-n>:call search('[>)\]}"'']', 'W')<CR>a]], mode = { 'i' }, description = 'Jump out of brackets or quotes' },
 
         -- Visual Mode
         { 'aw', mode = { 'v' }, description = 'Select a word' },
@@ -81,7 +83,7 @@ require('legendary').setup({
 
         -- Motions
         { 'b',  '%',     mode = { 'n' }, description = 'Jump to matching bracket' },
-        { 'I', 'zz',     mode = { 'n' }, description = 'Center screen on cursor' },
+--        { 'I', 'zz',     mode = { 'n' }, description = 'Center screen on cursor' },
         { 'w',  '^',     mode = { 'n' }, description = 'First non-blank char' },
         { 'W',  '0',     mode = { 'n' }, description = 'Start of line' },
         { 'd',  'b',     mode = { 'n' }, description = 'Start of previous word' },

@@ -31,12 +31,12 @@ require('nvim-autopairs').setup({
 -- Surround
 require('nvim-surround').setup({
     keymaps = {
-        normal          = 'bs',
-        normal_line     = 'bS',
-        normal_cur      = 'Bs',
-        normal_cur_line = 'BS',
-        delete          = 'xs',
-        change          = 'gs',
+        normal          = 'pps',
+        normal_line     = 'ppS',
+        normal_cur      = 'pPs',
+        normal_cur_line = 'pPS',
+        delete          = 'pxs',
+        change          = 'pgs',
     }
 })
 
@@ -62,8 +62,8 @@ cmp.setup({
         end,
     },
     mapping = {
-        --['<C-i>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-        --['<C-o>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+        --['C-i'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+        --['wC-ow'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
         ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
         ['<C-y>'] = cmp.config.disable,
         ['<Esc>'] = cmp.mapping({
