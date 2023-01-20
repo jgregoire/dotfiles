@@ -1,9 +1,6 @@
 -- Setup for legendary.nvim plugin and Norman keymap.
 
-vim.g.mapleader = ','
---vim.o.langmap = 'nh,ik,oj,hl'
-
-local std_opts = { noremap = true }
+vim.g.mapleader = ' '
 
 require('legendary').setup({
     include_builtin = false,
@@ -23,40 +20,54 @@ require('legendary').setup({
     keymaps = {
         -- Modes
         { 'jk',    '<ESC>', mode = { 'i' },      description = 'Back to Normal mode' },
-        { 's',     'i',     mode = { 'n' },      description = 'Insert before cursor' },
-        { 'S',     'I',     mode = { 'n' },      description = 'Insert at beginning of line' },
+        { 'i',              mode = { 'n' },      description = 'Insert before cursor' },
+        { 'I',              mode = { 'n' },      description = 'Insert at beginning of line' },
         { 'a',              mode = { 'n' },      description = 'Append after cursor' },
         { 'A',              mode = { 'n' },      description = 'Append at end of line' },
+        { 'n',     'o',     mode = { 'n' },      description = 'Append new line below' },
+        { 'N',     'O',     mode = { 'n' },      description = 'Append new line above' },
+        { 's',              mode = { 'n' },      description = 'Delete character and insert' },
         { '<C-b>', '<C-v>', mode = { 'n', 'i' }, description = 'Visual Block mode' },
         { '<C-v>', 'v',     mode = { 'n', 'i' }, description = 'Visual Char mode' },
         { '<C-l>', 'V',     mode = { 'n', 'i' }, description = 'Visual Line mode' },
 
-        -- Arrows
-        { 'n', 'h', mode = { 'n', 'v' }, description = 'Left' },
-        { 'N', 'h', mode = { 'n', 'v' }, description = 'Left' },
-        { 'i', 'k', mode = { 'n', 'v' }, description = 'Up' },
-        { 'I', 'k', mode = { 'n', 'v',}, description = 'Up' },
-        { 'o', 'j', mode = { 'n', 'v' }, description = 'Down' },
-        { 'O', 'j', mode = { 'n', 'v' }, description = 'Down' },
-        { 'h', 'l', mode = { 'n', 'v' }, description = 'Right' },
-        { 'H', 'l', mode = { 'n', 'v' }, description = 'Right' },
-
         -- Editing
-        { 'z',  'u',     mode = { 'n' }, description = 'Undo' },
-        { 'y',  '<C-r>', mode = { 'n' }, description = 'Redo' },
-        { 'x',  'd',     mode = { 'n' }, description = 'Cut/delete' },
-        { 'xx', 'dd',    mode = { 'n' }, description = 'Cut line' },
-        { 'X',  'd$',    mode = { 'n' }, description = 'Cut to end of line' },
-        { 'c',  'y',     mode = { 'n' }, description = 'Copy/yank' },
-        { 'cc', 'yy',    mode = { 'n' }, description = 'Copy line' },
-        { 'C',  'y$',    mode = { 'n' }, description = 'Copy to end of line' },
-        { 'v',  'p',     mode = { 'n' }, description = 'Paste after cursor' },
-        { 'V',  'P',     mode = { 'n' }, description = 'Paste before cursor' },
-        { 'g',  'c',     mode = { 'n' }, description = 'Change character' },
-        { 'gg', 'cc',    mode = { 'n' }, description = 'Change entire line' },
-        { 'G',  'C',     mode = { 'n' }, description = 'Change to end of line' },
-        { 'e',  's',     mode = { 'n' }, description = 'Substitute character' },
-        { 'E',  'S',     mode = { 'n' }, description = 'Substitute line' },
+        { 'z',   'u',     mode = { 'n' },      description = 'Undo' },
+        { 'y',   '<C-r>', mode = { 'n' },      description = 'Redo' },
+        { 'x',   'd',     mode = { 'n', 'v' }, description = 'Cut/delete' },
+        { 'xw',  'dw',    mode = { 'n' },      description = 'Cut from cursor to start of next word' },
+        { 'xx',  'dd',    mode = { 'n' },      description = 'Cut line' },
+        { 'X',   'd$',    mode = { 'n' },      description = 'Cut to end of line' },
+        { 'c',   'y',     mode = { 'n', 'v' }, description = 'Copy/yank' },
+        { 'cw',  'yw',    mode = { 'n' },      description = 'Copy from cursor to start of next word' },
+        { 'cc',  'yy',    mode = { 'n' },      description = 'Copy line' },
+        { 'C',   'y$',    mode = { 'n' },      description = 'Copy to end of line' },
+        { 'v',   'p',     mode = { 'n' },      description = 'Paste after cursor' },
+        { 'V',   'P',     mode = { 'n' },      description = 'Paste before cursor' },
+        { 's',   'r',     mode = { 'n' },      description = 'Swap character' },
+        { 'ee',  's',     mode = { 'n' },      description = 'Edit character'}
+        { 'E',   'R',     mode = { 'n' },      description = 'Replace characters until ESC' },
+        { 'eW',  'ciw',   mode = { 'n' },      description = 'Edit entire word' },
+        { 'ew',  'cw',    mode = { 'n' },      description = 'Edit to end of word' },
+        { 'eL',  'cc',    mode = { 'n' },      description = 'Edit entire line' },
+        { 'el',  'C',     mode = { 'n' },      description = 'Edit to end of line' },
+        { 'j',   'gJ',    mode = { 'n' },      description = 'Join line below to current line' },
+        { 'J',            mode = { 'n' },      description = 'Join line below to current line with a space between' },
+
+        -- Insert Mode
+        { '<C-w>',          mode = { 'i' }, description = 'Delete word before cursor'},
+        { '<C-n>', '<C-j>', mode = { 'i' }, description = 'Begin new line' },
+        { '<C-t>',          mode = { 'i' }, description = 'Indent line' },
+        { '<C-d>',          mode = { 'i' }, description = 'De-indent line' },
+
+        -- Visual Mode
+        { 'aw', mode = { 'v' }, description = 'Select a word' },
+        { 'ab', mode = { 'v' }, description = 'Select a ( ) block' },
+        { 'aB', mode = { 'v' }, description = 'Select a { } block' },
+        { 'at', mode = { 'v' }, description = 'Select a < > block' },
+        { 'ib', mode = { 'v' }, description = 'Select inside a ( ) block' },
+        { 'iB', mode = { 'v' }, description = 'Select inside a { } block' },
+        { 'it', mode = { 'v' }, description = 'Select inside a < > block' },
 
         -- Chording
         { 'i',           mode = { 'o' }, description = 'Inside (Chording)' },
@@ -69,17 +80,20 @@ require('legendary').setup({
         { '\"',          mode = { 'o' }, description = 'Double quotes (Chording)' },
 
         -- Motions
-        { 'p',  '%',     mode = { 'n' }, description = 'Jump to matching paren' },
-        { 'vv', 'zz',    mode = { 'n' }, description = 'Center screen on cursor' },
-        { 'f',  'b',     mode = { 'n' }, description = 'Previous word' },
-        { 'F',  'B',     mode = { 'n' }, description = 'Previous Word' },
-        { 'd',  '^',     mode = { 'n' }, description = 'First non-blank char' },
-        { 'D',  '0',     mode = { 'n' }, description = 'Start of line' },
-        { 'u',  'e',     mode = { 'n' }, description = 'End of word' },
-        { 'U',  'E',     mode = { 'n' }, description = 'End of Word' },
-        { 'r',  'w',     mode = { 'n' }, description = 'Next word' },
-        { 'R',  'W',     mode = { 'n' }, description = 'Next Word' },
+        { 'b',  '%',     mode = { 'n' }, description = 'Jump to matching bracket' },
+        { 'I', 'zz',     mode = { 'n' }, description = 'Center screen on cursor' },
+        { 'w',  '^',     mode = { 'n' }, description = 'First non-blank char' },
+        { 'W',  '0',     mode = { 'n' }, description = 'Start of line' },
+        { 'd',  'b',     mode = { 'n' }, description = 'Start of previous word' },
+        { 'D',  'B',     mode = { 'n' }, description = 'Start of previous Word' },
+        { 'f',  'ge',    mode = { 'n' }, description = 'End of previous word' },
+        { 'F',  'gE',    mode = { 'n' }, description = 'End of previous Word' },
+        { 'u',  'w',     mode = { 'n' }, description = 'Start of next word' },
+        { 'U',  'W',     mode = { 'n' }, description = 'Start of next Word' },
+        { 'r',  'e',     mode = { 'n' }, description = 'End of next word' },
+        { 'R',  'E',     mode = { 'n' }, description = 'End of next Word' },
         { 'l',  '$',     mode = { 'n' }, description = 'End of line' },
+        { 'L', 'g_',     mode = { 'n' }, description = 'Last non-blank character of line' },
 
         -- Tabs and such
         { '<A-t>',     ':tabnew<CR>',   mode = { 'n' }, description = 'Create new tab' },
@@ -89,12 +103,6 @@ require('legendary').setup({
         { '<A-o>',     ':e ',           mode = { 'n' }, description = 'Open/edit file' },
         { '<A-Right>', 'gt',            mode = { 'n' }, description = 'Next tab' },
         { '<A-Left>',  'gT',            mode = { 'n' }, description = 'Previous tab' },
-
-        -- Insert Mode Stuff
-        { '<C-t>', '<C-t>', mode = { 'i' }, description = 'Increase indent' },
-        { '<C-T>', '<C-d>', mode = { 'i' }, description = 'Decrease indent' },
-        { '<C-f>', '<C-w>', mode = { 'i' }, description = 'Delete word before cursor' },
-        { '<C-d>', '<C-u>', mode = { 'i' }, description = 'Delete line before cursor' },
 
         -- Plugins
         { '<leader>l', ':Legendary<CR>', mode = { 'n' },      description = 'Legendary: Launch menu' },
