@@ -123,7 +123,7 @@ require('legendary').setup({
 
     commands = {},
 
-    functions = {},
+    funcs = {},
 
     autocmds = {},
     
