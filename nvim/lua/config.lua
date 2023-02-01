@@ -9,15 +9,15 @@ vim.cmd([[highlight NotifyERRORTitle  guifg=#da4939]])
 vim.cmd([[highlight NotifyWARNBorder  guifg=#ffc66d]])
 vim.cmd([[highlight NotifyWARNIcon    guifg=#ffc66d]])
 vim.cmd([[highlight NotifyWARNTitle   guifg=#ffc66d]])
-vim.cmd([[highlight NotifyINFOBorder  guifg=#e6e1dc]])
-vim.cmd([[highlight NotifyINFOIcon    guifg=#e6e1dc]])
-vim.cmd([[highlight NotifyINFOTitle   guifg=#e6e1dc]])
-vim.cmd([[highlight NotifyDEBUGBorder guifg=#6d8cbe]])
-vim.cmd([[highlight NotifyDEBUGIcon   guifg=#6d8cbe]])
-vim.cmd([[highlight NotifyDEBUGTitle  guifg=#6d8cbe]])
-vim.cmd([[highlight NotifyTRACEBorder guifg=#b6b3db]])
-vim.cmd([[highlight NotifyTRACEIcon   guifg=#b6b3db]])
-vim.cmd([[highlight NotidyTRACETitle  guifg=#b6b3db]])
+vim.cmd([[highlight NotifyINFOBorder  guifg=#f9f7f3]])
+vim.cmd([[highlight NotifyINFOIcon    guifg=#f9f7f3]])
+vim.cmd([[highlight NotifyINFOTitle   guifg=#f9f7f3]])
+vim.cmd([[highlight NotifyDEBUGBorder guifg=#6d9cbe]])
+vim.cmd([[highlight NotifyDEBUGIcon   guifg=#6d9cbe]])
+vim.cmd([[highlight NotifyDEBUGTitle  guifg=#6d9cbe]])
+vim.cmd([[highlight NotifyTRACEBorder guifg=#b6b3eb]])
+vim.cmd([[highlight NotifyTRACEIcon   guifg=#b6b3eb]])
+vim.cmd([[highlight NotidyTRACETitle  guifg=#b6b3eb]])
 vim.cmd([[highlight Normal guifg=#e6e1dc guibg=#000000]])
 vim.cmd([[highlight link NotifyERRORBody Normal]])
 vim.cmd([[highlight link NotifyWARNBody  Normal]])
@@ -34,7 +34,10 @@ nvimnotify.setup({
 
 vim.notify = nvimnotify
 
-require('notify')("Test notification.")
+--vim.notify('Test notification.', 'info')
+--vim.notify('Test warning.', 'warn')
+--vim.notify('Test error!', 'error')
+
 
 -- Setup Org mode
 require('orgmode').setup_ts_grammar()
