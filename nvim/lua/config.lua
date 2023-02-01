@@ -1,43 +1,5 @@
 -- This file contains setup and config for Packer plugins.
 
--- nvim-notify
-local nvimnotify = require('notify')
-
-vim.cmd([[highlight NotifyERRORBorder guifg=#da4939]])
-vim.cmd([[highlight NotifyERRORIcon   guifg=#da4939]])
-vim.cmd([[highlight NotifyERRORTitle  guifg=#da4939]])
-vim.cmd([[highlight NotifyWARNBorder  guifg=#ffc66d]])
-vim.cmd([[highlight NotifyWARNIcon    guifg=#ffc66d]])
-vim.cmd([[highlight NotifyWARNTitle   guifg=#ffc66d]])
-vim.cmd([[highlight NotifyINFOBorder  guifg=#f9f7f3]])
-vim.cmd([[highlight NotifyINFOIcon    guifg=#f9f7f3]])
-vim.cmd([[highlight NotifyINFOTitle   guifg=#f9f7f3]])
-vim.cmd([[highlight NotifyDEBUGBorder guifg=#6d9cbe]])
-vim.cmd([[highlight NotifyDEBUGIcon   guifg=#6d9cbe]])
-vim.cmd([[highlight NotifyDEBUGTitle  guifg=#6d9cbe]])
-vim.cmd([[highlight NotifyTRACEBorder guifg=#b6b3eb]])
-vim.cmd([[highlight NotifyTRACEIcon   guifg=#b6b3eb]])
-vim.cmd([[highlight NotidyTRACETitle  guifg=#b6b3eb]])
-vim.cmd([[highlight Normal guifg=#e6e1dc guibg=#000000]])
-vim.cmd([[highlight link NotifyERRORBody Normal]])
-vim.cmd([[highlight link NotifyWARNBody  Normal]])
-vim.cmd([[highlight link NotifyINFOBody  Normal]])
-vim.cmd([[highlight link NotifyDEBUGBody Normal]])
-vim.cmd([[highlight link NotifyTRACEBody Normal]])
-
-nvimnotify.setup({
-    render = 'compact',
-    fps    = 30,
-    stages = 'fade_in_slide_out', -- Others: fade, slide, static
-    background_colour = '#000000'
-})
-
-vim.notify = nvimnotify
-
---vim.notify('Test notification.', 'info')
---vim.notify('Test warning.', 'warn')
---vim.notify('Test error!', 'error')
-
 
 -- Setup Org mode
 require('orgmode').setup_ts_grammar()
@@ -82,6 +44,47 @@ require('nvim-surround').setup({
 -- Base16
 local base16 = require('base16')
 base16(base16.themes["railscasts"], true)
+
+-- nvim-notify
+local nvimnotify = require('notify')
+
+local red = base16.themes["railscasts"].base01
+
+vim.cmd([[highlight NotifyERRORBorder guifg=#da4939]])
+vim.cmd([[highlight NotifyERRORIcon   guifg=#da4939]])
+vim.cmd([[highlight NotifyERRORTitle  guifg=#da4939]])
+vim.cmd([[highlight NotifyWARNBorder  guifg=#ffc66d]])
+vim.cmd([[highlight NotifyWARNIcon    guifg=#ffc66d]])
+vim.cmd([[highlight NotifyWARNTitle   guifg=#ffc66d]])
+vim.cmd([[highlight NotifyINFOBorder  guifg=#f9f7f3]])
+vim.cmd([[highlight NotifyINFOIcon    guifg=#f9f7f3]])
+vim.cmd([[highlight NotifyINFOTitle   guifg=#f9f7f3]])
+vim.cmd([[highlight NotifyDEBUGBorder guifg=#6d9cbe]])
+vim.cmd([[highlight NotifyDEBUGIcon   guifg=#6d9cbe]])
+vim.cmd([[highlight NotifyDEBUGTitle  guifg=#6d9cbe]])
+vim.cmd([[highlight NotifyTRACEBorder guifg=#b6b3eb]])
+vim.cmd([[highlight NotifyTRACEIcon   guifg=#b6b3eb]])
+vim.cmd([[highlight NotidyTRACETitle  guifg=#b6b3eb]])
+vim.cmd([[highlight Normal guifg=#e6e1dc guibg=#000000]])
+vim.cmd([[highlight link NotifyERRORBody Normal]])
+vim.cmd([[highlight link NotifyWARNBody  Normal]])
+vim.cmd([[highlight link NotifyINFOBody  Normal]])
+vim.cmd([[highlight link NotifyDEBUGBody Normal]])
+vim.cmd([[highlight link NotifyTRACEBody Normal]])
+
+nvimnotify.setup({
+    render = 'compact',
+    fps    = 30,
+    stages = 'fade_in_slide_out', -- Others: fade, slide, static
+    background_colour = '#000000'
+})
+
+vim.notify = nvimnotify
+
+--vim.notify('Test notification.', 'info')
+--vim.notify('Test warning.', 'warn')
+--vim.notify('Test error!', 'error')
+
 
 -- Barbar (tabbing)
 require('bufferline').setup()
