@@ -78,6 +78,8 @@ setopt NUMERIC_GLOB_SORT
 ## Aliases
 ##
 
+# SSH with kitty terminfo
+alias kssh='kitty +kitten ssh'
 # systemd
 alias ssc='sudo systemctl'
 
