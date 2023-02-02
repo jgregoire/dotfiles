@@ -3,15 +3,15 @@
 
 -- Setup Org mode
 require('orgmode').setup_ts_grammar()
-require('nvim-treesitter.configs').setup{
+require('nvim-treesitter.configs').setup({
 --    highlight = {
 --        enable = true,
 --        disable = { 'org' },
 --        additional_vim_regex_highlighting = { 'org' },
 --    },
     ensure_installed = { 'org' },
-}
-require('orgmode').setup{
+})
+require('orgmode').setup({
     org_agenda_files = { '~/org-agenda.org' },
     org_default_notes_file = '~/org-notes.org',
     mappings = {
@@ -20,7 +20,7 @@ require('orgmode').setup{
             org_capture = '<Leader>oc',
         },
     },
-}
+})
 
 -- Autopairs
 require('nvim-autopairs').setup({
@@ -189,7 +189,7 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Configure Lua language server.
-require('lspconfig')['sumneko_lua'].setup {
+require('lspconfig')['sumneko_lua'].setup({
     capabilities = capabilities,
     flags = {
         debounce_text_changes = 150,
@@ -212,7 +212,7 @@ require('lspconfig')['sumneko_lua'].setup {
             },
         },
     },
-}
+})
 -- Configure C/C++/C# language server
 --require('lspconfig')['ccls'].setup{
 --    init_options = {
