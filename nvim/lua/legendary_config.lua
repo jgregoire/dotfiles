@@ -44,7 +44,7 @@ require('legendary').setup({
         { 'C',   'y$',    mode = { 'n' },      description = 'Copy to end of line' },
         { 'v',   'p',     mode = { 'n' },      description = 'Paste after cursor' },
         { 'V',   'P',     mode = { 'n' },      description = 'Paste before cursor' },
-        { 's',   'r',     mode = { 'n' },      description = 'Swap character' },
+        { 's',   'r',     mode = { 'n' },      description = 'Replace single character' },
         { 'ee',  's',     mode = { 'n' },      description = 'Edit character'},
         { 'E',   'R',     mode = { 'n' },      description = 'Replace characters until ESC' },
         { 'eW',  'ciw',   mode = { 'n' },      description = 'Edit entire word' },
@@ -123,7 +123,7 @@ require('legendary').setup({
 
     commands = {},
 
-    functions = {},
+    funcs = {},
 
     autocmds = {},
     
