@@ -88,6 +88,7 @@ vim.notify('Test error!', 'error')
 --]]
 
 -- Barbar (tabbing)
+require('barbar-theme')
 require('bufferline').setup()
 
 -- Setup nvim-cmp.
