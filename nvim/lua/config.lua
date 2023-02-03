@@ -1,16 +1,17 @@
 -- This file contains setup and config for Packer plugins.
 
+
 -- Setup Org mode
 require('orgmode').setup_ts_grammar()
-require('nvim-treesitter.configs').setup{
+require('nvim-treesitter.configs').setup({
 --    highlight = {
 --        enable = true,
 --        disable = { 'org' },
 --        additional_vim_regex_highlighting = { 'org' },
 --    },
     ensure_installed = { 'org' },
-}
-require('orgmode').setup{
+})
+require('orgmode').setup({
     org_agenda_files = { '~/org-agenda.org' },
     org_default_notes_file = '~/org-notes.org',
     mappings = {
@@ -19,7 +20,7 @@ require('orgmode').setup{
             org_capture = '<Leader>oc',
         },
     },
-}
+})
 
 -- Autopairs
 require('nvim-autopairs').setup({
@@ -28,9 +29,76 @@ require('nvim-autopairs').setup({
     ignored_next_char = "[%w%.]", -- Don't add pair if next char is alphanumeric or '.'
 })
 
+-- Surround
+require('nvim-surround').setup({
+    keymaps = {
+        normal          = 'pps',
+        normal_line     = 'ppS',
+        normal_cur      = 'pPs',
+        normal_cur_line = 'pPS',
+        delete          = 'pxs',
+        change          = 'pgs',
+    }
+})
+
+-- Base16
+local base16 = require('base16')
+base16(base16.themes["railscasts"], true)
+
+-- nvim-notify
+local nvimnotify = require('notify')
+
+local theme = base16.themes['railscasts']
+
+vim.cmd([[highlight NotifyERRORBorder guifg=#]] .. theme.base08)
+vim.cmd([[highlight NotifyERRORIcon   guifg=#]] .. theme.base08)
+vim.cmd([[highlight NotifyERRORTitle  guifg=#]] .. theme.base08)
+vim.cmd([[highlight NotifyWARNBorder  guifg=#]] .. theme.base0A)
+vim.cmd([[highlight NotifyWARNIcon    guifg=#]] .. theme.base0A)
+vim.cmd([[highlight NotifyWARNTitle   guifg=#]] .. theme.base0A)
+vim.cmd([[highlight NotifyINFOBorder  guifg=#]] .. theme.base07)
+vim.cmd([[highlight NotifyINFOIcon    guifg=#]] .. theme.base07)
+vim.cmd([[highlight NotifyINFOTitle   guifg=#]] .. theme.base07)
+vim.cmd([[highlight NotifyDEBUGBorder guifg=#]] .. theme.base0D)
+vim.cmd([[highlight NotifyDEBUGIcon   guifg=#]] .. theme.base0D)
+vim.cmd([[highlight NotifyDEBUGTitle  guifg=#]] .. theme.base0D)
+vim.cmd([[highlight NotifyTRACEBorder guifg=#]] .. theme.base0E)
+vim.cmd([[highlight NotifyTRACEIcon   guifg=#]] .. theme.base0E)
+vim.cmd([[highlight NotidyTRACETitle  guifg=#]] .. theme.base0E)
+vim.cmd([[highlight Normal guifg=#]] .. theme.base05 .. [[ guibg=#000000]])
+vim.cmd([[highlight link NotifyERRORBody Normal]])
+vim.cmd([[highlight link NotifyWARNBody  Normal]])
+vim.cmd([[highlight link NotifyINFOBody  Normal]])
+vim.cmd([[highlight link NotifyDEBUGBody Normal]])
+vim.cmd([[highlight link NotifyTRACEBody Normal]])
+
+nvimnotify.setup({
+    render = 'compact',
+    fps    = 30,
+    stages = 'fade_in_slide_out', -- Others: fade, slide, static
+    background_colour = '#000000'
+})
+
+vim.notify = nvimnotify
+
+--[[
+vim.notify('Test notification.', 'info')
+vim.notify('Test warning!', 'warn')
+vim.notify('Test error!', 'error')
+--]]
+
+-- Barbar (tabbing)
+require('barbar-theme')
+require('bufferline').setup()
+
 -- Setup nvim-cmp.
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require('cmp')
+local luasnip = require('luasnip')
+local has_words_before = function()
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line-1, line, true)[1]:sub(col, col):match("%s") == nil
+end
 cmp.setup({
     snippet = {
         expand = function(args)
@@ -38,15 +106,41 @@ cmp.setup({
         end,
     },
     mapping = {
-        ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+        --['C-i'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+        --['wC-ow'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
         ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-        ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-        ['<C-e>'] = cmp.mapping({
+        ['<C-y>'] = cmp.config.disable,
+        ['<Esc>'] = cmp.mapping({
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
         }),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+
+        -- Accept selected item.
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+
+        -- Select next suggestion.
+        ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            elseif has_words_before() then
+                cmp.complete()
+            else
+                fallback()
+            end
+        end, { 'i', 's' }),
+
+        -- Select previous suggestion.
+        ['<C-Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            else
+                fallback()
+            end
+        end, { 'i', 's' }),
     },
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
@@ -94,9 +188,9 @@ cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = 
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Configure Lua language server.
-require('lspconfig')['sumneko_lua'].setup {
+require('lspconfig')['sumneko_lua'].setup({
     capabilities = capabilities,
     flags = {
         debounce_text_changes = 150,
@@ -112,21 +206,22 @@ require('lspconfig')['sumneko_lua'].setup {
             },
             workspace = {
                 library = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false,
             },
             telemetry = {
                 enable = false,
             },
         },
     },
-}
+})
 -- Configure C/C++/C# language server
-require('lspconfig')['ccls'].setup{
-    init_options = {
-        compilationDatabaseDirectory = "build",
-        index = { threads = 0},
-        clang = { excludeArgs = { "-frounding-math"} },
-    }
-}
+--require('lspconfig')['ccls'].setup{
+--    init_options = {
+--        compilationDatabaseDirectory = "build",
+--        index = { threads = 0},
+--        clang = { excludeArgs = { "-frounding-math"} },
+--    }
+--}
 -- Setup language servers with default config.
 local servers = {
     'rls',
@@ -145,12 +240,3 @@ for _, lsp in pairs(servers) do
         }
     })
 end
-
--- Legendary
-require('legendary').setup({
-    include_builtin = true,
-    include_legendary_cmds = true,
-    keymaps = {}, -- Enter keymaps here. TODO: Make a keymap.
-    commands = {}, -- Enter commands here.
-    autocmds = {},
-})

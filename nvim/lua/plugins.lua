@@ -4,7 +4,12 @@
 
 return require('packer').startup(function(use)
     -- Packer will check for updates to itself.
-    use 'wbthomason/packer.nvim'
+    use { 'wbthomason/packer.nvim' }
+
+    use { 'rcarriga/nvim-notify' }
+
+    -- Speed up nvim launch time.
+    use { 'lewis6991/impatient.nvim' }
 
     -- Highlight color codes like #a4c261 or #da4939 in their actual color.
     use {
@@ -34,14 +39,20 @@ return require('packer').startup(function(use)
     }
 
     -- Fancy icons, used for lualine.
-    use 'kyazdani42/nvim-web-devicons'
+    use { 'nvim-tree/nvim-web-devicons' }
+
+    -- Base16 theme support
+    -- Needed to theme UI elements, to match my terminal color scheme.
+    use { 'norcalli/nvim-base16.lua' }
 
     -- Fancier statusline.
     use {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true },
         config = function()
-            require('lualine').setup()
+            require('lualine').setup({
+                options = { theme = 'auto' },
+            })
         end,
     }
 
@@ -54,6 +65,18 @@ return require('packer').startup(function(use)
 
     -- Bracket auto-pairing.
     use { 'windwp/nvim-autopairs' }
+
+    -- More bracketing smarts.
+    use {
+        'kylechui/nvim-surround',
+        tag = '*', -- '*' for stable, 'main' for latest
+    }
+
+    -- Better tabs
+    use {
+	'romgrk/barbar.nvim',
+	wants = { 'nvim-tree/nvim-web-devicons'},
+    }
 
     -- Keymap manager
     use {
@@ -100,12 +123,7 @@ return require('packer').startup(function(use)
     }
 
     -- Org mode
-    use {
-        'nvim-orgmode/orgmode',
-        config = function()
-            require('orgmode').setup{}
-        end
-    }
+    use { 'nvim-orgmode/orgmode' }
 
     -- Packer bootstrapping
     if packer_bootstrap then

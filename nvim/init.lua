@@ -4,11 +4,8 @@ local w = vim.wo
 local b = vim.bo
 local g = vim.g
 local fn = vim.fn
-local map = vim.api.nvim_set_keymap
-local options = { noremap = true }
 
 o.termguicolors = true
-require('norman') -- Fixes for Norman keyboard layout.
 
 -- Packer auto-install on new setups.
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -21,6 +18,8 @@ require('plugins') -- Packer setup file
 
 require('config') -- Plugin config
 
+require('legendary_config') -- Keymap utility
+
 -- Mouse support
 o.mouse = "a"
 
@@ -32,9 +31,6 @@ o.compatible = false
 
 -- Detect external change to file and load changes.
 g.autoread = true
-
--- Color
-vim.cmd("colorscheme base16-railscasts")
 
 -- Search
 o.hlsearch = true
@@ -65,7 +61,7 @@ o.shiftwidth = 4
 -- Completion
 o.wildmenu = true
 o.showcmd = true
-o.cmdheight = 2
+o.cmdheight = 1
 o.completeopt = 'menu,menuone,noselect'
 
 -- Keycode timeout
@@ -78,8 +74,5 @@ w.linebreak = true
 o.showbreak = '+++'
 b.textwidth = 100
 
--- Telescope
-map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', options)
-map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', options)
-map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', options)
-map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', options)
+-- Tabline
+o.showtabline = 2
