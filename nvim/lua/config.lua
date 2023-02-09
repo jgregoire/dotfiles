@@ -1,16 +1,17 @@
 -- This file contains setup and config for Packer plugins.
 
+
 -- Setup Org mode
 require('orgmode').setup_ts_grammar()
-require('nvim-treesitter.configs').setup{
+require('nvim-treesitter.configs').setup({
 --    highlight = {
 --        enable = true,
 --        disable = { 'org' },
 --        additional_vim_regex_highlighting = { 'org' },
 --    },
     ensure_installed = { 'org' },
-}
-require('orgmode').setup{
+})
+require('orgmode').setup({
     org_agenda_files = { '~/org-agenda.org' },
     org_default_notes_file = '~/org-notes.org',
     mappings = {
@@ -19,7 +20,7 @@ require('orgmode').setup{
             org_capture = '<Leader>oc',
         },
     },
-}
+})
 
 -- Autopairs
 require('nvim-autopairs').setup({
@@ -44,7 +45,50 @@ require('nvim-surround').setup({
 local base16 = require('base16')
 base16(base16.themes["railscasts"], true)
 
+-- nvim-notify
+local nvimnotify = require('notify')
+
+local theme = base16.themes['railscasts']
+
+vim.cmd([[highlight NotifyERRORBorder guifg=#]] .. theme.base08)
+vim.cmd([[highlight NotifyERRORIcon   guifg=#]] .. theme.base08)
+vim.cmd([[highlight NotifyERRORTitle  guifg=#]] .. theme.base08)
+vim.cmd([[highlight NotifyWARNBorder  guifg=#]] .. theme.base0A)
+vim.cmd([[highlight NotifyWARNIcon    guifg=#]] .. theme.base0A)
+vim.cmd([[highlight NotifyWARNTitle   guifg=#]] .. theme.base0A)
+vim.cmd([[highlight NotifyINFOBorder  guifg=#]] .. theme.base07)
+vim.cmd([[highlight NotifyINFOIcon    guifg=#]] .. theme.base07)
+vim.cmd([[highlight NotifyINFOTitle   guifg=#]] .. theme.base07)
+vim.cmd([[highlight NotifyDEBUGBorder guifg=#]] .. theme.base0D)
+vim.cmd([[highlight NotifyDEBUGIcon   guifg=#]] .. theme.base0D)
+vim.cmd([[highlight NotifyDEBUGTitle  guifg=#]] .. theme.base0D)
+vim.cmd([[highlight NotifyTRACEBorder guifg=#]] .. theme.base0E)
+vim.cmd([[highlight NotifyTRACEIcon   guifg=#]] .. theme.base0E)
+vim.cmd([[highlight NotidyTRACETitle  guifg=#]] .. theme.base0E)
+vim.cmd([[highlight Normal guifg=#]] .. theme.base05 .. [[ guibg=#000000]])
+vim.cmd([[highlight link NotifyERRORBody Normal]])
+vim.cmd([[highlight link NotifyWARNBody  Normal]])
+vim.cmd([[highlight link NotifyINFOBody  Normal]])
+vim.cmd([[highlight link NotifyDEBUGBody Normal]])
+vim.cmd([[highlight link NotifyTRACEBody Normal]])
+
+nvimnotify.setup({
+    render = 'compact',
+    fps    = 30,
+    stages = 'fade_in_slide_out', -- Others: fade, slide, static
+    background_colour = '#000000'
+})
+
+vim.notify = nvimnotify
+
+--[[
+vim.notify('Test notification.', 'info')
+vim.notify('Test warning!', 'warn')
+vim.notify('Test error!', 'error')
+--]]
+
 -- Barbar (tabbing)
+require('barbar-theme')
 require('bufferline').setup()
 
 -- Setup nvim-cmp.
@@ -146,7 +190,7 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Configure Lua language server.
-require('lspconfig')['sumneko_lua'].setup {
+require('lspconfig')['sumneko_lua'].setup({
     capabilities = capabilities,
     flags = {
         debounce_text_changes = 150,
@@ -162,13 +206,14 @@ require('lspconfig')['sumneko_lua'].setup {
             },
             workspace = {
                 library = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false,
             },
             telemetry = {
                 enable = false,
             },
         },
     },
-}
+})
 -- Configure C/C++/C# language server
 --require('lspconfig')['ccls'].setup{
 --    init_options = {

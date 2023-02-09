@@ -4,7 +4,7 @@
 
 ## Directories ##
 ncmpcpp_directory = ~/.ncmpcpp
-lyrics_directory = ~/Music/.lyrics
+#lyrics_directory = ~/Music/.lyrics
 
 ## Connection Settings ##
 mpd_host = localhost
