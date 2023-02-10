@@ -49,20 +49,15 @@ vim.cmd([[highlight link NotifyINFOBody  Normal]])
 vim.cmd([[highlight link NotifyDEBUGBody Normal]])
 vim.cmd([[highlight link NotifyTRACEBody Normal]])
 
+-- Notifications
 nvimnotify.setup({
     render = 'compact',
     fps    = 30,
     stages = 'fade_in_slide_out', -- Others: fade, slide, static
     background_colour = '#000000'
 })
-
+-- Now make nvim use nvim-notify.
 vim.notify = nvimnotify
-
---[[
-vim.notify('Test notification.', 'info')
-vim.notify('Test warning!', 'warn')
-vim.notify('Test error!', 'error')
---]]
 
 -- Barbar (tabbing)
 require('barbar-theme')
@@ -71,7 +66,28 @@ require('bufferline').setup()
 -- Lualine
 require('lualine').setup({
     options = {
-        theme = 'auto',
+        theme = 'auto', -- 'base16' doesn't work.
+        component_separators = { left = '', right = ''},
+        section_separators = { left = '', right = ''},
+    },
+    sections = {
+        lualine_a = { 'mode' },
+        lualine_b = {
+            'branch', 'diff', 'diagnostics',
+            --color = { fg = '#a5c261', bg = '#2b2b2b' }, -- Doesn't work for some reason
+        },
+        lualine_c = { 'filename' },
+        lualine_x = { 'encoding', 'fileformat', 'filetype' },
+        lualine_y = { 'progress'},
+        lualine_z = { 'location' },
+    },
+    inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {'filename'},
+        lualine_x = {'location'},
+        lualine_y = {},
+        lualine_z = {}
     },
 })
 
