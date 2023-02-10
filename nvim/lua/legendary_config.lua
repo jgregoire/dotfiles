@@ -117,8 +117,8 @@ require('legendary').setup({
         { '<leader>fg', '<cmd>Telescope live_grep<cr>',  mode = { 'n' }, description = 'Telescope: Live grep' },
         { '<leader>fb', '<cmd>Telescope buffers<cr>',    mode = { 'n' }, description = 'Telescope: Buffers' },
         { '<leader>ft', '<cmd>Telescope help_tags<cr>',  mode = { 'n' }, description = 'Telescope: Help tags' },
-        { '<leader>oa',                  mode = { 'n' }, description = 'Orgmode: Agenda' },
-        { '<leader>oc',                  mode = { 'n' }, description = 'Orgmode: Capture' },
+        --{ '<leader>oa',                  mode = { 'n' }, description = 'Orgmode: Agenda' },
+        --{ '<leader>oc',                  mode = { 'n' }, description = 'Orgmode: Capture' },
     },
 
     commands = {},

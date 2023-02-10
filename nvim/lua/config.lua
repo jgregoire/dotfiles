@@ -1,28 +1,5 @@
 -- This file contains setup and config for Packer plugins.
 
-
--- Setup Org mode
-require('orgmode').setup_ts_grammar()
-require('nvim-treesitter.configs').setup({
---    highlight = {
---        enable = true,
---        disable = { 'org' },
---        additional_vim_regex_highlighting = { 'org' },
---    },
-    ensure_installed = { 'org' },
-})
-require('orgmode').setup({
-    org_agenda_files = { '~/org-agenda.org' },
-    org_default_notes_file = '~/org-notes.org',
-    mappings = {
-        global = {
-            org_agenda = '<Leader>oa',
-            org_capture = '<Leader>oc',
-        },
-    },
-})
-
--- Autopairs
 require('nvim-autopairs').setup({
     fast_wrap = {},
     enable_check_bracket_line = false, -- Don't add pair if it already has close pair in same line.
@@ -90,6 +67,13 @@ vim.notify('Test error!', 'error')
 -- Barbar (tabbing)
 require('barbar-theme')
 require('bufferline').setup()
+
+-- Lualine
+require('lualine').setup({
+    options = {
+        theme = 'auto',
+    },
+})
 
 -- Setup nvim-cmp.
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')

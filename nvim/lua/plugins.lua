@@ -49,11 +49,12 @@ return require('packer').startup(function(use)
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true },
-        config = function()
+--[[        config = function()
             require('lualine').setup({
                 options = { theme = 'auto' },
             })
-        end,
+        end, 
+--]]
     }
 
     -- Better find tool.
@@ -121,9 +122,6 @@ return require('packer').startup(function(use)
             'saadparwaiz1/cmp_luasnip',
         },
     }
-
-    -- Org mode
-    use { 'nvim-orgmode/orgmode' }
 
     -- Packer bootstrapping
     if packer_bootstrap then
