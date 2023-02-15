@@ -6,6 +6,7 @@ return require('packer').startup(function(use)
     -- Packer will check for updates to itself.
     use { 'wbthomason/packer.nvim' }
 
+    -- Pretty notifications.
     use { 'rcarriga/nvim-notify' }
 
     -- Speed up nvim launch time.

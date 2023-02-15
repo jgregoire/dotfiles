@@ -9,12 +9,12 @@ require('nvim-autopairs').setup({
 -- Surround
 require('nvim-surround').setup({
     keymaps = {
-        normal          = 'pps',
-        normal_line     = 'ppS',
-        normal_cur      = 'pPs',
-        normal_cur_line = 'pPS',
-        delete          = 'pxs',
-        change          = 'pgs',
+        normal          = 'ps',
+        normal_line     = 'pS',
+        normal_cur      = 'Ps',
+        normal_cur_line = 'PS',
+        delete          = 'xs',
+        change          = 'es',
     }
 })
 
@@ -49,13 +49,13 @@ vim.cmd([[highlight link NotifyINFOBody  Normal]])
 vim.cmd([[highlight link NotifyDEBUGBody Normal]])
 vim.cmd([[highlight link NotifyTRACEBody Normal]])
 
--- Notifications
 nvimnotify.setup({
     render = 'compact',
     fps    = 30,
     stages = 'fade_in_slide_out', -- Others: fade, slide, static
     background_colour = '#000000'
 })
+
 -- Now make nvim use nvim-notify.
 vim.notify = nvimnotify
 
