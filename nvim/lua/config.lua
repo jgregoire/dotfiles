@@ -1,28 +1,5 @@
 -- This file contains setup and config for Packer plugins.
 
-
--- Setup Org mode
-require('orgmode').setup_ts_grammar()
-require('nvim-treesitter.configs').setup({
---    highlight = {
---        enable = true,
---        disable = { 'org' },
---        additional_vim_regex_highlighting = { 'org' },
---    },
-    ensure_installed = { 'org' },
-})
-require('orgmode').setup({
-    org_agenda_files = { '~/org-agenda.org' },
-    org_default_notes_file = '~/org-notes.org',
-    mappings = {
-        global = {
-            org_agenda = '<Leader>oa',
-            org_capture = '<Leader>oc',
-        },
-    },
-})
-
--- Autopairs
 require('nvim-autopairs').setup({
     fast_wrap = {},
     enable_check_bracket_line = false, -- Don't add pair if it already has close pair in same line.
@@ -72,24 +49,47 @@ vim.cmd([[highlight link NotifyINFOBody  Normal]])
 vim.cmd([[highlight link NotifyDEBUGBody Normal]])
 vim.cmd([[highlight link NotifyTRACEBody Normal]])
 
+-- Notifications
 nvimnotify.setup({
     render = 'compact',
     fps    = 30,
     stages = 'fade_in_slide_out', -- Others: fade, slide, static
     background_colour = '#000000'
 })
-
+-- Now make nvim use nvim-notify.
 vim.notify = nvimnotify
-
---[[
-vim.notify('Test notification.', 'info')
-vim.notify('Test warning!', 'warn')
-vim.notify('Test error!', 'error')
---]]
 
 -- Barbar (tabbing)
 require('barbar-theme')
 require('bufferline').setup()
+
+-- Lualine
+require('lualine').setup({
+    options = {
+        theme = 'auto', -- 'base16' doesn't work.
+        component_separators = { left = '', right = ''},
+        section_separators = { left = '', right = ''},
+    },
+    sections = {
+        lualine_a = { 'mode' },
+        lualine_b = {
+            'branch', 'diff', 'diagnostics',
+            --color = { fg = '#a5c261', bg = '#2b2b2b' }, -- Doesn't work for some reason
+        },
+        lualine_c = { 'filename' },
+        lualine_x = { 'encoding', 'fileformat', 'filetype' },
+        lualine_y = { 'progress'},
+        lualine_z = { 'location' },
+    },
+    inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {'filename'},
+        lualine_x = {'location'},
+        lualine_y = {},
+        lualine_z = {}
+    },
+})
 
 -- Setup nvim-cmp.
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
