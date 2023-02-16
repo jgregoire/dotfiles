@@ -34,22 +34,20 @@ require('legendary').setup({
         -- Editing
         { 'z',   'u',        mode = { 'n' },      description = 'Undo' },
         { 'y',   '<C-r>',    mode = { 'n' },      description = 'Redo' },
-        { 'x',   'd',        mode = { 'n', 'v' }, description = 'Cut/delete' },
+        { 'x',   'd',        mode = { 'n', 'v' }, description = 'Cut/delete [MOTION]' },
         { 'xw',  'dw',       mode = { 'n' },      description = 'Cut from cursor to start of next word' },
         { 'xx',  'dd',       mode = { 'n' },      description = 'Cut line' },
         { 'X',   'd$',       mode = { 'n' },      description = 'Cut to end of line' },
-        { 'c',   'y',        mode = { 'n', 'v' }, description = 'Copy/yank' },
+        { 'c',   'y',        mode = { 'n', 'v' }, description = 'Copy/yank [MOTION]' },
         { 'cw',  'yw',       mode = { 'n' },      description = 'Copy from cursor to start of next word' },
         { 'cc',  'yy',       mode = { 'n' },      description = 'Copy line' },
         { 'C',   'y$',       mode = { 'n' },      description = 'Copy to end of line' },
         { 'v',   'p',        mode = { 'n' },      description = 'Paste after cursor' },
         { 'V',   'P',        mode = { 'n' },      description = 'Paste before cursor' },
-        { 's',   'r',        mode = { 'n' },      description = 'Replace single character' },
-        { 'ee',  's',        mode = { 'n' },      description = 'Edit character'},
-        { 'E',   'R',        mode = { 'n' },      description = 'Replace characters until ESC' },
-        { 'eW',  'ciw',      mode = { 'n' },      description = 'Edit entire word' },
-        { 'ew',  'cw',       mode = { 'n' },      description = 'Edit to end of word' },
-        { 'eL',  'cc',       mode = { 'n' },      description = 'Edit entire line' },
+        { 'E',   'r',        mode = { 'n' },      description = 'Replace single character' },
+        { 'e',   'c',        mode = { 'n' },      description = 'Edit/change [MOTION]'},
+        { 'EE',  'R',        mode = { 'n' },      description = 'Replace characters until ESC' },
+        { 'ee',  'cc',       mode = { 'n' },      description = 'Edit entire line' },
         { 'el',  'C',        mode = { 'n' },      description = 'Edit to end of line' },
         { 'j',   'gJ',       mode = { 'n' },      description = 'Join line below to current line' },
         { 'J',               mode = { 'n' },      description = 'Join line below to current line with a space between' },
@@ -134,12 +132,13 @@ require('legendary').setup({
         { '<leader>ft', '<cmd>Telescope help_tags<cr>',  mode = { 'n' }, description = 'Telescope: Help tags' },
 
         -- Nvim-Surround
-        { 'ps', mode = { 'n' }, description = 'Surround: Normal [MOTION] [TYPE]' },
-        { 'pS', mode = { 'n' }, description = 'Surround: Normal Line [TYPE]' },
-        { 'Ps', mode = { 'n' }, description = 'Surround: Current [MOTION] [TYPE]' },
-        { 'PS', mode = { 'n' }, description = 'Surround: Current Line [TYPE]' },
+        { 'ps', mode = { 'n' }, description = 'Surround: Add [MOTION] [TYPE]' },
+        { 'pS', mode = { 'n' }, description = 'Surround: Add with newlines [MOTION] [TYPE]' },
+        { 'Ps', mode = { 'n' }, description = 'Surround: Add around line [TYPE]' },
+        { 'PS', mode = { 'n' }, description = 'Surround: Add around line with newlines [TYPE]' },
         { 'xs', mode = { 'n' }, description = 'Surround: Delete [TYPE]' },
-        { 'es', mode = { 'n' }, description = 'Surround: Change [FROM TYPE] [TO TYPE]'}
+        { 'es', mode = { 'n' }, description = 'Surround: Change [FROM TYPE] [TO TYPE]'},
+        { 'S',  mode = { 'v' }, description = 'Surround: Add [TYPE]'}
 
     },
 
@@ -148,7 +147,7 @@ require('legendary').setup({
     funcs = {},
 
     autocmds = {},
-    
+
     scratchpad = {
         display_results = 'float'
     },
