@@ -23,33 +23,31 @@ local base16 = require('base16')
 base16(base16.themes["railscasts"], true)
 
 -- nvim-notify
-local nvimnotify = require('notify')
-
 local theme = base16.themes['railscasts']
 
-vim.cmd([[highlight NotifyERRORBorder guifg=#]] .. theme.base08)
-vim.cmd([[highlight NotifyERRORIcon   guifg=#]] .. theme.base08)
-vim.cmd([[highlight NotifyERRORTitle  guifg=#]] .. theme.base08)
-vim.cmd([[highlight NotifyWARNBorder  guifg=#]] .. theme.base0A)
-vim.cmd([[highlight NotifyWARNIcon    guifg=#]] .. theme.base0A)
-vim.cmd([[highlight NotifyWARNTitle   guifg=#]] .. theme.base0A)
-vim.cmd([[highlight NotifyINFOBorder  guifg=#]] .. theme.base07)
-vim.cmd([[highlight NotifyINFOIcon    guifg=#]] .. theme.base07)
-vim.cmd([[highlight NotifyINFOTitle   guifg=#]] .. theme.base07)
-vim.cmd([[highlight NotifyDEBUGBorder guifg=#]] .. theme.base0D)
-vim.cmd([[highlight NotifyDEBUGIcon   guifg=#]] .. theme.base0D)
-vim.cmd([[highlight NotifyDEBUGTitle  guifg=#]] .. theme.base0D)
-vim.cmd([[highlight NotifyTRACEBorder guifg=#]] .. theme.base0E)
-vim.cmd([[highlight NotifyTRACEIcon   guifg=#]] .. theme.base0E)
-vim.cmd([[highlight NotidyTRACETitle  guifg=#]] .. theme.base0E)
-vim.cmd([[highlight Normal guifg=#]] .. theme.base05 .. [[ guibg=#000000]])
-vim.cmd([[highlight link NotifyERRORBody Normal]])
-vim.cmd([[highlight link NotifyWARNBody  Normal]])
-vim.cmd([[highlight link NotifyINFOBody  Normal]])
-vim.cmd([[highlight link NotifyDEBUGBody Normal]])
-vim.cmd([[highlight link NotifyTRACEBody Normal]])
+vim.cmd('highlight NotifyERRORBorder guifg=#' .. theme.base08)
+vim.cmd('highlight NotifyERRORIcon   guifg=#' .. theme.base08)
+vim.cmd('highlight NotifyERRORTitle  guifg=#' .. theme.base08)
+vim.cmd('highlight NotifyWARNBorder  guifg=#' .. theme.base0A)
+vim.cmd('highlight NotifyWARNIcon    guifg=#' .. theme.base0A)
+vim.cmd('highlight NotifyWARNTitle   guifg=#' .. theme.base0A)
+vim.cmd('highlight NotifyINFOBorder  guifg=#' .. theme.base07)
+vim.cmd('highlight NotifyINFOIcon    guifg=#' .. theme.base07)
+vim.cmd('highlight NotifyINFOTitle   guifg=#' .. theme.base07)
+vim.cmd('highlight NotifyDEBUGBorder guifg=#' .. theme.base0D)
+vim.cmd('highlight NotifyDEBUGIcon   guifg=#' .. theme.base0D)
+vim.cmd('highlight NotifyDEBUGTitle  guifg=#' .. theme.base0D)
+vim.cmd('highlight NotifyTRACEBorder guifg=#' .. theme.base0E)
+vim.cmd('highlight NotifyTRACEIcon   guifg=#' .. theme.base0E)
+vim.cmd('highlight NotidyTRACETitle  guifg=#' .. theme.base0E)
+vim.cmd('highlight Normal guifg=#' .. theme.base05 .. 'guibg=#000000')
+vim.cmd('highlight link NotifyERRORBody Normal')
+vim.cmd('highlight link NotifyWARNBody  Normal')
+vim.cmd('highlight link NotifyINFOBody  Normal')
+vim.cmd('highlight link NotifyDEBUGBody Normal')
+vim.cmd('highlight link NotifyTRACEBody Normal')
 
-nvimnotify.setup({
+require('notify').setup({
     render = 'compact',
     fps    = 30,
     stages = 'fade_in_slide_out', -- Others: fade, slide, static
@@ -57,7 +55,29 @@ nvimnotify.setup({
 })
 
 -- Now make nvim use nvim-notify.
-vim.notify = nvimnotify
+vim.notify = require('notify')
+
+-- Noice
+require('noice').setup({
+    lsp = {
+        override = {
+	    ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+	    ["vim.lsp.util.stylize_markdown"] = true,
+	    ["cmp.entry.get_documentation"] = true,
+        }
+    },
+    presets = {
+        bottom_search = true, -- use a classic bottom cmdline for search
+        command_palette = true, -- position the cmdline and popupmenu together
+        long_message_to_split = true, -- long messages will be sent to a split
+        inc_rename = false, -- enables an input dialog for inc-rename.nvim
+        lsp_doc_border = false, -- add a border to hover docs and signature help
+    },
+})
+
+-- Noice colors
+vim.cmd('highlight NoiceCmdlinePopupBorder guifg=#' .. theme.base07)
+vim.cmd('highlight NoiceCmdlineIcon        guifg=#' .. theme.base08)
 
 -- Barbar (tabbing)
 require('barbar-theme')
@@ -71,7 +91,8 @@ require('bufferline').setup({
 require('lualine').setup({
     options = {
         theme = 'auto', -- 'base16' doesn't work.
-        component_separators = { left = '', right = ''},
+        --component_separators = { left = '', right = ''},
+        component_separators = { left = '|', right = '|' },
         section_separators = { left = '', right = ''},
     },
     sections = {
@@ -194,7 +215,7 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Configure Lua language server.
-require('lspconfig')['sumneko_lua'].setup({
+require('lspconfig').lua_ls.setup({
     capabilities = capabilities,
     flags = {
         debounce_text_changes = 150,
