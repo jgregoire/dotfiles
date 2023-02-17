@@ -108,12 +108,22 @@ require('legendary').setup({
 
         -- Tabs and such
         { '<A-t>',     ':tabnew<CR>',         mode = { 'n' }, description = 'Create new tab' },
-        { '<A-q>',     ':tabclose<CR>',       mode = { 'n' }, description = 'Close tab' },
+        { '<A-q>',     ':BufferClose<CR>',    mode = { 'n' }, description = 'Close tab' },
         { '<A-Q>',     ':tabdo -q<CR>',       mode = { 'n' }, description = 'Close all tabs' },
-        { '<A-qq>',    ':tabclose<CR>',       mode = { 'n'} , description = 'Close other tabs' },
+        { '<A-qq>',    ':tabonly<CR>',        mode = { 'n'} , description = 'Close other tabs' },
         { '<A-o>',     ':e ',                 mode = { 'n' }, description = 'Open/edit file' },
         { '<A-Right>', ':BufferNext<CR>',     mode = { 'n' }, description = 'Barbar: Next tab' },
         { '<A-Left>',  ':BufferPrevious<CR>', mode = { 'n' }, description = 'Barbar: Previous tab' },
+	{ '<A-1>',     ':BufferGoto 1<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 1' },
+	{ '<A-2>',     ':BufferGoto 2<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 2' },
+	{ '<A-3>',     ':BufferGoto 3<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 3' },
+        { '<A-4>',     ':BufferGoto 4<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 4' },
+        { '<A-5>',     ':BufferGoto 5<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 5' },
+        { '<A-6>',     ':BufferGoto 6<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 6' },
+        { '<A-7>',     ':BufferGoto 7<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 7' },
+        { '<A-8>',     ':BufferGoto 8<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 8' },
+        { '<A-9>',     ':BufferGoto 9<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 9' },
+        { '<A-0>',     ':BufferGoto 10<CR>',  mode = { 'n' }, description = 'Barbar: Go to tab 10' },
 
         -- Legendary
         { '<leader>l', ':Legendary<CR>', mode = { 'n' }, description = 'Legendary: Launch menu' },

@@ -61,7 +61,11 @@ vim.notify = nvimnotify
 
 -- Barbar (tabbing)
 require('barbar-theme')
-require('bufferline').setup()
+require('bufferline').setup({
+    auto_hide = true,
+    clickable = true, -- Left click: Select. Middle click: Close.
+    icons = 'both', -- true, 'numbers', or 'both'
+})
 
 -- Lualine
 require('lualine').setup({
