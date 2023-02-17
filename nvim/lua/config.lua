@@ -18,6 +18,14 @@ require('nvim-surround').setup({
     }
 })
 
+-- nvim-comment
+require('nvim_comment').setup({
+    marker_padding = true, -- Add a space.
+    line_mapping = 'pcc', -- Normal mode, toggle line comment.
+    operator_mapping = 'pc', -- Visual/operator mode
+    comment_chunk_text_object = 'ic', -- No idea what this is for
+})
+
 -- Base16
 local base16 = require('base16')
 base16(base16.themes["railscasts"], true)
@@ -50,7 +58,7 @@ vim.cmd('highlight link NotifyTRACEBody Normal')
 require('notify').setup({
     render = 'compact',
     fps    = 30,
-    stages = 'fade_in_slide_out', -- Others: fade, slide, static
+    stages = 'static', -- Others: fade, slide, static
     background_colour = '#000000'
 })
 

@@ -81,6 +81,8 @@ return require('packer').startup(function(use)
         tag = '*', -- '*' for stable, 'main' for latest
     }
 
+    use { 'terrortylor/nvim-comment' }
+
     -- Better tabs
     use {
 	'romgrk/barbar.nvim',

@@ -148,7 +148,11 @@ require('legendary').setup({
         { 'PS', mode = { 'n' }, description = 'Surround: Add around line with newlines [TYPE]' },
         { 'xs', mode = { 'n' }, description = 'Surround: Delete [TYPE]' },
         { 'es', mode = { 'n' }, description = 'Surround: Change [FROM TYPE] [TO TYPE]'},
-        { 'S',  mode = { 'v' }, description = 'Surround: Add [TYPE]'}
+        { 'S',  mode = { 'v' }, description = 'Surround: Add [TYPE]'},
+
+        -- Nvim-comment
+        { 'pcc', mode = { 'n' }, description = 'Comment: Toggle line comment' },
+        { 'pc',  mode = { 'n' }, description = 'Comment: Toggle line comment [MOTION]' },
 
     },
 
