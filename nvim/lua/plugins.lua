@@ -65,6 +65,8 @@ return require('packer').startup(function(use)
 --]]
     }
 
+    use { 'lewis6991/gitsigns.nvim' }
+
     -- Better find tool.
     -- Requires ripgrep distro package.
     use {
