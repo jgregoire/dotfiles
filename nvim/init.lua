@@ -71,7 +71,8 @@ o.ttimeoutlen = 200
 
 -- Line breaks
 w.linebreak = true
-o.showbreak = '+++'
+w.breakindent = true
+o.showbreak = '==> '
 b.textwidth = 100
 
 -- Tabline

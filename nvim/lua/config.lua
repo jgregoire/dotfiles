@@ -30,6 +30,11 @@ require('nvim_comment').setup({
 local base16 = require('base16')
 base16(base16.themes["railscasts"], true)
 
+-- Nvim-Colorizer
+require('colorizer').setup({},{
+    rgb_fn = true
+})
+
 -- nvim-notify
 local theme = base16.themes['railscasts']
 
@@ -102,6 +107,7 @@ require('lualine').setup({
         --component_separators = { left = '', right = ''},
         component_separators = { left = '|', right = '|' },
         section_separators = { left = '', right = ''},
+        -- section_separators = { left = '', right = '' },
     },
     sections = {
         lualine_a = { 'mode' },

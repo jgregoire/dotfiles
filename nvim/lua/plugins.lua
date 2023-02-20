@@ -20,12 +20,7 @@ return require('packer').startup(function(use)
     use { 'lewis6991/impatient.nvim' }
 
     -- Highlight color codes like #a4c261 or #da4939 in their actual color.
-    use {
-        'norcalli/nvim-colorizer.lua',
-        config = function()
-            require('colorizer').setup()
-        end,
-    }
+    use { 'norcalli/nvim-colorizer.lua' }
 
     -- Make nvim transparent.
     use {
