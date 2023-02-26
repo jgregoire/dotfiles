@@ -31,9 +31,7 @@ local base16 = require('base16')
 base16(base16.themes["railscasts"], true)
 
 -- Nvim-Colorizer
-require('colorizer').setup({},{
-    rgb_fn = true
-})
+require('colorizer').setup()
 
 -- nvim-notify
 local theme = base16.themes['railscasts']
