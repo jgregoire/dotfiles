@@ -55,6 +55,10 @@ require('legendary').setup({
         { '<C-v>', 'v',      mode = { 'n', 'i' }, description = 'Paste after cursor' },
         { '<C-w>',           mode = { 'i' },      description = 'Delete word before cursor'},
         { '<C-n>', '<C-j>',  mode = { 'i' },      description = 'Begin new line' },
+        { '>',               mode = { 'n' },      description = 'Indent [MOTION]' },
+        { '>>',              mode = { 'n' },      description = 'Indent line' },
+        { '<',               mode = { 'n' },      description = 'De-indent [MOTION]' },
+        { '<<',              mode = { 'n' },      description = 'De-indent line' },
         { '<C-t>',           mode = { 'i' },      description = 'Indent line' },
         { '<C-d>',           mode = { 'i' },      description = 'De-indent line' },
         -- This one's a doozy!
