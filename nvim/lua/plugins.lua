@@ -6,6 +6,9 @@ return require('packer').startup(function(use)
     -- Packer will check for updates to itself.
     use { 'wbthomason/packer.nvim' }
 
+    -- Leap
+    use { 'ggandor/leap.nvim' }
+
     -- Pretty notifications.
     use { 'rcarriga/nvim-notify' }
 

@@ -157,6 +157,9 @@ require('legendary').setup({
         { 'pcc', mode = { 'n' }, description = 'Comment: Toggle line comment' },
         { 'pc',  mode = { 'n' }, description = 'Comment: Toggle line comment [MOTION]' },
 
+        -- Leap
+        { 'l', '<Plug>(leap-forward-to)',  mode = { 'n' }, description = 'Leap forward to [CHAR1][CHAR2]' },
+        { 'L', '<Plug>(leap-backward-to)', mode = { 'n' }, description = 'Leap backward to [CHAR1][CHAR2]' },
     },
 
     commands = {},

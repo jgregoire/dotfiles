@@ -1,5 +1,7 @@
 -- This file contains setup and config for Packer plugins.
 
+require('leap').add_default_mappings()
+
 require('nvim-autopairs').setup({
     fast_wrap = {},
     enable_check_bracket_line = false, -- Don't add pair if it already has close pair in same line.
