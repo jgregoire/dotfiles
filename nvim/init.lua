@@ -14,11 +14,16 @@ if fn.empty(fn.glob(install_path)) > 0 then
                                   'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
-require('plugins') -- Packer setup file
+-- Specify plugins:
+require('plugins')
 
-require('config') -- Plugin config
+-- Key mappings:
+require('legendary_config')
 
-require('legendary_config') -- Keymap utility
+-- Plugin configuration:
+require('config')
+
+-- require('legendary_config') -- Keymap utility
 
 -- Mouse support
 o.mouse = "a"

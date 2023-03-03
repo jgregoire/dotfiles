@@ -8,6 +8,7 @@ return require('packer').startup(function(use)
 
     -- Leap
     use { 'ggandor/leap.nvim' }
+    use { 'ggandor/leap-spooky.nvim' }
 
     -- Pretty notifications.
     use { 'rcarriga/nvim-notify' }

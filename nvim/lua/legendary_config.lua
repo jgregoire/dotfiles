@@ -11,7 +11,7 @@ require('legendary').setup({
     select_prompt = 'Legendary',
 
     -- Modifiers:
-    --  C - Ctrl
+    --  C - C
     --  S - Shift
     --  A - Alt
     --  M - Alt (No meta key)
@@ -158,8 +158,14 @@ require('legendary').setup({
         { 'pc',  mode = { 'n' }, description = 'Comment: Toggle line comment [MOTION]' },
 
         -- Leap
-        { 'l', '<Plug>(leap-forward-to)',  mode = { 'n' }, description = 'Leap forward to [CHAR1][CHAR2]' },
-        { 'L', '<Plug>(leap-backward-to)', mode = { 'n' }, description = 'Leap backward to [CHAR1][CHAR2]' },
+        { 'l', '<Plug>(leap-forward-to)',  mode = { 'n' }, description = 'Leap forward to [CHAR1][CHAR2][LABEL]' },
+        { 'L', '<Plug>(leap-backward-to)', mode = { 'n' }, description = 'Leap backward to [CHAR1][CHAR2][LABEL]' },
+
+        -- Leap (Spooky)
+        { 'r', mode = { 'o' }, description = 'Leap (Spooky): Restful [MOTION] at [CHAR1][CHAR2][LABEL]' },
+        { 'R', mode = { 'o' }, description = 'Leap: (Spooky): Restful [MOTION] in another window at [CHAR1][CHAR2][LABEL]' },
+        { 'm', mode = { 'o' }, description = 'Leap (Spooky): Magnetic [MOTION] at [CHAR1][CHAR2][LABEL]' },
+        { 'M', mode = { 'o' }, description = 'Leap (Spooky): Magnetic [MOTION] in another window at [CHAR1][CHAR2][LABEL]' },
     },
 
     commands = {},

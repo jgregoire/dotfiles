@@ -1,6 +1,12 @@
 -- This file contains setup and config for Packer plugins.
 
 require('leap').add_default_mappings()
+require('leap-spooky').setup({
+    affixes = {
+        remote   = { window = 'r', cross_window = 'R' },
+        magnetic = { window = 'm', cross_window = 'M' },
+    }
+})
 
 require('nvim-autopairs').setup({
     fast_wrap = {},
