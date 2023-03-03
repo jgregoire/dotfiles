@@ -34,15 +34,7 @@ return require('packer').startup(function(use)
     }
 
     -- Indent marker lines
-    use {
-        'lukas-reineke/indent-blankline.nvim',
-        config = function()
-            require('indent_blankline').setup({
-                show_current_context = true,
-                show_current_context_start = true,
-            })
-        end
-    }
+    use { 'lukas-reineke/indent-blankline.nvim' }
 
     -- Fancy icons, used for lualine.
     use { 'nvim-tree/nvim-web-devicons' }
@@ -55,12 +47,11 @@ return require('packer').startup(function(use)
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true },
---[[        config = function()
+        config = function()
             require('lualine').setup({
                 options = { theme = 'auto' },
             })
-        end, 
---]]
+        end,
     }
 
     use { 'lewis6991/gitsigns.nvim' }

@@ -31,12 +31,18 @@ require('nvim_comment').setup({
 -- Base16
 local base16 = require('base16')
 base16(base16.themes["railscasts"], true)
+local theme = base16.themes['railscasts']
 
 -- Nvim-Colorizer
 require('colorizer').setup()
 
+-- Indent Blankline
+require('indent_blankline').setup({
+    show_current_context = true,
+    show_current_context_start = true,
+})
+
 -- nvim-notify
-local theme = base16.themes['railscasts']
 vim.cmd('highlight NotifyERRORBorder guifg=#' .. theme.base08)
 vim.cmd('highlight NotifyERRORIcon   guifg=#' .. theme.base08)
 vim.cmd('highlight NotifyERRORTitle  guifg=#' .. theme.base08)
