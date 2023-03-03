@@ -11,7 +11,8 @@ export MPD_HOST=heaviside
 powerkit &
 
 # Start compositor
-xcompmgr -cf -D 2 &
+# xcompmgr -cf -D 2 &
+picom -b
 
 # Start redshift
 # configured in .config/redshift
