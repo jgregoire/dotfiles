@@ -47,11 +47,6 @@ return require('packer').startup(function(use)
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true },
-        config = function()
-            require('lualine').setup({
-                options = { theme = 'auto' },
-            })
-        end,
     }
 
     use { 'lewis6991/gitsigns.nvim' }
@@ -90,11 +85,12 @@ return require('packer').startup(function(use)
     }
 
     -- Fancier terminal
-    use { 'akinsho/toggleterm.nvim', tag = '*' }
+    use {
+        'akinsho/toggleterm.nvim',
+        tag = '*',
+    }
 
-    -- Now shit gets real.
     -- lspconfig
-    -- Requires lua-language-server (Arch package)
     use { 'neovim/nvim-lspconfig' }
 
     -- Treesitter
