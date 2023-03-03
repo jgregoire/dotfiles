@@ -45,7 +45,6 @@ o.scrolloff = 4
 o.cursorline = true
 
 o.title = true
-g.nohidden = true
 
 -- Show matching brackets
 o.showmatch = true

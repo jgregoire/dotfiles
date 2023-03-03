@@ -95,6 +95,9 @@ return require('packer').startup(function(use)
         }
     }
 
+    -- Fancier terminal
+    use { 'akinsho/toggleterm.nvim', tag = '*' }
+
     -- Now shit gets real.
     -- lspconfig
     -- Requires lua-language-server (Arch package)

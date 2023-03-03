@@ -35,7 +35,6 @@ require('colorizer').setup()
 
 -- nvim-notify
 local theme = base16.themes['railscasts']
-
 vim.cmd('highlight NotifyERRORBorder guifg=#' .. theme.base08)
 vim.cmd('highlight NotifyERRORIcon   guifg=#' .. theme.base08)
 vim.cmd('highlight NotifyERRORTitle  guifg=#' .. theme.base08)
@@ -62,7 +61,7 @@ require('notify').setup({
     render = 'compact',
     fps    = 30,
     stages = 'static', -- Others: fade, slide, static
-    background_colour = '#000000'
+    background_colour = '#000000',
 })
 
 -- Now make nvim use nvim-notify.
@@ -92,11 +91,11 @@ vim.cmd('highlight NoiceCmdlineIcon        guifg=#' .. theme.base08)
 
 -- Barbar (tabbing)
 require('barbar-theme')
--- require('bufferline').setup({
---     auto_hide = true,
---     clickable = true, -- Left click: Select. Middle click: Close.
---     icons = 'both', -- true, 'numbers', or 'both'
--- })
+require('bufferline').setup({
+    auto_hide = true,
+    clickable = true, -- Left click: Select. Middle click: Close.
+    icons = 'both', -- true, 'numbers', or 'both'
+})
 
 -- Lualine
 require('lualine').setup({
@@ -146,6 +145,12 @@ vim.cmd('highlight GitSignsTopDelete    guifg=#' .. theme.base0E .. ' guibg=#000
 vim.cmd('highlight GitSignsChangedelete guifg=#' .. theme.base0C .. ' guibg=#000000')
 vim.cmd('highlight GitSignsUntracked    guifg=#' .. theme.base0A .. ' guibg=#000000')
 
+-- Toggleterm
+require('toggleterm').setup({
+    open_mapping = '<C-t>',
+
+})
+
 -- Setup nvim-cmp.
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require('cmp')
@@ -163,7 +168,7 @@ cmp.setup({
     mapping = {
         --['C-i'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
         --['wC-ow'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
         ['<C-y>'] = cmp.config.disable,
         ['<Esc>'] = cmp.mapping({
             i = cmp.mapping.abort(),
