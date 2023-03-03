@@ -5,17 +5,16 @@ vim.g.mapleader = ' '
 require('legendary').setup({
     include_builtin = false,
     include_legendary_cmds = true,
-    select_prompt = nil,
     formatter = nil,
     col_separator_char = '|',
     most_recent_item_at_top = false,
+    select_prompt = 'Legendary',
 
     -- Modifiers:
     --  C - Ctrl
     --  S - Shift
     --  A - Alt
     --  M - Alt (No meta key)
-    --  A-S-C - Meh
 
     keymaps = {
         -- Modes
