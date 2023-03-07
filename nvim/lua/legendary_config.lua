@@ -76,7 +76,7 @@ require('legendary').setup({
         { 'i',      mode = { 'o' }, description = 'Inside (Chording)' },
         { 'a',      mode = { 'o' }, description = 'Around (Chording)' },
         { 't',      mode = { 'o' }, description = 'To [CHAR] (Chording)' },
-        { 'r', 'l', mode = { 'o' }, description = 'Character to right' },
+        -- { 'r', 'l', mode = { 'o' }, description = 'Character to right' },
         { 'l', 'h', mode = { 'o' }, description = 'Character to left' },
         { 'w',      mode = { 'o' }, description = 'Word (Chording)' },
         { 'b',      mode = { 'o' }, description = '() Block (Chording)' },

@@ -36,11 +36,8 @@ require('nvim_comment').setup({
 
 -- Base16
 local base16 = require('base16')
-base16(base16.themes["railscasts"], true)
-local theme = base16.themes['railscasts']
-
--- Nvim-Colorizer
-require('colorizer').setup()
+base16(base16.themes["railscasts"], true) -- Set theme.
+local theme = base16.themes['railscasts'] -- We'll use this array later for themeing plugins.
 
 -- Indent Blankline
 require('indent_blankline').setup({
@@ -115,17 +112,22 @@ require('bufferline').setup({
 require('lualine').setup({
     options = {
         theme = 'auto', -- 'base16' doesn't work.
-        --component_separators = { left = '', right = ''},
         component_separators = { left = '|', right = '|' },
         section_separators = { left = '', right = ''},
-        -- section_separators = { left = '', right = '' },
     },
     sections = {
         lualine_a = { 'mode' },
         lualine_b = {
-            'branch', 'diff', 'diagnostics',
-            --color = { fg = '#a5c261', bg = '#2b2b2b' }, -- Doesn't work for some reason
-        },
+	    'branch',
+	    {
+		'diff',
+		symbols = { added = '', modified = '', removed = '' },
+	    },
+	    {
+		'diagnostics',
+		-- symbols = { error = '⨻', warn = '⚠', info = '⯑', hint = '⦿'},
+	    }
+	},
         lualine_c = { 'filename' },
         lualine_x = { 'encoding', 'fileformat', 'filetype' },
         lualine_y = { 'progress'},
@@ -314,3 +316,6 @@ for _, lsp in pairs(servers) do
         }
     })
 end
+
+-- Nvim-Colorizer
+require('colorizer').setup()
