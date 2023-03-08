@@ -8,15 +8,26 @@ require('leap-spooky').setup({
     }
 })
 
+-- Autopairs - basic bracket logic
 require('nvim-autopairs').setup({
-    fast_wrap = {},
+    fast_wrap = {
+	-- Before       Input   After
+	-----------------------------------
+	-- (|foobar     <M-e>$  (|foobar)
+	-- (|)(foobar)  <M-e>a  (|(foobar))
+	map = '<M-e>', -- Launch fastwrap
+        end_key = 'l', -- End of line
+	keys = 'asetnioh', -- Home row keys for position markers
+    },
     enable_check_bracket_line = false, -- Don't add pair if it already has close pair in same line.
     ignored_next_char = "[%w%.]", -- Don't add pair if next char is alphanumeric or '.'
 })
 
--- Surround
+-- Surround -- advanced bracket logic
 require('nvim-surround').setup({
     keymaps = {
+	insert          = '<C-p>s',
+	insert_line     = '<C-p>S',
         normal          = 'ps',
         normal_line     = 'pS',
         normal_cur      = 'Ps',
@@ -68,15 +79,15 @@ vim.cmd('highlight link NotifyINFOBody  Normal')
 vim.cmd('highlight link NotifyDEBUGBody Normal')
 vim.cmd('highlight link NotifyTRACEBody Normal')
 
-require('notify').setup({
+local notify = require('notify')
+notify.setup({
     render = 'compact',
     fps    = 30,
     stages = 'static', -- Others: fade, slide, static
     background_colour = '#000000',
 })
-
 -- Now make nvim use nvim-notify.
-vim.notify = require('notify')
+vim.notify = notify
 
 -- Noice
 require('noice').setup({
@@ -95,7 +106,6 @@ require('noice').setup({
         lsp_doc_border = false, -- add a border to hover docs and signature help
     },
 })
-
 -- Noice colors
 vim.cmd('highlight NoiceCmdlinePopupBorder guifg=#' .. theme.base07)
 vim.cmd('highlight NoiceCmdlineIcon        guifg=#' .. theme.base08)

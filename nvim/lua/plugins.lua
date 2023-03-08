@@ -56,6 +56,7 @@ return require('packer').startup(function(use)
     -- Requires ripgrep distro package.
     use {
         'nvim-telescope/telescope.nvim',
+        tag = '0.1.x', -- Dev suggests this instead of 'master'
         requires = { 'nvim-lua/plenary.nvim' }
     }
 

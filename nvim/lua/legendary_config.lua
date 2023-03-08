@@ -3,7 +3,7 @@
 vim.g.mapleader = ' '
 
 require('legendary').setup({
-    include_builtin = false,
+    include_builtin = false, -- Ditch all default vim maps.
     include_legendary_cmds = true,
     formatter = nil,
     col_separator_char = '|',
@@ -144,14 +144,20 @@ require('legendary').setup({
         { '<leader>fb', '<cmd>Telescope buffers<cr>',    mode = { 'n' }, description = 'Telescope: Buffers' },
         { '<leader>ft', '<cmd>Telescope help_tags<cr>',  mode = { 'n' }, description = 'Telescope: Help tags' },
 
+	-- Autopairs
+	{ '<M-e>', mode = { 'n', 'i' }, description = 'Autopairs: Fast wrap' },
+
         -- Nvim-Surround
-        { 'ps', mode = { 'n' }, description = 'Surround: Add [MOTION] [TYPE]' },
-        { 'pS', mode = { 'n' }, description = 'Surround: Add with newlines [MOTION] [TYPE]' },
-        { 'Ps', mode = { 'n' }, description = 'Surround: Add around line [TYPE]' },
-        { 'PS', mode = { 'n' }, description = 'Surround: Add around line with newlines [TYPE]' },
-        { 'xs', mode = { 'n' }, description = 'Surround: Delete [TYPE]' },
-        { 'es', mode = { 'n' }, description = 'Surround: Change [FROM TYPE] [TO TYPE]'},
-        { 'S',  mode = { 'v' }, description = 'Surround: Add [TYPE]'},
+        { 'ps',     mode = { 'n' }, description = 'Surround: Add [MOTION] [TYPE]' },
+        { 'pS',     mode = { 'n' }, description = 'Surround: Add with newlines [MOTION] [TYPE]' },
+        { 'Ps',     mode = { 'n' }, description = 'Surround: Add around line [TYPE]' },
+        { 'PS',     mode = { 'n' }, description = 'Surround: Add around line with newlines [TYPE]' },
+        { 'xs',     mode = { 'n' }, description = 'Surround: Delete [TYPE]' },
+        { 'es',     mode = { 'n' }, description = 'Surround: Change [FROM TYPE] [TO TYPE]'},
+        { 'S',      mode = { 'v' }, description = 'Surround: Add [TYPE]'},
+	{ 'gS',     mode = { 'v' }, description = 'Surround: Add with newlines [TYPE]' },
+	{ '<C-p>s', mode = { 'i' }, description = 'Surround: Add [MOTION] [TYPE]' },
+	{ '<C-p>S', mode = { 'i' }, description = 'Surround: Add with newlines [MOTION] [TYPE]' },
 
         -- Nvim-comment
         { 'pcc', mode = { 'n' }, description = 'Comment: Toggle line comment' },
