@@ -106,7 +106,6 @@ require('noice').setup({
         inc_rename = false, -- enables an input dialog for inc-rename.nvim
         lsp_doc_border = false, -- add a border to hover docs and signature help
     },
-    -- TODO: implement inccommand handler.
 })
 -- Noice colors
 vim.cmd('highlight NoiceCmdlinePopupBorder guifg=#' .. theme.base07)
@@ -142,6 +141,10 @@ require('lualine').setup({
 	},
         lualine_c = { 'filename' },
         lualine_x = {
+            {
+                require('noice').api.status.message.get_hl,
+                cond = require('noice').api.status.message.has,
+            },
             { -- Noice showcmd implementation
                 require('noice').api.statusline.command.get,
                 cond = require('noice').api.statusline.command.has,
