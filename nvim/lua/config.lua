@@ -92,6 +92,7 @@ vim.notify = notify
 -- Noice
 require('noice').setup({
     lsp = {
+        progress = { enabled = false },
         override = {
 	    ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
 	    ["vim.lsp.util.stylize_markdown"] = true,
@@ -105,6 +106,7 @@ require('noice').setup({
         inc_rename = false, -- enables an input dialog for inc-rename.nvim
         lsp_doc_border = false, -- add a border to hover docs and signature help
     },
+    -- TODO: implement inccommand handler.
 })
 -- Noice colors
 vim.cmd('highlight NoiceCmdlinePopupBorder guifg=#' .. theme.base07)
@@ -131,7 +133,7 @@ require('lualine').setup({
 	    'branch',
 	    {
 		'diff',
-		symbols = { added = '', modified = '', removed = '' },
+		symbols = { added = ' ', modified = ' ', removed = ' ' },
 	    },
 	    {
 		'diagnostics',
@@ -139,7 +141,15 @@ require('lualine').setup({
 	    }
 	},
         lualine_c = { 'filename' },
-        lualine_x = { 'encoding', 'fileformat', 'filetype' },
+        lualine_x = {
+            { -- Noice showcmd implementation
+                require('noice').api.statusline.command.get,
+                cond = require('noice').api.statusline.command.has,
+                color = { fg = '#' .. theme.base07 },
+            },
+            'encoding',
+            'fileformat',
+            'filetype' },
         lualine_y = { 'progress'},
         lualine_z = { 'location' },
     },

@@ -26,16 +26,11 @@ require('legendary_config')
 -- Plugin configuration:
 require('config')
 
--- require('legendary_config') -- Keymap utility
-
 -- Mouse support
 o.mouse = "a"
 
 -- Confirm save before exit
 o.confirm = true
-
--- I do not remember what this does
-o.compatible = false
 
 -- Detect external change to file and load changes.
 g.autoread = true
@@ -69,7 +64,7 @@ o.shiftwidth = 4
 -- Completion
 o.wildmenu = true
 o.showcmd = true
-o.cmdheight = 1
+o.cmdheight = 0
 o.completeopt = 'menu,menuone,noselect'
 
 -- Keycode timeout
