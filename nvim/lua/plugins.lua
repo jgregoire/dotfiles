@@ -125,6 +125,33 @@ return require('packer').startup(function(use)
         },
     }
 
+    -- Neorg (lazy loaded)
+    use {
+        'nvim-neorg/neorg',
+        -- tag = '*',
+        -- ft = 'norg', -- Only load plugin when opening a .norg file.
+        -- after = 'nvim-treesitter',
+        config = function()
+            require('neorg').setup({
+                ['core.defaults'] = {},
+                ['core.norg.concealer'] = {},
+                ['core.norg.dirman'] = {
+                    config = {
+                        workspaces = {
+                            notes = '~/neorg',
+                        },
+                    },
+                },
+                ['core.norg.completion'] = {
+                    engine = 'nvim-cmp',
+                    name = 'Neorg',
+                },
+            })
+        end,
+        -- run = ':Neorg sync-parsers', -- Update treesitter parser when neorg is updated.
+        requires = 'nvim-lua/plenary.nvim',
+    }
+
     -- Packer bootstrapping
     if packer_bootstrap then
         require('packer').sync()
