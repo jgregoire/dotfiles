@@ -101,7 +101,7 @@ return require('packer').startup(function(use)
         config = function()
             require('nvim-treesitter').setup({
                 ensure_installed = { 'all' },
-                sync_install = false,
+                sync_install = true,
                 auto_install = true,
                 highlight = {
                     enable = true,
@@ -130,7 +130,7 @@ return require('packer').startup(function(use)
     -- Neorg
     use {
         'nvim-neorg/neorg',
-        -- tag = '*',
+        tag = '*',
         -- ft = 'norg', -- Only load plugin when opening a .norg file.
         after = 'nvim-treesitter',
         config = function()
@@ -148,9 +148,10 @@ return require('packer').startup(function(use)
                     ['core.norg.completion'] = {
                         config = {
                             engine = 'nvim-cmp',
-                            name = '[Neorg]',
+                            -- name = '[Neorg]',
                         },
                     },
+                    ['core.highlights'] = {},
                 }
             })
         end,
