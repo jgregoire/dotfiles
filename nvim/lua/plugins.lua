@@ -30,7 +30,7 @@ return require('packer').startup(function(use)
     use {
         'xiyaowong/nvim-transparent',
         config = function()
-            require('transparent').setup({enable = true})
+            require('transparent').setup({ enable = true })
         end,
     }
 
@@ -104,7 +104,7 @@ return require('packer').startup(function(use)
                 sync_install = "false",
                 highlight = {
                     enable = true,
-                    additional_vim_regex_hightlighting = false,
+                    additional_vim_regex_hightlighting = { 'norg' },
                 },
             })
         end,
@@ -130,25 +130,29 @@ return require('packer').startup(function(use)
         'nvim-neorg/neorg',
         -- tag = '*',
         -- ft = 'norg', -- Only load plugin when opening a .norg file.
-        -- after = 'nvim-treesitter',
+        after = 'nvim-treesitter',
         config = function()
             require('neorg').setup({
-                ['core.defaults'] = {},
-                ['core.norg.concealer'] = {},
-                ['core.norg.dirman'] = {
-                    config = {
-                        workspaces = {
-                            notes = '~/neorg',
+                load = {
+                    ['core.defaults'] = {},
+                    ['core.norg.concealer'] = {},
+                    ['core.norg.dirman'] = {
+                        config = {
+                            workspaces = {
+                                notes = '~/neorg',
+                            },
                         },
                     },
-                },
-                ['core.norg.completion'] = {
-                    engine = 'nvim-cmp',
-                    name = 'Neorg',
-                },
+                    ['core.norg.completion'] = {
+                        config = {
+                            engine = 'nvim-cmp',
+                            name = '[Neorg]',
+                        },
+                    },
+                }
             })
         end,
-        -- run = ':Neorg sync-parsers', -- Update treesitter parser when neorg is updated.
+        run = ':Neorg sync-parsers', -- Update treesitter parser when neorg is updated.
         requires = 'nvim-lua/plenary.nvim',
     }
 
