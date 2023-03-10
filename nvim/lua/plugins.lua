@@ -100,15 +100,17 @@ return require('packer').startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         config = function()
             require('nvim-treesitter').setup({
-                ensure_installed = "maintained",
-                sync_install = "false",
+                ensure_installed = { 'all' },
+                sync_install = false,
+                auto_install = true,
                 highlight = {
                     enable = true,
-                    additional_vim_regex_hightlighting = { 'norg' },
+                    additional_vim_regex_hightlighting = false,
                 },
             })
         end,
-        run = ':TSUpdate',
+        -- run = ':TSUpdate',
+        build = ':TSUpdate',
     }
 
     -- Completion
@@ -125,7 +127,7 @@ return require('packer').startup(function(use)
         },
     }
 
-    -- Neorg (lazy loaded)
+    -- Neorg
     use {
         'nvim-neorg/neorg',
         -- tag = '*',
