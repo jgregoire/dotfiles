@@ -30,7 +30,7 @@ return require('packer').startup(function(use)
     use {
         'xiyaowong/nvim-transparent',
         config = function()
-            require('transparent').setup({enable = true})
+            require('transparent').setup({ enable = true })
         end,
     }
 
@@ -100,15 +100,17 @@ return require('packer').startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         config = function()
             require('nvim-treesitter').setup({
-                ensure_installed = "maintained",
-                sync_install = "false",
+                ensure_installed = { 'all' },
+                sync_install = true,
+                auto_install = true,
                 highlight = {
                     enable = true,
                     additional_vim_regex_hightlighting = false,
                 },
             })
         end,
-        run = ':TSUpdate',
+        -- run = ':TSUpdate',
+        build = ':TSUpdate',
     }
 
     -- Completion
@@ -123,6 +125,38 @@ return require('packer').startup(function(use)
             'L3MON4D3/LuaSnip',
             'saadparwaiz1/cmp_luasnip',
         },
+    }
+
+    -- Neorg
+    use {
+        'nvim-neorg/neorg',
+        tag = '*',
+        -- ft = 'norg', -- Only load plugin when opening a .norg file.
+        after = 'nvim-treesitter',
+        config = function()
+            require('neorg').setup({
+                load = {
+                    ['core.defaults'] = {},
+                    ['core.norg.concealer'] = {},
+                    ['core.norg.dirman'] = {
+                        config = {
+                            workspaces = {
+                                notes = '~/neorg',
+                            },
+                        },
+                    },
+                    ['core.norg.completion'] = {
+                        config = {
+                            engine = 'nvim-cmp',
+                            -- name = '[Neorg]',
+                        },
+                    },
+                    ['core.highlights'] = {},
+                }
+            })
+        end,
+        run = ':Neorg sync-parsers', -- Update treesitter parser when neorg is updated.
+        requires = 'nvim-lua/plenary.nvim',
     }
 
     -- Packer bootstrapping

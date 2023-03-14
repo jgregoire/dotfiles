@@ -8,11 +8,28 @@ local fn = vim.fn
 o.termguicolors = true
 
 -- Packer auto-install on new setups.
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-    packer_bootstrap = fn.system({'git', 'clone', '--depth', '1',
-                                  'https://github.com/wbthomason/packer.nvim', install_path})
+local ensure_packer = function()
+    local fn = vim.fn
+    local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({
+            'git',
+            'clone',
+            '--depth',
+            '1',
+            'https://github.com/wbthomason/packer.nvim',
+            install_path
+        })
+        vim.cmd [[packadd packer.nvim]]
+        return true
+    end
+    return false
 end
+
+local packer_bootstrap = ensure_packer()
+
+-- Speedy start
+require('impatient')
 
 -- Specify plugins:
 require('plugins')
@@ -23,16 +40,11 @@ require('legendary_config')
 -- Plugin configuration:
 require('config')
 
--- require('legendary_config') -- Keymap utility
-
 -- Mouse support
 o.mouse = "a"
 
 -- Confirm save before exit
 o.confirm = true
-
--- I do not remember what this does
-o.compatible = false
 
 -- Detect external change to file and load changes.
 g.autoread = true
@@ -66,7 +78,7 @@ o.shiftwidth = 4
 -- Completion
 o.wildmenu = true
 o.showcmd = true
-o.cmdheight = 1
+o.cmdheight = 0
 o.completeopt = 'menu,menuone,noselect'
 
 -- Keycode timeout

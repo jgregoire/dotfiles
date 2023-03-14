@@ -92,6 +92,7 @@ vim.notify = notify
 -- Noice
 require('noice').setup({
     lsp = {
+        progress = { enabled = false },
         override = {
 	    ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
 	    ["vim.lsp.util.stylize_markdown"] = true,
@@ -131,7 +132,7 @@ require('lualine').setup({
 	    'branch',
 	    {
 		'diff',
-		symbols = { added = '', modified = '', removed = '' },
+		symbols = { added = ' ', modified = ' ', removed = ' ' },
 	    },
 	    {
 		'diagnostics',
@@ -139,7 +140,19 @@ require('lualine').setup({
 	    }
 	},
         lualine_c = { 'filename' },
-        lualine_x = { 'encoding', 'fileformat', 'filetype' },
+        lualine_x = {
+            {
+                require('noice').api.status.message.get_hl,
+                cond = require('noice').api.status.message.has,
+            },
+            { -- Noice showcmd implementation
+                require('noice').api.statusline.command.get,
+                cond = require('noice').api.statusline.command.has,
+                color = { fg = '#' .. theme.base07 },
+            },
+            'encoding',
+            'fileformat',
+            'filetype' },
         lualine_y = { 'progress'},
         lualine_z = { 'location' },
     },
@@ -231,7 +244,7 @@ cmp.setup({
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'luasnip' }, -- For luasnip users.
-        { name = 'orgmode' },
+        { name = 'neorg' },
     }, {
         { name = 'buffer' },
     }),
