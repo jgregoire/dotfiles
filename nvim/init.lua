@@ -34,7 +34,7 @@ require('impatient')
 require('plugins')
 
 -- Key mappings:
--- require('legendary_config')
+require('legendary_config')
 
 -- Plugin configuration:
 require('config')
