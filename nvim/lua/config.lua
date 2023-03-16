@@ -3,7 +3,7 @@
 -- Diffview - git diff and merge
 require('diffview').setup()
 
--- Leap - intuitive motions
+-- Leap - intuitive motions, spooky actions
 require('leap').add_default_mappings()
 require('leap-spooky').setup({
     affixes = {
@@ -16,23 +16,23 @@ require('leap-spooky').setup({
 -- Autopairs - basic bracket logic
 require('nvim-autopairs').setup({
     fast_wrap = {
-	-- Before       Input   After
-	-----------------------------------
-	-- (|foobar     <M-e>$  (|foobar)
-	-- (|)(foobar)  <M-e>a  (|(foobar))
-	map = '<M-e>', -- Launch fastwrap
+        -- Before       Input   After
+        -----------------------------------
+        -- (|foobar     <M-e>$  (|foobar)
+        -- (|)(foobar)  <M-e>a  (|(foobar))
+        map = '<M-e>', -- Launch fastwrap
         end_key = 'l', -- End of line
-	keys = 'asetnioh', -- Home row keys for position markers
+        keys = 'asetnioh', -- Home row keys for position markers
     },
     enable_check_bracket_line = false, -- Don't add pair if it already has close pair in same line.
     ignored_next_char = "[%w%.]", -- Don't add pair if next char is alphanumeric or '.'
 })
 
--- Surround -- advanced bracket logic
+-- Surround - advanced bracket logic
 require('nvim-surround').setup({
     keymaps = {
-	insert          = '<C-p>s',
-	insert_line     = '<C-p>S',
+        insert          = '<C-p>s',
+        insert_line     = '<C-p>S',
         normal          = 'ps',
         normal_line     = 'pS',
         normal_cur      = 'Ps',
