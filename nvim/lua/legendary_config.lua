@@ -43,7 +43,7 @@ require('legendary').setup({
         { 'cw',  'yw',       mode = { 'n' },      description = 'Copy from cursor to start of next word', opts = defaults },
         { 'cc',  'yy',       mode = { 'n' },      description = 'Copy line', opts = defaults },
         { 'C',   'y$',       mode = { 'n' },      description = 'Copy to end of line', opts = defaults },
-        { 'v',   'p',        mode = { 'n' },      description = 'Paste after cursor', opts = defaults },
+--        { 'v',   'p',        mode = { 'n' },      description = 'Paste after cursor', opts = defaults },
         { 'V',   'P',        mode = { 'n' },      description = 'Paste before cursor', opts = defaults },
         { 'E',   'r',        mode = { 'n' },      description = 'Replace single character', opts = defaults },
         { 'e',   'c',        mode = { 'n' },      description = 'Edit/change [MOTION]', opts = defaults },
@@ -64,7 +64,7 @@ require('legendary').setup({
         { '<C-t>',           mode = { 'i' },      description = 'Indent line' },
         { '<C-d>',           mode = { 'i' },      description = 'De-indent line' },
         -- This one's a doozy!
-        { '<C-e>', [[<C-\><C-n>:call search('[>)\]}"'']', 'W')<CR>a]], mode = { 'i' }, description = 'Jump out of brackets or quotes' },
+        --{ '<C-e>', [[<C-\><C-n>:call search('[>)\]}"'']', 'W')<CR>a]], mode = { 'i' }, description = 'Jump out of brackets or quotes' },
 
         -- Visual Mode
         { 'aw', mode = { 'v' }, description = 'Select a word' },
