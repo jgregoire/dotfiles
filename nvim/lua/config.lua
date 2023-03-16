@@ -52,8 +52,8 @@ require('nvim_comment').setup({
 
 -- Base16
 local base16 = require('base16')
-base16(base16.themes["railscasts"], true) -- Set theme.
-local theme = base16.themes['railscasts'] -- We'll use this array later for themeing plugins.
+local theme = base16.themes['railscasts']
+base16(theme, true) -- Set theme.
 
 -- Indent Blankline
 require('indent_blankline').setup({
