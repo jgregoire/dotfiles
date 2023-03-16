@@ -1,5 +1,9 @@
 -- This file contains setup and config for Packer plugins.
 
+-- Diffview - git diff and merge
+require('diffview').setup()
+
+-- Leap - intuitive motions
 require('leap').add_default_mappings()
 require('leap-spooky').setup({
     affixes = {

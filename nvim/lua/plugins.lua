@@ -6,6 +6,15 @@ return require('packer').startup(function(use)
     -- Packer will check for updates to itself.
     use { 'wbthomason/packer.nvim' }
 
+    -- Diff/merge tool
+    use {
+        'sindrets/diffview.nvim',
+        requires = {
+	    'nvim-lua/plenary.nvim',
+	    'nvim-tree/nvim-web-devicons',
+        },
+    }
+
     -- Leap
     use { 'ggandor/leap.nvim' }
     use { 'ggandor/leap-spooky.nvim' }
