@@ -3,7 +3,6 @@ local o = vim.o
 local w = vim.wo
 local b = vim.bo
 local g = vim.g
-local fn = vim.fn
 
 o.termguicolors = true
 
@@ -35,7 +34,7 @@ require('impatient')
 require('plugins')
 
 -- Key mappings:
-require('legendary_config')
+-- require('legendary_config')
 
 -- Plugin configuration:
 require('config')
