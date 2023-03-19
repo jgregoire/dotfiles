@@ -9,3 +9,5 @@
     interactive = auto
 	ui = auto
     pager = true
+[pull]
+	rebase = false

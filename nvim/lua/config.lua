@@ -1,95 +1,199 @@
 -- This file contains setup and config for Packer plugins.
 
+-- Diffview - git diff and merge
+require('diffview').setup()
 
--- Setup Org mode
-require('orgmode').setup_ts_grammar()
-require('nvim-treesitter.configs').setup({
---    highlight = {
---        enable = true,
---        disable = { 'org' },
---        additional_vim_regex_highlighting = { 'org' },
---    },
-    ensure_installed = { 'org' },
-})
-require('orgmode').setup({
-    org_agenda_files = { '~/org-agenda.org' },
-    org_default_notes_file = '~/org-notes.org',
-    mappings = {
-        global = {
-            org_agenda = '<Leader>oa',
-            org_capture = '<Leader>oc',
-        },
+-- Leap - intuitive motions, spooky actions
+require('leap').add_default_mappings()
+require('leap-spooky').setup({
+    affixes = {
+        remote   = { window = 'r', cross_window = 'R' },
+        magnetic = { window = 'm', cross_window = 'M' },
     },
+    paste_on_remote_yank = false,
 })
 
--- Autopairs
+-- Autopairs - basic bracket logic
 require('nvim-autopairs').setup({
-    fast_wrap = {},
+    fast_wrap = {
+        -- Before       Input   After
+        -----------------------------------
+        -- (|foobar     <M-e>$  (|foobar)
+        -- (|)(foobar)  <M-e>a  (|(foobar))
+        map = '<M-e>', -- Launch fastwrap
+        end_key = 'l', -- End of line
+        keys = 'asetnioh', -- Home row keys for position markers
+    },
     enable_check_bracket_line = false, -- Don't add pair if it already has close pair in same line.
     ignored_next_char = "[%w%.]", -- Don't add pair if next char is alphanumeric or '.'
 })
 
--- Surround
+-- Surround - advanced bracket logic
 require('nvim-surround').setup({
     keymaps = {
-        normal          = 'pps',
-        normal_line     = 'ppS',
-        normal_cur      = 'pPs',
-        normal_cur_line = 'pPS',
-        delete          = 'pxs',
-        change          = 'pgs',
+        insert          = '<C-p>s',
+        insert_line     = '<C-p>S',
+        normal          = 'ps',
+        normal_line     = 'pS',
+        normal_cur      = 'Ps',
+        normal_cur_line = 'PS',
+        delete          = 'xs',
+        change          = 'es',
     }
+})
+
+-- nvim-comment
+require('nvim_comment').setup({
+    marker_padding = true, -- Add a space.
+    line_mapping = 'pcc', -- Normal mode, toggle line comment.
+    operator_mapping = 'pc', -- Visual/operator mode
+    comment_chunk_text_object = 'ic', -- No idea what this is for
 })
 
 -- Base16
 local base16 = require('base16')
-base16(base16.themes["railscasts"], true)
-
--- nvim-notify
-local nvimnotify = require('notify')
-
 local theme = base16.themes['railscasts']
+base16(theme, true) -- Set theme.
 
-vim.cmd([[highlight NotifyERRORBorder guifg=#]] .. theme.base08)
-vim.cmd([[highlight NotifyERRORIcon   guifg=#]] .. theme.base08)
-vim.cmd([[highlight NotifyERRORTitle  guifg=#]] .. theme.base08)
-vim.cmd([[highlight NotifyWARNBorder  guifg=#]] .. theme.base0A)
-vim.cmd([[highlight NotifyWARNIcon    guifg=#]] .. theme.base0A)
-vim.cmd([[highlight NotifyWARNTitle   guifg=#]] .. theme.base0A)
-vim.cmd([[highlight NotifyINFOBorder  guifg=#]] .. theme.base07)
-vim.cmd([[highlight NotifyINFOIcon    guifg=#]] .. theme.base07)
-vim.cmd([[highlight NotifyINFOTitle   guifg=#]] .. theme.base07)
-vim.cmd([[highlight NotifyDEBUGBorder guifg=#]] .. theme.base0D)
-vim.cmd([[highlight NotifyDEBUGIcon   guifg=#]] .. theme.base0D)
-vim.cmd([[highlight NotifyDEBUGTitle  guifg=#]] .. theme.base0D)
-vim.cmd([[highlight NotifyTRACEBorder guifg=#]] .. theme.base0E)
-vim.cmd([[highlight NotifyTRACEIcon   guifg=#]] .. theme.base0E)
-vim.cmd([[highlight NotidyTRACETitle  guifg=#]] .. theme.base0E)
-vim.cmd([[highlight Normal guifg=#]] .. theme.base05 .. [[ guibg=#000000]])
-vim.cmd([[highlight link NotifyERRORBody Normal]])
-vim.cmd([[highlight link NotifyWARNBody  Normal]])
-vim.cmd([[highlight link NotifyINFOBody  Normal]])
-vim.cmd([[highlight link NotifyDEBUGBody Normal]])
-vim.cmd([[highlight link NotifyTRACEBody Normal]])
-
-nvimnotify.setup({
-    render = 'compact',
-    fps    = 30,
-    stages = 'fade_in_slide_out', -- Others: fade, slide, static
-    background_colour = '#000000'
+-- Indent Blankline
+require('indent_blankline').setup({
+    show_current_context = true,
+    show_current_context_start = true,
 })
 
-vim.notify = nvimnotify
+-- nvim-notify
+vim.cmd('highlight NotifyERRORBorder guifg=#' .. theme.base08)
+vim.cmd('highlight NotifyERRORIcon   guifg=#' .. theme.base08)
+vim.cmd('highlight NotifyERRORTitle  guifg=#' .. theme.base08)
+vim.cmd('highlight NotifyWARNBorder  guifg=#' .. theme.base0A)
+vim.cmd('highlight NotifyWARNIcon    guifg=#' .. theme.base0A)
+vim.cmd('highlight NotifyWARNTitle   guifg=#' .. theme.base0A)
+vim.cmd('highlight NotifyINFOBorder  guifg=#' .. theme.base07)
+vim.cmd('highlight NotifyINFOIcon    guifg=#' .. theme.base07)
+vim.cmd('highlight NotifyINFOTitle   guifg=#' .. theme.base07)
+vim.cmd('highlight NotifyDEBUGBorder guifg=#' .. theme.base0D)
+vim.cmd('highlight NotifyDEBUGIcon   guifg=#' .. theme.base0D)
+vim.cmd('highlight NotifyDEBUGTitle  guifg=#' .. theme.base0D)
+vim.cmd('highlight NotifyTRACEBorder guifg=#' .. theme.base0E)
+vim.cmd('highlight NotifyTRACEIcon   guifg=#' .. theme.base0E)
+vim.cmd('highlight NotidyTRACETitle  guifg=#' .. theme.base0E)
+vim.cmd('highlight Normal guifg=#' .. theme.base05 .. 'guibg=#000000')
+vim.cmd('highlight link NotifyERRORBody Normal')
+vim.cmd('highlight link NotifyWARNBody  Normal')
+vim.cmd('highlight link NotifyINFOBody  Normal')
+vim.cmd('highlight link NotifyDEBUGBody Normal')
+vim.cmd('highlight link NotifyTRACEBody Normal')
 
---[[
-vim.notify('Test notification.', 'info')
-vim.notify('Test warning!', 'warn')
-vim.notify('Test error!', 'error')
---]]
+local notify = require('notify')
+notify.setup({
+    render = 'compact',
+    fps    = 30,
+    stages = 'static', -- Others: fade, slide, static
+    background_colour = '#000000',
+})
+-- Now make nvim use nvim-notify.
+vim.notify = notify
+
+-- Noice
+require('noice').setup({
+    lsp = {
+        progress = { enabled = false },
+        override = {
+	    ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+	    ["vim.lsp.util.stylize_markdown"] = true,
+	    ["cmp.entry.get_documentation"] = true,
+        }
+    },
+    presets = {
+        bottom_search = true, -- use a classic bottom cmdline for search
+        command_palette = true, -- position the cmdline and popupmenu together
+        long_message_to_split = true, -- long messages will be sent to a split
+        inc_rename = false, -- enables an input dialog for inc-rename.nvim
+        lsp_doc_border = false, -- add a border to hover docs and signature help
+    },
+})
+-- Noice colors
+vim.cmd('highlight NoiceCmdlinePopupBorder guifg=#' .. theme.base07)
+vim.cmd('highlight NoiceCmdlineIcon        guifg=#' .. theme.base08)
 
 -- Barbar (tabbing)
 require('barbar-theme')
-require('bufferline').setup()
+require('bufferline').setup({
+    auto_hide = true,
+    clickable = true, -- Left click: Select. Middle click: Close.
+    icons = 'both', -- true, 'numbers', or 'both'
+})
+
+-- Lualine
+require('lualine').setup({
+    options = {
+        theme = 'auto', -- 'base16' doesn't work.
+        component_separators = { left = '|', right = '|' },
+        section_separators = { left = '', right = ''},
+    },
+    sections = {
+        lualine_a = { 'mode' },
+        lualine_b = {
+	    'branch',
+	    {
+		'diff',
+		symbols = { added = ' ', modified = ' ', removed = ' ' },
+	    },
+	    {
+		'diagnostics',
+		-- symbols = { error = '⨻', warn = '⚠', info = '⯑', hint = '⦿'},
+	    }
+	},
+        lualine_c = { 'filename' },
+        lualine_x = {
+            {
+                require('noice').api.status.message.get_hl,
+                cond = require('noice').api.status.message.has,
+            },
+            { -- Noice showcmd implementation
+                require('noice').api.statusline.command.get,
+                cond = require('noice').api.statusline.command.has,
+                color = { fg = '#' .. theme.base07 },
+            },
+            'encoding',
+            'fileformat',
+            'filetype' },
+        lualine_y = { 'progress'},
+        lualine_z = { 'location' },
+    },
+    inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {'filename'},
+        lualine_x = {'location'},
+        lualine_y = {},
+        lualine_z = {}
+    },
+})
+
+-- Gitsigns
+require('gitsigns').setup({
+    signs = {
+        add          = { text = '' },
+        change       = { text = '' },
+        delete       = { text = '' },
+        topdelete    = { text = '‾' },
+        changedelete = { text = '~' },
+        untracked    = { text = '┆' },
+    },
+})
+vim.cmd('highlight GitSignsAdd          guifg=#' .. theme.base0B .. ' guibg=#000000')
+vim.cmd('highlight GitSignsChange       guifg=#' .. theme.base0D .. ' guibg=#000000')
+vim.cmd('highlight GitSignsDelete       guifg=#' .. theme.base08 .. ' guibg=#000000')
+vim.cmd('highlight GitSignsTopDelete    guifg=#' .. theme.base0E .. ' guibg=#000000')
+vim.cmd('highlight GitSignsChangedelete guifg=#' .. theme.base0C .. ' guibg=#000000')
+vim.cmd('highlight GitSignsUntracked    guifg=#' .. theme.base0A .. ' guibg=#000000')
+
+-- Toggleterm
+require('toggleterm').setup({
+    open_mapping = '<C-t>',
+
+})
 
 -- Setup nvim-cmp.
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
@@ -108,7 +212,7 @@ cmp.setup({
     mapping = {
         --['C-i'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
         --['wC-ow'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
         ['<C-y>'] = cmp.config.disable,
         ['<Esc>'] = cmp.mapping({
             i = cmp.mapping.abort(),
@@ -145,7 +249,7 @@ cmp.setup({
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'luasnip' }, -- For luasnip users.
-        { name = 'orgmode' },
+        { name = 'neorg' },
     }, {
         { name = 'buffer' },
     }),
@@ -190,7 +294,7 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Configure Lua language server.
-require('lspconfig')['sumneko_lua'].setup({
+require('lspconfig').lua_ls.setup({
     capabilities = capabilities,
     flags = {
         debounce_text_changes = 150,
@@ -240,3 +344,6 @@ for _, lsp in pairs(servers) do
         }
     })
 end
+
+-- Nvim-Colorizer
+require('colorizer').setup()
