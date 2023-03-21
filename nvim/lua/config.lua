@@ -146,10 +146,10 @@ require('lualine').setup({
 	},
         lualine_c = { 'filename' },
         lualine_x = {
-            {
+            --[[{
                 require('noice').api.status.message.get_hl,
                 cond = require('noice').api.status.message.has,
-            },
+            },--]]
             { -- Noice showcmd implementation
                 require('noice').api.statusline.command.get,
                 cond = require('noice').api.statusline.command.has,
@@ -210,9 +210,7 @@ cmp.setup({
         end,
     },
     mapping = {
-        --['C-i'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-        --['wC-ow'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
         ['<C-y>'] = cmp.config.disable,
         ['<Esc>'] = cmp.mapping({
             i = cmp.mapping.abort(),
