@@ -5,6 +5,9 @@ local base16 = require('base16')
 local theme = base16.themes['railscasts']
 base16(theme, true) -- Set theme.
 
+-- Transparency support
+require('transparent').setup()
+
 -- Diffview - git diff and merge
 require('diffview').setup()
 
@@ -24,7 +27,7 @@ leap.opts.safe_labels = {
 }
 vim.api.nvim_set_hl(0, 'LeapLabelPrimary',   { bg = '#' .. theme.base0C, fg = '#' .. theme.base07 })
 vim.api.nvim_set_hl(0, 'LeapLabelSecondary', { bg = '#' .. theme.base0E, fg = '#' .. theme.base07 })
--- This is a hack until nvim fixes a bug.
+-- This is a hack until nvim core fixes a bug.
 vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
 
 require('leap-spooky').setup({
@@ -229,7 +232,7 @@ cmp.setup({
     mapping = {
         ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
         ['<C-y>'] = cmp.config.disable,
-        ['<Esc>'] = cmp.mapping({
+        ['<C-c>'] = cmp.mapping({
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
         }),
@@ -308,6 +311,7 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 -- Configure Lua language server.
 require('lspconfig').lua_ls.setup({
     capabilities = capabilities,
@@ -333,23 +337,24 @@ require('lspconfig').lua_ls.setup({
         },
     },
 })
--- Configure C/C++/C# language server
---require('lspconfig')['ccls'].setup{
---    init_options = {
---        compilationDatabaseDirectory = "build",
---        index = { threads = 0},
---        clang = { excludeArgs = { "-frounding-math"} },
---    }
---}
+
+require('lspconfig').ltex.setup({
+    settings = {
+        ltex = {
+            language = 'en-US',
+        },
+    },
+})
+
 -- Setup language servers with default config.
 local servers = {
     'rls',
-    'arduino_language_server',
+    -- 'arduino_language_server',
     'bashls',
     'jsonls',
     'pylsp',
-    'yamlls',
-    'ltex',
+    -- 'yamlls',
+    'vimls',
 }
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup({

@@ -36,12 +36,7 @@ return require('packer').startup(function(use)
     use { 'norcalli/nvim-colorizer.lua' }
 
     -- Make nvim transparent.
-    use {
-        'xiyaowong/nvim-transparent',
-        config = function()
-            require('transparent').setup({ enable = true })
-        end,
-    }
+    use { 'xiyaowong/nvim-transparent' }
 
     -- Indent marker lines
     use { 'lukas-reineke/indent-blankline.nvim' }
