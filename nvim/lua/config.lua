@@ -9,7 +9,22 @@ base16(theme, true) -- Set theme.
 require('diffview').setup()
 
 -- Leap - intuitive motions, spooky actions
-require('leap').add_default_mappings()
+local leap = require('leap')
+leap.add_default_mappings()
+leap.opts.safe_labels = {
+    't', 'o', 'h', 'm', 'q', 'w', 'd', 'f', 'u', 'r', 'l', 'y', 'k', 'j',
+    'T', 'O', 'H', 'M', 'Q', 'W', 'D', 'F', 'U', 'R', 'L', 'Y', 'K', 'J',
+}
+leap.opts.safe_labels = {
+    't', 'o', 'h', 'm', 'q', 'w', 'd', 'f', 'u', 'r', 'l', 'y', 'k', 'j',
+    'T', 'O', 'H', 'M', 'Q', 'W', 'D', 'F', 'U', 'R', 'L', 'Y', 'K', 'J',
+    '\'', '\"', '/', '?',
+    'z', 'x', 'c', 'v', 'b', 'p',
+    'Z', 'X', 'C', 'V', 'B', 'P',
+}
+vim.api.nvim_set_hl(0, 'LeapLabelPrimary',   { bg = '#' .. theme.base0C, fg = '#' .. theme.base07 })
+vim.api.nvim_set_hl(0, 'LeapLabelSecondary', { bg = '#' .. theme.base0E, fg = '#' .. theme.base07 })
+
 require('leap-spooky').setup({
     affixes = {
         remote   = { window = 'r', cross_window = 'R' },
@@ -17,7 +32,6 @@ require('leap-spooky').setup({
     },
     paste_on_remote_yank = false,
 })
-vim.api.nvim_set_hl(0, 'LeapLabelPrimary',   { bg = '#' .. theme.base0C, fg = '#' .. theme.base07 })
 
 -- Autopairs - basic bracket logic
 require('nvim-autopairs').setup({
@@ -114,8 +128,8 @@ require('noice').setup({
     },
 })
 -- Noice colors
-vim.cmd('highlight NoiceCmdlinePopupBorder guifg=#' .. theme.base07)
-vim.cmd('highlight NoiceCmdlineIcon        guifg=#' .. theme.base08)
+vim.cmd('highlight NoiceCmdlinePopupBorder guifg=#' .. theme.base0C)
+vim.cmd('highlight NoiceCmdlineIcon        guifg=#' .. theme.base07)
 
 -- Barbar (tabbing)
 require('barbar-theme')
