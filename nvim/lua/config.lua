@@ -24,6 +24,8 @@ leap.opts.safe_labels = {
 }
 vim.api.nvim_set_hl(0, 'LeapLabelPrimary',   { bg = '#' .. theme.base0C, fg = '#' .. theme.base07 })
 vim.api.nvim_set_hl(0, 'LeapLabelSecondary', { bg = '#' .. theme.base0E, fg = '#' .. theme.base07 })
+-- This is a hack until nvim fixes a bug.
+vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
 
 require('leap-spooky').setup({
     affixes = {

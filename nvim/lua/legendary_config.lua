@@ -28,9 +28,9 @@ require('legendary').setup({
         { 'n',     'o',      mode = { 'n' },      description = 'Append new line below', opts = defaults },
         { 'N',     'O',      mode = { 'n' },      description = 'Append new line above', opts = defaults },
         -- { 's',               mode = { 'n' },      description = 'Delete character and insert' },
-        { '<C-b>', '<C-v>',  mode = { 'n', 'i' }, description = 'Visual Block mode', opts = defaults },
-        { '<C-v>', 'v',      mode = { 'n', 'i' }, description = 'Visual Char mode', opts = defaults },
-        { '<C-l>', 'V',      mode = { 'n', 'i' }, description = 'Visual Line mode', opts = defaults },
+        { 'b',     '<C-v>',  mode = { 'n', 'i' }, description = 'Visual Block mode', opts = defaults },
+        { 'v',               mode = { 'n', 'i' }, description = 'Visual Char mode' },
+        { 'V',               mode = { 'n', 'i' }, description = 'Visual Line mode' },
 
         -- Editing
         { 'z',     'u',      mode = { 'n' },      description = 'Undo', opts = defaults },
