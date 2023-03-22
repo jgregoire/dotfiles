@@ -27,7 +27,7 @@ require('legendary').setup({
         { 'A',               mode = { 'n' },      description = 'Append at end of line' },
         { 'n',     'o',      mode = { 'n' },      description = 'Append new line below', opts = defaults },
         { 'N',     'O',      mode = { 'n' },      description = 'Append new line above', opts = defaults },
-        { 's',               mode = { 'n' },      description = 'Delete character and insert' },
+        -- { 's',               mode = { 'n' },      description = 'Delete character and insert' },
         { '<C-b>', '<C-v>',  mode = { 'n', 'i' }, description = 'Visual Block mode', opts = defaults },
         { '<C-v>', 'v',      mode = { 'n', 'i' }, description = 'Visual Char mode', opts = defaults },
         { '<C-l>', 'V',      mode = { 'n', 'i' }, description = 'Visual Line mode', opts = defaults },
@@ -169,8 +169,8 @@ require('legendary').setup({
         { '<C-t>', mode = { 'n' }, description = 'Toggleterm: Toggle terminal' },
 
         -- Leap
-        { 'l', '<Plug>(leap-forward-to)',  mode = { 'n' }, description = 'Leap: forward to [CHAR1][CHAR2][LABEL]', opts = defaults },
-        { 'L', '<Plug>(leap-backward-to)', mode = { 'n' }, description = 'Leap: backward to [CHAR1][CHAR2][LABEL]', opts = defaults },
+        { 's', '<Plug>(leap-forward-to)',  mode = { 'n' }, description = 'Leap: forward to [CHAR1][CHAR2][LABEL]', opts = defaults },
+        { 'S', '<Plug>(leap-backward-to)', mode = { 'n' }, description = 'Leap: backward to [CHAR1][CHAR2][LABEL]', opts = defaults },
 
         -- Leap (Spooky)
         { 'r', mode = { 'o' }, description = 'Leap (Spooky): Restful [MOTION] at [CHAR1][CHAR2][LABEL]' },

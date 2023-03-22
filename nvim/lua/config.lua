@@ -1,5 +1,10 @@
 -- This file contains setup and config for Packer plugins.
 
+-- Base16
+local base16 = require('base16')
+local theme = base16.themes['railscasts']
+base16(theme, true) -- Set theme.
+
 -- Diffview - git diff and merge
 require('diffview').setup()
 
@@ -12,6 +17,7 @@ require('leap-spooky').setup({
     },
     paste_on_remote_yank = false,
 })
+vim.api.nvim_set_hl(0, 'LeapLabelPrimary',   { bg = '#' .. theme.base0C, fg = '#' .. theme.base07 })
 
 -- Autopairs - basic bracket logic
 require('nvim-autopairs').setup({
@@ -49,11 +55,6 @@ require('nvim_comment').setup({
     operator_mapping = 'pc', -- Visual/operator mode
     comment_chunk_text_object = 'ic', -- No idea what this is for
 })
-
--- Base16
-local base16 = require('base16')
-local theme = base16.themes['railscasts']
-base16(theme, true) -- Set theme.
 
 -- Indent Blankline
 require('indent_blankline').setup({
