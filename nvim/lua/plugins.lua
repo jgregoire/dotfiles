@@ -103,13 +103,13 @@ return require('packer').startup(function(use)
     use {
         'nvim-treesitter/nvim-treesitter',
         config = function()
-            require('nvim-treesitter').setup({
-                ensure_installed = { 'all' },
-                sync_install = true,
+            require('nvim-treesitter.configs').setup({
+                ensure_installed = { 'c', 'lua', 'vim', 'help', 'query', },
+                sync_install = false,
                 auto_install = true,
                 highlight = {
                     enable = true,
-                    additional_vim_regex_hightlighting = false,
+                    additional_vim_regex_hightlighting = { 'neorg' },
                 },
             })
         end,
