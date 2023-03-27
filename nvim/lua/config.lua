@@ -97,7 +97,7 @@ vim.cmd('highlight NotifyDEBUGTitle  guifg=#' .. theme.base0D)
 vim.cmd('highlight NotifyTRACEBorder guifg=#' .. theme.base0E)
 vim.cmd('highlight NotifyTRACEIcon   guifg=#' .. theme.base0E)
 vim.cmd('highlight NotidyTRACETitle  guifg=#' .. theme.base0E)
-vim.cmd('highlight Normal guifg=#' .. theme.base05 .. 'guibg=#000000')
+vim.cmd('highlight Normal guifg=#' .. theme.base05--[[ .. 'guibg=#000000']])
 vim.cmd('highlight link NotifyERRORBody Normal')
 vim.cmd('highlight link NotifyWARNBody  Normal')
 vim.cmd('highlight link NotifyINFOBody  Normal')
@@ -109,7 +109,7 @@ notify.setup({
     render = 'compact',
     fps    = 30,
     stages = 'static', -- Others: fade, slide, static
-    background_colour = '#000000',
+    -- background_colour = '#000000',
 })
 -- Now make nvim use nvim-notify.
 vim.notify = notify
@@ -117,7 +117,7 @@ vim.notify = notify
 -- Noice
 require('noice').setup({
     lsp = {
-        progress = { enabled = false },
+        progress = { enabled = true },
         override = {
 	    ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
 	    ["vim.lsp.util.stylize_markdown"] = true,
@@ -129,7 +129,7 @@ require('noice').setup({
         command_palette = true, -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
         inc_rename = false, -- enables an input dialog for inc-rename.nvim
-        lsp_doc_border = false, -- add a border to hover docs and signature help
+        lsp_doc_border = true, -- add a border to hover docs and signature help
     },
 })
 -- Noice colors
@@ -202,12 +202,12 @@ require('gitsigns').setup({
         untracked    = { text = '┆' },
     },
 })
-vim.cmd('highlight GitSignsAdd          guifg=#' .. theme.base0B .. ' guibg=#000000')
-vim.cmd('highlight GitSignsChange       guifg=#' .. theme.base0D .. ' guibg=#000000')
-vim.cmd('highlight GitSignsDelete       guifg=#' .. theme.base08 .. ' guibg=#000000')
-vim.cmd('highlight GitSignsTopDelete    guifg=#' .. theme.base0E .. ' guibg=#000000')
-vim.cmd('highlight GitSignsChangedelete guifg=#' .. theme.base0C .. ' guibg=#000000')
-vim.cmd('highlight GitSignsUntracked    guifg=#' .. theme.base0A .. ' guibg=#000000')
+vim.cmd('highlight GitSignsAdd          guifg=#' .. theme.base0B)
+vim.cmd('highlight GitSignsChange       guifg=#' .. theme.base0D)
+vim.cmd('highlight GitSignsDelete       guifg=#' .. theme.base08)
+vim.cmd('highlight GitSignsTopDelete    guifg=#' .. theme.base0E)
+vim.cmd('highlight GitSignsChangedelete guifg=#' .. theme.base0C)
+vim.cmd('highlight GitSignsUntracked    guifg=#' .. theme.base0A)
 
 -- Toggleterm
 require('toggleterm').setup({
