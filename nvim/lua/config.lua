@@ -353,8 +353,10 @@ local servers = {
     'bashls',
     'jsonls',
     'pylsp',
-    -- 'yamlls',
+    'yamlls',
     'vimls',
+    'openscad_ls',
+    'clangd',
 }
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup({
