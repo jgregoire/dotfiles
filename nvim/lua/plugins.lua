@@ -6,6 +6,15 @@ return require('packer').startup(function(use)
     -- Packer will check for updates to itself.
     use { 'wbthomason/packer.nvim' }
 
+    -- Start page
+    use {
+        'startup-nvim/startup.nvim',
+        requires = {
+            'nvim-telescope/telescope.nvim',
+            'nvim-lua/plenary.nvim',
+        },
+    }
+
     -- Diff/merge tool
     use {
         'sindrets/diffview.nvim',

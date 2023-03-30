@@ -3,10 +3,18 @@
 -- Base16
 local base16 = require('base16')
 local theme = base16.themes['railscasts']
+theme.base00 = '0C0C0C' -- Usually #2B2B2B. I prefer a darker bg.
 base16(theme, true) -- Set theme.
 
 -- Transparency support
 require('transparent').setup()
+
+-- Startup page
+require('startup').setup({
+    options = {
+	mapping_keys = true,
+    }
+})
 
 -- Diffview - git diff and merge
 require('diffview').setup()
