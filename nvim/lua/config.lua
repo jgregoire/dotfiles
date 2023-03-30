@@ -9,13 +9,6 @@ base16(theme, true) -- Set theme.
 -- Transparency support
 require('transparent').setup()
 
--- Startup page
-require('startup').setup({
-    options = {
-	mapping_keys = true,
-    }
-})
-
 -- Diffview - git diff and merge
 require('diffview').setup()
 
@@ -90,27 +83,32 @@ require('indent_blankline').setup({
 })
 
 -- nvim-notify
-vim.cmd('highlight NotifyERRORBorder guifg=#' .. theme.base08)
-vim.cmd('highlight NotifyERRORIcon   guifg=#' .. theme.base08)
-vim.cmd('highlight NotifyERRORTitle  guifg=#' .. theme.base08)
-vim.cmd('highlight NotifyWARNBorder  guifg=#' .. theme.base0A)
-vim.cmd('highlight NotifyWARNIcon    guifg=#' .. theme.base0A)
-vim.cmd('highlight NotifyWARNTitle   guifg=#' .. theme.base0A)
-vim.cmd('highlight NotifyINFOBorder  guifg=#' .. theme.base07)
-vim.cmd('highlight NotifyINFOIcon    guifg=#' .. theme.base07)
-vim.cmd('highlight NotifyINFOTitle   guifg=#' .. theme.base07)
-vim.cmd('highlight NotifyDEBUGBorder guifg=#' .. theme.base0D)
-vim.cmd('highlight NotifyDEBUGIcon   guifg=#' .. theme.base0D)
-vim.cmd('highlight NotifyDEBUGTitle  guifg=#' .. theme.base0D)
-vim.cmd('highlight NotifyTRACEBorder guifg=#' .. theme.base0E)
-vim.cmd('highlight NotifyTRACEIcon   guifg=#' .. theme.base0E)
-vim.cmd('highlight NotidyTRACETitle  guifg=#' .. theme.base0E)
-vim.cmd('highlight Normal guifg=#' .. theme.base05--[[ .. 'guibg=#000000']])
-vim.cmd('highlight link NotifyERRORBody Normal')
-vim.cmd('highlight link NotifyWARNBody  Normal')
-vim.cmd('highlight link NotifyINFOBody  Normal')
-vim.cmd('highlight link NotifyDEBUGBody Normal')
-vim.cmd('highlight link NotifyTRACEBody Normal')
+vim.api.nvim_set_hl(0, 'NotifyERRORBorder', { fg = '#'..theme.base08, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyERRORIcon',   { fg = '#'..theme.base08, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyERRORTitle',  { fg = '#'..theme.base08, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyWARNBorder',  { fg = '#'..theme.base0A, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyWARNIcon',    { fg = '#'..theme.base0A, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyWARNTitle',   { fg = '#'..theme.base0A, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyINFOBorder',  { fg = '#'..theme.base07, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyINFOIcon',    { fg = '#'..theme.base07, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyINFOTitle',   { fg = '#'..theme.base07, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyDEBUGBorder', { fg = '#'..theme.base0D, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyDEBUGIcon',   { fg = '#'..theme.base0D, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyDEBUGTitle',  { fg = '#'..theme.base0D, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyTRACEBorder', { fg = '#'..theme.base0E, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyTRACEIcon',   { fg = '#'..theme.base0E, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyTRACETitle',  { fg = '#'..theme.base0E, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'Normal',            { fg = '#'..theme.base05, bg = '#'..theme.base00 })
+-- vim.cmd('highlight link NotifyERRORBody Normal')
+-- vim.cmd('highlight link NotifyWARNBody  Normal')
+-- vim.cmd('highlight link NotifyINFOBody  Normal')
+-- vim.cmd('highlight link NotifyDEBUGBody Normal')
+-- vim.cmd('highlight link NotifyTRACEBody Normal')
+vim.api.nvim_set_hl(0, 'NotifyERRORBody', { link = 'Normal' })
+vim.api.nvim_set_hl(0, 'NotifyWARNBody',  { link = 'Normal' })
+vim.api.nvim_set_hl(0, 'NotifyINFOBody',  { link = 'Normal' })
+vim.api.nvim_set_hl(0, 'NotifyDEBUGBody', { link = 'Normal' })
+vim.api.nvim_set_hl(0, 'NotifyTRACEBody', { link = 'Normal' })
 
 local notify = require('notify')
 notify.setup({
@@ -145,12 +143,15 @@ vim.cmd('highlight NoiceCmdlinePopupBorder guifg=#' .. theme.base0C)
 vim.cmd('highlight NoiceCmdlineIcon        guifg=#' .. theme.base07)
 
 -- Barbar (tabbing)
-require('barbar-theme')
 require('bufferline').setup({
     auto_hide = true,
     clickable = true, -- Left click: Select. Middle click: Close.
-    icons = 'both', -- true, 'numbers', or 'both'
+    icons = {
+	buffer_index = true,
+	filetype = { enabled = true },
+    },
 })
+require('barbar-theme')
 
 -- Lualine
 require('lualine').setup({
