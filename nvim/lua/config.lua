@@ -365,7 +365,7 @@ local servers = {
     'yamlls',
     'vimls',
     'openscad_ls',
-    'clangd',
+    -- 'clangd', -- This breaks on Windows.
 }
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup({
