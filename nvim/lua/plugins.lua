@@ -8,13 +8,10 @@ return require('packer').startup(function(use)
 
     -- Start page
     use {
-        'startup-nvim/startup.nvim',
-        requires = {
-            'nvim-telescope/telescope.nvim',
-            'nvim-lua/plenary.nvim',
-        },
+        'goolord/alpha-nvim',
+        requires = { 'nvim-tree/nvim-web-devicons' },
         config = function()
-            require('startup').setup({})
+            require('alpha').setup(require('alpha.themes.dashboard').config)
         end,
     }
 
