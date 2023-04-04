@@ -151,7 +151,7 @@ require('bufferline').setup({
 	filetype = { enabled = true },
     },
 })
--- require('barbar-theme')
+require('barbar-theme')
 
 -- Lualine
 require('lualine').setup({
