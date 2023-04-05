@@ -99,23 +99,17 @@ vim.api.nvim_set_hl(0, 'NotifyTRACEBorder', { fg = '#'..theme.base0E, bg = '#'..
 vim.api.nvim_set_hl(0, 'NotifyTRACEIcon',   { fg = '#'..theme.base0E, bg = '#'..theme.base00 })
 vim.api.nvim_set_hl(0, 'NotifyTRACETitle',  { fg = '#'..theme.base0E, bg = '#'..theme.base00 })
 vim.api.nvim_set_hl(0, 'Normal',            { fg = '#'..theme.base05, bg = '#'..theme.base00 })
--- vim.cmd('highlight link NotifyERRORBody Normal')
--- vim.cmd('highlight link NotifyWARNBody  Normal')
--- vim.cmd('highlight link NotifyINFOBody  Normal')
--- vim.cmd('highlight link NotifyDEBUGBody Normal')
--- vim.cmd('highlight link NotifyTRACEBody Normal')
-vim.api.nvim_set_hl(0, 'NotifyERRORBody', { link = 'Normal' })
-vim.api.nvim_set_hl(0, 'NotifyWARNBody',  { link = 'Normal' })
-vim.api.nvim_set_hl(0, 'NotifyINFOBody',  { link = 'Normal' })
-vim.api.nvim_set_hl(0, 'NotifyDEBUGBody', { link = 'Normal' })
-vim.api.nvim_set_hl(0, 'NotifyTRACEBody', { link = 'Normal' })
+vim.api.nvim_set_hl(0, 'NotifyERRORBody',   { link = 'Normal' })
+vim.api.nvim_set_hl(0, 'NotifyWARNBody',    { link = 'Normal' })
+vim.api.nvim_set_hl(0, 'NotifyINFOBody',    { link = 'Normal' })
+vim.api.nvim_set_hl(0, 'NotifyDEBUGBody',   { link = 'Normal' })
+vim.api.nvim_set_hl(0, 'NotifyTRACEBody',   { link = 'Normal' })
 
 local notify = require('notify')
 notify.setup({
     render = 'compact',
     fps    = 30,
     stages = 'static', -- Others: fade, slide, static
-    -- background_colour = '#000000',
 })
 -- Now make nvim use nvim-notify.
 vim.notify = notify
@@ -168,17 +162,10 @@ require('lualine').setup({
 		'diff',
 		symbols = { added = ' ', modified = ' ', removed = ' ' },
 	    },
-	    {
-		'diagnostics',
-		-- symbols = { error = '⨻', warn = '⚠', info = '⯑', hint = '⦿'},
-	    }
+	    'diagnostics',
 	},
         lualine_c = { 'filename' },
         lualine_x = {
-            --[[{
-                require('noice').api.status.message.get_hl,
-                cond = require('noice').api.status.message.has,
-            },--]]
             { -- Noice showcmd implementation
                 require('noice').api.statusline.command.get,
                 cond = require('noice').api.statusline.command.has,

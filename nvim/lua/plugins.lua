@@ -86,8 +86,8 @@ return require('packer').startup(function(use)
 
     -- Better tabs
     use {
-	'romgrk/barbar.nvim',
-	wants = { 'nvim-tree/nvim-web-devicons' },
+        'romgrk/barbar.nvim',
+        wants = { 'nvim-tree/nvim-web-devicons' },
     }
 
     -- Keymap manager
