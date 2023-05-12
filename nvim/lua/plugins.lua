@@ -150,15 +150,15 @@ return require('packer').startup(function(use)
             require('neorg').setup({
                 load = {
                     ['core.defaults'] = {},
-                    ['core.norg.concealer'] = {},
-                    ['core.norg.dirman'] = {
+                    ['core.concealer'] = {},
+                    ['core.dirman'] = {
                         config = {
                             workspaces = {
                                 notes = '~/neorg',
                             },
                         },
                     },
-                    ['core.norg.completion'] = {
+                    ['core.completion'] = {
                         config = {
                             engine = 'nvim-cmp',
                             -- name = '[Neorg]',

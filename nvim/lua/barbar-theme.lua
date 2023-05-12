@@ -1,13 +1,13 @@
 -- !::exe [So]
 
 --- @type bufferline.utils.hl
-local hl = require'barbar.utils'.hl
+local hl = require('barbar.utils.highlight')
 
 --- @type bufferline.icons
-local icons = require 'barbar.icons'
+local icons = require('barbar.icons')
 
 --- @type bufferline.config
-local config = require 'barbar.config'
+local config = require('barbar.config')
 
 -- Setup the highlight groups used by the plugin.
 hl.set_default_link('BufferAlternate', 'BufferDefaultAlternate')
