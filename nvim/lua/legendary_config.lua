@@ -1,4 +1,13 @@
--- Setup for legendary.nvim plugin and Norman keymap.
+-- Setup for legendary.nvim plugin.
+-- N.B. I use Norman keymap and ErgoDox keyboard with Auto Shift. Below is an extreme remapping
+-- of vim commands to suit my setup. Choices may be surprising and controversial.
+-- Some sacrifices are made, but I find the result to have super mnemonics to the
+-- vim default mappings. Some decisions I made:
+-- 	-Arrow keys over hjkl. I have better uses for my home row.
+-- 	-Retain intuitive use of Z/X/C/V keys for Undo/Cut/Copy/Paste.
+-- 	-Emphasis on Leap for motion. De-emphasis of default vim motions.
+-- 	-Priorities: Ergonomics > Mnemonics > Defaults > Aesthetics.
+-- 	-Modifiers: Ctrl for commands when the ideal key is already used, Alt for tabbing, leader for plugin commands.
 
 vim.g.mapleader = ' '
 

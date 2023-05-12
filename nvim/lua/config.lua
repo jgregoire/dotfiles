@@ -1,4 +1,8 @@
 -- This file contains setup and config for Packer plugins.
+-- N.B. I use the Norman keyboard layout on an ErgoDox keyboard.
+-- I have remapped almost everything, sometimes in surprising ways.
+-- If you want to use my config as a QWERTY user, consider replacing
+--   mappings, keys, labels, etc. with defaults, THEN customizing.
 
 -- Base16
 local base16 = require('base16')
