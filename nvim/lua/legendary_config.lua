@@ -175,7 +175,13 @@ require('legendary').setup({
         { 'pc',  mode = { 'n' }, description = 'Comment: Toggle line comment [MOTION]' },
 
         -- Toggleterm
-        { '<C-t>', mode = { 'n' }, description = 'Toggleterm: Toggle terminal' },
+        {
+            '<leader>t',
+            function() vim.api.nvim_command([[:TermExec go_back=0 cmd='cd ]] .. vim.fn.getcwd() .. [['<CR>]]) end,
+            mode = { 'n' },
+            description = 'Toggleterm: Open terminal at CWD'
+	},
+        { '<C-t>', mode = { 'n' }, description = 'ToggleTerm: Toggle Terminal(s)' },
 
         -- Leap
         { 's', '<Plug>(leap-forward-to)',  mode = { 'n' }, description = 'Leap: forward to [CHAR1][CHAR2][LABEL]', opts = defaults },
