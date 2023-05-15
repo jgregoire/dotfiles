@@ -115,18 +115,16 @@ notify.setup({
     fps    = 30,
     stages = 'static', -- Others: fade, slide, static
 })
--- Now make nvim use nvim-notify.
-vim.notify = notify
 
 -- Noice
 require('noice').setup({
     lsp = {
         progress = { enabled = true },
         override = {
-	    ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-	    ["vim.lsp.util.stylize_markdown"] = true,
-	    ["cmp.entry.get_documentation"] = true,
-        }
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true,
+        },
     },
     presets = {
         bottom_search = true, -- use a classic bottom cmdline for search
@@ -137,16 +135,16 @@ require('noice').setup({
     },
 })
 -- Noice colors
-vim.cmd('highlight NoiceCmdlinePopupBorder guifg=#' .. theme.base0C)
-vim.cmd('highlight NoiceCmdlineIcon        guifg=#' .. theme.base07)
+vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorder', { fg = '#'..theme.base0C, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NoiceCmdlineIcon',        { fg = '#'..theme.base07, bg = '#'..theme.base00 })
 
 -- Barbar (tabbing)
 require('bufferline').setup({
     auto_hide = true,
     clickable = true, -- Left click: Select. Middle click: Close.
     icons = {
-	buffer_index = true,
-	filetype = { enabled = true },
+        buffer_index = true,
+        filetype = { enabled = true },
     },
 })
 require('barbar-theme')
@@ -161,13 +159,13 @@ require('lualine').setup({
     sections = {
         lualine_a = { 'mode' },
         lualine_b = {
-	    'branch',
-	    {
-		'diff',
-		symbols = { added = ' ', modified = ' ', removed = ' ' },
-	    },
-	    'diagnostics',
-	},
+            'branch',
+            {
+                'diff',
+                symbols = { added = ' ', modified = ' ', removed = ' ' },
+            },
+            'diagnostics',
+        },
         lualine_c = { 'filename' },
         lualine_x = {
             { -- Noice showcmd implementation
@@ -202,21 +200,21 @@ require('gitsigns').setup({
         untracked    = { text = '┆' },
     },
 })
-vim.cmd('highlight GitSignsAdd          guifg=#' .. theme.base0B)
-vim.cmd('highlight GitSignsChange       guifg=#' .. theme.base0D)
-vim.cmd('highlight GitSignsDelete       guifg=#' .. theme.base08)
-vim.cmd('highlight GitSignsTopDelete    guifg=#' .. theme.base0E)
-vim.cmd('highlight GitSignsChangedelete guifg=#' .. theme.base0C)
-vim.cmd('highlight GitSignsUntracked    guifg=#' .. theme.base0A)
+vim.api.nvim_set_hl(0, 'GitSignsAdd',          { fg = '#'..theme.base0B, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'GitSignsChange',       { fg = '#'..theme.base0D, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'GitSignsDelete',       { fg = '#'..theme.base08, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'GitSignsTopDelete',    { fg = '#'..theme.base0E, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'GitSignsChangeDelete', { fg = '#'..theme.base0C, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'GitSignsUntracked',    { fg = '#'..theme.base0A, bg = '#'..theme.base00 })
 
 -- Toggleterm
 require('toggleterm').setup({
     open_mapping = '<C-t>',
     autochdir = true,
     float_opts = {
-	border = 'curved',
-	width = 120,
-	height = 40,
+        border = 'curved',
+        width = 120,
+        height = 40,
     },
 })
 
@@ -225,8 +223,8 @@ local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 local has_words_before = function()
-	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line-1, line, true)[1]:sub(col, col):match("%s") == nil
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line-1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 cmp.setup({
     snippet = {
