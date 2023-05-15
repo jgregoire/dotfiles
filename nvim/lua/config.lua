@@ -84,6 +84,10 @@ require('nvim_comment').setup({
 require('indent_blankline').setup({
     show_current_context = true,
     show_current_context_start = true,
+    use_treesitter = true,
+    --max_indent_increase = 2,
+    -- context_char = '┃',
+    --use_treesitter_scope = true,
 })
 
 -- nvim-notify
