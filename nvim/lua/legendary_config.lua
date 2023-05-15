@@ -42,8 +42,10 @@ require('legendary').setup({
         { 'V',               mode = { 'n', 'i' }, description = 'Visual Line mode' },
 
         -- Editing
-        { 'z',     'u',      mode = { 'n' },      description = 'Undo', opts = defaults },
-        { 'y',     '<C-r>',  mode = { 'n' },      description = 'Redo', opts = defaults },
+        { '<C-s>', { n = ':w<CR>', i = '<C-o>:w<CR>' }, description = 'Save' },
+        { '<C-z>', { n = 'u',      i = '<C-o>u' },      description = 'Undo', opts = defaults },
+        { '<C-y>', { n = '<C-r>',  i = '<C-o><C-r>' },  description = 'Redo', opts = defaults },
+        { '<C-v>', { n = 'p',      i = '<C-o>p' },      description = 'Paste after cursor' },
         { 'x',     'd',      mode = { 'n', 'v' }, description = 'Cut/delete [MOTION]', opts = defaults },
         { 'xw',    'dw',     mode = { 'n' },      description = 'Cut from cursor to start of next word', opts = defaults },
         { 'xx',    'dd',     mode = { 'n' },      description = 'Cut line', opts = defaults },
@@ -52,7 +54,6 @@ require('legendary').setup({
         { 'cw',    'yw',     mode = { 'n' },      description = 'Copy from cursor to start of next word', opts = defaults },
         { 'cc',    'yy',     mode = { 'n' },      description = 'Copy line', opts = defaults },
         { 'C',     'y$',     mode = { 'n' },      description = 'Copy to end of line', opts = defaults },
-        { '<C-v>', 'p',      mode = { 'n' },      description = 'Paste after cursor', opts = defaults },
         { 'P',     'P',      mode = { 'n' },      description = 'Paste before cursor', opts = defaults },
         { 'E',     'r',      mode = { 'n' },      description = 'Replace single character', opts = defaults },
         { 'e',     'c',      mode = { 'n' },      description = 'Edit/change [MOTION]', opts = defaults },
@@ -61,8 +62,6 @@ require('legendary').setup({
         { 'el',    'C',      mode = { 'n' },      description = 'Edit to end of line', opts = defaults },
         { 'j',     'gJ',     mode = { 'n' },      description = 'Join line below to current line', opts = defaults },
         { 'J',               mode = { 'n' },      description = 'Join line below to current line with a space between' },
-	{ '<C-s>', ':w<CR>', mode = { 'n' },      description = 'Save file', opts = defaults },
-	{ '<C-v>', '<C-r>\"',mode = { 'i' },      description = 'Paste from \" register', opts = defaults },
         { '<C-w>',           mode = { 'i' },      description = 'Delete word before cursor', opts = defaults },
         { '<C-n>', '<C-j>',  mode = { 'i' },      description = 'Begin new line', opts = defaults },
         { '>',               mode = { 'n' },      description = 'Indent [MOTION]' },
@@ -106,7 +105,7 @@ require('legendary').setup({
 
         -- Motions
         { 'b',  '%',  mode = { 'n' }, description = 'Jump to matching bracket', opts = defaults },
---        { 'I', 'zz',  mode = { 'n' }, description = 'Center screen on cursor', opts = defaults },
+        -- { 'I', 'zz',  mode = { 'n' }, description = 'Center screen on cursor', opts = defaults },
         { 'w',  '^',  mode = { 'n' }, description = 'First non-blank char', opts = defaults },
         { 'W',  '0',  mode = { 'n' }, description = 'Start of line', opts = defaults },
         { 'd',  'b',  mode = { 'n' }, description = 'Start of previous word', opts = defaults },
@@ -128,9 +127,9 @@ require('legendary').setup({
         { '<A-o>',     ':e ',                 mode = { 'n' }, description = 'Open/edit file', opts = defaults },
         { '<A-Right>', ':BufferNext<CR>',     mode = { 'n' }, description = 'Barbar: Next tab', opts = defaults },
         { '<A-Left>',  ':BufferPrevious<CR>', mode = { 'n' }, description = 'Barbar: Previous tab', opts = defaults },
-	{ '<A-1>',     ':BufferGoto 1<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 1', opts = defaults },
-	{ '<A-2>',     ':BufferGoto 2<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 2', opts = defaults },
-	{ '<A-3>',     ':BufferGoto 3<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 3', opts = defaults },
+        { '<A-1>',     ':BufferGoto 1<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 1', opts = defaults },
+        { '<A-2>',     ':BufferGoto 2<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 2', opts = defaults },
+        { '<A-3>',     ':BufferGoto 3<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 3', opts = defaults },
         { '<A-4>',     ':BufferGoto 4<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 4', opts = defaults },
         { '<A-5>',     ':BufferGoto 5<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 5', opts = defaults },
         { '<A-6>',     ':BufferGoto 6<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 6', opts = defaults },
@@ -155,8 +154,8 @@ require('legendary').setup({
         { '<leader>fb', '<cmd>Telescope buffers<cr>',    mode = { 'n' }, description = 'Telescope: Buffers', opts = defaults },
         { '<leader>ft', '<cmd>Telescope help_tags<cr>',  mode = { 'n' }, description = 'Telescope: Help tags', opts = defaults },
 
-	-- Autopairs
-	{ '<M-e>', mode = { 'n', 'i' }, description = 'Autopairs: Fast wrap' },
+        -- Autopairs
+        { '<M-e>', mode = { 'n', 'i' }, description = 'Autopairs: Fast wrap' },
 
         -- Nvim-Surround
         { 'ps',     mode = { 'n' }, description = 'Surround: Add [MOTION] [TYPE]' },
@@ -166,9 +165,9 @@ require('legendary').setup({
         { 'xs',     mode = { 'n' }, description = 'Surround: Delete [TYPE]' },
         { 'es',     mode = { 'n' }, description = 'Surround: Change [FROM TYPE] [TO TYPE]'},
         { 'S',      mode = { 'v' }, description = 'Surround: Add [TYPE]'},
-	{ 'gS',     mode = { 'v' }, description = 'Surround: Add with newlines [TYPE]' },
-	{ '<C-p>s', mode = { 'i' }, description = 'Surround: Add [MOTION] [TYPE]' },
-	{ '<C-p>S', mode = { 'i' }, description = 'Surround: Add with newlines [MOTION] [TYPE]' },
+        { 'gS',     mode = { 'v' }, description = 'Surround: Add with newlines [TYPE]' },
+        { '<C-p>s', mode = { 'i' }, description = 'Surround: Add [MOTION] [TYPE]' },
+        { '<C-p>S', mode = { 'i' }, description = 'Surround: Add with newlines [MOTION] [TYPE]' },
 
         -- Nvim-comment
         { 'pcc', mode = { 'n' }, description = 'Comment: Toggle line comment' },
@@ -180,7 +179,7 @@ require('legendary').setup({
             function() vim.api.nvim_command([[:TermExec go_back=0 direction=float cmd='cd ]] .. vim.fn.getcwd() .. [['<CR>]]) end,
             mode = { 'n' },
             description = 'Toggleterm: Open terminal at PWD'
-	},
+        },
         { '<C-t>', mode = { 'n' }, description = 'ToggleTerm: Toggle Terminal(s)' },
 
         -- Leap
