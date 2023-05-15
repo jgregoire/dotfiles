@@ -213,6 +213,11 @@ vim.cmd('highlight GitSignsUntracked    guifg=#' .. theme.base0A)
 require('toggleterm').setup({
     open_mapping = '<C-t>',
     autochdir = true,
+    float_opts = {
+	border = 'curved',
+	width = 120,
+	height = 40,
+    },
 })
 
 -- Setup nvim-cmp.

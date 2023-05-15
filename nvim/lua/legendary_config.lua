@@ -177,9 +177,9 @@ require('legendary').setup({
         -- Toggleterm
         {
             '<leader>t',
-            function() vim.api.nvim_command([[:TermExec go_back=0 cmd='cd ]] .. vim.fn.getcwd() .. [['<CR>]]) end,
+            function() vim.api.nvim_command([[:TermExec go_back=0 direction=float cmd='cd ]] .. vim.fn.getcwd() .. [['<CR>]]) end,
             mode = { 'n' },
-            description = 'Toggleterm: Open terminal at CWD'
+            description = 'Toggleterm: Open terminal at PWD'
 	},
         { '<C-t>', mode = { 'n' }, description = 'ToggleTerm: Toggle Terminal(s)' },
 
