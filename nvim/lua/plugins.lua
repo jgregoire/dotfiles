@@ -6,6 +6,15 @@ return require('packer').startup(function(use)
     -- Packer will check for updates to itself.
     use { 'wbthomason/packer.nvim' }
 
+    -- Start page
+    use {
+        'goolord/alpha-nvim',
+        requires = { 'nvim-tree/nvim-web-devicons' },
+        config = function()
+            require('alpha').setup(require('alpha.themes.dashboard').config)
+        end,
+    }
+
     -- Diff/merge tool
     use {
         'sindrets/diffview.nvim',
@@ -36,12 +45,7 @@ return require('packer').startup(function(use)
     use { 'norcalli/nvim-colorizer.lua' }
 
     -- Make nvim transparent.
-    use {
-        'xiyaowong/nvim-transparent',
-        config = function()
-            require('transparent').setup({ enable = true })
-        end,
-    }
+    use { 'xiyaowong/nvim-transparent' }
 
     -- Indent marker lines
     use { 'lukas-reineke/indent-blankline.nvim' }
@@ -82,8 +86,8 @@ return require('packer').startup(function(use)
 
     -- Better tabs
     use {
-	'romgrk/barbar.nvim',
-	wants = { 'nvim-tree/nvim-web-devicons' },
+        'romgrk/barbar.nvim',
+        wants = { 'nvim-tree/nvim-web-devicons' },
     }
 
     -- Keymap manager
@@ -108,13 +112,13 @@ return require('packer').startup(function(use)
     use {
         'nvim-treesitter/nvim-treesitter',
         config = function()
-            require('nvim-treesitter').setup({
-                ensure_installed = { 'all' },
-                sync_install = true,
+            require('nvim-treesitter.configs').setup({
+                ensure_installed = { 'lua', 'vim', 'help', 'query', },
+                sync_install = false,
                 auto_install = true,
                 highlight = {
                     enable = true,
-                    additional_vim_regex_hightlighting = false,
+                    additional_vim_regex_hightlighting = { 'neorg' },
                 },
             })
         end,
@@ -146,15 +150,15 @@ return require('packer').startup(function(use)
             require('neorg').setup({
                 load = {
                     ['core.defaults'] = {},
-                    ['core.norg.concealer'] = {},
-                    ['core.norg.dirman'] = {
+                    ['core.concealer'] = {},
+                    ['core.dirman'] = {
                         config = {
                             workspaces = {
                                 notes = '~/neorg',
                             },
                         },
                     },
-                    ['core.norg.completion'] = {
+                    ['core.completion'] = {
                         config = {
                             engine = 'nvim-cmp',
                             -- name = '[Neorg]',

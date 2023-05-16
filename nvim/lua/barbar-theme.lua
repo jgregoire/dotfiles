@@ -1,13 +1,13 @@
 -- !::exe [So]
 
 --- @type bufferline.utils.hl
-local hl = require'bufferline.utils'.hl
+local hl = require('barbar.utils.highlight')
 
 --- @type bufferline.icons
-local icons = require 'bufferline.icons'
+local icons = require('barbar.icons')
 
---- @type bufferline.options
-local options = require 'bufferline.options'
+--- @type bufferline.config
+local config = require('barbar.config')
 
 -- Setup the highlight groups used by the plugin.
 hl.set_default_link('BufferAlternate', 'BufferDefaultAlternate')
@@ -97,7 +97,7 @@ return {
     --         -Mod: when modified
     --        -Sign: the separator between buffers
     --      -Target: letter in buffer-picking mode
-    if options.highlight_alternate() then
+    if config.highlight_alternate() then
       local fg_alternate = hl.fg_or_default({'TabLineFill'}, '#d4cfc9', 223)
       local bg_alternate = hl.bg_or_default({'TabLineSel', 'Normal'}, 'none')
 
@@ -135,7 +135,7 @@ return {
     hl.set('BufferDefaultTabpageFill',    bg_inactive, fg_inactive)
     hl.set('BufferDefaultTabpages',       bg_inactive, fg_special, true)
 
-    if options.highlight_visible() then
+    if config.highlight_visible() then
       local fg_visible = hl.fg_or_default({'TabLineSel'}, '#f3f1ed', 255)
       local bg_visible = hl.bg_or_default({'TabLineSel', 'Normal'}, 'none')
 

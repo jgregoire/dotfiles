@@ -1,10 +1,40 @@
 -- This file contains setup and config for Packer plugins.
+-- N.B. I use the Norman keyboard layout on an ErgoDox keyboard.
+-- I have remapped almost everything, sometimes in surprising ways.
+-- If you want to use my config as a QWERTY user, consider replacing
+--   mappings, keys, labels, etc. with defaults, THEN customizing.
+
+-- Base16
+local base16 = require('base16')
+local theme = base16.themes['railscasts']
+theme.base00 = '0C0C0C' -- Usually #2B2B2B. I prefer a darker bg.
+base16(theme, true) -- Set theme.
+
+-- Transparency support
+require('transparent').setup()
 
 -- Diffview - git diff and merge
 require('diffview').setup()
 
 -- Leap - intuitive motions, spooky actions
-require('leap').add_default_mappings()
+local leap = require('leap')
+leap.add_default_mappings()
+leap.opts.safe_labels = {
+    't', 'o', 'h', 'm', 'q', 'w', 'd', 'f', 'u', 'r', 'l', 'y', 'k', 'j',
+    'T', 'O', 'H', 'M', 'Q', 'W', 'D', 'F', 'U', 'R', 'L', 'Y', 'K', 'J',
+}
+leap.opts.safe_labels = {
+    't', 'o', 'h', 'm', 'q', 'w', 'd', 'f', 'u', 'r', 'l', 'y', 'k', 'j',
+    'T', 'O', 'H', 'M', 'Q', 'W', 'D', 'F', 'U', 'R', 'L', 'Y', 'K', 'J',
+    '\'', '\"', '/', '?',
+    'z', 'x', 'c', 'v', 'b', 'p',
+    'Z', 'X', 'C', 'V', 'B', 'P',
+}
+vim.api.nvim_set_hl(0, 'LeapLabelPrimary',   { bg = '#' .. theme.base0C, fg = '#' .. theme.base07 })
+vim.api.nvim_set_hl(0, 'LeapLabelSecondary', { bg = '#' .. theme.base0E, fg = '#' .. theme.base07 })
+-- This is a hack until nvim core fixes a bug.
+vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
+
 require('leap-spooky').setup({
     affixes = {
         remote   = { window = 'r', cross_window = 'R' },
@@ -50,79 +80,78 @@ require('nvim_comment').setup({
     comment_chunk_text_object = 'ic', -- No idea what this is for
 })
 
--- Base16
-local base16 = require('base16')
-local theme = base16.themes['railscasts']
-base16(theme, true) -- Set theme.
-
 -- Indent Blankline
 require('indent_blankline').setup({
     show_current_context = true,
     show_current_context_start = true,
+    use_treesitter = true,
+    --max_indent_increase = 2,
+    -- context_char = '┃',
+    --use_treesitter_scope = true,
 })
 
 -- nvim-notify
-vim.cmd('highlight NotifyERRORBorder guifg=#' .. theme.base08)
-vim.cmd('highlight NotifyERRORIcon   guifg=#' .. theme.base08)
-vim.cmd('highlight NotifyERRORTitle  guifg=#' .. theme.base08)
-vim.cmd('highlight NotifyWARNBorder  guifg=#' .. theme.base0A)
-vim.cmd('highlight NotifyWARNIcon    guifg=#' .. theme.base0A)
-vim.cmd('highlight NotifyWARNTitle   guifg=#' .. theme.base0A)
-vim.cmd('highlight NotifyINFOBorder  guifg=#' .. theme.base07)
-vim.cmd('highlight NotifyINFOIcon    guifg=#' .. theme.base07)
-vim.cmd('highlight NotifyINFOTitle   guifg=#' .. theme.base07)
-vim.cmd('highlight NotifyDEBUGBorder guifg=#' .. theme.base0D)
-vim.cmd('highlight NotifyDEBUGIcon   guifg=#' .. theme.base0D)
-vim.cmd('highlight NotifyDEBUGTitle  guifg=#' .. theme.base0D)
-vim.cmd('highlight NotifyTRACEBorder guifg=#' .. theme.base0E)
-vim.cmd('highlight NotifyTRACEIcon   guifg=#' .. theme.base0E)
-vim.cmd('highlight NotidyTRACETitle  guifg=#' .. theme.base0E)
-vim.cmd('highlight Normal guifg=#' .. theme.base05 .. 'guibg=#000000')
-vim.cmd('highlight link NotifyERRORBody Normal')
-vim.cmd('highlight link NotifyWARNBody  Normal')
-vim.cmd('highlight link NotifyINFOBody  Normal')
-vim.cmd('highlight link NotifyDEBUGBody Normal')
-vim.cmd('highlight link NotifyTRACEBody Normal')
+vim.api.nvim_set_hl(0, 'NotifyERRORBorder', { fg = '#'..theme.base08, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyERRORIcon',   { fg = '#'..theme.base08, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyERRORTitle',  { fg = '#'..theme.base08, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyWARNBorder',  { fg = '#'..theme.base0A, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyWARNIcon',    { fg = '#'..theme.base0A, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyWARNTitle',   { fg = '#'..theme.base0A, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyINFOBorder',  { fg = '#'..theme.base07, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyINFOIcon',    { fg = '#'..theme.base07, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyINFOTitle',   { fg = '#'..theme.base07, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyDEBUGBorder', { fg = '#'..theme.base0D, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyDEBUGIcon',   { fg = '#'..theme.base0D, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyDEBUGTitle',  { fg = '#'..theme.base0D, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyTRACEBorder', { fg = '#'..theme.base0E, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyTRACEIcon',   { fg = '#'..theme.base0E, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyTRACETitle',  { fg = '#'..theme.base0E, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'Normal',            { fg = '#'..theme.base05, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NotifyERRORBody',   { link = 'Normal' })
+vim.api.nvim_set_hl(0, 'NotifyWARNBody',    { link = 'Normal' })
+vim.api.nvim_set_hl(0, 'NotifyINFOBody',    { link = 'Normal' })
+vim.api.nvim_set_hl(0, 'NotifyDEBUGBody',   { link = 'Normal' })
+vim.api.nvim_set_hl(0, 'NotifyTRACEBody',   { link = 'Normal' })
 
 local notify = require('notify')
 notify.setup({
     render = 'compact',
     fps    = 30,
     stages = 'static', -- Others: fade, slide, static
-    background_colour = '#000000',
 })
--- Now make nvim use nvim-notify.
-vim.notify = notify
 
 -- Noice
 require('noice').setup({
     lsp = {
-        progress = { enabled = false },
+        progress = { enabled = true },
         override = {
-	    ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-	    ["vim.lsp.util.stylize_markdown"] = true,
-	    ["cmp.entry.get_documentation"] = true,
-        }
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true,
+        },
     },
     presets = {
         bottom_search = true, -- use a classic bottom cmdline for search
         command_palette = true, -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
         inc_rename = false, -- enables an input dialog for inc-rename.nvim
-        lsp_doc_border = false, -- add a border to hover docs and signature help
+        lsp_doc_border = true, -- add a border to hover docs and signature help
     },
 })
 -- Noice colors
-vim.cmd('highlight NoiceCmdlinePopupBorder guifg=#' .. theme.base07)
-vim.cmd('highlight NoiceCmdlineIcon        guifg=#' .. theme.base08)
+vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorder', { fg = '#'..theme.base0C, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'NoiceCmdlineIcon',        { fg = '#'..theme.base07, bg = '#'..theme.base00 })
 
 -- Barbar (tabbing)
-require('barbar-theme')
 require('bufferline').setup({
     auto_hide = true,
     clickable = true, -- Left click: Select. Middle click: Close.
-    icons = 'both', -- true, 'numbers', or 'both'
+    icons = {
+        buffer_index = true,
+        filetype = { enabled = true },
+    },
 })
+require('barbar-theme')
 
 -- Lualine
 require('lualine').setup({
@@ -134,22 +163,15 @@ require('lualine').setup({
     sections = {
         lualine_a = { 'mode' },
         lualine_b = {
-	    'branch',
-	    {
-		'diff',
-		symbols = { added = ' ', modified = ' ', removed = ' ' },
-	    },
-	    {
-		'diagnostics',
-		-- symbols = { error = '⨻', warn = '⚠', info = '⯑', hint = '⦿'},
-	    }
-	},
+            'branch',
+            {
+                'diff',
+                symbols = { added = ' ', modified = ' ', removed = ' ' },
+            },
+            'diagnostics',
+        },
         lualine_c = { 'filename' },
         lualine_x = {
-            {
-                require('noice').api.status.message.get_hl,
-                cond = require('noice').api.status.message.has,
-            },
             { -- Noice showcmd implementation
                 require('noice').api.statusline.command.get,
                 cond = require('noice').api.statusline.command.has,
@@ -182,17 +204,22 @@ require('gitsigns').setup({
         untracked    = { text = '┆' },
     },
 })
-vim.cmd('highlight GitSignsAdd          guifg=#' .. theme.base0B .. ' guibg=#000000')
-vim.cmd('highlight GitSignsChange       guifg=#' .. theme.base0D .. ' guibg=#000000')
-vim.cmd('highlight GitSignsDelete       guifg=#' .. theme.base08 .. ' guibg=#000000')
-vim.cmd('highlight GitSignsTopDelete    guifg=#' .. theme.base0E .. ' guibg=#000000')
-vim.cmd('highlight GitSignsChangedelete guifg=#' .. theme.base0C .. ' guibg=#000000')
-vim.cmd('highlight GitSignsUntracked    guifg=#' .. theme.base0A .. ' guibg=#000000')
+vim.api.nvim_set_hl(0, 'GitSignsAdd',          { fg = '#'..theme.base0B, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'GitSignsChange',       { fg = '#'..theme.base0D, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'GitSignsDelete',       { fg = '#'..theme.base08, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'GitSignsTopDelete',    { fg = '#'..theme.base0E, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'GitSignsChangeDelete', { fg = '#'..theme.base0C, bg = '#'..theme.base00 })
+vim.api.nvim_set_hl(0, 'GitSignsUntracked',    { fg = '#'..theme.base0A, bg = '#'..theme.base00 })
 
 -- Toggleterm
 require('toggleterm').setup({
     open_mapping = '<C-t>',
-
+    autochdir = true,
+    float_opts = {
+        border = 'curved',
+        width = 120,
+        height = 40,
+    },
 })
 
 -- Setup nvim-cmp.
@@ -200,8 +227,8 @@ local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 local has_words_before = function()
-	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line-1, line, true)[1]:sub(col, col):match("%s") == nil
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line-1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 cmp.setup({
     snippet = {
@@ -210,11 +237,9 @@ cmp.setup({
         end,
     },
     mapping = {
-        --['C-i'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-        --['wC-ow'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
         ['<C-y>'] = cmp.config.disable,
-        ['<Esc>'] = cmp.mapping({
+        ['<C-c>'] = cmp.mapping({
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
         }),
@@ -228,8 +253,8 @@ cmp.setup({
                 cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
-            elseif has_words_before() then
-                cmp.complete()
+            --elseif has_words_before() then -- use <C-Tab> instead
+            --    cmp.complete()
             else
                 fallback()
             end
@@ -241,6 +266,8 @@ cmp.setup({
                 cmp.select_prev_item()
             elseif luasnip.jumpable(-1) then
                 luasnip.jump(-1)
+            elseif has_words_before() then
+                cmp.complete()
             else
                 fallback()
             end
@@ -293,6 +320,7 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 -- Configure Lua language server.
 require('lspconfig').lua_ls.setup({
     capabilities = capabilities,
@@ -318,23 +346,26 @@ require('lspconfig').lua_ls.setup({
         },
     },
 })
--- Configure C/C++/C# language server
---require('lspconfig')['ccls'].setup{
---    init_options = {
---        compilationDatabaseDirectory = "build",
---        index = { threads = 0},
---        clang = { excludeArgs = { "-frounding-math"} },
---    }
---}
+
+require('lspconfig').ltex.setup({
+    settings = {
+        ltex = {
+            language = 'en-US',
+        },
+    },
+})
+
 -- Setup language servers with default config.
 local servers = {
     'rls',
-    'arduino_language_server',
+    -- 'arduino_language_server',
     'bashls',
     'jsonls',
     'pylsp',
     'yamlls',
-    'ltex',
+    'vimls',
+    'openscad_ls',
+    -- 'clangd', -- This breaks on Windows.
 }
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup({
