@@ -312,8 +312,26 @@ cmp.setup.cmdline(':', {
         { name = 'cmdline' }
     })
 })
+
 -- cmp autopairs support
-cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
+local handlers = require('nvim-autopairs.completion.handlers')
+cmp.event:on(
+    'confirm_done',
+    cmp_autopairs.on_confirm_done({
+        map_char = { tex = '' },
+        filetypes = {
+            ['*'] = {
+                ['('] = {
+                    kind = {
+                        cmp.lsp.CompletionItemKind.Function,
+                        cmp.lsp.CompletionItemKind.Method,
+                    },
+                    handler = handlers['*']
+                }
+            }
+        }
+    })
+)
 
 -- Setup lspconfig lua server.
 local runtime_path = vim.split(package.path, ';')
