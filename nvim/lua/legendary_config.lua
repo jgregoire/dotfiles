@@ -62,14 +62,14 @@ require('legendary').setup({
         { 'el',    'C',      mode = { 'n' },      description = 'Edit to end of line', opts = defaults },
         { 'j',     'gJ',     mode = { 'n' },      description = 'Join line below to current line', opts = defaults },
         { 'J',               mode = { 'n' },      description = 'Join line below to current line with a space between' },
-        { '<C-w>',           mode = { 'i' },      description = 'Delete word before cursor', opts = defaults },
-        { '<C-n>', '<C-j>',  mode = { 'i' },      description = 'Begin new line', opts = defaults },
+        -- { '<C-w>',           mode = { 'i' },      description = 'Delete word before cursor', opts = defaults },
+        { '<C-n>', '<C-o>n',  mode = { 'i' },      description = 'Begin new line', opts = defaults },
         { '>',               mode = { 'n' },      description = 'Indent [MOTION]' },
         { '>>',              mode = { 'n' },      description = 'Indent line' },
         { '<',               mode = { 'n' },      description = 'De-indent [MOTION]' },
         { '<<',              mode = { 'n' },      description = 'De-indent line' },
-        { '<C-t>',           mode = { 'i' },      description = 'Indent line' },
-        { '<C-d>',           mode = { 'i' },      description = 'De-indent line' },
+        { '<C-.>',           mode = { 'i' },      description = 'Indent line' },
+        { '<C-,>',           mode = { 'i' },      description = 'De-indent line' },
         -- This one's a doozy!
         { '<C-e>', [[<C-\><C-n>:call search('[>)\]}"'']', 'W')<CR>a]], mode = { 'i' }, description = 'Jump out of brackets or quotes' },
 
@@ -86,7 +86,7 @@ require('legendary').setup({
         { 'i',      mode = { 'o' }, description = 'Inside (Chording)' },
         { 'a',      mode = { 'o' }, description = 'Around (Chording)' },
         { 't',      mode = { 'o' }, description = 'To [CHAR] (Chording)' },
-        -- { 'r', 'l', mode = { 'o' }, description = 'Character to right' },
+        { 'r', 'l', mode = { 'o' }, description = 'Character to right', opts = defaults },
         { 'l', 'h', mode = { 'o' }, description = 'Character to left', opts = defaults },
         { 'w',      mode = { 'o' }, description = 'Word (Chording)' },
         { 'b',      mode = { 'o' }, description = '() Block (Chording)' },
@@ -105,7 +105,6 @@ require('legendary').setup({
 
         -- Motions
         { 'b',  '%',  mode = { 'n' }, description = 'Jump to matching bracket', opts = defaults },
-        -- { 'I', 'zz',  mode = { 'n' }, description = 'Center screen on cursor', opts = defaults },
         { 'w',  '^',  mode = { 'n' }, description = 'First non-blank char', opts = defaults },
         { 'W',  '0',  mode = { 'n' }, description = 'Start of line', opts = defaults },
         { 'd',  'b',  mode = { 'n' }, description = 'Start of previous word', opts = defaults },
@@ -155,7 +154,7 @@ require('legendary').setup({
         { '<leader>ft', '<cmd>Telescope help_tags<cr>',  mode = { 'n' }, description = 'Telescope: Help tags', opts = defaults },
 
         -- Autopairs
-        { '<M-e>', mode = { 'n', 'i' }, description = 'Autopairs: Fast wrap' },
+        { '<C-w>', mode = { 'n', 'i' }, description = 'Autopairs: Fast wrap' },
 
         -- Nvim-Surround
         { 'ps',     mode = { 'n' }, description = 'Surround: Add [MOTION] [TYPE]' },
@@ -178,17 +177,18 @@ require('legendary').setup({
             '<leader>t',
             function() vim.api.nvim_command([[:TermExec go_back=0 direction=float cmd='cd ]] .. vim.fn.getcwd() .. [['<CR>]]) end,
             mode = { 'n' },
-            description = 'Toggleterm: Open terminal at PWD'
+            description = 'Toggleterm: Open terminal at PWD',
+	    opts = defaults
         },
-        { '<C-t>', mode = { 'n' }, description = 'ToggleTerm: Toggle Terminal(s)' },
+        { '<C-t>', mode = { 'n' }, description = 'ToggleTerm: Toggle Terminal(s)', opts = defaults },
 
         -- Leap
         { 's', '<Plug>(leap-forward-to)',  mode = { 'n' }, description = 'Leap: forward to [CHAR1][CHAR2][LABEL]', opts = defaults },
         { 'S', '<Plug>(leap-backward-to)', mode = { 'n' }, description = 'Leap: backward to [CHAR1][CHAR2][LABEL]', opts = defaults },
 
         -- Leap (Spooky)
-        { 'r', mode = { 'o' }, description = 'Leap (Spooky): Restful [MOTION] at [CHAR1][CHAR2][LABEL]' },
-        { 'R', mode = { 'o' }, description = 'Leap (Spooky): Restful [MOTION] in another window at [CHAR1][CHAR2][LABEL]' },
+        { 's', mode = { 'o' }, description = 'Leap (Spooky): Static [MOTION] at [CHAR1][CHAR2][LABEL]' },
+        { 'S', mode = { 'o' }, description = 'Leap (Spooky): Static [MOTION] in another window at [CHAR1][CHAR2][LABEL]' },
         { 'm', mode = { 'o' }, description = 'Leap (Spooky): Magnetic [MOTION] at [CHAR1][CHAR2][LABEL]' },
         { 'M', mode = { 'o' }, description = 'Leap (Spooky): Magnetic [MOTION] in another window at [CHAR1][CHAR2][LABEL]' },
     },

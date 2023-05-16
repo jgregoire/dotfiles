@@ -37,7 +37,7 @@ vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
 
 require('leap-spooky').setup({
     affixes = {
-        remote   = { window = 'r', cross_window = 'R' },
+        remote   = { window = 's', cross_window = 's' },
         magnetic = { window = 'm', cross_window = 'M' },
     },
     paste_on_remote_yank = false,
@@ -48,9 +48,9 @@ require('nvim-autopairs').setup({
     fast_wrap = {
         -- Before       Input   After
         -----------------------------------
-        -- (|foobar     <M-e>$  (|foobar)
+        -- (|foobar     <M-e>l  (|foobar)
         -- (|)(foobar)  <M-e>a  (|(foobar))
-        map = '<M-e>', -- Launch fastwrap
+        map = '<C-w>', -- Launch fastwrap
         end_key = 'l', -- End of line
         keys = 'asetnioh', -- Home row keys for position markers
     },
