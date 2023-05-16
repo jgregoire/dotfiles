@@ -51,6 +51,7 @@ require('nvim-autopairs').setup({
         -- (|foobar     <M-e>l  (|foobar)
         -- (|)(foobar)  <M-e>a  (|(foobar))
         map = '<C-w>', -- Launch fastwrap
+        chars = { '{', '[', '(', '"', "'", '<' },
         end_key = 'l', -- End of line
         keys = 'asetnioh', -- Home row keys for position markers
     },
@@ -276,7 +277,7 @@ cmp.setup({
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'nvim_lua' },
-        { name = 'luasnip' }, -- For luasnip users.
+        { name = 'luasnip' },
         { name = 'neorg' },
         { name = 'calc' },
     }, {
