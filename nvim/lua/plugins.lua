@@ -106,6 +106,8 @@ return require('packer').startup(function(use)
     -- lspconfig
     use { 'neovim/nvim-lspconfig' }
 
+    use { 'RRethy/nvim-treesitter-endwise' }
+
     -- Treesitter
     use {
         'nvim-treesitter/nvim-treesitter',

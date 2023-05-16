@@ -23,7 +23,7 @@ leap.opts.safe_labels = {
     't', 'o', 'h', 'm', 'q', 'w', 'd', 'f', 'u', 'r', 'l', 'y', 'k', 'j',
     'T', 'O', 'H', 'M', 'Q', 'W', 'D', 'F', 'U', 'R', 'L', 'Y', 'K', 'J',
 }
-leap.opts.safe_labels = {
+leap.opts.labels = {
     't', 'o', 'h', 'm', 'q', 'w', 'd', 'f', 'u', 'r', 'l', 'y', 'k', 'j',
     'T', 'O', 'H', 'M', 'Q', 'W', 'D', 'F', 'U', 'R', 'L', 'Y', 'K', 'J',
     '\'', '\"', '/', '?',
