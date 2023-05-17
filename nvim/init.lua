@@ -1,4 +1,8 @@
 -- Neovim config, Lua edition.
+
+-- Speedy start
+vim.loader.enable()
+
 local o = vim.o
 local w = vim.wo
 local b = vim.bo
@@ -26,9 +30,6 @@ local ensure_packer = function()
 end
 
 local packer_bootstrap = ensure_packer()
-
--- Speedy start
-require('impatient')
 
 -- Specify plugins:
 require('plugins')
@@ -77,8 +78,10 @@ o.shiftwidth = 4
 -- Completion
 o.wildmenu = true
 o.showcmd = true
-o.cmdheight = 0
 o.completeopt = 'menu,menuone,noselect'
+
+o.cmdheight = 0
+--o.showcmdloc = 
 
 -- Keycode timeout
 o.timeout = false

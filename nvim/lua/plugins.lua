@@ -16,13 +16,13 @@ return require('packer').startup(function(use)
     }
 
     -- Diff/merge tool
-    use {
+    --[[use {
         'sindrets/diffview.nvim',
         requires = {
 	    'nvim-lua/plenary.nvim',
 	    'nvim-tree/nvim-web-devicons',
         },
-    }
+    }--]]
 
     -- Leap
     use { 'ggandor/leap.nvim' }
@@ -38,8 +38,6 @@ return require('packer').startup(function(use)
             'rcarriga/nvim-notify',
         }
     }
-    -- Speed up nvim launch time.
-    use { 'lewis6991/impatient.nvim' }
 
     -- Highlight color codes like #a4c261 or #da4939 in their actual color.
     use { 'norcalli/nvim-colorizer.lua' }
@@ -108,6 +106,8 @@ return require('packer').startup(function(use)
     -- lspconfig
     use { 'neovim/nvim-lspconfig' }
 
+    use { 'RRethy/nvim-treesitter-endwise' }
+
     -- Treesitter
     use {
         'nvim-treesitter/nvim-treesitter',
@@ -120,6 +120,9 @@ return require('packer').startup(function(use)
                     enable = true,
                     additional_vim_regex_hightlighting = { 'neorg' },
                 },
+                endwise = {
+                    enable = true
+                }
             })
         end,
         -- run = ':TSUpdate',
@@ -137,6 +140,8 @@ return require('packer').startup(function(use)
             'hrsh7th/cmp-cmdline',
             'L3MON4D3/LuaSnip',
             'saadparwaiz1/cmp_luasnip',
+            'hrsh7th/cmp-calc',
+            'hrsh7th/cmp-nvim-lua',
         },
     }
 

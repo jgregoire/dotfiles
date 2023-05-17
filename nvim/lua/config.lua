@@ -14,7 +14,7 @@ base16(theme, true) -- Set theme.
 require('transparent').setup()
 
 -- Diffview - git diff and merge
-require('diffview').setup()
+--require('diffview').setup()
 
 -- Leap - intuitive motions, spooky actions
 local leap = require('leap')
@@ -23,7 +23,7 @@ leap.opts.safe_labels = {
     't', 'o', 'h', 'm', 'q', 'w', 'd', 'f', 'u', 'r', 'l', 'y', 'k', 'j',
     'T', 'O', 'H', 'M', 'Q', 'W', 'D', 'F', 'U', 'R', 'L', 'Y', 'K', 'J',
 }
-leap.opts.safe_labels = {
+leap.opts.labels = {
     't', 'o', 'h', 'm', 'q', 'w', 'd', 'f', 'u', 'r', 'l', 'y', 'k', 'j',
     'T', 'O', 'H', 'M', 'Q', 'W', 'D', 'F', 'U', 'R', 'L', 'Y', 'K', 'J',
     '\'', '\"', '/', '?',
@@ -37,7 +37,7 @@ vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
 
 require('leap-spooky').setup({
     affixes = {
-        remote   = { window = 'r', cross_window = 'R' },
+        remote   = { window = 's', cross_window = 's' },
         magnetic = { window = 'm', cross_window = 'M' },
     },
     paste_on_remote_yank = false,
@@ -48,9 +48,10 @@ require('nvim-autopairs').setup({
     fast_wrap = {
         -- Before       Input   After
         -----------------------------------
-        -- (|foobar     <M-e>$  (|foobar)
+        -- (|foobar     <M-e>l  (|foobar)
         -- (|)(foobar)  <M-e>a  (|(foobar))
-        map = '<M-e>', -- Launch fastwrap
+        map = '<C-w>', -- Launch fastwrap
+        chars = { '{', '[', '(', '"', "'", '<' },
         end_key = 'l', -- End of line
         keys = 'asetnioh', -- Home row keys for position markers
     },
@@ -275,8 +276,10 @@ cmp.setup({
     },
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        { name = 'luasnip' }, -- For luasnip users.
+        { name = 'nvim_lua' },
+        { name = 'luasnip' },
         { name = 'neorg' },
+        { name = 'calc' },
     }, {
         { name = 'buffer' },
     }),
@@ -312,8 +315,26 @@ cmp.setup.cmdline(':', {
         { name = 'cmdline' }
     })
 })
+
 -- cmp autopairs support
-cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
+local handlers = require('nvim-autopairs.completion.handlers')
+cmp.event:on(
+    'confirm_done',
+    cmp_autopairs.on_confirm_done({
+        map_char = { tex = '' },
+        filetypes = {
+            ['*'] = {
+                ['('] = {
+                    kind = {
+                        cmp.lsp.CompletionItemKind.Function,
+                        cmp.lsp.CompletionItemKind.Method,
+                    },
+                    handler = handlers['*']
+                }
+            }
+        }
+    })
+)
 
 -- Setup lspconfig lua server.
 local runtime_path = vim.split(package.path, ';')
