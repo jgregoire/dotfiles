@@ -286,7 +286,7 @@ cmp.setup({
     enabled = function() -- Disable autocomplete in comments.
         local context = require'cmp.config.context'
         if vim.api.nvim_get_mode().mode == 'c' then
-            return true
+            return false -- Default is true, but this conflicts with Noice.
         else
             return not context.in_treesitter_capture("comment")
             and not context.in_syntax_group("Comment")
