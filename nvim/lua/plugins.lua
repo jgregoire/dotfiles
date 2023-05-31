@@ -113,7 +113,7 @@ return require('packer').startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         config = function()
             require('nvim-treesitter.configs').setup({
-                ensure_installed = { 'lua', 'vim', 'help', 'query', },
+                ensure_installed = { 'lua', 'vim', 'vimdoc', 'query', 'c'},
                 sync_install = false,
                 auto_install = true,
                 highlight = {
