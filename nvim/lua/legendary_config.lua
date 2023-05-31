@@ -192,6 +192,21 @@ require('legendary').setup({
         { 'S', mode = { 'o' }, description = 'Leap (Spooky): Static [MOTION] in another window at [CHAR1][CHAR2][LABEL]' },
         { 'm', mode = { 'o' }, description = 'Leap (Spooky): Magnetic [MOTION] at [CHAR1][CHAR2][LABEL]' },
         { 'M', mode = { 'o' }, description = 'Leap (Spooky): Magnetic [MOTION] in another window at [CHAR1][CHAR2][LABEL]' },
+
+	-- Neorg
+	{ '<leader>n', ':Neorg mode norg<CR>', mode = 'n',    description = 'Neorg: Enter norg mode' },
+	{ '<leader>tu', mode = 'norg', description = 'Neorg: Set TODO task undone' },
+	{ '<leader>tp', mode = 'norg', description = 'Neorg: Set TODO task pending' },
+	{ '<leader>td', mode = 'norg', description = 'Neorg: Set TODO task done' },
+	{ '<leader>th', mode = 'norg', description = 'Neorg: Set TODO task on hold' },
+	{ '<leader>tc', mode = 'norg', description = 'Neorg: Set TODO task cancelled' },
+	{ '<leader>tr', mode = 'norg', description = 'Neorg: Set TODO task recurring' },
+	{ '<leader>ti', mode = 'norg', description = 'Neorg: Set TODO task important' },
+	{ '<leader>ta', mode = 'norg', description = 'Neorg: Set TODO task ambiguous' },
+	{ '<C-Space>',  mode = 'norg', description = 'Neorg: Toggle TODO task between states' },
+	{ '<CR>',       mode = 'norg', description = 'Neorg: Hop to link location' },
+	{ '<A-CR>',     mode = 'norg', description = 'Neorg: Open location in vsplit' },
+	{ '<leader>id', mode = 'norg', description = 'Neorg: Insert date' },
     },
 
     commands = {},

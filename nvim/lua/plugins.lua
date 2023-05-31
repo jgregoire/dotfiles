@@ -149,13 +149,17 @@ return require('packer').startup(function(use)
     use {
         'nvim-neorg/neorg',
         tag = '*',
-        -- ft = 'norg', -- Only load plugin when opening a .norg file.
+        ft = 'norg', -- Only load plugin when opening a .norg file.
         after = 'nvim-treesitter',
         config = function()
             require('neorg').setup({
                 load = {
                     ['core.defaults'] = {},
-                    ['core.concealer'] = {},
+                    ['core.concealer'] = {
+			config = {
+			    folds = false,
+			}
+		    },
                     ['core.dirman'] = {
                         config = {
                             workspaces = {
