@@ -10,6 +10,7 @@
 -- 	-Modifiers: Ctrl for commands when the ideal key is already used, Alt for tabbing, leader for plugin commands.
 
 vim.g.mapleader = ' '
+vim.g.maplocalleader = '-'
 
 local defaults = { noremap = true }
 

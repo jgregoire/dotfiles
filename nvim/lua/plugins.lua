@@ -154,7 +154,22 @@ return require('packer').startup(function(use)
         config = function()
             require('neorg').setup({
                 load = {
-                    ['core.defaults'] = {},
+		    -- Subset of core.defaults:
+		    ['core.esupports.hop'] = {},
+		    ['core.esupports.indent'] = {},
+		    ['core.esupports.metagen'] = {},
+		    ['core.itero'] = {},
+		    ['core.pivot'] = {},
+		    ['core.promo'] = {},
+		    ['core.qol.toc'] = {},
+		    ['core.qol.todo_items'] = {},
+		    ['core.keybinds'] = {
+                        config = {
+                            default_keybinds = true,
+                            neorg_leader = '<LocalLeader>',
+                        }
+                    },
+		    -- Non-defaults:
                     ['core.concealer'] = {
 			config = {
 			    folds = false,
