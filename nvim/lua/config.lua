@@ -378,7 +378,7 @@ require('lspconfig').ltex.setup({
 
 -- Setup language servers with default config.
 local servers = {
-    'rls',
+    'rust_analyzer',
     -- 'arduino_language_server',
     'bashls',
     'jsonls',
@@ -386,7 +386,8 @@ local servers = {
     'yamlls',
     'vimls',
     'openscad_ls',
-    -- 'clangd', -- This breaks on Windows.
+    'dotls',
+    'clangd', -- This breaks on Windows.
 }
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup({

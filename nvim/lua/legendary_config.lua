@@ -10,6 +10,7 @@
 -- 	-Modifiers: Ctrl for commands when the ideal key is already used, Alt for tabbing, leader for plugin commands.
 
 vim.g.mapleader = ' '
+vim.g.maplocalleader = '-'
 
 local defaults = { noremap = true }
 
@@ -37,7 +38,7 @@ require('legendary').setup({
         { 'n',     'o',      mode = { 'n' },      description = 'Append new line below', opts = defaults },
         { 'N',     'O',      mode = { 'n' },      description = 'Append new line above', opts = defaults },
         -- { 's',               mode = { 'n' },      description = 'Delete character and insert' },
-        { 'b',     '<C-v>',  mode = { 'n' },      description = 'Visual Block mode', opts = defaults },
+        { '<C-b>', '<C-v>',  mode = { 'n' },      description = 'Visual Block mode', opts = defaults },
         { 'v',               mode = { 'n', 'i' }, description = 'Visual Char mode' },
         { 'V',               mode = { 'n', 'i' }, description = 'Visual Line mode' },
 
@@ -55,15 +56,15 @@ require('legendary').setup({
         { 'cc',    'yy',     mode = { 'n' },      description = 'Copy line', opts = defaults },
         { 'C',     'y$',     mode = { 'n' },      description = 'Copy to end of line', opts = defaults },
         { 'P',     'P',      mode = { 'n' },      description = 'Paste before cursor', opts = defaults },
-        { 'E',     'r',      mode = { 'n' },      description = 'Replace single character', opts = defaults },
+        -- { 'E',     'r',      mode = { 'n' },      description = 'Replace single character', opts = defaults },
         { 'e',     'c',      mode = { 'n' },      description = 'Edit/change [MOTION]', opts = defaults },
         { 'EE',    'R',      mode = { 'n' },      description = 'Replace characters until ESC', opts = defaults },
         { 'ee',    'cc',     mode = { 'n' },      description = 'Edit entire line', opts = defaults },
-        { 'el',    'C',      mode = { 'n' },      description = 'Edit to end of line', opts = defaults },
+        { 'E',     'C',      mode = { 'n' },      description = 'Edit to end of line', opts = defaults },
         { 'j',     'gJ',     mode = { 'n' },      description = 'Join line below to current line', opts = defaults },
         { 'J',               mode = { 'n' },      description = 'Join line below to current line with a space between' },
         -- { '<C-w>',           mode = { 'i' },      description = 'Delete word before cursor', opts = defaults },
-        { '<C-n>', '<C-o>n',  mode = { 'i' },      description = 'Begin new line', opts = defaults },
+        { '<C-n>', '<C-o>n', mode = { 'i' },      description = 'Begin new line', opts = defaults },
         { '>',               mode = { 'n' },      description = 'Indent [MOTION]' },
         { '>>',              mode = { 'n' },      description = 'Indent line' },
         { '<',               mode = { 'n' },      description = 'De-indent [MOTION]' },
@@ -103,8 +104,9 @@ require('legendary').setup({
         { '\'',     mode = { 'o' }, description = 'Single quotes (Chording)' },
         { '\"',     mode = { 'o' }, description = 'Double quotes (Chording)' },
 
-        -- Motions
+        -- Navigation
         { 'b',  '%',  mode = { 'n' }, description = 'Jump to matching bracket', opts = defaults },
+        { 'B',  '%<Right>', mode = { 'n' }, description = 'Jump after matching bracket', opts = defaults },
         { 'w',  '^',  mode = { 'n' }, description = 'First non-blank char', opts = defaults },
         { 'W',  '0',  mode = { 'n' }, description = 'Start of line', opts = defaults },
         { 'd',  'b',  mode = { 'n' }, description = 'Start of previous word', opts = defaults },
@@ -191,6 +193,21 @@ require('legendary').setup({
         { 'S', mode = { 'o' }, description = 'Leap (Spooky): Static [MOTION] in another window at [CHAR1][CHAR2][LABEL]' },
         { 'm', mode = { 'o' }, description = 'Leap (Spooky): Magnetic [MOTION] at [CHAR1][CHAR2][LABEL]' },
         { 'M', mode = { 'o' }, description = 'Leap (Spooky): Magnetic [MOTION] in another window at [CHAR1][CHAR2][LABEL]' },
+
+	-- Neorg
+	{ '<leader>n', ':Neorg mode norg<CR>', mode = 'n',    description = 'Neorg: Enter norg mode' },
+	{ '<leader>tu', mode = 'norg', description = 'Neorg: Set TODO task undone' },
+	{ '<leader>tp', mode = 'norg', description = 'Neorg: Set TODO task pending' },
+	{ '<leader>td', mode = 'norg', description = 'Neorg: Set TODO task done' },
+	{ '<leader>th', mode = 'norg', description = 'Neorg: Set TODO task on hold' },
+	{ '<leader>tc', mode = 'norg', description = 'Neorg: Set TODO task cancelled' },
+	{ '<leader>tr', mode = 'norg', description = 'Neorg: Set TODO task recurring' },
+	{ '<leader>ti', mode = 'norg', description = 'Neorg: Set TODO task important' },
+	{ '<leader>ta', mode = 'norg', description = 'Neorg: Set TODO task ambiguous' },
+	{ '<C-Space>',  mode = 'norg', description = 'Neorg: Toggle TODO task between states' },
+	{ '<CR>',       mode = 'norg', description = 'Neorg: Hop to link location' },
+	{ '<A-CR>',     mode = 'norg', description = 'Neorg: Open location in vsplit' },
+	{ '<leader>id', mode = 'norg', description = 'Neorg: Insert date' },
     },
 
     commands = {},

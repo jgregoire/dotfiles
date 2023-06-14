@@ -113,7 +113,7 @@ return require('packer').startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         config = function()
             require('nvim-treesitter.configs').setup({
-                ensure_installed = { 'lua', 'vim', 'help', 'query', },
+                ensure_installed = { 'lua', 'vim', 'vimdoc', 'query', 'c'},
                 sync_install = false,
                 auto_install = true,
                 highlight = {
@@ -149,13 +149,32 @@ return require('packer').startup(function(use)
     use {
         'nvim-neorg/neorg',
         tag = '*',
-        -- ft = 'norg', -- Only load plugin when opening a .norg file.
+        ft = 'norg', -- Only load plugin when opening a .norg file.
         after = 'nvim-treesitter',
         config = function()
             require('neorg').setup({
                 load = {
-                    ['core.defaults'] = {},
-                    ['core.concealer'] = {},
+		    -- Subset of core.defaults:
+		    ['core.esupports.hop'] = {},
+		    ['core.esupports.indent'] = {},
+		    ['core.esupports.metagen'] = {},
+		    ['core.itero'] = {},
+		    ['core.pivot'] = {},
+		    ['core.promo'] = {},
+		    ['core.qol.toc'] = {},
+		    ['core.qol.todo_items'] = {},
+		    ['core.keybinds'] = {
+                        config = {
+                            default_keybinds = true,
+                            neorg_leader = '<LocalLeader>',
+                        }
+                    },
+		    -- Non-defaults:
+                    ['core.concealer'] = {
+			config = {
+			    folds = false,
+			}
+		    },
                     ['core.dirman'] = {
                         config = {
                             workspaces = {
