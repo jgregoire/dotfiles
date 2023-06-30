@@ -173,7 +173,66 @@ return require('packer').startup(function(use)
                     ['core.concealer'] = {
 			config = {
 			    folds = false,
-			}
+			    --[[]]
+			    icons = {
+				todo = {
+				    -- enabled = true,
+				    done = {
+					icon = "",
+					-- icon = "",
+					-- icon = "",
+					-- icon = "",
+					-- icon = "ﲏ",
+					-- icon = "﫠",
+					-- icon = "﫟",
+					-- nodes = { "todo_item_done" },
+					-- render = module.public.icon_renderers.on_left,
+				    },
+				    pending = {
+					icon = "⭘",
+					-- icon = "",
+					-- icon = "",
+					-- icon = "ﱫ",
+					-- icon = "ﯷ",
+					-- icon = "ﳺ",
+				    },
+				    undone = {
+					icon = "",
+					-- icon = "",
+					-- icon = "ﱳ",
+					-- icon = "窱",
+					-- icon = "×",
+				    },
+				    uncertain = {
+					icon = "",
+					-- icon = "",
+					-- icon = "ﲉ",
+					-- icon = "",
+				    },
+				    on_hold = {
+					icon = "",
+					-- icon = "",
+					-- icon = "",
+				    },
+				    cancelled = {
+					icon = "",
+				    },
+				    recurring = {
+					-- icon = "菱",
+					icon = "↺",
+				    },
+				    urgent = {
+					icon = "",
+					-- icon = "",
+					-- icon = "",
+					-- icon = "ﱥ",
+					-- icon = "𥉉",
+					-- icon = "",
+				    },
+				},
+			    },
+			    --[[]]
+			},
 		    },
                     ['core.dirman'] = {
                         config = {
