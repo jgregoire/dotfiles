@@ -4,7 +4,10 @@ ZSH_THEME="agnoster"
 plugins=(git gitfast python)
 source $ZSH/oh-my-zsh.sh
 
+<<<<<<< HEAD
 ## The following lines were added by compinstall
+=======
+>>>>>>> b38d48b9560ecb1d34264d516a08612ad9b5bcc4
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle :compinstall filename '/home/james/.zshrc'
  
@@ -12,10 +15,8 @@ path+=('/home/james/.local/bin')
 
 autoload -Uz compinit
 compinit
-## End of lines added by compinstall
-## Lines configured by zsh-newuser-install
+
 bindkey -e
-## End of lines configured by zsh-newuser-install
 
 ##
 ## Add directories to default PATH
@@ -80,14 +81,12 @@ setopt NUMERIC_GLOB_SORT
 
 # SSH with kitty terminfo
 alias kssh='kitty +kitten ssh'
+
 # systemd
 alias ssc='sudo systemctl'
 
 # ncmpcpp remote host
 alias ncmp='ncmpcpp -h 192.168.0.102 -p 6600'
-
-# Launch Oryx in root Opera session.
-alias oryx='sudo opera https://configure.ergodox-ez.com/train 2>/dev/null'
 
 # OnePlus Syncing
 alias rsyncpm='rsync -av --size-only --force --del /home/james/Music/ /home/james/OnePlus/Internal\ shared\ storage/Music/.'
@@ -110,15 +109,6 @@ alias exag='exa -a --git'
 ## Nano
 # Nano using line numbers
 alias nano='nano -c'
-
-# Nano creates backup when editing
-alias nanob='nano -B -C /home/james/nano-backups'
-
-# Open nano read-only
-alias nanov='nano -v'
-
-# Edit this file
-alias nanoz='nano ~/.zshrc'
 
 # Use neovim instead of vi
 alias vi='nvim'
@@ -166,7 +156,6 @@ alias auri='makepkg -sic'
 alias rwp='feh --randomize --bg-fill /home/james/Pictures/Desktops/21x9/3440x1440'
 
 # Beets
-alias bimm='beet import -m'
 alias bim='beet import'
 
 # Volume control (pulse)
@@ -187,7 +176,6 @@ bindkey "\e[3~" delete-char			# Delete
 
 # Magic space!?
 bindkey -M viins ' ' magic-space
-
 
 ##
 ## Completion Voodoo
@@ -213,6 +201,7 @@ eval $(thefuck --alias)
 # WSL likes to start us somewhere besides the home directory. Fix that.
 cd
 
+<<<<<<< HEAD
 # Make completion work for beets.
 autoload bashcompinit
 bashcompinit
@@ -221,6 +210,8 @@ compopt() { :; }
 _filedir() { :; }
 eval "$(beet completion)"
 
+=======
+>>>>>>> b38d48b9560ecb1d34264d516a08612ad9b5bcc4
 ## That's all, folks!
 
 alias luamake=/home/james/Code/lua-language-server/3rd/luamake/luamake
