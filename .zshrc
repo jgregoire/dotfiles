@@ -4,12 +4,6 @@ ZSH_THEME="agnoster"
 plugins=(git gitfast python)
 source $ZSH/oh-my-zsh.sh
 
-# zsh completion script for beets
-if [ -e .zbeet.sh ]; then
-    source .zbeet.sh
-fi
-
-
 ## The following lines were added by compinstall
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle :compinstall filename '/home/james/.zshrc'
@@ -220,12 +214,12 @@ eval $(thefuck --alias)
 cd
 
 # Make completion work for beets.
-#autoload bashcompinit
-#bashcompinit
-#_get_comp_words_by_ref() { :; }
-#compopt() { :; }
-#_filedir() { :; }
-#eval "$(beet completion)"
+autoload bashcompinit
+bashcompinit
+_get_comp_words_by_ref() { :; }
+compopt() { :; }
+_filedir() { :; }
+eval "$(beet completion)"
 
 ## That's all, folks!
 
