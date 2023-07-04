@@ -4,15 +4,10 @@ ZSH_THEME="agnoster"
 plugins=(git gitfast python)
 source $ZSH/oh-my-zsh.sh
 
-<<<<<<< HEAD
 ## The following lines were added by compinstall
-=======
->>>>>>> b38d48b9560ecb1d34264d516a08612ad9b5bcc4
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle :compinstall filename '/home/james/.zshrc'
  
-path+=('/home/james/.local/bin')
-
 autoload -Uz compinit
 compinit
 
@@ -21,9 +16,9 @@ bindkey -e
 ##
 ## Add directories to default PATH
 ##
-# Add directories here
 pathdirs=(
 	~/Scripts
+        ~/.local/bin
 )
 
 # Now we make sure they exist before adding them
@@ -162,6 +157,8 @@ alias bim='beet import'
 # e.g. '$ vol 50%'
 alias vol='pactl set-sink-volume 1'
 
+alias luamake=/home/james/Code/lua-language-server/3rd/luamake/luamake
+
 ##
 ## Keybinds
 ##
@@ -201,17 +198,4 @@ eval $(thefuck --alias)
 # WSL likes to start us somewhere besides the home directory. Fix that.
 cd
 
-<<<<<<< HEAD
-# Make completion work for beets.
-autoload bashcompinit
-bashcompinit
-_get_comp_words_by_ref() { :; }
-compopt() { :; }
-_filedir() { :; }
-eval "$(beet completion)"
-
-=======
->>>>>>> b38d48b9560ecb1d34264d516a08612ad9b5bcc4
-## That's all, folks!
-
-alias luamake=/home/james/Code/lua-language-server/3rd/luamake/luamake
+# That's all, folks!
