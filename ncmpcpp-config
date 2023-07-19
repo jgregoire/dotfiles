@@ -13,14 +13,14 @@ mpd_connection_timeout = 5
 mpd_music_dir = ~/Music
 
 ## Music Visualizer ##
-visualizer_fifo_path = /tmp/mpd.fifo
-visualizer_output_name = Visualizer feed
-visualizer_in_stereo = no
-visualizer_sync_interval = 30
+# visualizer_fifo_path = /tmp/mpd.fifo
+# visualizer_output_name = Visualizer feed
+# visualizer_in_stereo = no
+# visualizer_sync_interval = 30
 # wave, wave_filled, ellipse
-visualizer_type = wave_filled
-visualizer_look = ●▮
-visualizer_color = blue, cyan, green, yellow, magenta, red
+# visualizer_type = wave_filled
+# visualizer_look = ●▮
+# visualizer_color = blue, cyan, green, yellow, magenta, red
 ## Alternative subset of 256 colors for terminals that support it.
 #visualizer_color = 41, 83, 119, 155, 185, 215, 209, 203, 197, 161
 
@@ -156,7 +156,7 @@ current_item_prefix = $(yellow)$r
 ##   display artist tag and then composer and performer if previous ones are not
 ##   available.
 ##
-#song_columns_list_format = (20)[]{a} (6f)[green]{NE} (50)[white]{t|f:Title} (20)[cyan]{b} (7f)[magenta]{l}
+song_columns_list_format = (20)[]{a} (6f)[green]{NE} (50)[white]{t|f:Title} (20)[cyan]{b} (7f)[magenta]{l}
 
 ##### Various Settings #####
 
@@ -207,7 +207,7 @@ user_interface = alternative
 ## Available values: artist, album_artist, date, genre, composer, performer.
 ##
 media_library_primary_tag = album_artist
-#media_library_albums_split_by_date = yes
+media_library_albums_split_by_date = yes
 ##
 ## Available values: wrapped, normal.
 ##
@@ -258,7 +258,7 @@ allow_for_physical_item_deletion = yes
 ask_before_clearing_playlists = no
 #clock_display_seconds = no
 #display_volume_level = yes
-#display_bitrate = no
+#display_bitrate = yes
 #display_remaining_time = no
 ##
 ## Available values: none, basic, extended, perl.
