@@ -126,9 +126,9 @@ require('noice').setup({
     lsp = {
         progress = { enabled = true },
         override = {
-            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-            ["vim.lsp.util.stylize_markdown"] = true,
-            ["cmp.entry.get_documentation"] = true,
+            ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+            ['vim.lsp.util.stylize_markdown'] = true,
+            ['cmp.entry.get_documentation'] = true,
         },
     },
     presets = {
@@ -138,10 +138,34 @@ require('noice').setup({
         inc_rename = false, -- enables an input dialog for inc-rename.nvim
         lsp_doc_border = true, -- add a border to hover docs and signature help
     },
+    views = {
+        cmdline_popup = {
+            position = {
+                row = -2,
+                col = '50%',
+            },
+        },
+        cmdline_popupmenu = {
+            position = {
+                row = -5,
+                col = '50%',
+            },
+        },
+    },
+    routes = {
+        { -- Disable mini popup (lsp_progress) in insert mode. Less distracting.
+            view = 'mini',
+            filter = { mode = 'i' },
+            opts = { skip = true },
+        },
+    },
 })
 -- Noice colors
 vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorder', { fg = '#'..theme.base0C, bg = '#'..theme.base00 })
 vim.api.nvim_set_hl(0, 'NoiceCmdlineIcon',        { fg = '#'..theme.base07, bg = '#'..theme.base00 })
+
+-- Use Noice with Telescope
+require('telescope').load_extension('noice')
 
 -- Barbar (tabbing)
 require('bufferline').setup({

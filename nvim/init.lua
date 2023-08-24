@@ -82,6 +82,7 @@ o.completeopt = 'menu,menuone,noselect'
 
 o.cmdheight = 0
 --o.showcmdloc = 
+o.shortmess = 'fFinoOxtT'
 
 -- Keycode timeout
 o.timeout = false
