@@ -10,6 +10,9 @@ local theme = base16.themes['railscasts']
 theme.base00 = '0C0C0C' -- Usually #2B2B2B. I prefer a darker bg.
 base16(theme, true) -- Set theme.
 
+-- Smooth scrolling
+require('neoscroll').setup()
+
 -- Transparency support
 require('transparent').setup()
 
@@ -32,8 +35,10 @@ leap.opts.labels = {
 }
 vim.api.nvim_set_hl(0, 'LeapLabelPrimary',   { bg = '#' .. theme.base0C, fg = '#' .. theme.base07 })
 vim.api.nvim_set_hl(0, 'LeapLabelSecondary', { bg = '#' .. theme.base0E, fg = '#' .. theme.base07 })
--- This is a hack until nvim core fixes a bug.
-vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
+-- This is a hack until nvim core fixes a bug, making autojump'd cursor more visible.
+-- See: https://github.com/ggandor/leap.nvim/issues/70/ still open as of 2023-08-25.
+-- However, Noice also implements a fix, so comment out next line while using Noice.
+-- vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
 
 require('leap-spooky').setup({
     affixes = {
@@ -176,7 +181,7 @@ require('bufferline').setup({
         filetype = { enabled = true },
     },
 })
-require('barbar-theme')
+require('barbar-theme') -- My theme customizations
 
 -- Lualine
 require('lualine').setup({

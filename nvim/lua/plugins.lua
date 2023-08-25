@@ -103,6 +103,9 @@ return require('packer').startup(function(use)
         tag = '*',
     }
 
+    -- Smooth scrolling
+    use { 'karb94/neoscroll.nvim' }
+
     -- lspconfig
     use { 'neovim/nvim-lspconfig' }
 

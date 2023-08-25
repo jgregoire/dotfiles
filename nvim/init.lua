@@ -58,7 +58,11 @@ o.smartcase = true
 -- Line numbers by default.
 w.number = true
 o.ruler = true
-o.scrolloff = 4
+
+-- How many lines above/below cursor to show when scrolling.
+o.scrolloff = 8
+
+-- Highlight the line the cursor is on.
 o.cursorline = true
 
 o.title = true
