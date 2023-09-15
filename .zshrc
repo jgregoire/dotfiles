@@ -97,7 +97,7 @@ alias lsd='ls /dev | grep sd'
 alias grep='grep --color'
 
 # Exa
-alias exa='eza -l --group-directories-first' # exa maintainer MIA.
+alias exa='eza -l --group-directories-first --icons' # exa maintainer MIA.
 alias exaa='exa -a'
 alias exag='exa -a --git'
 
