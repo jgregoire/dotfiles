@@ -8,6 +8,7 @@ local w = vim.wo
 local b = vim.bo
 local g = vim.g
 
+-- This needs to be set before loading certain plugins.
 o.termguicolors = true
 
 -- Packer auto-install on new setups.
