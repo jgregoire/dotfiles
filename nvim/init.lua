@@ -101,3 +101,12 @@ b.textwidth = 100
 
 -- Tabline
 o.showtabline = 2
+
+-- Neovide-only options
+if g.neovide then
+    o.guifont = 'FiraCode Nerd Font:h12'
+    g.neovide_hide_mouse_when_typing = false
+    g.neovide_remember_window_size = true
+    g.neovide_cursor_vfx_mode = 'railgun'
+    g.clipboard = 'unnamed'
+end
