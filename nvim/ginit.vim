@@ -19,3 +19,6 @@ GuiRenderLigatures 1
 
 " Color test: #AABB01
 " Ligature Test: --> =/= ~~> != @
+
+" Use system clipboard when yanking.
+set clipboard^=unnamed,unnamedplus
