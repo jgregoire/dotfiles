@@ -21,4 +21,4 @@ GuiRenderLigatures 1
 " Ligature Test: --> =/= ~~> != @
 
 " Use system clipboard when yanking.
-set clipboard^=unnamed,unnamedplus
+set clipboard=unnamed
