@@ -15,6 +15,9 @@ return require('packer').startup(function(use)
         end,
     }
 
+    -- Plaintext rendering of LaTeX equations
+    use { 'jbyuki/nabla.nvim' }
+
     -- Diff/merge tool
     --[[use {
         'sindrets/diffview.nvim',
