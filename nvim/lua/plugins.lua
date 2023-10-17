@@ -15,6 +15,9 @@ return require('packer').startup(function(use)
         end,
     }
 
+    -- Extend increment/decrement command
+    use { 'nat-418/boole.nvim' }
+
     -- CSV mode
     use {
         'cameron-wags/rainbow_csv.nvim',

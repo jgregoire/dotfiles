@@ -10,6 +10,14 @@ local theme = base16.themes['railscasts']
 theme.base00 = '0C0C0C' -- Usually #2B2B2B. I prefer a darker bg.
 base16(theme, true) -- Set theme.
 
+-- Extend increment/decrement
+require('boole').setup({
+    mappings = {
+        increment = '<C-Up>',
+        decrement = '<C-Down>',
+    },
+})
+
 -- Smooth scrolling
 require('neoscroll').setup()
 

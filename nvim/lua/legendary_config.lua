@@ -212,6 +212,10 @@ require('legendary').setup({
 	-- Nabla
 	{ '<leader>ep', [[:lua require('nabla').popup({ border = 'single' })<CR>]], mode = { 'n' }, description = 'Nabla: Render in popup' },
 	{ '<leader>ei', [[:lua require('nabla').toggle_virt({ autogen = true })<CR>]], mode = { 'n' }, description = 'Nabla: Render inline' },
+
+	-- Boole
+	{ '<C-Up>',   mode = { 'n' }, description = 'Boole: Increment value' },
+	{ '<C-Down>', mode = { 'n' }, description = 'Boole: Decrement value' },
     },
 
     commands = {},
