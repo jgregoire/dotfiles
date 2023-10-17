@@ -6,12 +6,18 @@ return require('packer').startup(function(use)
     -- Packer will check for updates to itself.
     use { 'wbthomason/packer.nvim' }
 
+    -- Session manager
+    use {
+        'folke/persistence.nvim',
+        event = 'BufReadPre',
+    }
+
     -- Start page
     use {
         'goolord/alpha-nvim',
         requires = { 'nvim-tree/nvim-web-devicons' },
         config = function()
-            require('alpha').setup(require('alpha.themes.dashboard').config)
+            require('alpha').setup(require('dashboard').config)
         end,
     }
 
