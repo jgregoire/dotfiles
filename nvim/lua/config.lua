@@ -25,7 +25,7 @@ require('neoscroll').setup()
 require('transparent').setup()
 
 -- Diffview - git diff and merge
---require('diffview').setup()
+require('diffview').setup()
 
 -- Leap - intuitive motions, spooky actions
 local leap = require('leap')

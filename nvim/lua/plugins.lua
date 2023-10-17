@@ -42,13 +42,13 @@ return require('packer').startup(function(use)
     use { 'jbyuki/nabla.nvim' }
 
     -- Diff/merge tool
-    --[[use {
+    use {
         'sindrets/diffview.nvim',
         requires = {
 	    'nvim-lua/plenary.nvim',
 	    'nvim-tree/nvim-web-devicons',
         },
-    }--]]
+    }
 
     -- Leap
     use { 'ggandor/leap.nvim' }
