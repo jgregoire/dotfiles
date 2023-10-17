@@ -35,6 +35,8 @@ return require('packer').startup(function(use)
             'rfc_semicolon',
         }
     }
+    -- Plaintext rendering of LaTeX equations
+    use { 'jbyuki/nabla.nvim' }
 
     -- Diff/merge tool
     --[[use {

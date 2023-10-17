@@ -1,4 +1,4 @@
--- This file contains setup and config for Packer plugins.
+
 -- N.B. I use the Norman keyboard layout on an ErgoDox keyboard.
 -- I have remapped almost everything, sometimes in surprising ways.
 -- If you want to use my config as a QWERTY user, consider replacing
@@ -87,14 +87,7 @@ require('nvim_comment').setup({
 })
 
 -- Indent Blankline
-require('indent_blankline').setup({
-    show_current_context = true,
-    show_current_context_start = true,
-    use_treesitter = true,
-    --max_indent_increase = 2,
-    -- context_char = '┃',
-    --use_treesitter_scope = true,
-})
+require('ibl').setup({})
 
 -- nvim-notify
 vim.api.nvim_set_hl(0, 'NotifyERRORBorder', { fg = '#'..theme.base08, bg = '#'..theme.base00 })
@@ -260,7 +253,7 @@ local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line-1, line, true)[1]:sub(col, col):match("%s") == nil
 end
-cmp.setup({
+cmp.setup({ --@diagnostic disable-line: redundant-parameter
     snippet = {
         expand = function(args)
             require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
