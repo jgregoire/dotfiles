@@ -87,7 +87,14 @@ require('nvim_comment').setup({
 })
 
 -- Indent Blankline
-require('ibl').setup({})
+require('ibl').setup({
+    enabled = true,
+    indent = { char = '▏' },
+    scope = {
+        enabled = false,
+        show_start = true,
+    }
+})
 
 -- nvim-notify
 vim.api.nvim_set_hl(0, 'NotifyERRORBorder', { fg = '#'..theme.base08, bg = '#'..theme.base00 })
