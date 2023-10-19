@@ -79,6 +79,11 @@ o.softtabstop = 4
 o.smartindent = true
 o.smarttab = true
 o.shiftwidth = 4
+-- Below settings improve line break indending in Neorg
+o.wrap = true
+o.linebreak = true
+o.breakindentopt = 'list:-1'
+o.formatlistpat = [[^\s*[-\*\~]\+[\.\)]*\s\+]]
 
 -- Completion
 o.wildmenu = true
