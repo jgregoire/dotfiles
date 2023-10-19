@@ -87,6 +87,9 @@ return require('packer').startup(function(use)
     -- Needed to theme UI elements, to match my terminal color scheme.
     use { 'norcalli/nvim-base16.lua' }
 
+    -- One Dark theme
+    use { 'olimorris/onedarkpro.nvim' }
+
     -- Fancier statusline.
     use {
         'nvim-lualine/lualine.nvim',

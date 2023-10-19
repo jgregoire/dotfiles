@@ -4,11 +4,32 @@
 -- If you want to use my config as a QWERTY user, consider replacing
 --   mappings, keys, labels, etc. with defaults, THEN customizing.
 
+-- OneDark Pro
+require('onedarkpro').setup({
+    styles = {
+        -- comments = 'italic', -- Looks awful in Windows Terminal.
+    },
+    plugins = {
+        barbar = true,
+        indentline = true,
+        gitsigns = true,
+        leap = true,
+        nvim_cmp = true,
+        nvim_lspconfig = true,
+        nvim_notify = true,
+        packer = true,
+        telescope = true,
+        toggleterm = true,
+        treesitter = true,
+    }
+})
+vim.cmd('colorscheme onedark')
+
 -- Base16
-local base16 = require('base16')
-local theme = base16.themes['railscasts']
-theme.base00 = '0C0C0C' -- Usually #2B2B2B. I prefer a darker bg.
-base16(theme, true) -- Set theme.
+-- local base16 = require('base16')
+-- local theme = base16.themes['railscasts']
+-- theme.base00 = '0C0C0C' -- Usually #2B2B2B. I prefer a darker bg.
+-- base16(theme, true) -- Set theme.
 
 -- Extend increment/decrement
 require('boole').setup({
@@ -41,8 +62,8 @@ leap.opts.labels = {
     'z', 'x', 'c', 'v', 'b', 'p',
     'Z', 'X', 'C', 'V', 'B', 'P',
 }
-vim.api.nvim_set_hl(0, 'LeapLabelPrimary',   { bg = '#' .. theme.base0C, fg = '#' .. theme.base07 })
-vim.api.nvim_set_hl(0, 'LeapLabelSecondary', { bg = '#' .. theme.base0E, fg = '#' .. theme.base07 })
+-- vim.api.nvim_set_hl(0, 'LeapLabelPrimary',   { bg = '#' .. theme.base0C, fg = '#' .. theme.base07 })
+-- vim.api.nvim_set_hl(0, 'LeapLabelSecondary', { bg = '#' .. theme.base0E, fg = '#' .. theme.base07 })
 -- This is a hack until nvim core fixes a bug, making autojump'd cursor more visible.
 -- See: https://github.com/ggandor/leap.nvim/issues/70/ still open as of 2023-08-25.
 -- However, Noice also implements a fix, so comment out next line while using Noice.
@@ -104,6 +125,7 @@ require('ibl').setup({
     }
 })
 
+--[[
 -- nvim-notify
 vim.api.nvim_set_hl(0, 'NotifyERRORBorder', { fg = '#'..theme.base08, bg = '#'..theme.base00 })
 vim.api.nvim_set_hl(0, 'NotifyERRORIcon',   { fg = '#'..theme.base08, bg = '#'..theme.base00 })
@@ -126,6 +148,7 @@ vim.api.nvim_set_hl(0, 'NotifyWARNBody',    { link = 'Normal' })
 vim.api.nvim_set_hl(0, 'NotifyINFOBody',    { link = 'Normal' })
 vim.api.nvim_set_hl(0, 'NotifyDEBUGBody',   { link = 'Normal' })
 vim.api.nvim_set_hl(0, 'NotifyTRACEBody',   { link = 'Normal' })
+--]]
 
 local notify = require('notify')
 notify.setup({
@@ -174,8 +197,8 @@ require('noice').setup({
     },
 })
 -- Noice colors
-vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorder', { fg = '#'..theme.base0C, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NoiceCmdlineIcon',        { fg = '#'..theme.base07, bg = '#'..theme.base00 })
+-- vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorder', { fg = '#'..theme.base0C, bg = '#'..theme.base00 })
+-- vim.api.nvim_set_hl(0, 'NoiceCmdlineIcon',        { fg = '#'..theme.base07, bg = '#'..theme.base00 })
 
 -- Use Noice with Telescope
 require('telescope').load_extension('noice')
@@ -213,7 +236,7 @@ require('lualine').setup({
             { -- Noice showcmd implementation
                 require('noice').api.statusline.command.get,
                 cond = require('noice').api.statusline.command.has,
-                color = { fg = '#' .. theme.base07 },
+                -- color = { fg = '#' .. theme.base07 },
             },
             'encoding',
             'fileformat',
@@ -242,13 +265,15 @@ require('gitsigns').setup({
         untracked    = { text = '┆' },
     },
 })
+--[[
 vim.api.nvim_set_hl(0, 'GitSignsAdd',          { fg = '#'..theme.base0B, bg = '#'..theme.base00 })
 vim.api.nvim_set_hl(0, 'GitSignsChange',       { fg = '#'..theme.base0D, bg = '#'..theme.base00 })
 vim.api.nvim_set_hl(0, 'GitSignsDelete',       { fg = '#'..theme.base08, bg = '#'..theme.base00 })
 vim.api.nvim_set_hl(0, 'GitSignsTopDelete',    { fg = '#'..theme.base0E, bg = '#'..theme.base00 })
 vim.api.nvim_set_hl(0, 'GitSignsChangeDelete', { fg = '#'..theme.base0C, bg = '#'..theme.base00 })
 vim.api.nvim_set_hl(0, 'GitSignsUntracked',    { fg = '#'..theme.base0A, bg = '#'..theme.base00 })
-
+--]]
+--
 -- Toggleterm
 require('toggleterm').setup({
     open_mapping = '<C-t>',
@@ -268,7 +293,7 @@ local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line-1, line, true)[1]:sub(col, col):match("%s") == nil
 end
-cmp.setup({ --@diagnostic disable-line: redundant-parameter
+cmp.setup({ 
     snippet = {
         expand = function(args)
             require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
