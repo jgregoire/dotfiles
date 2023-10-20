@@ -3,9 +3,44 @@
 -- I have remapped almost everything, sometimes in surprising ways.
 -- If you want to use my config as a QWERTY user, consider replacing
 --   mappings, keys, labels, etc. with defaults, THEN customizing.
-
+--[[
+local default_colors = {
+    bg = "#282c34",
+    fg = "#abb2bf",
+    red = "#e06c75",
+    orange = "#d19a66",
+    yellow = "#e5c07b",
+    green = "#98c379",
+    cyan = "#56b6c2",
+    blue = "#61afef",
+    purple = "#c678dd",
+    white = "#abb2bf",
+    black = "#282c34",
+    gray = "#5c6370",
+    highlight = "#e2be7d",
+    comment = "#7f848e",
+    none = "NONE",
+}
+--]]
 -- OneDark Pro
 require('onedarkpro').setup({
+--[[    colors = {
+        bg        = '#272935',
+        fg        = '#d4cfc9',
+        red       = '#da4939',
+        orange    = '#cc7833',
+        yellow    = '#ffc66d',
+        green     = '#a5c261',
+        cyan      = '#519f50',
+        blue      = '#6d9cbe',
+        purple    = '#b6b3eb',
+        white     = '#f9f7f3',
+        black     = '#0c0c0c',
+        gray      = '#5a657e',
+        highlight = '#bc9458',
+        comment   = '#3a4055',
+        none = 'NONE',
+    },--]]
     styles = {
         comments = 'italic', -- Looks awful in Windows Terminal.
     },
