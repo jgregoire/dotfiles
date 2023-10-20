@@ -7,7 +7,7 @@
 -- OneDark Pro
 require('onedarkpro').setup({
     styles = {
-        -- comments = 'italic', -- Looks awful in Windows Terminal.
+        comments = 'italic', -- Looks awful in Windows Terminal.
     },
     plugins = {
         barbar = true,
@@ -15,7 +15,7 @@ require('onedarkpro').setup({
         gitsigns = true,
         leap = true,
         nvim_cmp = true,
-        nvim_lspconfig = true,
+        -- nvim_lspconfig = true,
         nvim_notify = true,
         packer = true,
         telescope = true,
@@ -48,6 +48,7 @@ require('transparent').setup()
 -- Diffview - git diff and merge
 require('diffview').setup()
 
+--[[
 -- Leap - intuitive motions, spooky actions
 local leap = require('leap')
 leap.add_default_mappings()
@@ -75,6 +76,16 @@ require('leap-spooky').setup({
         magnetic = { window = 'm', cross_window = 'M' },
     },
     paste_on_remote_yank = false,
+})
+--]]
+
+require('flash').setup({
+    labels = 'asetniohqwdfurlgykjzxcvmbp',
+    label = {
+	-- Show jump label before the target, not after.
+	after = false,
+	before = true,
+    }
 })
 
 -- Autopairs - basic bracket logic
@@ -212,12 +223,12 @@ require('bufferline').setup({
         filetype = { enabled = true },
     },
 })
-require('barbar-theme') -- My theme customizations
+-- require('barbar-theme') -- My theme customizations
 
 -- Lualine
 require('lualine').setup({
     options = {
-        theme = 'auto', -- 'base16' doesn't work.
+        theme = 'onedark',
         component_separators = { left = '|', right = '|' },
         section_separators = { left = '', right = ''},
     },
@@ -236,7 +247,6 @@ require('lualine').setup({
             { -- Noice showcmd implementation
                 require('noice').api.statusline.command.get,
                 cond = require('noice').api.statusline.command.has,
-                -- color = { fg = '#' .. theme.base07 },
             },
             'encoding',
             'fileformat',

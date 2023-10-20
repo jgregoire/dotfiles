@@ -60,6 +60,9 @@ return require('packer').startup(function(use)
     use { 'ggandor/leap.nvim' }
     use { 'ggandor/leap-spooky.nvim' }
 
+    -- Better Leap
+    use { 'folke/flash.nvim' }
+
     -- Pretty notifications.
     use { 'rcarriga/nvim-notify' }
 
