@@ -3,28 +3,10 @@
 -- I have remapped almost everything, sometimes in surprising ways.
 -- If you want to use my config as a QWERTY user, consider replacing
 --   mappings, keys, labels, etc. with defaults, THEN customizing.
---[[
-local default_colors = {
-    bg = "#282c34",
-    fg = "#abb2bf",
-    red = "#e06c75",
-    orange = "#d19a66",
-    yellow = "#e5c07b",
-    green = "#98c379",
-    cyan = "#56b6c2",
-    blue = "#61afef",
-    purple = "#c678dd",
-    white = "#abb2bf",
-    black = "#282c34",
-    gray = "#5c6370",
-    highlight = "#e2be7d",
-    comment = "#7f848e",
-    none = "NONE",
-}
---]]
+
 -- OneDark Pro
 require('onedarkpro').setup({
---[[    colors = {
+--[[    colors = { -- Railscasts colors
         bg        = '#272935',
         fg        = '#d4cfc9',
         red       = '#da4939',
@@ -60,12 +42,6 @@ require('onedarkpro').setup({
 })
 vim.cmd('colorscheme onedark')
 
--- Base16
--- local base16 = require('base16')
--- local theme = base16.themes['railscasts']
--- theme.base00 = '0C0C0C' -- Usually #2B2B2B. I prefer a darker bg.
--- base16(theme, true) -- Set theme.
-
 -- Extend increment/decrement
 require('boole').setup({
     mappings = {
@@ -98,12 +74,6 @@ leap.opts.labels = {
     'z', 'x', 'c', 'v', 'b', 'p',
     'Z', 'X', 'C', 'V', 'B', 'P',
 }
--- vim.api.nvim_set_hl(0, 'LeapLabelPrimary',   { bg = '#' .. theme.base0C, fg = '#' .. theme.base07 })
--- vim.api.nvim_set_hl(0, 'LeapLabelSecondary', { bg = '#' .. theme.base0E, fg = '#' .. theme.base07 })
--- This is a hack until nvim core fixes a bug, making autojump'd cursor more visible.
--- See: https://github.com/ggandor/leap.nvim/issues/70/ still open as of 2023-08-25.
--- However, Noice also implements a fix, so comment out next line while using Noice.
--- vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
 
 require('leap-spooky').setup({
     affixes = {
@@ -171,31 +141,7 @@ require('ibl').setup({
     }
 })
 
---[[
 -- nvim-notify
-vim.api.nvim_set_hl(0, 'NotifyERRORBorder', { fg = '#'..theme.base08, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyERRORIcon',   { fg = '#'..theme.base08, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyERRORTitle',  { fg = '#'..theme.base08, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyWARNBorder',  { fg = '#'..theme.base0A, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyWARNIcon',    { fg = '#'..theme.base0A, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyWARNTitle',   { fg = '#'..theme.base0A, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyINFOBorder',  { fg = '#'..theme.base07, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyINFOIcon',    { fg = '#'..theme.base07, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyINFOTitle',   { fg = '#'..theme.base07, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyDEBUGBorder', { fg = '#'..theme.base0D, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyDEBUGIcon',   { fg = '#'..theme.base0D, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyDEBUGTitle',  { fg = '#'..theme.base0D, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyTRACEBorder', { fg = '#'..theme.base0E, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyTRACEIcon',   { fg = '#'..theme.base0E, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyTRACETitle',  { fg = '#'..theme.base0E, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'Normal',            { fg = '#'..theme.base05, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyERRORBody',   { link = 'Normal' })
-vim.api.nvim_set_hl(0, 'NotifyWARNBody',    { link = 'Normal' })
-vim.api.nvim_set_hl(0, 'NotifyINFOBody',    { link = 'Normal' })
-vim.api.nvim_set_hl(0, 'NotifyDEBUGBody',   { link = 'Normal' })
-vim.api.nvim_set_hl(0, 'NotifyTRACEBody',   { link = 'Normal' })
---]]
-
 local notify = require('notify')
 notify.setup({
     render = 'compact',
@@ -242,9 +188,6 @@ require('noice').setup({
         },
     },
 })
--- Noice colors
--- vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorder', { fg = '#'..theme.base0C, bg = '#'..theme.base00 })
--- vim.api.nvim_set_hl(0, 'NoiceCmdlineIcon',        { fg = '#'..theme.base07, bg = '#'..theme.base00 })
 
 -- Use Noice with Telescope
 require('telescope').load_extension('noice')
@@ -258,7 +201,6 @@ require('bufferline').setup({
         filetype = { enabled = true },
     },
 })
--- require('barbar-theme') -- My theme customizations
 
 -- Lualine
 require('lualine').setup({
@@ -310,15 +252,7 @@ require('gitsigns').setup({
         untracked    = { text = '┆' },
     },
 })
---[[
-vim.api.nvim_set_hl(0, 'GitSignsAdd',          { fg = '#'..theme.base0B, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'GitSignsChange',       { fg = '#'..theme.base0D, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'GitSignsDelete',       { fg = '#'..theme.base08, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'GitSignsTopDelete',    { fg = '#'..theme.base0E, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'GitSignsChangeDelete', { fg = '#'..theme.base0C, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'GitSignsUntracked',    { fg = '#'..theme.base0A, bg = '#'..theme.base00 })
---]]
---
+
 -- Toggleterm
 require('toggleterm').setup({
     open_mapping = '<C-t>',

@@ -158,6 +158,10 @@ require('legendary').setup({
         -- Autopairs
         { '<C-w>', mode = { 'n', 'i' }, description = 'Autopairs: Fast wrap' },
 
+	-- Tabout
+	{ '<Tab>',   mode = { 'i' }, description = 'Tabout: Forward' },
+	{ '<S-Tab>', mode = { 'i' }, description = 'Tabout: Backward' },
+
         -- Nvim-Surround
         { 'ps',     mode = { 'n' }, description = 'Surround: Add [MOTION] [TYPE]' },
         { 'pS',     mode = { 'n' }, description = 'Surround: Add with newlines [MOTION] [TYPE]' },
@@ -184,25 +188,13 @@ require('legendary').setup({
         },
         { '<C-t>', mode = { 'n' }, description = 'ToggleTerm: Toggle Terminal(s)', opts = defaults },
 
-	--[[
-        -- Leap
-        { 's', '<Plug>(leap-forward-to)',  mode = { 'n' }, description = 'Leap: forward to [CHAR1][CHAR2][LABEL]', opts = defaults },
-        { 'S', '<Plug>(leap-backward-to)', mode = { 'n' }, description = 'Leap: backward to [CHAR1][CHAR2][LABEL]', opts = defaults },
-
-        -- Leap (Spooky)
-        { 's', mode = { 'o' }, description = 'Leap (Spooky): Static [MOTION] at [CHAR1][CHAR2][LABEL]' },
-        { 'S', mode = { 'o' }, description = 'Leap (Spooky): Static [MOTION] in another window at [CHAR1][CHAR2][LABEL]' },
-        { 'm', mode = { 'o' }, description = 'Leap (Spooky): Magnetic [MOTION] at [CHAR1][CHAR2][LABEL]' },
-        { 'M', mode = { 'o' }, description = 'Leap (Spooky): Magnetic [MOTION] in another window at [CHAR1][CHAR2][LABEL]' },
-	--]]
-
 	-- Flash
 	{ 's', function() require('flash').jump() end, mode = { 'n', 'x', 'o' }, description = 'Flash: Jump' },
 	{ 'S', function() require('flash').treesitter() end, mode = { 'n', 'x', 'o' }, description = 'Flash: Treesitter' },
 	{ 'm', function() require('flash').remote() end, mode = { 'o' }, description = 'Flash: Remote' },
 	{ 'M', function() require('flash').treesitter_search() end, description = 'Flash: Treesitter search' },
 	{ '<C-f>', function() require('flash').toggle() end, mode = { 'c' }, description = 'Flash: Toggle search' },
-	
+
 	-- Neorg
 	{ '<leader>n', ':Neorg mode norg<CR>', mode = 'n',    description = 'Neorg: Enter norg mode' },
 	{ '<leader>tu', mode = { 'norg' }, description = 'Neorg: Set TODO task undone' },

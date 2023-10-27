@@ -21,6 +21,36 @@ return require('packer').startup(function(use)
         end,
     }
 
+    -- Tab to escape delimiters
+    use {
+        'abecodes/tabout.nvim',
+        wants = { 'nvim-treesitter' },
+        after = { 'nvim-cmp' },
+        config = function()
+            require('tabout').setup({
+                tabkey = '<Tab>',
+                backwards_tabkey = '<S-Tab>',
+                act_as_tab = true,
+                act_as_shift_tab = true,
+                default_tab = '<C-t>',
+                default_shift_tab = '<C-d>',
+                enable_backwards = true,
+                completion = true,
+                tabouts = {
+                    { open = "'", close = "'" },
+                    { open = '"', close = '"' },
+                    { open = '`', close = '`' },
+                    { open = '(', close = ')' },
+                    { open = '[', close = ']' },
+                    { open = '{', close = '}' },
+                    { open = '<', close = '>' },
+                },
+                ignore_beginning = true,
+                exclude = {},
+            })
+        end,
+    }
+
     -- Extend increment/decrement command
     use { 'nat-418/boole.nvim' }
 
@@ -56,13 +86,6 @@ return require('packer').startup(function(use)
         },
     }
 
-    -- Leap
-    use { 'ggandor/leap.nvim' }
-    use { 'ggandor/leap-spooky.nvim' }
-
-    -- Better Leap
-    use { 'folke/flash.nvim' }
-
     -- Pretty notifications.
     use { 'rcarriga/nvim-notify' }
 
@@ -85,10 +108,6 @@ return require('packer').startup(function(use)
 
     -- Fancy icons, used for lualine.
     use { 'nvim-tree/nvim-web-devicons' }
-
-    -- Base16 theme support
-    -- Needed to theme UI elements, to match my terminal color scheme.
-    use { 'norcalli/nvim-base16.lua' }
 
     -- One Dark theme
     use { 'olimorris/onedarkpro.nvim' }
