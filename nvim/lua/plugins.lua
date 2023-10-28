@@ -85,6 +85,9 @@ return require('packer').startup(function(use)
 	    'nvim-tree/nvim-web-devicons',
         },
     }
+    
+    -- Modern motions
+    use { 'folke/flash.nvim' }
 
     -- Pretty notifications.
     use { 'rcarriga/nvim-notify' }

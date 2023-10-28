@@ -6,33 +6,17 @@
 
 -- OneDark Pro
 require('onedarkpro').setup({
---[[    colors = { -- Railscasts colors
-        bg        = '#272935',
-        fg        = '#d4cfc9',
-        red       = '#da4939',
-        orange    = '#cc7833',
-        yellow    = '#ffc66d',
-        green     = '#a5c261',
-        cyan      = '#519f50',
-        blue      = '#6d9cbe',
-        purple    = '#b6b3eb',
-        white     = '#f9f7f3',
-        black     = '#0c0c0c',
-        gray      = '#5a657e',
-        highlight = '#bc9458',
-        comment   = '#3a4055',
-        none = 'NONE',
-    },--]]
     styles = {
         comments = 'italic', -- Looks awful in Windows Terminal.
     },
     plugins = {
         barbar = true,
+        diffview = true,
         indentline = true,
         gitsigns = true,
-        leap = true,
+        flash_nvim = true,
         nvim_cmp = true,
-        -- nvim_lspconfig = true,
+        nvim_lsp = true,
         nvim_notify = true,
         packer = true,
         telescope = true,
@@ -58,31 +42,6 @@ require('transparent').setup()
 
 -- Diffview - git diff and merge
 require('diffview').setup()
-
---[[
--- Leap - intuitive motions, spooky actions
-local leap = require('leap')
-leap.add_default_mappings()
-leap.opts.safe_labels = {
-    't', 'o', 'h', 'm', 'q', 'w', 'd', 'f', 'u', 'r', 'l', 'y', 'k', 'j',
-    'T', 'O', 'H', 'M', 'Q', 'W', 'D', 'F', 'U', 'R', 'L', 'Y', 'K', 'J',
-}
-leap.opts.labels = {
-    't', 'o', 'h', 'm', 'q', 'w', 'd', 'f', 'u', 'r', 'l', 'y', 'k', 'j',
-    'T', 'O', 'H', 'M', 'Q', 'W', 'D', 'F', 'U', 'R', 'L', 'Y', 'K', 'J',
-    '\'', '\"', '/', '?',
-    'z', 'x', 'c', 'v', 'b', 'p',
-    'Z', 'X', 'C', 'V', 'B', 'P',
-}
-
-require('leap-spooky').setup({
-    affixes = {
-        remote   = { window = 's', cross_window = 's' },
-        magnetic = { window = 'm', cross_window = 'M' },
-    },
-    paste_on_remote_yank = false,
-})
---]]
 
 require('flash').setup({
     labels = 'asetniohqwdfurlgykjzxcvmbp',
@@ -428,7 +387,7 @@ local servers = {
     'vimls',
     'openscad_ls',
     'dotls',
-    'clangd', -- This breaks on Windows.
+    'clangd',
 }
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup({
