@@ -108,6 +108,9 @@ b.textwidth = 100
 -- Tabline
 o.showtabline = 2
 
+-- Use system clipboard
+g.clipboard = 'unnamedplus' -- Requires xclip or other 3rd party provider
+
 -- Neovide-only options
 if g.neovide then
     o.guifont = 'FiraCode Nerd Font:h12'
