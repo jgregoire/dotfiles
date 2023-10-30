@@ -85,7 +85,7 @@ return require('packer').startup(function(use)
 	    'nvim-tree/nvim-web-devicons',
         },
     }
-    
+
     -- Modern motions
     use { 'folke/flash.nvim' }
 
@@ -314,7 +314,7 @@ return require('packer').startup(function(use)
                 }
             })
         end,
-        run = ':Neorg sync-parsers', -- Update treesitter parser when neorg is updated.
+        -- run = ':Neorg sync-parsers', -- Update treesitter parser when neorg is updated.
         requires = 'nvim-lua/plenary.nvim',
     }
 
