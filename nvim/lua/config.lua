@@ -46,9 +46,9 @@ require('diffview').setup()
 require('flash').setup({
     labels = 'asetniohqwdfurlgykjzxcvmbp',
     label = {
-	-- Show jump label before the target, not after.
-	after = false,
-	before = true,
+        -- Show jump label before the target, not after.
+        after = false,
+        before = true,
     }
 })
 
@@ -65,7 +65,8 @@ require('nvim-autopairs').setup({
         keys = 'asetnioh', -- Home row keys for position markers
     },
     enable_check_bracket_line = false, -- Don't add pair if it already has close pair in same line.
-    ignored_next_char = "[%w%.]", -- Don't add pair if next char is alphanumeric or '.'
+    enable_bracket_in_quote = false, -- Don't add a pair inside quotes.
+    -- ignored_next_char = "[%w%.]", -- Don't add pair if next char is alphanumeric or '.'
 })
 
 -- Surround - advanced bracket logic
@@ -231,7 +232,9 @@ local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line-1, line, true)[1]:sub(col, col):match("%s") == nil
 end
-cmp.setup({ 
+
+---@diagnostic disable-next-line:redundant-parameter
+cmp.setup({
     snippet = {
         expand = function(args)
             require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
@@ -301,14 +304,16 @@ cmp.setup.filetype('gitcommit', {
         { name = 'buffer' },
     })
 })
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline('/', {
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
     sources = {
         { name = 'buffer' }
     }
 })
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
         { name = 'path' }
     }, {

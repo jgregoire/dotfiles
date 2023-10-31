@@ -45,7 +45,7 @@ return require('packer').startup(function(use)
                     { open = '{', close = '}' },
                     { open = '<', close = '>' },
                 },
-                ignore_beginning = true,
+                ignore_beginning = false,
                 exclude = {},
             })
         end,
@@ -81,8 +81,8 @@ return require('packer').startup(function(use)
     use {
         'sindrets/diffview.nvim',
         requires = {
-	    'nvim-lua/plenary.nvim',
-	    'nvim-tree/nvim-web-devicons',
+            'nvim-lua/plenary.nvim',
+            'nvim-tree/nvim-web-devicons',
         },
     }
 
@@ -217,40 +217,40 @@ return require('packer').startup(function(use)
         config = function()
             require('neorg').setup({
                 load = {
-		    -- Subset of core.defaults:
-		    ['core.esupports.hop'] = {},
-		    ['core.esupports.indent'] = {},
-		    ['core.esupports.metagen'] = {},
-		    ['core.itero'] = {},
-		    ['core.pivot'] = {},
-		    ['core.promo'] = {},
-		    ['core.qol.toc'] = {},
-		    ['core.qol.todo_items'] = {},
-		    ['core.keybinds'] = {
+                    -- Subset of core.defaults:
+                    ['core.esupports.hop'] = {},
+                    ['core.esupports.indent'] = {},
+                    ['core.esupports.metagen'] = {},
+                    ['core.itero'] = {},
+                    ['core.pivot'] = {},
+                    ['core.promo'] = {},
+                    ['core.qol.toc'] = {},
+                    ['core.qol.todo_items'] = {},
+                    ['core.keybinds'] = {
                         config = {
                             default_keybinds = true,
                             neorg_leader = '<LocalLeader>',
                         }
                     },
-		    -- Non-defaults:
+                    -- Non-defaults:
                     ['core.concealer'] = {
-			config = {
-			    folds = true,
-			    icons = {
-				todo = {
-				    -- enabled = true,
-				    done      = { icon = "" },
-				    pending   = { icon = "⭘",},
+                        config = {
+                            folds = true,
+                            icons = {
+                                todo = {
+                                    -- enabled = true,
+                                    done      = { icon = "" },
+                                    pending   = { icon = "⭘",},
                                     undone    = { icon = "" },
-				    uncertain = { icon = "" },
-				    on_hold   = { icon = "" },
-				    cancelled = { icon = "" },
-				    recurring = { icon = "↺" },
-				    urgent    = { icon = "" },
-				},
-			    },
-			},
-		    },
+                                    uncertain = { icon = "" },
+                                    on_hold   = { icon = "" },
+                                    cancelled = { icon = "" },
+                                    recurring = { icon = "↺" },
+                                    urgent    = { icon = "" },
+                                },
+                            },
+                        },
+                    },
                     ['core.dirman'] = {
                         config = {
                             workspaces = {
@@ -262,7 +262,7 @@ return require('packer').startup(function(use)
                         config = { engine = 'nvim-cmp' },
                     },
                     ['core.highlights'] = {},
-		}, -- load
+                }, -- load
             })
         end,
         -- run = ':Neorg sync-parsers', -- Update treesitter parser when neorg is updated.
@@ -270,7 +270,7 @@ return require('packer').startup(function(use)
     }
 
     -- Packer bootstrapping
-    if packer_bootstrap then
+    if packer_bootstrap then ---@diagnostic disable-line:undefined-global
         require('packer').sync()
     end
 end)

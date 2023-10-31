@@ -158,9 +158,9 @@ require('legendary').setup({
         -- Autopairs
         { '<C-w>', mode = { 'n', 'i' }, description = 'Autopairs: Fast wrap' },
 
-	-- Tabout
-	{ '<Tab>',   mode = { 'i' }, description = 'Tabout: Forward' },
-	{ '<S-Tab>', mode = { 'i' }, description = 'Tabout: Backward' },
+        -- Tabout
+        { '<Tab>',   mode = { 'i' }, description = 'Tabout: Forward' },
+        { '<S-Tab>', mode = { 'i' }, description = 'Tabout: Backward' },
 
         -- Nvim-Surround
         { 'ps',     mode = { 'n' }, description = 'Surround: Add [MOTION] [TYPE]' },
@@ -184,39 +184,39 @@ require('legendary').setup({
             function() vim.api.nvim_command([[:TermExec go_back=0 direction=float cmd='cd ]] .. vim.fn.getcwd() .. [['<CR>]]) end,
             mode = { 'n' },
             description = 'Toggleterm: Open terminal at PWD',
-	    opts = defaults
+            opts = defaults
         },
         { '<C-t>', mode = { 'n' }, description = 'ToggleTerm: Toggle Terminal(s)', opts = defaults },
 
-	-- Flash
-	{ 's', function() require('flash').jump() end, mode = { 'n', 'x', 'o' }, description = 'Flash: Jump' },
-	{ 'S', function() require('flash').treesitter() end, mode = { 'n', 'x', 'o' }, description = 'Flash: Treesitter' },
-	{ 'm', function() require('flash').remote() end, mode = { 'o' }, description = 'Flash: Remote' },
-	{ 'M', function() require('flash').treesitter_search() end, description = 'Flash: Treesitter search' },
-	{ '<C-f>', function() require('flash').toggle() end, mode = { 'c' }, description = 'Flash: Toggle search' },
+        -- Flash
+        { 's', function() require('flash').jump() end, mode = { 'n', 'x', 'o' }, description = 'Flash: Jump' },
+        { 'S', function() require('flash').treesitter() end, mode = { 'n', 'x', 'o' }, description = 'Flash: Treesitter' },
+        { 'm', function() require('flash').remote() end, mode = { 'o' }, description = 'Flash: Remote' },
+        { 'M', function() require('flash').treesitter_search() end, description = 'Flash: Treesitter search' },
+        { '<C-f>', function() require('flash').toggle() end, mode = { 'c' }, description = 'Flash: Toggle search' },
 
-	-- Neorg
-	{ '<leader>n', ':Neorg mode norg<CR>', mode = 'n',    description = 'Neorg: Enter norg mode' },
-	{ '<leader>tu', mode = { 'norg' }, description = 'Neorg: Set TODO task undone' },
-	{ '<leader>tp', mode = { 'norg' }, description = 'Neorg: Set TODO task pending' },
-	{ '<leader>td', mode = { 'norg' }, description = 'Neorg: Set TODO task done' },
-	{ '<leader>th', mode = { 'norg' }, description = 'Neorg: Set TODO task on hold' },
-	{ '<leader>tc', mode = { 'norg' }, description = 'Neorg: Set TODO task cancelled' },
-	{ '<leader>tr', mode = { 'norg' }, description = 'Neorg: Set TODO task recurring' },
-	{ '<leader>ti', mode = { 'norg' }, description = 'Neorg: Set TODO task important' },
-	{ '<leader>ta', mode = { 'norg' }, description = 'Neorg: Set TODO task ambiguous' },
-	{ '<C-Space>',  mode = { 'norg' }, description = 'Neorg: Toggle TODO task between states' },
-	{ '<CR>',       mode = { 'norg' }, description = 'Neorg: Hop to link location' },
-	{ '<A-CR>',     mode = { 'norg' }, description = 'Neorg: Open location in vsplit' },
-	{ '<leader>id', mode = { 'norg' }, description = 'Neorg: Insert date' },
+        -- Neorg
+        { '<leader>n', ':Neorg mode norg<CR>', mode = 'n',    description = 'Neorg: Enter norg mode' },
+        { '<leader>tu', mode = { 'norg' }, description = 'Neorg: Set TODO task undone' },
+        { '<leader>tp', mode = { 'norg' }, description = 'Neorg: Set TODO task pending' },
+        { '<leader>td', mode = { 'norg' }, description = 'Neorg: Set TODO task done' },
+        { '<leader>th', mode = { 'norg' }, description = 'Neorg: Set TODO task on hold' },
+        { '<leader>tc', mode = { 'norg' }, description = 'Neorg: Set TODO task cancelled' },
+        { '<leader>tr', mode = { 'norg' }, description = 'Neorg: Set TODO task recurring' },
+        { '<leader>ti', mode = { 'norg' }, description = 'Neorg: Set TODO task important' },
+        { '<leader>ta', mode = { 'norg' }, description = 'Neorg: Set TODO task ambiguous' },
+        { '<C-Space>',  mode = { 'norg' }, description = 'Neorg: Toggle TODO task between states' },
+        { '<CR>',       mode = { 'norg' }, description = 'Neorg: Hop to link location' },
+        { '<A-CR>',     mode = { 'norg' }, description = 'Neorg: Open location in vsplit' },
+        { '<leader>id', mode = { 'norg' }, description = 'Neorg: Insert date' },
 
-	-- Nabla
-	{ '<leader>ep', [[:lua require('nabla').popup({ border = 'single' })<CR>]], mode = { 'n' }, description = 'Nabla: Render in popup' },
-	{ '<leader>ei', [[:lua require('nabla').toggle_virt({ autogen = true })<CR>]], mode = { 'n' }, description = 'Nabla: Render inline' },
+        -- Nabla
+        { '<leader>ep', [[:lua require('nabla').popup({ border = 'single' })<CR>]], mode = { 'n' }, description = 'Nabla: Render in popup' },
+        { '<leader>ei', [[:lua require('nabla').toggle_virt({ autogen = true })<CR>]], mode = { 'n' }, description = 'Nabla: Render inline' },
 
-	-- Boole
-	{ '<C-Up>',   mode = { 'n' }, description = 'Boole: Increment value' },
-	{ '<C-Down>', mode = { 'n' }, description = 'Boole: Decrement value' },
+        -- Boole
+        { '<C-Up>',   mode = { 'n' }, description = 'Boole: Increment value' },
+        { '<C-Down>', mode = { 'n' }, description = 'Boole: Decrement value' },
     },
 
     commands = {},
