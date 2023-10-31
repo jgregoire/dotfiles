@@ -30,6 +30,7 @@ local ensure_packer = function()
     return false
 end
 
+---@diagnostic disable-next-line:unused-local
 local packer_bootstrap = ensure_packer()
 
 -- Specify plugins:
@@ -115,7 +116,8 @@ b.textwidth = 100
 o.showtabline = 2
 
 -- Use system clipboard
-g.clipboard = 'unnamedplus' -- Requires xclip or other 3rd party provider
+-- g.clipboard = { 'unnamedplus' } -- Requires xclip or other 3rd party provider
+vim.cmd("set clipboard+=unnamedplus")
 
 -- Neovide-only options
 if g.neovide then
