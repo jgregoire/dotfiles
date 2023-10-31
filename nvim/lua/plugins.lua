@@ -235,66 +235,20 @@ return require('packer').startup(function(use)
 		    -- Non-defaults:
                     ['core.concealer'] = {
 			config = {
-			    folds = false,
-			    --[[]]
+			    folds = true,
 			    icons = {
 				todo = {
 				    -- enabled = true,
-				    done = {
-					icon = "",
-					-- icon = "",
-					-- icon = "",
-					-- icon = "",
-					-- icon = "ﲏ",
-					-- icon = "﫠",
-					-- icon = "﫟",
-					-- nodes = { "todo_item_done" },
-					-- render = module.public.icon_renderers.on_left,
-				    },
-				    pending = {
-					icon = "⭘",
-					-- icon = "",
-					-- icon = "",
-					-- icon = "ﱫ",
-					-- icon = "ﯷ",
-					-- icon = "ﳺ",
-				    },
-				    undone = {
-					icon = "",
-					-- icon = "",
-					-- icon = "ﱳ",
-					-- icon = "窱",
-					-- icon = "×",
-				    },
-				    uncertain = {
-					icon = "",
-					-- icon = "",
-					-- icon = "ﲉ",
-					-- icon = "",
-				    },
-				    on_hold = {
-					icon = "",
-					-- icon = "",
-					-- icon = "",
-				    },
-				    cancelled = {
-					icon = "",
-				    },
-				    recurring = {
-					-- icon = "菱",
-					icon = "↺",
-				    },
-				    urgent = {
-					icon = "",
-					-- icon = "",
-					-- icon = "",
-					-- icon = "ﱥ",
-					-- icon = "𥉉",
-					-- icon = "",
-				    },
+				    done      = { icon = "" },
+				    pending   = { icon = "⭘",},
+                                    undone    = { icon = "" },
+				    uncertain = { icon = "" },
+				    on_hold   = { icon = "" },
+				    cancelled = { icon = "" },
+				    recurring = { icon = "↺" },
+				    urgent    = { icon = "" },
 				},
 			    },
-			    --[[]]
 			},
 		    },
                     ['core.dirman'] = {
@@ -305,13 +259,10 @@ return require('packer').startup(function(use)
                         },
                     },
                     ['core.completion'] = {
-                        config = {
-                            engine = 'nvim-cmp',
-                            -- name = '[Neorg]',
-                        },
+                        config = { engine = 'nvim-cmp' },
                     },
                     ['core.highlights'] = {},
-                }
+		}, -- load
             })
         end,
         -- run = ':Neorg sync-parsers', -- Update treesitter parser when neorg is updated.

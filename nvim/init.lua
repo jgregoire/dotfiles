@@ -85,6 +85,12 @@ o.linebreak = true
 o.breakindentopt = 'list:-1'
 o.formatlistpat = [[^\s*[-\*\~]\+[\.\)]*\s\+]]
 
+-- Folding settings, primarily for Neorg
+w.foldlevel = 2 -- depth to start folding at
+w.foldnestmax = 20 -- default (and max) is 20
+g.foldlevelstart = -1 -- default -1.
+g.foldclose = 'all' -- default ''
+
 -- Completion
 o.wildmenu = true
 o.showcmd = true
