@@ -7,7 +7,7 @@
 -- OneDark Pro
 require('onedarkpro').setup({
     styles = {
-        comments = 'italic', -- Looks awful in Windows Terminal.
+        comments = 'italic',
     },
     plugins = {
         barbar = true,
@@ -81,6 +81,12 @@ require('nvim-surround').setup({
         delete          = 'xs',
         change          = 'es',
     }
+})
+
+-- Smarter tab button
+require('smart-tab').setup({
+    skips = { 'string_content' },
+    mapping = '<Tab>',
 })
 
 -- nvim-comment

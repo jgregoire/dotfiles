@@ -159,8 +159,9 @@ require('legendary').setup({
         { '<C-w>', mode = { 'n', 'i' }, description = 'Autopairs: Fast wrap' },
 
         -- Tabout
-        { '<Tab>',   mode = { 'i' }, description = 'Tabout: Forward' },
-        { '<S-Tab>', mode = { 'i' }, description = 'Tabout: Backward' },
+        -- { '<Tab>',   mode = { 'i' }, description = 'Tabout: Forward' },
+        -- { '<S-Tab>', mode = { 'i' }, description = 'Tabout: Backward' },
+	{ '<Tab>', '<plug>(smart-tab)', mode = { 'i' }, description = 'Smart-Tab: Indent or tab out' },
 
         -- Nvim-Surround
         { 'ps',     mode = { 'n' }, description = 'Surround: Add [MOTION] [TYPE]' },

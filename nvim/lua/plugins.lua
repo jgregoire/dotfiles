@@ -22,6 +22,9 @@ return require('packer').startup(function(use)
     }
 
     -- Tab to escape delimiters
+    use { 'boltlessengineer/smart-tab.nvim' }
+
+--[[
     use {
         'abecodes/tabout.nvim',
         wants = { 'nvim-treesitter' },
@@ -50,7 +53,7 @@ return require('packer').startup(function(use)
             })
         end,
     }
-
+--]]
     -- Extend increment/decrement command
     use { 'nat-418/boole.nvim' }
 
