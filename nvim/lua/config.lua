@@ -56,12 +56,12 @@ require('flash').setup({
 require('nvim-autopairs').setup({
     fast_wrap = {
         -- Before       Input   After
-        -----------------------------------
+        -- ---------------------------------
         -- (|foobar     <M-e>l  (|foobar)
         -- (|)(foobar)  <M-e>a  (|(foobar))
         map = '<C-w>', -- Launch fastwrap
         chars = { '{', '[', '(', '"', "'", '<' },
-        end_key = 'l', -- End of line
+        end_key = 'w', -- End of line
         keys = 'asetnioh', -- Home row keys for position markers
     },
     enable_check_bracket_line = false, -- Don't add pair if it already has close pair in same line.
@@ -92,6 +92,9 @@ require('smart-tab').setup({
 -- nvim-comment
 require('nvim_comment').setup({
     marker_padding = true, -- Add a space.
+    comment_empty = true,
+    comment_empty_trim_whitespace = true,
+    create_mappings = true,
     line_mapping = 'pcc', -- Normal mode, toggle line comment.
     operator_mapping = 'pc', -- Visual/operator mode
     comment_chunk_text_object = 'ic', -- No idea what this is for

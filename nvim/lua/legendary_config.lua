@@ -64,15 +64,15 @@ require('legendary').setup({
         { 'j',     'gJ',     mode = { 'n' },      description = 'Join line below to current line', opts = defaults },
         { 'J',               mode = { 'n' },      description = 'Join line below to current line with a space between' },
         -- { '<C-w>',           mode = { 'i' },      description = 'Delete word before cursor', opts = defaults },
-        { '<C-n>', '<C-o>n', mode = { 'i' },      description = 'Begin new line', opts = defaults },
+        { '<C-n>', '<A-o>',  mode = { 'i' },      description = 'Begin new line', opts = defaults },
         { '>',               mode = { 'n' },      description = 'Indent [MOTION]' },
         { '>>',              mode = { 'n' },      description = 'Indent line' },
         { '<',               mode = { 'n' },      description = 'De-indent [MOTION]' },
         { '<<',              mode = { 'n' },      description = 'De-indent line' },
         { '<C-.>',           mode = { 'i' },      description = 'Indent line' },
         { '<C-,>',           mode = { 'i' },      description = 'De-indent line' },
-        -- This one's a doozy!
-        { '<C-e>', [[<C-\><C-n>:call search('[>)\]}"'']', 'W')<CR>a]], mode = { 'i' }, description = 'Jump out of brackets or quotes' },
+        -- This one's a doozy! But I use smart-tab.nvim now. Preserving this for posterity.
+        -- { '<C-e>', [[<C-\><C-n>:call search('[>)\]}"'']', 'W')<CR>a]], mode = { 'i' }, description = 'Jump out of brackets or quotes' },
 
         -- Visual Mode
         { 'aw', mode = { 'v' }, description = 'Select a word' },
@@ -161,7 +161,7 @@ require('legendary').setup({
         -- Tabout
         -- { '<Tab>',   mode = { 'i' }, description = 'Tabout: Forward' },
         -- { '<S-Tab>', mode = { 'i' }, description = 'Tabout: Backward' },
-	{ '<Tab>', '<plug>(smart-tab)', mode = { 'i' }, description = 'Smart-Tab: Indent or tab out' },
+	{ '<Tab>', mode = { 'i' }, description = 'Smart-Tab: Indent or tab out' },
 
         -- Nvim-Surround
         { 'ps',     mode = { 'n' }, description = 'Surround: Add [MOTION] [TYPE]' },

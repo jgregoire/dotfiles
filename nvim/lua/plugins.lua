@@ -61,7 +61,7 @@ return require('packer').startup(function(use)
     use {
         'cameron-wags/rainbow_csv.nvim',
         config = function()
-            require 'rainbow_csv'.setup(){}
+            require('rainbow_csv').setup(){}
         end,
         module = {
             'rainbow_csv',
