@@ -106,9 +106,10 @@ require('ibl').setup({
     enabled = true,
     indent = { char = '▏' },
     scope = {
-        enabled = false,
+        enabled = true,
         show_start = true,
     }
+    -- include = {} -- Additional nodes to include in scope.
 })
 
 -- nvim-notify
