@@ -177,8 +177,6 @@ require('bufferline').setup({
 require('lualine').setup({
     options = {
         theme = 'auto',
-        -- component_separators = { left = '‖', right = '‖' },
-        -- component_separators = { left = '⏽', right = '⏽' },
         component_separators = { left = '│', right = '│' },
         section_separators = { left = '', right = ''},
     },
@@ -188,7 +186,7 @@ require('lualine').setup({
             'branch',
             {
                 'diff',
-                symbols = { added = ' ', modified = ' ', removed = ' ' },
+                symbols = { added = ' ', modified = ' ', removed = ' ' },
             },
             'diagnostics',
         },
@@ -218,14 +216,14 @@ require('lualine').setup({
 require('gitsigns').setup({
     signs = {
         add          = { text = '' },
-        change       = { text = '' },
-        delete       = { text = '' },
+        change       = { text = '' },
+        delete       = { text = '' },
         topdelete    = { text = '‾' },
-        changedelete = { text = '~' },
+        changedelete = { text = '' },
         untracked    = { text = '┆' },
+
     },
 })
-
 -- Toggleterm
 require('toggleterm').setup({
     open_mapping = '<C-t>',
