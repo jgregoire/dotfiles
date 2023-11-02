@@ -115,7 +115,8 @@ if g.neovide then
     o.guifont = 'FiraCode Nerd Font:h12'
     g.neovide_hide_mouse_when_typing = false
     g.neovide_remember_window_size = true
-    g.neovide_cursor_vfx_mode = 'railgun'
+    g.neovide_cursor_vfx_mode = 'pixiedust'
+    g.neovide_cursor_animate_command_line = true
     g.clipboard = 'unnamed'
 end
 
@@ -127,6 +128,3 @@ require('legendary_config')
 
 -- Plugin configuration:
 require('config')
-
--- Custom highlights
-require('highlights')
