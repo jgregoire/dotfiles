@@ -11,37 +11,6 @@ local g = vim.g
 -- This needs to be set before loading certain plugins.
 o.termguicolors = true
 
--- Packer auto-install on new setups.
-local ensure_packer = function()
-    local fn = vim.fn
-    local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-    if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({
-            'git',
-            'clone',
-            '--depth',
-            '1',
-            'https://github.com/wbthomason/packer.nvim',
-            install_path
-        })
-        vim.cmd [[packadd packer.nvim]]
-        return true
-    end
-    return false
-end
-
----@diagnostic disable-next-line:unused-local
-local packer_bootstrap = ensure_packer()
-
--- Specify plugins:
-require('plugins')
-
--- Key mappings:
-require('legendary_config')
-
--- Plugin configuration:
-require('config')
-
 -- Mouse support
 o.mouse = "a"
 
@@ -119,6 +88,28 @@ o.showtabline = 2
 -- g.clipboard = { 'unnamedplus' } -- Requires xclip or other 3rd party provider
 vim.cmd("set clipboard+=unnamedplus")
 
+-- Packer auto-install on new setups.
+local ensure_packer = function()
+    local fn = vim.fn
+    local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({
+            'git',
+            'clone',
+            '--depth',
+            '1',
+            'https://github.com/wbthomason/packer.nvim',
+            install_path
+        })
+        vim.cmd [[packadd packer.nvim]]
+        return true
+    end
+    return false
+end
+
+---@diagnostic disable-next-line:unused-local
+local packer_bootstrap = ensure_packer()
+
 -- Neovide-only options
 if g.neovide then
     o.guifont = 'FiraCode Nerd Font:h12'
@@ -127,3 +118,15 @@ if g.neovide then
     g.neovide_cursor_vfx_mode = 'railgun'
     g.clipboard = 'unnamed'
 end
+
+-- Specify plugins:
+require('plugins')
+
+-- Key mappings:
+require('legendary_config')
+
+-- Plugin configuration:
+require('config')
+
+-- Custom highlights
+require('highlights')

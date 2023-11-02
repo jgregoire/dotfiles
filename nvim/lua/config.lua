@@ -10,6 +10,7 @@ require('onedarkpro').setup({
         comments = 'italic',
     },
     plugins = {
+        all = false,
         barbar = true,
         diffview = true,
         indentline = true,
@@ -24,7 +25,7 @@ require('onedarkpro').setup({
         treesitter = true,
     }
 })
-vim.cmd('colorscheme onedark')
+vim.cmd('colorscheme onedark_vivid')
 
 -- Extend increment/decrement
 require('boole').setup({
@@ -174,8 +175,10 @@ require('bufferline').setup({
 -- Lualine
 require('lualine').setup({
     options = {
-        theme = 'onedark',
-        component_separators = { left = '|', right = '|' },
+        theme = 'auto',
+        -- component_separators = { left = '‖', right = '‖' },
+        -- component_separators = { left = '⏽', right = '⏽' },
+        component_separators = { left = '│', right = '│' },
         section_separators = { left = '', right = ''},
     },
     sections = {
