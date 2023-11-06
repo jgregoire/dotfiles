@@ -44,6 +44,7 @@ require('transparent').setup()
 -- Diffview - git diff and merge
 require('diffview').setup()
 
+-- Advanced motions
 require('flash').setup({
     labels = 'asetniohqwdfurlgykjzxcvmbp',
     label = {
@@ -178,7 +179,7 @@ require('lualine').setup({
     options = {
         theme = 'auto',
         component_separators = { left = '│', right = '│' },
-        section_separators = { left = '', right = ''},
+        section_separators = { left = '', right = '' },
     },
     sections = {
         lualine_a = { 'mode' },
@@ -199,7 +200,7 @@ require('lualine').setup({
             'encoding',
             'fileformat',
             'filetype' },
-        lualine_y = { 'progress'},
+        lualine_y = { 'progress' },
         lualine_z = { 'location' },
     },
     inactive_sections = {

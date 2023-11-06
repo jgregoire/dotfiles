@@ -172,6 +172,7 @@ return require('packer').startup(function(use)
     -- lspconfig
     use { 'neovim/nvim-lspconfig' }
 
+    -- Automatically add 'end' keyword as appropriate
     use { 'RRethy/nvim-treesitter-endwise' }
 
     -- Treesitter
@@ -191,7 +192,6 @@ return require('packer').startup(function(use)
                 }
             })
         end,
-        -- run = ':TSUpdate',
         build = ':TSUpdate',
     }
 
