@@ -164,6 +164,7 @@ require('noice').setup({
 -- Use Noice with Telescope
 require('telescope').load_extension('noice')
 
+--[[
 -- Barbar (tabbing)
 require('bufferline').setup({
     auto_hide = true,
@@ -173,6 +174,7 @@ require('bufferline').setup({
         filetype = { enabled = true },
     },
 })
+--]]
 
 -- Lualine
 require('lualine').setup({
@@ -191,9 +193,14 @@ require('lualine').setup({
             },
             'diagnostics',
         },
-        lualine_c = { 'filename' },
+        lualine_c = {
+            -- 'filename',
+            'buffers'
+        },
         lualine_x = {
-            { -- Noice showcmd implementation
+            {
+                -- 'tabs',
+                -- Noice showcmd implementation
                 require('noice').api.statusline.command.get,
                 cond = require('noice').api.statusline.command.has,
             },

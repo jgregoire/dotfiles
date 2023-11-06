@@ -145,11 +145,13 @@ return require('packer').startup(function(use)
 
     use { 'terrortylor/nvim-comment' }
 
+--[[
     -- Better tabs
     use {
         'romgrk/barbar.nvim',
         wants = { 'nvim-tree/nvim-web-devicons' },
     }
+--]]
 
     -- Keymap manager
     use {

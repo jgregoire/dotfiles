@@ -83,7 +83,7 @@ o.showbreak = '|=> '
 b.textwidth = 100
 
 -- Tabline
-o.showtabline = 2
+o.showtabline = 0
 
 -- Use system clipboard
 vim.cmd('set clipboard+=unnamedplus')
