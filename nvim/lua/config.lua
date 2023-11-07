@@ -68,7 +68,6 @@ require('nvim-autopairs').setup({
     },
     enable_check_bracket_line = false, -- Don't add pair if it already has close pair in same line.
     enable_bracket_in_quote = false, -- Don't add a pair inside quotes.
-    -- ignored_next_char = "[%w%.]", -- Don't add pair if next char is alphanumeric or '.'
 })
 
 -- Surround - advanced bracket logic
@@ -123,6 +122,7 @@ notify.setup({
 
 -- Noice
 require('noice').setup({
+    health = { checker = false }, -- Don't bother running health checks anymore.
     lsp = {
         progress = { enabled = true },
         override = {
@@ -132,7 +132,7 @@ require('noice').setup({
         },
     },
     presets = {
-        bottom_search = true, -- use a classic bottom cmdline for search
+        bottom_search = false, -- use a classic bottom cmdline for search
         command_palette = true, -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
         inc_rename = false, -- enables an input dialog for inc-rename.nvim
@@ -164,24 +164,21 @@ require('noice').setup({
 -- Use Noice with Telescope
 require('telescope').load_extension('noice')
 
---[[
--- Barbar (tabbing)
-require('bufferline').setup({
-    auto_hide = true,
-    clickable = true, -- Left click: Select. Middle click: Close.
-    icons = {
-        buffer_index = true,
-        filetype = { enabled = true },
-    },
-})
---]]
-
 -- Lualine
 require('lualine').setup({
     options = {
         theme = 'auto',
-        component_separators = { left = '│', right = '│' },
-        section_separators = { left = '', right = '' },
+        component_separators = {
+            left  = '│',
+            right = '│'
+        },
+        section_separators = {
+            left  = '',
+            right = ''
+        },
+    },
+    extensions = {
+        'toggleterm',
     },
     sections = {
         lualine_a = { 'mode' },
@@ -189,17 +186,33 @@ require('lualine').setup({
             'branch',
             {
                 'diff',
-                symbols = { added = ' ', modified = ' ', removed = ' ' },
+                symbols = {
+		    added    = ' ',
+		    modified = ' ',
+		    removed  = ' ',
+		},
             },
-            'diagnostics',
+            {
+		'diagnostics',
+		symbols = {
+		    error = ' ',
+		    warn  = ' ',
+		    info  = ' ',
+		    hint  = ' ',
+		},
+	    },
         },
         lualine_c = {
-            -- 'filename',
-            'buffers'
+            {
+		'buffers',
+		mode = 2, -- show name and index
+		symbols = {
+		    modified = ' '
+		},
+	    },
         },
         lualine_x = {
             {
-                -- 'tabs',
                 -- Noice showcmd implementation
                 require('noice').api.statusline.command.get,
                 cond = require('noice').api.statusline.command.has,
@@ -213,8 +226,8 @@ require('lualine').setup({
     inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = {'filename'},
-        lualine_x = {'location'},
+        lualine_c = { 'filename' },
+        lualine_x = { 'location' },
         lualine_y = {},
         lualine_z = {}
     },

@@ -31,10 +31,10 @@ require('legendary').setup({
     keymaps = {
         -- Modes
         { 'jk',    '<ESC>',  mode = { 'i' },      description = 'Back to Normal mode', opts = defaults },
-        { 'i',               mode = { 'n' },      description = 'Insert before cursor' },
-        { 'I',               mode = { 'n' },      description = 'Insert at beginning of line' },
-        { 'a',               mode = { 'n' },      description = 'Append after cursor' },
-        { 'A',               mode = { 'n' },      description = 'Append at end of line' },
+        { 'i',               mode = { 'n', 'v' }, description = 'Insert before cursor' },
+        { 'I',               mode = { 'n', 'v' }, description = 'Insert at beginning of line' },
+        { 'a',               mode = { 'n', 'v' }, description = 'Append after cursor' },
+        { 'A',               mode = { 'n', 'v' }, description = 'Append at end of line' },
         { 'n',     'o',      mode = { 'n' },      description = 'Append new line below', opts = defaults },
         { 'N',     'O',      mode = { 'n' },      description = 'Append new line above', opts = defaults },
         -- { 's',               mode = { 'n' },      description = 'Delete character and insert' },
@@ -120,11 +120,11 @@ require('legendary').setup({
         { 'l',  '$',  mode = { 'n' }, description = 'End of line', opts = defaults },
         { 'L',  'g_', mode = { 'n' }, description = 'Last non-blank character of line', opts = defaults },
 
-        -- Tabs and such
-        { '<A-t>',     ':tabnew<CR>',         mode = { 'n' }, description = 'Create new tab', opts = defaults },
+        -- Buffers and such
+        -- { '<A-t>',     ':tabnew<CR>',         mode = { 'n' }, description = 'Create new tab', opts = defaults },
         -- { '<A-q>',     ':BufferClose<CR>',    mode = { 'n' }, description = 'Close tab', opts = defaults },
-        { '<A-Q>',     ':tabdo -q<CR>',       mode = { 'n' }, description = 'Close all tabs', opts = defaults },
-        { '<A-qq>',    ':tabonly<CR>',        mode = { 'n'} , description = 'Close other tabs', opts = defaults },
+        -- { '<A-Q>',     ':tabdo -q<CR>',       mode = { 'n' }, description = 'Close all tabs', opts = defaults },
+        -- { '<A-qq>',    ':tabonly<CR>',        mode = { 'n'} , description = 'Close other tabs', opts = defaults },
         { '<A-o>',     ':e ',                 mode = { 'n' }, description = 'Open/edit file', opts = defaults },
         { '<A-Right>', ':bn<CR>',             mode = { 'n' }, description = 'Next tab', opts = defaults },
         { '<A-Left>',  ':bp<CR>',             mode = { 'n' }, description = 'Previous tab', opts = defaults },
