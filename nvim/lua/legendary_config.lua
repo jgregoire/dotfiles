@@ -43,10 +43,10 @@ require('legendary').setup({
         { 'V',               mode = { 'n', 'i' }, description = 'Visual Line mode' },
 
         -- Editing
-        { '<C-s>', { n = ':w<CR>', i = '<C-o>:w<CR>' }, description = 'Save' },
+        { '<C-s>', { n = ':w<CR>', i = '<C-o>:w<CR>' }, description = 'Save', opts = defaults },
         { '<C-z>', { n = 'u',      i = '<C-o>u' },      description = 'Undo', opts = defaults },
         { '<C-y>', { n = '<C-r>',  i = '<C-o><C-r>' },  description = 'Redo', opts = defaults },
-        { '<C-v>', { n = 'P',      i = '<C-o>P' },      description = 'Paste before cursor' },
+        { '<C-v>', { n = 'P',      i = '<C-o>P' },      description = 'Paste before cursor', opts = defaults },
         { 'x',     'd',      mode = { 'n', 'v' }, description = 'Cut/delete [MOTION]', opts = defaults },
         { 'xw',    'dw',     mode = { 'n' },      description = 'Cut from cursor to start of next word', opts = defaults },
         { 'xx',    'dd',     mode = { 'n' },      description = 'Cut line', opts = defaults },
@@ -121,33 +121,20 @@ require('legendary').setup({
         { 'L',  'g_', mode = { 'n' }, description = 'Last non-blank character of line', opts = defaults },
 
         -- Buffers and such
-        -- { '<A-t>',     ':tabnew<CR>',         mode = { 'n' }, description = 'Create new tab', opts = defaults },
-        -- { '<A-q>',     ':BufferClose<CR>',    mode = { 'n' }, description = 'Close tab', opts = defaults },
-        -- { '<A-Q>',     ':tabdo -q<CR>',       mode = { 'n' }, description = 'Close all tabs', opts = defaults },
-        -- { '<A-qq>',    ':tabonly<CR>',        mode = { 'n'} , description = 'Close other tabs', opts = defaults },
-        { '<A-o>',     ':e ',                 mode = { 'n' }, description = 'Open/edit file', opts = defaults },
-        { '<A-Right>', ':bn<CR>',             mode = { 'n' }, description = 'Next tab', opts = defaults },
-        { '<A-Left>',  ':bp<CR>',             mode = { 'n' }, description = 'Previous tab', opts = defaults },
-        -- { '<A-1>',     ':BufferGoto 1<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 1', opts = defaults },
-        -- { '<A-2>',     ':BufferGoto 2<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 2', opts = defaults },
-        -- { '<A-3>',     ':BufferGoto 3<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 3', opts = defaults },
-        -- { '<A-4>',     ':BufferGoto 4<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 4', opts = defaults },
-        -- { '<A-5>',     ':BufferGoto 5<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 5', opts = defaults },
-        -- { '<A-6>',     ':BufferGoto 6<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 6', opts = defaults },
-        -- { '<A-7>',     ':BufferGoto 7<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 7', opts = defaults },
-        -- { '<A-8>',     ':BufferGoto 8<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 8', opts = defaults },
-        -- { '<A-9>',     ':BufferGoto 9<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 9', opts = defaults },
-        -- { '<A-0>',     ':BufferGoto 10<CR>',  mode = { 'n' }, description = 'Barbar: Go to tab 10', opts = defaults },
+        { '<A-o>',     ':e ',          mode = { 'n' }, description = 'Open/edit file', opts = defaults },
+	{ '<A-q>',     ':bdelete<CR>',                 description = 'Close buffer', opts = defaults },
+        { '<A-Right>', ':bn<CR>',      mode = { 'n' }, description = 'Next tab', opts = defaults },
+        { '<A-Left>',  ':bp<CR>',      mode = { 'n' }, description = 'Previous tab', opts = defaults },
 
         -- Legendary
         { '<leader>l', ':Legendary<CR>', mode = { 'n' }, description = 'Legendary: Launch menu', opts = defaults },
 
         -- CMP
-        { '<C-Space>', description = 'CMP: Complete' },
-        { '<Tab>',   mode = { 'i', 's' }, description = 'CMP: Previous' },
-        { '<C-Tab>', mode = { 'i', 's' }, description = 'CMP: Next' },
-        { '<CR>',                         description = 'CMP: Confirm' },
-        { '<Esc>',                        description = 'CMP: Cancel' },
+        { '<C-Space>',               description = 'CMP: Complete' },
+        { '<Tab>',   mode = { 's' }, description = 'CMP: Previous' },
+        { '<C-Tab>', mode = { 's' }, description = 'CMP: Next' },
+        { '<CR>',    mode = { 's' }, description = 'CMP: Confirm' },
+        { '<Esc>',                   description = 'CMP: Cancel' },
 
         -- Telescope
         { '<leader>ff', '<cmd>Telescope find_files<cr>', mode = { 'n' }, description = 'Telescope: Find files', opts = defaults },
@@ -161,7 +148,7 @@ require('legendary').setup({
         -- Tabout
         -- { '<Tab>',   mode = { 'i' }, description = 'Tabout: Forward' },
         -- { '<S-Tab>', mode = { 'i' }, description = 'Tabout: Backward' },
-	{ '<Tab>', mode = { 'i' }, description = 'Smart-Tab: Indent or tab out' },
+        { '<Tab>', mode = { 'i' }, description = 'Smart-Tab: Indent or tab out' },
 
         -- Nvim-Surround
         { 'ps',     mode = { 'n' }, description = 'Surround: Add [MOTION] [TYPE]' },
@@ -190,14 +177,14 @@ require('legendary').setup({
         { '<C-t>', mode = { 'n' }, description = 'ToggleTerm: Toggle Terminal(s)', opts = defaults },
 
         -- Flash
-        { 's', function() require('flash').jump() end, mode = { 'n', 'x', 'o' }, description = 'Flash: Jump' },
-        { 'S', function() require('flash').treesitter() end, mode = { 'n', 'x', 'o' }, description = 'Flash: Treesitter' },
-        { 'm', function() require('flash').remote() end, mode = { 'o' }, description = 'Flash: Remote' },
-        { 'M', function() require('flash').treesitter_search() end, description = 'Flash: Treesitter search' },
-        { '<C-f>', function() require('flash').toggle() end, mode = { 'c' }, description = 'Flash: Toggle search' },
+        { 's', function() require('flash').jump() end,       mode = { 'n', 'x', 'o' }, description = 'Flash: Jump' , opts = defaults },
+        { 'S', function() require('flash').treesitter() end, mode = { 'n', 'x', 'o' }, description = 'Flash: Treesitter', opts = defaults },
+        { 'm', function() require('flash').remote() end,     mode = { 'o' },           description = 'Flash: Remote', opts = defaults },
+        { 'M', function() require('flash').treesitter_search() end,                    description = 'Flash: Treesitter search', opts = defaults },
+        { '<C-f>', function() require('flash').toggle() end, mode = { 'c' },           description = 'Flash: Toggle search', opts = defaults },
 
         -- Neorg
-        { '<leader>n', ':Neorg mode norg<CR>', mode = 'n',    description = 'Neorg: Enter norg mode' },
+        { '<leader>n', ':Neorg mode norg<CR>', mode = 'n',    description = 'Neorg: Enter norg mode', opts = defaults },
         { '<leader>tu', mode = { 'norg' }, description = 'Neorg: Set TODO task undone' },
         { '<leader>tp', mode = { 'norg' }, description = 'Neorg: Set TODO task pending' },
         { '<leader>td', mode = { 'norg' }, description = 'Neorg: Set TODO task done' },
@@ -212,8 +199,8 @@ require('legendary').setup({
         { '<leader>id', mode = { 'norg' }, description = 'Neorg: Insert date' },
 
         -- Nabla
-        { '<leader>ep', [[:lua require('nabla').popup({ border = 'single' })<CR>]], mode = { 'n' }, description = 'Nabla: Render in popup' },
-        { '<leader>ei', [[:lua require('nabla').toggle_virt({ autogen = true })<CR>]], mode = { 'n' }, description = 'Nabla: Render inline' },
+        { '<leader>ep', [[:lua require('nabla').popup({ border = 'single' })<CR>]],    mode = { 'n' }, description = 'Nabla: Render in popup', opts = defaults },
+        { '<leader>ei', [[:lua require('nabla').toggle_virt({ autogen = true })<CR>]], mode = { 'n' }, description = 'Nabla: Render inline', opts = defaults },
 
         -- Boole
         { '<C-Up>',   mode = { 'n' }, description = 'Boole: Increment value' },
