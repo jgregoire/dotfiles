@@ -84,11 +84,13 @@ require('nvim-surround').setup({
     }
 })
 
+--[[
 -- Smarter tab button
 require('smart-tab').setup({
     skips = { 'string_content' },
     mapping = '<Tab>',
 })
+--]]
 
 -- nvim-comment
 require('nvim_comment').setup({

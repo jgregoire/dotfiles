@@ -55,7 +55,6 @@ require('legendary').setup({
         { 'cw',    'yw',     mode = { 'n' },      description = 'Copy from cursor to start of next word', opts = defaults },
         { 'cc',    'yy',     mode = { 'n' },      description = 'Copy line', opts = defaults },
         { 'C',     'y$',     mode = { 'n' },      description = 'Copy to end of line', opts = defaults },
-        -- { 'P',     'P',      mode = { 'n' },      description = 'Paste before cursor', opts = defaults },
         -- { 'E',     'r',      mode = { 'n' },      description = 'Replace single character', opts = defaults },
         { 'e',     'c',      mode = { 'n' },      description = 'Edit/change [MOTION]', opts = defaults },
         { 'EE',    'R',      mode = { 'n' },      description = 'Replace characters until ESC', opts = defaults },
@@ -71,7 +70,7 @@ require('legendary').setup({
         { '<<',              mode = { 'n' },      description = 'De-indent line' },
         { '<C-.>',           mode = { 'i' },      description = 'Indent line' },
         { '<C-,>',           mode = { 'i' },      description = 'De-indent line' },
-        -- This one's a doozy! But I use smart-tab.nvim now. Preserving this for posterity.
+        -- This one's a doozy! But I use tabout.nvim now. Preserving this for posterity.
         -- { '<C-e>', [[<C-\><C-n>:call search('[>)\]}"'']', 'W')<CR>a]], mode = { 'i' }, description = 'Jump out of brackets or quotes' },
 
         -- Visual Mode
@@ -146,9 +145,8 @@ require('legendary').setup({
         { '<C-w>', mode = { 'n', 'i' }, description = 'Autopairs: Fast wrap' },
 
         -- Tabout
-        -- { '<Tab>',   mode = { 'i' }, description = 'Tabout: Forward' },
-        -- { '<S-Tab>', mode = { 'i' }, description = 'Tabout: Backward' },
-        { '<Tab>', mode = { 'i' }, description = 'Smart-Tab: Indent or tab out' },
+        { '<Tab>',   mode = { 'i' }, description = 'Tabout: Forward' },
+        { '<S-Tab>', mode = { 'i' }, description = 'Tabout: Backward' },
 
         -- Nvim-Surround
         { 'ps',     mode = { 'n' }, description = 'Surround: Add [MOTION] [TYPE]' },
@@ -177,11 +175,11 @@ require('legendary').setup({
         { '<C-t>', mode = { 'n' }, description = 'ToggleTerm: Toggle Terminal(s)', opts = defaults },
 
         -- Flash
-        { 's', function() require('flash').jump() end,       mode = { 'n', 'x', 'o' }, description = 'Flash: Jump' , opts = defaults },
-        { 'S', function() require('flash').treesitter() end, mode = { 'n', 'x', 'o' }, description = 'Flash: Treesitter', opts = defaults },
-        { 'm', function() require('flash').remote() end,     mode = { 'o' },           description = 'Flash: Remote', opts = defaults },
-        { 'M', function() require('flash').treesitter_search() end,                    description = 'Flash: Treesitter search', opts = defaults },
-        { '<C-f>', function() require('flash').toggle() end, mode = { 'c' },           description = 'Flash: Toggle search', opts = defaults },
+        { 's',     function() require('flash').jump() end,       mode = { 'n', 'x', 'o' }, description = 'Flash: Jump' , opts = defaults },
+        { 'S',     function() require('flash').treesitter() end, mode = { 'n', 'x', 'o' }, description = 'Flash: Treesitter', opts = defaults },
+        { 'm',	   function() require('flash').remote() end,     mode = { 'o' },           description = 'Flash: Remote [OPERATOR] [FLASH] [MOTION]', opts = defaults },
+        { 'M',     function() require('flash').treesitter_search() end,                    description = 'Flash: Treesitter search', opts = defaults },
+        { '<C-f>', function() require('flash').toggle() end,     mode = { 'c' },           description = 'Flash: Toggle flash in search', opts = defaults },
 
         -- Neorg
         { '<leader>n', ':Neorg mode norg<CR>', mode = 'n',    description = 'Neorg: Enter norg mode', opts = defaults },

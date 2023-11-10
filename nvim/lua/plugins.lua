@@ -22,9 +22,7 @@ return require('packer').startup(function(use)
     }
 
     -- Tab to escape delimiters
-    use { 'boltlessengineer/smart-tab.nvim' }
-
---[[
+    -- use { 'boltlessengineer/smart-tab.nvim' }
     use {
         'abecodes/tabout.nvim',
         wants = { 'nvim-treesitter' },
@@ -35,8 +33,8 @@ return require('packer').startup(function(use)
                 backwards_tabkey = '<S-Tab>',
                 act_as_tab = true,
                 act_as_shift_tab = true,
-                default_tab = '<C-t>',
-                default_shift_tab = '<C-d>',
+                default_tab = '<Tab>',
+		default_shift_tab = '<C-d>',
                 enable_backwards = true,
                 completion = true,
                 tabouts = {
@@ -47,13 +45,14 @@ return require('packer').startup(function(use)
                     { open = '[', close = ']' },
                     { open = '{', close = '}' },
                     { open = '<', close = '>' },
+		    { open = '#', close = ']' }, -- Rust macros
                 },
                 ignore_beginning = false,
                 exclude = {},
             })
         end,
     }
---]]
+
     -- Extend increment/decrement command
     use { 'nat-418/boole.nvim' }
 
