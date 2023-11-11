@@ -31,10 +31,10 @@ require('legendary').setup({
     keymaps = {
         -- Modes
         { 'jk',    '<ESC>',  mode = { 'i' },      description = 'Back to Normal mode', opts = defaults },
-        { 'i',               mode = { 'n' },      description = 'Insert before cursor' },
-        { 'I',               mode = { 'n' },      description = 'Insert at beginning of line' },
-        { 'a',               mode = { 'n' },      description = 'Append after cursor' },
-        { 'A',               mode = { 'n' },      description = 'Append at end of line' },
+        { 'i',               mode = { 'n', 'v' }, description = 'Insert before cursor' },
+        { 'I',               mode = { 'n', 'v' }, description = 'Insert at beginning of line' },
+        { 'a',               mode = { 'n', 'v' }, description = 'Append after cursor' },
+        { 'A',               mode = { 'n', 'v' }, description = 'Append at end of line' },
         { 'n',     'o',      mode = { 'n' },      description = 'Append new line below', opts = defaults },
         { 'N',     'O',      mode = { 'n' },      description = 'Append new line above', opts = defaults },
         -- { 's',               mode = { 'n' },      description = 'Delete character and insert' },
@@ -43,10 +43,10 @@ require('legendary').setup({
         { 'V',               mode = { 'n', 'i' }, description = 'Visual Line mode' },
 
         -- Editing
-        { '<C-s>', { n = ':w<CR>', i = '<C-o>:w<CR>' }, description = 'Save' },
+        { '<C-s>', { n = ':w<CR>', i = '<C-o>:w<CR>' }, description = 'Save', opts = defaults },
         { '<C-z>', { n = 'u',      i = '<C-o>u' },      description = 'Undo', opts = defaults },
         { '<C-y>', { n = '<C-r>',  i = '<C-o><C-r>' },  description = 'Redo', opts = defaults },
-        { '<C-v>', { n = 'p',      i = '<C-o>p' },      description = 'Paste after cursor' },
+        { '<C-v>', { n = 'P',      i = '<C-o>P' },      description = 'Paste before cursor', opts = defaults },
         { 'x',     'd',      mode = { 'n', 'v' }, description = 'Cut/delete [MOTION]', opts = defaults },
         { 'xw',    'dw',     mode = { 'n' },      description = 'Cut from cursor to start of next word', opts = defaults },
         { 'xx',    'dd',     mode = { 'n' },      description = 'Cut line', opts = defaults },
@@ -55,7 +55,6 @@ require('legendary').setup({
         { 'cw',    'yw',     mode = { 'n' },      description = 'Copy from cursor to start of next word', opts = defaults },
         { 'cc',    'yy',     mode = { 'n' },      description = 'Copy line', opts = defaults },
         { 'C',     'y$',     mode = { 'n' },      description = 'Copy to end of line', opts = defaults },
-        { 'P',     'P',      mode = { 'n' },      description = 'Paste before cursor', opts = defaults },
         -- { 'E',     'r',      mode = { 'n' },      description = 'Replace single character', opts = defaults },
         { 'e',     'c',      mode = { 'n' },      description = 'Edit/change [MOTION]', opts = defaults },
         { 'EE',    'R',      mode = { 'n' },      description = 'Replace characters until ESC', opts = defaults },
@@ -64,15 +63,15 @@ require('legendary').setup({
         { 'j',     'gJ',     mode = { 'n' },      description = 'Join line below to current line', opts = defaults },
         { 'J',               mode = { 'n' },      description = 'Join line below to current line with a space between' },
         -- { '<C-w>',           mode = { 'i' },      description = 'Delete word before cursor', opts = defaults },
-        { '<C-n>', '<C-o>n', mode = { 'i' },      description = 'Begin new line', opts = defaults },
+        { '<C-n>', '<A-o>',  mode = { 'i' },      description = 'Begin new line', opts = defaults },
         { '>',               mode = { 'n' },      description = 'Indent [MOTION]' },
         { '>>',              mode = { 'n' },      description = 'Indent line' },
         { '<',               mode = { 'n' },      description = 'De-indent [MOTION]' },
         { '<<',              mode = { 'n' },      description = 'De-indent line' },
         { '<C-.>',           mode = { 'i' },      description = 'Indent line' },
         { '<C-,>',           mode = { 'i' },      description = 'De-indent line' },
-        -- This one's a doozy!
-        { '<C-e>', [[<C-\><C-n>:call search('[>)\]}"'']', 'W')<CR>a]], mode = { 'i' }, description = 'Jump out of brackets or quotes' },
+        -- This one's a doozy! But I use tabout.nvim now. Preserving this for posterity.
+        -- { '<C-e>', [[<C-\><C-n>:call search('[>)\]}"'']', 'W')<CR>a]], mode = { 'i' }, description = 'Jump out of brackets or quotes' },
 
         -- Visual Mode
         { 'aw', mode = { 'v' }, description = 'Select a word' },
@@ -120,34 +119,21 @@ require('legendary').setup({
         { 'l',  '$',  mode = { 'n' }, description = 'End of line', opts = defaults },
         { 'L',  'g_', mode = { 'n' }, description = 'Last non-blank character of line', opts = defaults },
 
-        -- Tabs and such
-        { '<A-t>',     ':tabnew<CR>',         mode = { 'n' }, description = 'Create new tab', opts = defaults },
-        { '<A-q>',     ':BufferClose<CR>',    mode = { 'n' }, description = 'Close tab', opts = defaults },
-        { '<A-Q>',     ':tabdo -q<CR>',       mode = { 'n' }, description = 'Close all tabs', opts = defaults },
-        { '<A-qq>',    ':tabonly<CR>',        mode = { 'n'} , description = 'Close other tabs', opts = defaults },
-        { '<A-o>',     ':e ',                 mode = { 'n' }, description = 'Open/edit file', opts = defaults },
-        { '<A-Right>', ':BufferNext<CR>',     mode = { 'n' }, description = 'Barbar: Next tab', opts = defaults },
-        { '<A-Left>',  ':BufferPrevious<CR>', mode = { 'n' }, description = 'Barbar: Previous tab', opts = defaults },
-        { '<A-1>',     ':BufferGoto 1<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 1', opts = defaults },
-        { '<A-2>',     ':BufferGoto 2<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 2', opts = defaults },
-        { '<A-3>',     ':BufferGoto 3<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 3', opts = defaults },
-        { '<A-4>',     ':BufferGoto 4<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 4', opts = defaults },
-        { '<A-5>',     ':BufferGoto 5<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 5', opts = defaults },
-        { '<A-6>',     ':BufferGoto 6<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 6', opts = defaults },
-        { '<A-7>',     ':BufferGoto 7<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 7', opts = defaults },
-        { '<A-8>',     ':BufferGoto 8<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 8', opts = defaults },
-        { '<A-9>',     ':BufferGoto 9<CR>',   mode = { 'n' }, description = 'Barbar: Go to tab 9', opts = defaults },
-        { '<A-0>',     ':BufferGoto 10<CR>',  mode = { 'n' }, description = 'Barbar: Go to tab 10', opts = defaults },
+        -- Buffers and such
+        { '<A-o>',     ':e ',          mode = { 'n' }, description = 'Open/edit file', opts = defaults },
+	{ '<A-q>',     ':bdelete<CR>',                 description = 'Close buffer', opts = defaults },
+        { '<A-Right>', ':bn<CR>',      mode = { 'n' }, description = 'Next tab', opts = defaults },
+        { '<A-Left>',  ':bp<CR>',      mode = { 'n' }, description = 'Previous tab', opts = defaults },
 
         -- Legendary
         { '<leader>l', ':Legendary<CR>', mode = { 'n' }, description = 'Legendary: Launch menu', opts = defaults },
 
         -- CMP
-        { '<C-Space>', description = 'CMP: Complete' },
-        { '<Tab>',   mode = { 'i', 's' }, description = 'CMP: Previous' },
-        { '<C-Tab>', mode = { 'i', 's' }, description = 'CMP: Next' },
-        { '<CR>',                         description = 'CMP: Confirm' },
-        { '<Esc>',                        description = 'CMP: Cancel' },
+        { '<C-Space>',               description = 'CMP: Complete' },
+        { '<Tab>',   mode = { 's' }, description = 'CMP: Previous' },
+        { '<C-Tab>', mode = { 's' }, description = 'CMP: Next' },
+        { '<CR>',    mode = { 's' }, description = 'CMP: Confirm' },
+        { '<Esc>',                   description = 'CMP: Cancel' },
 
         -- Telescope
         { '<leader>ff', '<cmd>Telescope find_files<cr>', mode = { 'n' }, description = 'Telescope: Find files', opts = defaults },
@@ -157,6 +143,10 @@ require('legendary').setup({
 
         -- Autopairs
         { '<C-w>', mode = { 'n', 'i' }, description = 'Autopairs: Fast wrap' },
+
+        -- Tabout
+        { '<Tab>',   mode = { 'i' }, description = 'Tabout: Forward' },
+        { '<S-Tab>', mode = { 'i' }, description = 'Tabout: Backward' },
 
         -- Nvim-Surround
         { 'ps',     mode = { 'n' }, description = 'Surround: Add [MOTION] [TYPE]' },
@@ -180,34 +170,39 @@ require('legendary').setup({
             function() vim.api.nvim_command([[:TermExec go_back=0 direction=float cmd='cd ]] .. vim.fn.getcwd() .. [['<CR>]]) end,
             mode = { 'n' },
             description = 'Toggleterm: Open terminal at PWD',
-	    opts = defaults
+            opts = defaults
         },
         { '<C-t>', mode = { 'n' }, description = 'ToggleTerm: Toggle Terminal(s)', opts = defaults },
 
-        -- Leap
-        { 's', '<Plug>(leap-forward-to)',  mode = { 'n' }, description = 'Leap: forward to [CHAR1][CHAR2][LABEL]', opts = defaults },
-        { 'S', '<Plug>(leap-backward-to)', mode = { 'n' }, description = 'Leap: backward to [CHAR1][CHAR2][LABEL]', opts = defaults },
+        -- Flash
+        { 's',     function() require('flash').jump() end,       mode = { 'n', 'x', 'o' }, description = 'Flash: Jump' , opts = defaults },
+        { 'S',     function() require('flash').treesitter() end, mode = { 'n', 'x', 'o' }, description = 'Flash: Treesitter', opts = defaults },
+        { 'm',	   function() require('flash').remote() end,     mode = { 'o' },           description = 'Flash: Remote [OPERATOR] [FLASH] [MOTION]', opts = defaults },
+        { 'M',     function() require('flash').treesitter_search() end,                    description = 'Flash: Treesitter search', opts = defaults },
+        { '<C-f>', function() require('flash').toggle() end,     mode = { 'c' },           description = 'Flash: Toggle flash in search', opts = defaults },
 
-        -- Leap (Spooky)
-        { 's', mode = { 'o' }, description = 'Leap (Spooky): Static [MOTION] at [CHAR1][CHAR2][LABEL]' },
-        { 'S', mode = { 'o' }, description = 'Leap (Spooky): Static [MOTION] in another window at [CHAR1][CHAR2][LABEL]' },
-        { 'm', mode = { 'o' }, description = 'Leap (Spooky): Magnetic [MOTION] at [CHAR1][CHAR2][LABEL]' },
-        { 'M', mode = { 'o' }, description = 'Leap (Spooky): Magnetic [MOTION] in another window at [CHAR1][CHAR2][LABEL]' },
+        -- Neorg
+        { '<leader>n', ':Neorg mode norg<CR>', mode = 'n',    description = 'Neorg: Enter norg mode', opts = defaults },
+        { '<leader>tu', mode = { 'norg' }, description = 'Neorg: Set TODO task undone' },
+        { '<leader>tp', mode = { 'norg' }, description = 'Neorg: Set TODO task pending' },
+        { '<leader>td', mode = { 'norg' }, description = 'Neorg: Set TODO task done' },
+        { '<leader>th', mode = { 'norg' }, description = 'Neorg: Set TODO task on hold' },
+        { '<leader>tc', mode = { 'norg' }, description = 'Neorg: Set TODO task cancelled' },
+        { '<leader>tr', mode = { 'norg' }, description = 'Neorg: Set TODO task recurring' },
+        { '<leader>ti', mode = { 'norg' }, description = 'Neorg: Set TODO task important' },
+        { '<leader>ta', mode = { 'norg' }, description = 'Neorg: Set TODO task ambiguous' },
+        { '<C-Space>',  mode = { 'norg' }, description = 'Neorg: Toggle TODO task between states' },
+        { '<CR>',       mode = { 'norg' }, description = 'Neorg: Hop to link location' },
+        { '<A-CR>',     mode = { 'norg' }, description = 'Neorg: Open location in vsplit' },
+        { '<leader>id', mode = { 'norg' }, description = 'Neorg: Insert date' },
 
-	-- Neorg
-	{ '<leader>n', ':Neorg mode norg<CR>', mode = 'n',    description = 'Neorg: Enter norg mode' },
-	{ '<leader>tu', mode = 'norg', description = 'Neorg: Set TODO task undone' },
-	{ '<leader>tp', mode = 'norg', description = 'Neorg: Set TODO task pending' },
-	{ '<leader>td', mode = 'norg', description = 'Neorg: Set TODO task done' },
-	{ '<leader>th', mode = 'norg', description = 'Neorg: Set TODO task on hold' },
-	{ '<leader>tc', mode = 'norg', description = 'Neorg: Set TODO task cancelled' },
-	{ '<leader>tr', mode = 'norg', description = 'Neorg: Set TODO task recurring' },
-	{ '<leader>ti', mode = 'norg', description = 'Neorg: Set TODO task important' },
-	{ '<leader>ta', mode = 'norg', description = 'Neorg: Set TODO task ambiguous' },
-	{ '<C-Space>',  mode = 'norg', description = 'Neorg: Toggle TODO task between states' },
-	{ '<CR>',       mode = 'norg', description = 'Neorg: Hop to link location' },
-	{ '<A-CR>',     mode = 'norg', description = 'Neorg: Open location in vsplit' },
-	{ '<leader>id', mode = 'norg', description = 'Neorg: Insert date' },
+        -- Nabla
+        { '<leader>ep', [[:lua require('nabla').popup({ border = 'single' })<CR>]],    mode = { 'n' }, description = 'Nabla: Render in popup', opts = defaults },
+        { '<leader>ei', [[:lua require('nabla').toggle_virt({ autogen = true })<CR>]], mode = { 'n' }, description = 'Nabla: Render inline', opts = defaults },
+
+        -- Boole
+        { '<C-Up>',   mode = { 'n' }, description = 'Boole: Increment value' },
+        { '<C-Down>', mode = { 'n' }, description = 'Boole: Decrement value' },
     },
 
     commands = {},

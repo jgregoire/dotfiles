@@ -1,14 +1,39 @@
--- This file contains setup and config for Packer plugins.
+
 -- N.B. I use the Norman keyboard layout on an ErgoDox keyboard.
 -- I have remapped almost everything, sometimes in surprising ways.
 -- If you want to use my config as a QWERTY user, consider replacing
 --   mappings, keys, labels, etc. with defaults, THEN customizing.
 
--- Base16
-local base16 = require('base16')
-local theme = base16.themes['railscasts']
-theme.base00 = '0C0C0C' -- Usually #2B2B2B. I prefer a darker bg.
-base16(theme, true) -- Set theme.
+-- OneDark Pro
+require('onedarkpro').setup({
+    styles = {
+        comments = 'italic',
+    },
+    plugins = {
+        all = false,
+        barbar = true,
+        diffview = true,
+        indentline = true,
+        gitsigns = true,
+        flash_nvim = true,
+        nvim_cmp = true,
+        nvim_lsp = true,
+        nvim_notify = true,
+        packer = true,
+        telescope = true,
+        toggleterm = true,
+        treesitter = true,
+    }
+})
+vim.cmd('colorscheme onedark_vivid')
+
+-- Extend increment/decrement
+require('boole').setup({
+    mappings = {
+        increment = '<C-Up>',
+        decrement = '<C-Down>',
+    },
+})
 
 -- Smooth scrolling
 require('neoscroll').setup()
@@ -17,51 +42,32 @@ require('neoscroll').setup()
 require('transparent').setup()
 
 -- Diffview - git diff and merge
---require('diffview').setup()
+require('diffview').setup()
 
--- Leap - intuitive motions, spooky actions
-local leap = require('leap')
-leap.add_default_mappings()
-leap.opts.safe_labels = {
-    't', 'o', 'h', 'm', 'q', 'w', 'd', 'f', 'u', 'r', 'l', 'y', 'k', 'j',
-    'T', 'O', 'H', 'M', 'Q', 'W', 'D', 'F', 'U', 'R', 'L', 'Y', 'K', 'J',
-}
-leap.opts.labels = {
-    't', 'o', 'h', 'm', 'q', 'w', 'd', 'f', 'u', 'r', 'l', 'y', 'k', 'j',
-    'T', 'O', 'H', 'M', 'Q', 'W', 'D', 'F', 'U', 'R', 'L', 'Y', 'K', 'J',
-    '\'', '\"', '/', '?',
-    'z', 'x', 'c', 'v', 'b', 'p',
-    'Z', 'X', 'C', 'V', 'B', 'P',
-}
-vim.api.nvim_set_hl(0, 'LeapLabelPrimary',   { bg = '#' .. theme.base0C, fg = '#' .. theme.base07 })
-vim.api.nvim_set_hl(0, 'LeapLabelSecondary', { bg = '#' .. theme.base0E, fg = '#' .. theme.base07 })
--- This is a hack until nvim core fixes a bug, making autojump'd cursor more visible.
--- See: https://github.com/ggandor/leap.nvim/issues/70/ still open as of 2023-08-25.
--- However, Noice also implements a fix, so comment out next line while using Noice.
--- vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
-
-require('leap-spooky').setup({
-    affixes = {
-        remote   = { window = 's', cross_window = 's' },
-        magnetic = { window = 'm', cross_window = 'M' },
-    },
-    paste_on_remote_yank = false,
+-- Advanced motions
+require('flash').setup({
+    labels = 'asetniohqwdfurlgykjzxcvmbp',
+    label = {
+        -- Show jump label before the target, not after.
+        after = false,
+        before = true,
+    }
 })
 
 -- Autopairs - basic bracket logic
 require('nvim-autopairs').setup({
     fast_wrap = {
         -- Before       Input   After
-        -----------------------------------
+        -- ---------------------------------
         -- (|foobar     <M-e>l  (|foobar)
         -- (|)(foobar)  <M-e>a  (|(foobar))
         map = '<C-w>', -- Launch fastwrap
         chars = { '{', '[', '(', '"', "'", '<' },
-        end_key = 'l', -- End of line
+        end_key = 'w', -- End of line
         keys = 'asetnioh', -- Home row keys for position markers
     },
     enable_check_bracket_line = false, -- Don't add pair if it already has close pair in same line.
-    ignored_next_char = "[%w%.]", -- Don't add pair if next char is alphanumeric or '.'
+    enable_bracket_in_quote = false, -- Don't add a pair inside quotes.
 })
 
 -- Surround - advanced bracket logic
@@ -78,47 +84,37 @@ require('nvim-surround').setup({
     }
 })
 
+--[[
+-- Smarter tab button
+require('smart-tab').setup({
+    skips = { 'string_content' },
+    mapping = '<Tab>',
+})
+--]]
+
 -- nvim-comment
 require('nvim_comment').setup({
     marker_padding = true, -- Add a space.
+    comment_empty = true,
+    comment_empty_trim_whitespace = true,
+    create_mappings = true,
     line_mapping = 'pcc', -- Normal mode, toggle line comment.
     operator_mapping = 'pc', -- Visual/operator mode
     comment_chunk_text_object = 'ic', -- No idea what this is for
 })
 
 -- Indent Blankline
-require('indent_blankline').setup({
-    show_current_context = true,
-    show_current_context_start = true,
-    use_treesitter = true,
-    --max_indent_increase = 2,
-    -- context_char = '┃',
-    --use_treesitter_scope = true,
+require('ibl').setup({
+    enabled = true,
+    indent = { char = '▏' },
+    scope = {
+        enabled = true,
+        show_start = true,
+    }
+    -- include = {} -- Additional nodes to include in scope.
 })
 
 -- nvim-notify
-vim.api.nvim_set_hl(0, 'NotifyERRORBorder', { fg = '#'..theme.base08, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyERRORIcon',   { fg = '#'..theme.base08, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyERRORTitle',  { fg = '#'..theme.base08, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyWARNBorder',  { fg = '#'..theme.base0A, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyWARNIcon',    { fg = '#'..theme.base0A, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyWARNTitle',   { fg = '#'..theme.base0A, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyINFOBorder',  { fg = '#'..theme.base07, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyINFOIcon',    { fg = '#'..theme.base07, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyINFOTitle',   { fg = '#'..theme.base07, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyDEBUGBorder', { fg = '#'..theme.base0D, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyDEBUGIcon',   { fg = '#'..theme.base0D, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyDEBUGTitle',  { fg = '#'..theme.base0D, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyTRACEBorder', { fg = '#'..theme.base0E, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyTRACEIcon',   { fg = '#'..theme.base0E, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyTRACETitle',  { fg = '#'..theme.base0E, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'Normal',            { fg = '#'..theme.base05, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NotifyERRORBody',   { link = 'Normal' })
-vim.api.nvim_set_hl(0, 'NotifyWARNBody',    { link = 'Normal' })
-vim.api.nvim_set_hl(0, 'NotifyINFOBody',    { link = 'Normal' })
-vim.api.nvim_set_hl(0, 'NotifyDEBUGBody',   { link = 'Normal' })
-vim.api.nvim_set_hl(0, 'NotifyTRACEBody',   { link = 'Normal' })
-
 local notify = require('notify')
 notify.setup({
     render = 'compact',
@@ -128,6 +124,7 @@ notify.setup({
 
 -- Noice
 require('noice').setup({
+    health = { checker = false }, -- Don't bother running health checks anymore.
     lsp = {
         progress = { enabled = true },
         override = {
@@ -137,7 +134,7 @@ require('noice').setup({
         },
     },
     presets = {
-        bottom_search = true, -- use a classic bottom cmdline for search
+        bottom_search = false, -- use a classic bottom cmdline for search
         command_palette = true, -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
         inc_rename = false, -- enables an input dialog for inc-rename.nvim
@@ -165,30 +162,25 @@ require('noice').setup({
         },
     },
 })
--- Noice colors
-vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorder', { fg = '#'..theme.base0C, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'NoiceCmdlineIcon',        { fg = '#'..theme.base07, bg = '#'..theme.base00 })
 
 -- Use Noice with Telescope
 require('telescope').load_extension('noice')
 
--- Barbar (tabbing)
-require('bufferline').setup({
-    auto_hide = true,
-    clickable = true, -- Left click: Select. Middle click: Close.
-    icons = {
-        buffer_index = true,
-        filetype = { enabled = true },
-    },
-})
-require('barbar-theme') -- My theme customizations
-
 -- Lualine
 require('lualine').setup({
     options = {
-        theme = 'auto', -- 'base16' doesn't work.
-        component_separators = { left = '|', right = '|' },
-        section_separators = { left = '', right = ''},
+        theme = 'auto',
+        component_separators = {
+            left  = '│',
+            right = '│'
+        },
+        section_separators = {
+            left  = '',
+            right = ''
+        },
+    },
+    extensions = {
+        'toggleterm',
     },
     sections = {
         lualine_a = { 'mode' },
@@ -196,28 +188,48 @@ require('lualine').setup({
             'branch',
             {
                 'diff',
-                symbols = { added = ' ', modified = ' ', removed = ' ' },
+                symbols = {
+		    added    = ' ',
+		    modified = ' ',
+		    removed  = ' ',
+		},
             },
-            'diagnostics',
+            {
+		'diagnostics',
+		symbols = {
+		    error = ' ',
+		    warn  = ' ',
+		    info  = ' ',
+		    hint  = ' ',
+		},
+	    },
         },
-        lualine_c = { 'filename' },
+        lualine_c = {
+            {
+		'buffers',
+		mode = 2, -- show name and index
+		symbols = {
+		    modified = ' '
+		},
+	    },
+        },
         lualine_x = {
-            { -- Noice showcmd implementation
+            {
+                -- Noice showcmd implementation
                 require('noice').api.statusline.command.get,
                 cond = require('noice').api.statusline.command.has,
-                color = { fg = '#' .. theme.base07 },
             },
             'encoding',
             'fileformat',
             'filetype' },
-        lualine_y = { 'progress'},
+        lualine_y = { 'progress' },
         lualine_z = { 'location' },
     },
     inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = {'filename'},
-        lualine_x = {'location'},
+        lualine_c = { 'filename' },
+        lualine_x = { 'location' },
         lualine_y = {},
         lualine_z = {}
     },
@@ -227,20 +239,14 @@ require('lualine').setup({
 require('gitsigns').setup({
     signs = {
         add          = { text = '' },
-        change       = { text = '' },
-        delete       = { text = '' },
+        change       = { text = '' },
+        delete       = { text = '' },
         topdelete    = { text = '‾' },
-        changedelete = { text = '~' },
+        changedelete = { text = '' },
         untracked    = { text = '┆' },
+
     },
 })
-vim.api.nvim_set_hl(0, 'GitSignsAdd',          { fg = '#'..theme.base0B, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'GitSignsChange',       { fg = '#'..theme.base0D, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'GitSignsDelete',       { fg = '#'..theme.base08, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'GitSignsTopDelete',    { fg = '#'..theme.base0E, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'GitSignsChangeDelete', { fg = '#'..theme.base0C, bg = '#'..theme.base00 })
-vim.api.nvim_set_hl(0, 'GitSignsUntracked',    { fg = '#'..theme.base0A, bg = '#'..theme.base00 })
-
 -- Toggleterm
 require('toggleterm').setup({
     open_mapping = '<C-t>',
@@ -260,6 +266,8 @@ local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line-1, line, true)[1]:sub(col, col):match("%s") == nil
 end
+
+---@diagnostic disable-next-line:redundant-parameter
 cmp.setup({
     snippet = {
         expand = function(args)
@@ -330,14 +338,16 @@ cmp.setup.filetype('gitcommit', {
         { name = 'buffer' },
     })
 })
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline('/', {
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
     sources = {
         { name = 'buffer' }
     }
 })
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
         { name = 'path' }
     }, {
@@ -416,7 +426,7 @@ local servers = {
     'vimls',
     'openscad_ls',
     'dotls',
-    'clangd', -- This breaks on Windows.
+    'clangd',
 }
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup({

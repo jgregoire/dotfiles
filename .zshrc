@@ -74,6 +74,9 @@ setopt NUMERIC_GLOB_SORT
 ## Aliases
 ##
 
+# Give up and start over
+alias unfuck='git reset --hard HEAD'
+
 # SSH with kitty terminfo
 alias kssh='kitty +kitten ssh'
 

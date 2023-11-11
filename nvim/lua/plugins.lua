@@ -6,27 +6,90 @@ return require('packer').startup(function(use)
     -- Packer will check for updates to itself.
     use { 'wbthomason/packer.nvim' }
 
+    -- Session manager
+    use {
+        'folke/persistence.nvim',
+        event = 'BufReadPre',
+    }
+
     -- Start page
     use {
         'goolord/alpha-nvim',
         requires = { 'nvim-tree/nvim-web-devicons' },
         config = function()
-            require('alpha').setup(require('alpha.themes.dashboard').config)
+            require('alpha').setup(require('dashboard').config)
         end,
     }
 
+    -- Tab to escape delimiters
+    -- use { 'boltlessengineer/smart-tab.nvim' }
+    use {
+        'abecodes/tabout.nvim',
+        wants = { 'nvim-treesitter' },
+        after = { 'nvim-cmp' },
+        config = function()
+            require('tabout').setup({
+                tabkey = '<Tab>',
+                backwards_tabkey = '<S-Tab>',
+                act_as_tab = true,
+                act_as_shift_tab = true,
+                default_tab = '<Tab>',
+		default_shift_tab = '<C-d>',
+                enable_backwards = true,
+                completion = true,
+                tabouts = {
+                    { open = "'", close = "'" },
+                    { open = '"', close = '"' },
+                    { open = '`', close = '`' },
+                    { open = '(', close = ')' },
+                    { open = '[', close = ']' },
+                    { open = '{', close = '}' },
+                    { open = '<', close = '>' },
+		    { open = '#', close = ']' }, -- Rust macros
+                },
+                ignore_beginning = false,
+                exclude = {},
+            })
+        end,
+    }
+
+    -- Extend increment/decrement command
+    use { 'nat-418/boole.nvim' }
+
+    -- CSV mode
+    use {
+        'cameron-wags/rainbow_csv.nvim',
+        config = function()
+            require('rainbow_csv').setup(){}
+        end,
+        module = {
+            'rainbow_csv',
+            'rainbow_csv.fns',
+        },
+        ft = {
+            'csv',
+            'tsv',
+            'csv_semicolon',
+            'csv_whitespace',
+            'csv_pipe',
+            'rfc_csv',
+            'rfc_semicolon',
+        }
+    }
+    -- Plaintext rendering of LaTeX equations
+    use { 'jbyuki/nabla.nvim' }
+
     -- Diff/merge tool
-    --[[use {
+    use {
         'sindrets/diffview.nvim',
         requires = {
-	    'nvim-lua/plenary.nvim',
-	    'nvim-tree/nvim-web-devicons',
+            'nvim-lua/plenary.nvim',
+            'nvim-tree/nvim-web-devicons',
         },
-    }--]]
+    }
 
-    -- Leap
-    use { 'ggandor/leap.nvim' }
-    use { 'ggandor/leap-spooky.nvim' }
+    -- Modern motions
+    use { 'folke/flash.nvim' }
 
     -- Pretty notifications.
     use { 'rcarriga/nvim-notify' }
@@ -51,9 +114,8 @@ return require('packer').startup(function(use)
     -- Fancy icons, used for lualine.
     use { 'nvim-tree/nvim-web-devicons' }
 
-    -- Base16 theme support
-    -- Needed to theme UI elements, to match my terminal color scheme.
-    use { 'norcalli/nvim-base16.lua' }
+    -- One Dark theme
+    use { 'olimorris/onedarkpro.nvim' }
 
     -- Fancier statusline.
     use {
@@ -82,12 +144,6 @@ return require('packer').startup(function(use)
 
     use { 'terrortylor/nvim-comment' }
 
-    -- Better tabs
-    use {
-        'romgrk/barbar.nvim',
-        wants = { 'nvim-tree/nvim-web-devicons' },
-    }
-
     -- Keymap manager
     use {
         'mrjones2014/legendary.nvim',
@@ -109,6 +165,7 @@ return require('packer').startup(function(use)
     -- lspconfig
     use { 'neovim/nvim-lspconfig' }
 
+    -- Automatically add 'end' keyword as appropriate
     use { 'RRethy/nvim-treesitter-endwise' }
 
     -- Treesitter
@@ -128,7 +185,6 @@ return require('packer').startup(function(use)
                 }
             })
         end,
-        -- run = ':TSUpdate',
         build = ':TSUpdate',
     }
 
@@ -157,86 +213,40 @@ return require('packer').startup(function(use)
         config = function()
             require('neorg').setup({
                 load = {
-		    -- Subset of core.defaults:
-		    ['core.esupports.hop'] = {},
-		    ['core.esupports.indent'] = {},
-		    ['core.esupports.metagen'] = {},
-		    ['core.itero'] = {},
-		    ['core.pivot'] = {},
-		    ['core.promo'] = {},
-		    ['core.qol.toc'] = {},
-		    ['core.qol.todo_items'] = {},
-		    ['core.keybinds'] = {
+                    -- Subset of core.defaults:
+                    ['core.esupports.hop'] = {},
+                    ['core.esupports.indent'] = {},
+                    ['core.esupports.metagen'] = {},
+                    ['core.itero'] = {},
+                    ['core.pivot'] = {},
+                    ['core.promo'] = {},
+                    ['core.qol.toc'] = {},
+                    ['core.qol.todo_items'] = {},
+                    ['core.keybinds'] = {
                         config = {
                             default_keybinds = true,
                             neorg_leader = '<LocalLeader>',
                         }
                     },
-		    -- Non-defaults:
+                    -- Non-defaults:
                     ['core.concealer'] = {
-			config = {
-			    folds = false,
-			    --[[]]
-			    icons = {
-				todo = {
-				    -- enabled = true,
-				    done = {
-					icon = "",
-					-- icon = "",
-					-- icon = "",
-					-- icon = "",
-					-- icon = "ﲏ",
-					-- icon = "﫠",
-					-- icon = "﫟",
-					-- nodes = { "todo_item_done" },
-					-- render = module.public.icon_renderers.on_left,
-				    },
-				    pending = {
-					icon = "⭘",
-					-- icon = "",
-					-- icon = "",
-					-- icon = "ﱫ",
-					-- icon = "ﯷ",
-					-- icon = "ﳺ",
-				    },
-				    undone = {
-					icon = "",
-					-- icon = "",
-					-- icon = "ﱳ",
-					-- icon = "窱",
-					-- icon = "×",
-				    },
-				    uncertain = {
-					icon = "",
-					-- icon = "",
-					-- icon = "ﲉ",
-					-- icon = "",
-				    },
-				    on_hold = {
-					icon = "",
-					-- icon = "",
-					-- icon = "",
-				    },
-				    cancelled = {
-					icon = "",
-				    },
-				    recurring = {
-					-- icon = "菱",
-					icon = "↺",
-				    },
-				    urgent = {
-					icon = "",
-					-- icon = "",
-					-- icon = "",
-					-- icon = "ﱥ",
-					-- icon = "𥉉",
-					-- icon = "",
-				    },
-				},
-			    },
-			    --[[]]
-			},
-		    },
+                        config = {
+                            folds = true,
+                            icons = {
+                                todo = {
+                                    -- enabled = true,
+                                    done      = { icon = "" },
+                                    pending   = { icon = "⭘" },
+                                    undone    = { icon = "" },
+                                    uncertain = { icon = "" },
+                                    on_hold   = { icon = "" },
+                                    cancelled = { icon = "" },
+                                    recurring = { icon = "" },
+                                    urgent    = { icon = "" },
+                                },
+                            },
+                        },
+                    },
                     ['core.dirman'] = {
                         config = {
                             workspaces = {
@@ -245,21 +255,18 @@ return require('packer').startup(function(use)
                         },
                     },
                     ['core.completion'] = {
-                        config = {
-                            engine = 'nvim-cmp',
-                            -- name = '[Neorg]',
-                        },
+                        config = { engine = 'nvim-cmp' },
                     },
                     ['core.highlights'] = {},
-                }
+                }, -- load
             })
         end,
-        run = ':Neorg sync-parsers', -- Update treesitter parser when neorg is updated.
+        -- run = ':Neorg sync-parsers', -- Update treesitter parser when neorg is updated.
         requires = 'nvim-lua/plenary.nvim',
     }
 
     -- Packer bootstrapping
-    if packer_bootstrap then
+    if packer_bootstrap then ---@diagnostic disable-line:undefined-global
         require('packer').sync()
     end
 end)
