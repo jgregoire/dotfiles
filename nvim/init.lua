@@ -3,100 +3,96 @@
 -- Speedy start
 vim.loader.enable()
 
-local o = vim.o
-local w = vim.wo
-local b = vim.bo
-local g = vim.g
-
 -- This needs to be set before loading certain plugins.
-o.termguicolors = true
+vim.opt.termguicolors = true
 
 -- Mouse support
-o.mouse = "a"
+vim.opt.mouse = "a"
 
 -- Confirm save before exit
-o.confirm = true
+vim.opt.confirm = true
 
 -- Detect external change to file and load changes.
-g.autoread = true
+vim.opt.autoread = true
 
 -- Search
-o.hlsearch = true
-o.incsearch = true
-o.ignorecase = true
-o.smartcase = true
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- Line numbers by default.
-w.number = true
-w.relativenumber = true
-o.ruler = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.ruler = true
 
--- How many lines above/below cursor to show when scrolling.
-o.scrolloff = 999
+-- How many lines above/below cursor to show when scrollinvim.opt.
+vim.opt.scrolloff = 999
 
 -- Highlight the line the cursor is on.
-o.cursorline = true
+vim.opt.cursorline = true
 
-o.title = true
+vim.opt.title = true
 
 -- Show matching brackets
-o.showmatch = true
+vim.opt.showmatch = true
 
 -- Indentation
 vim.cmd("filetype plugin indent on")
-o.autoindent = true
-b.expandtab = true
-o.tabstop = 4
-o.softtabstop = 4
-o.smartindent = true
-o.smarttab = true
-o.shiftwidth = 4
+vim.opt.autoindent = true
+vim.opt.expandtab = true
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.smartindent = true
+vim.opt.smarttab = true
+vim.opt.shiftwidth = 4
 
 -- Below settings improve line break indending in Neorg
-o.wrap = true
-o.linebreak = true
-o.breakindentopt = 'list:-1'
-o.formatlistpat = [[^\s*[-\*\~]\+[\.\)]*\s\+]]
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.breakindentopt = 'list:-1'
+vim.opt.formatlistpat = [[^\s*[-\*\~]\+[\.\)]*\s\+]]
 
 -- Folding settings, primarily for Neorg
-w.foldlevel = 2 -- depth to start folding at
-w.foldnestmax = 20 -- default (and max) is 20
-g.foldlevelstart = -1 -- default -1.
-g.foldclose = 'all' -- default ''
-w.foldtext = 'v:lua.vim.treesitter.foldtext()'
+vim.opt.foldlevel = 2 -- depth to start folding at
+vim.opt.foldnestmax = 20 -- default (and max) is 20
+vim.opt.foldlevelstart = -1 -- default -1.
+vim.opt.foldclose = 'all' -- default ''
+vim.opt.foldtext = 'v:lua.vim.treesitter.foldtext()'
 
 -- Completion
-o.wildmenu = true
-o.showcmd = true
-o.completeopt = 'menu,menuone,noselect'
+vim.opt.wildmenu = true
+vim.opt.showcmd = true
+vim.opt.completeopt = 'menu,menuone,noselect'
 
-o.cmdheight = 0
---o.showcmdloc = 
-o.shortmess = 'fFinoOxtT'
+vim.opt.cmdheight = 0
+--vim.opt.showcmdloc = 
+vim.opt.shortmess = 'fFinoOxtT'
 
 -- Keycode timeout
-o.timeout = false
-o.ttimeout = true
-o.ttimeoutlen = 200
+vim.opt.timeout = false
+vim.opt.ttimeout = true
+vim.opt.ttimeoutlen = 200
 
 -- Line breaks
-w.linebreak = true
-w.breakindent = true
-o.showbreak = '|=> '
-b.textwidth = 100
+vim.opt.linebreak = true
+vim.opt.breakindent = true
+vim.opt.showbreak = '|=> '
+vim.opt.textwidth = 100
 
 -- Tabline
-o.showtabline = 0
+vim.opt.showtabline = 0
 
 -- Split behavior
-g.splitbelow = true
-g.splitright = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
 -- Allow selection in block mode past line endes
-g.virtualedit = 'block'
+vim.opt.virtualedit = 'block'
 
 -- Use system clipboard
-vim.cmd('set clipboard+=unnamedplus')
+-- vim.cmd('set clipboard+=unnamedplus')
+vim.opt.clipboard:append({ 'unnamedplus' })
 
 -- Packer auto-install on new setups.
 local ensure_packer = function()
@@ -108,7 +104,7 @@ local ensure_packer = function()
             'clone',
             '--depth',
             '1',
-            'https://github.com/wbthomason/packer.nvim',
+            'https://githuvim.opt.com/wbthomason/packer.nvim',
             install_path
         })
         vim.cmd('packadd packer.nvim')
@@ -121,12 +117,12 @@ end
 local packer_bootstrap = ensure_packer()
 
 -- Neovide-only options
-if g.neovide then
-    o.guifont = 'FiraCode Nerd Font:h12'
-    g.neovide_hide_mouse_when_typing = false
-    g.neovide_remember_window_size = true
-    g.neovide_cursor_vfx_mode = 'pixiedust'
-    g.neovide_cursor_animate_command_line = true
+if vim.g.neovide then
+    vim.opt.guifont = 'FiraCode Nerd Font:h12'
+    vim.g.neovide_hide_mouse_when_typing = false
+    vim.g.neovide_remember_window_size = true
+    vim.g.neovide_cursor_vfx_mode = 'pixiedust'
+    vim.g.neovide_cursor_animate_command_line = true
 end
 
 -- Specify plugins:
