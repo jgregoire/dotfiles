@@ -7,7 +7,7 @@ vim.loader.enable()
 vim.opt.termguicolors = true
 
 -- Mouse support
-vim.opt.mouse = "a"
+vim.opt.mouse = 'a'
 
 -- Confirm save before exit
 vim.opt.confirm = true
@@ -30,7 +30,7 @@ vim.opt.ruler = true
 vim.opt.scrolloff = 999
 
 -- Highlight the line the cursor is on.
-vim.opt.cursorline = true
+-- vim.opt.cursorline = true
 
 vim.opt.title = true
 
@@ -47,11 +47,14 @@ vim.opt.smartindent = true
 vim.opt.smarttab = true
 vim.opt.shiftwidth = 4
 
--- Below settings improve line break indending in Neorg
+-- Below settings improve line break indenting in Neorg
 vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.breakindentopt = 'list:-1'
 vim.opt.formatlistpat = [[^\s*[-\*\~]\+[\.\)]*\s\+]]
+
+-- Smart numbered lists.
+vim.opt.formatoptions:append({ 'n' })
 
 -- Folding settings, primarily for Neorg
 vim.opt.foldlevel = 2 -- depth to start folding at
@@ -66,7 +69,6 @@ vim.opt.showcmd = true
 vim.opt.completeopt = 'menu,menuone,noselect'
 
 vim.opt.cmdheight = 0
---vim.opt.showcmdloc = 
 vim.opt.shortmess = 'fFinoOxtT'
 
 -- Keycode timeout
@@ -79,6 +81,7 @@ vim.opt.linebreak = true
 vim.opt.breakindent = true
 vim.opt.showbreak = '|=> '
 vim.opt.textwidth = 100
+vim.opt.backspace = { 'indent', 'eol', 'start' }
 
 -- Tabline
 vim.opt.showtabline = 0
@@ -86,6 +89,7 @@ vim.opt.showtabline = 0
 -- Split behavior
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+vim.opt.inccommand = 'split'
 
 -- Allow selection in block mode past line endes
 vim.opt.virtualedit = 'block'
@@ -117,6 +121,7 @@ end
 local packer_bootstrap = ensure_packer()
 
 -- Neovide-only options
+---@diagnostic disable-next-line:undefined-field
 if vim.g.neovide then
     vim.opt.guifont = 'FiraCode Nerd Font:h12'
     vim.g.neovide_hide_mouse_when_typing = false
