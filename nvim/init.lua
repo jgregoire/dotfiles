@@ -28,10 +28,11 @@ o.smartcase = true
 
 -- Line numbers by default.
 w.number = true
+w.relativenumber = true
 o.ruler = true
 
 -- How many lines above/below cursor to show when scrolling.
-o.scrolloff = 8
+o.scrolloff = 999
 
 -- Highlight the line the cursor is on.
 o.cursorline = true
@@ -45,10 +46,12 @@ o.showmatch = true
 vim.cmd("filetype plugin indent on")
 o.autoindent = true
 b.expandtab = true
+o.tabstop = 4
 o.softtabstop = 4
 o.smartindent = true
 o.smarttab = true
 o.shiftwidth = 4
+
 -- Below settings improve line break indending in Neorg
 o.wrap = true
 o.linebreak = true
@@ -84,6 +87,13 @@ b.textwidth = 100
 
 -- Tabline
 o.showtabline = 0
+
+-- Split behavior
+g.splitbelow = true
+g.splitright = true
+
+-- Allow selection in block mode past line endes
+g.virtualedit = 'block'
 
 -- Use system clipboard
 vim.cmd('set clipboard+=unnamedplus')
