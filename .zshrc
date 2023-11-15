@@ -1,7 +1,7 @@
 ## Oh-My-Zsh stuff ##
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster"
-plugins=(git gitfast python)
+plugins=(colored-man-pages extract ripgrep rust)
 source $ZSH/oh-my-zsh.sh
 
 ## The following lines were added by compinstall
