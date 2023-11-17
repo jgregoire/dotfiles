@@ -22,7 +22,6 @@ return require('packer').startup(function(use)
     }
 
     -- Tab to escape delimiters
-    -- use { 'boltlessengineer/smart-tab.nvim' }
     use {
         'abecodes/tabout.nvim',
         wants = { 'nvim-treesitter' },
@@ -34,7 +33,7 @@ return require('packer').startup(function(use)
                 act_as_tab = true,
                 act_as_shift_tab = true,
                 default_tab = '<Tab>',
-		default_shift_tab = '<C-d>',
+                default_shift_tab = '<C-d>',
                 enable_backwards = true,
                 completion = true,
                 tabouts = {
@@ -45,7 +44,7 @@ return require('packer').startup(function(use)
                     { open = '[', close = ']' },
                     { open = '{', close = '}' },
                     { open = '<', close = '>' },
-		    { open = '#', close = ']' }, -- Rust macros
+                    { open = '#', close = ']' }, -- Rust macros
                 },
                 ignore_beginning = false,
                 exclude = {},
@@ -175,17 +174,26 @@ return require('packer').startup(function(use)
             require('nvim-treesitter.configs').setup({
                 ensure_installed = { 'lua', 'vim', 'vimdoc', 'query', 'c'},
                 sync_install = false,
-                auto_install = true,
+                auto_install = false,
                 highlight = {
                     enable = true,
+                    -- Also use vim built-in highlighting alongside TS for these languages
                     additional_vim_regex_hightlighting = { 'neorg' },
+                },
+                -- Use TS for = indentation. Experimental.
+                indent = {
+                    enable = true
                 },
                 endwise = {
                     enable = true
                 }
             })
         end,
-        build = ':TSUpdate',
+        -- build = ':TSUpdate',
+        run = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
     }
 
     -- Completion
