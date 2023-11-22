@@ -149,10 +149,10 @@ require('legendary').setup({
         { '<S-Tab>', mode = { 'i' }, description = 'Tabout: Backward' },
 
         -- Nvim-Surround
-        { 'ps',     mode = { 'n' }, description = 'Surround: Add [MOTION] [TYPE]' },
-        { 'pS',     mode = { 'n' }, description = 'Surround: Add with newlines [MOTION] [TYPE]' },
-        { 'Ps',     mode = { 'n' }, description = 'Surround: Add around line [TYPE]' },
-        { 'PS',     mode = { 'n' }, description = 'Surround: Add around line with newlines [TYPE]' },
+        { 'ps',     mode = { 'n', 'v' }, description = 'Surround: Add [MOTION] [TYPE]' },
+        { 'pS',     mode = { 'n', 'v' }, description = 'Surround: Add with newlines [MOTION] [TYPE]' },
+        { 'Ps',     mode = { 'n', 'v' }, description = 'Surround: Add around line [TYPE]' },
+        { 'PS',     mode = { 'n', 'v' }, description = 'Surround: Add around line with newlines [TYPE]' },
         { 'xs',     mode = { 'n' }, description = 'Surround: Delete [TYPE]' },
         { 'es',     mode = { 'n' }, description = 'Surround: Change [FROM TYPE] [TO TYPE]'},
         { 'S',      mode = { 'v' }, description = 'Surround: Add [TYPE]'},
