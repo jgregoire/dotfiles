@@ -9,8 +9,8 @@
 -- 	-Priorities: Ergonomics > Mnemonics > Defaults > Aesthetics.
 -- 	-Modifiers: Ctrl for commands when the ideal key is already used, Alt for tabbing, leader for plugin commands.
 
-vim.g.mapleader = ' '
-vim.g.maplocalleader = '-'
+-- vim.g.vim.g.mapleader = ' '
+-- vim.g.maplocalleader = '-'
 
 local defaults = { noremap = true }
 
@@ -165,14 +165,8 @@ require('legendary').setup({
         { 'pc',  mode = { 'n' }, description = 'Comment: Toggle line comment [MOTION]' },
 
         -- Toggleterm
-        {
-            '<leader>t',
-            function() vim.api.nvim_command([[:TermExec go_back=0 direction=float cmd='cd ]] .. vim.fn.getcwd() .. [['<CR>]]) end,
-            mode = { 'n' },
-            description = 'Toggleterm: Open terminal at PWD',
-            opts = defaults
-        },
-        { '<C-t>', mode = { 'n' }, description = 'ToggleTerm: Toggle Terminal(s)', opts = defaults },
+        { '<leader>t', mode = { 'n' }, description = 'Toggleterm: Launch' },
+        { '<C-t>',     mode = { 'n' }, description = 'Toggleterm: Toggle' },
 
         -- Flash
         { 's',     mode = { 'n', 'x', 'o' }, description = 'Flash: Jump' , opts = defaults },
@@ -197,8 +191,8 @@ require('legendary').setup({
         { '<leader>id', mode = { 'norg' }, description = 'Neorg: Insert date' },
 
         -- Nabla
-        { '<leader>ep', [[:lua require('nabla').popup({ border = 'single' })<CR>]],    mode = { 'n' }, description = 'Nabla: Render in popup', opts = defaults },
-        { '<leader>ei', [[:lua require('nabla').toggle_virt({ autogen = true })<CR>]], mode = { 'n' }, description = 'Nabla: Render inline', opts = defaults },
+        { '<leader>ep', mode = { 'n' }, description = 'Nabla: Render in popup', opts = defaults },
+        { '<leader>ei', mode = { 'n' }, description = 'Nabla: Render inline', opts = defaults },
 
         -- Boole
         { '<C-Up>',   mode = { 'n' }, description = 'Boole: Increment value' },

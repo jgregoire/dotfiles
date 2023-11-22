@@ -1,5 +1,6 @@
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+---@diagnostic disable-next-line: undefined-field
 if not vim.loop.fs_stat(lazypath) then
     print('Installing lazy.nvim...')
     vim.fn.system({
@@ -389,6 +390,24 @@ require('lazy').setup(
         },
         {
             'jbyuki/nabla.nvim',
+            keys = {
+                {
+                    '<leader>ep',
+                    function()
+                        require('nabla').popup({ border = 'single' })
+                    end,
+                    mode = 'n',
+                    desc = 'Render in popup',
+                },
+                {
+                    '<leader>ei',
+                    function()
+                        require('nabla').toggle_virt({ autogen = true })
+                    end,
+                    mode = 'n',
+                    desc = 'Render inline',
+                },
+            },
         },
         {
             'sindrets/diffview.nvim',
@@ -400,7 +419,17 @@ require('lazy').setup(
         },
         {
             'akinsho/toggleterm.nvim',
-            -- tag = '*',
+            config = true,
+            keys = {
+                {
+                    '<leader>t',
+                    function()
+                        vim.api.nvim_command([[:TermExec go_back=0 direction=float cmd='cd ]] .. vim.fn.getcwd() .. [['<CR>]])
+                    end,
+                    mode = 'n',
+                    desc = 'Launch ToggleTerm',
+                },
+            },
             opts = {
                 open_mapping = '<C-t>',
                 autochdir = true,

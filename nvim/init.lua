@@ -109,6 +109,9 @@ if vim.g.neovide then
     vim.g.neovide_cursor_animate_command_line = true
 end
 
+vim.g.mapleader = ' '
+vim.g.maplocalleader = '-'
+
 -- Specify plugins:
 require('lazy_config')
 
