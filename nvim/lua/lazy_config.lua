@@ -279,16 +279,22 @@ require('lazy').setup(
         },
         {
             'folke/flash.nvim',
-            config = function()
-                require('flash').setup({
-                    labels = 'asetniohqwdfurlgykjzxcvmbp',
-                    label = {
-                        -- Show jump label before the target, not after.
-                        after = false,
-                        before = true,
-                    }
-                })
-            end,
+            event = 'VeryLazy',
+            opts = {
+                labels = 'asetniohqwdfurlgykjzxcvmbp',
+                label = {
+                    -- Show jump label before the target, not after.
+                    after = false,
+                    before = true,
+                }
+            },
+            keys = {
+                { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash: Jump" },
+                { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash: Treesitter" },
+                { "m", mode = "o", function() require("flash").remote() end, desc = "Flash: Remote" },
+                { "M", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+                { "<c-f>", mode = { "c" }, function() require("flash").toggle() end, desc = "Flash: Toggle in search" },
+            },
         },
         {
             'lukas-reineke/indent-blankline.nvim',

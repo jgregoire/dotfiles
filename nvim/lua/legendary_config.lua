@@ -175,11 +175,11 @@ require('legendary').setup({
         { '<C-t>', mode = { 'n' }, description = 'ToggleTerm: Toggle Terminal(s)', opts = defaults },
 
         -- Flash
-        { 's',     function() require('flash').jump() end,       mode = { 'n', 'x', 'o' }, description = 'Flash: Jump' , opts = defaults },
-        { 'S',     function() require('flash').treesitter() end, mode = { 'n', 'x', 'o' }, description = 'Flash: Treesitter', opts = defaults },
-        { 'm',	   function() require('flash').remote() end,     mode = { 'o' },           description = 'Flash: Remote [OPERATOR] [FLASH] [MOTION]', opts = defaults },
-        { 'M',     function() require('flash').treesitter_search() end,                    description = 'Flash: Treesitter search', opts = defaults },
-        { '<C-f>', function() require('flash').toggle() end,     mode = { 'c' },           description = 'Flash: Toggle flash in search', opts = defaults },
+        { 's',     mode = { 'n', 'x', 'o' }, description = 'Flash: Jump' , opts = defaults },
+        { 'S',     mode = { 'n', 'x', 'o' }, description = 'Flash: Treesitter', opts = defaults },
+        { 'm',     mode = { 'o' },           description = 'Flash: Remote [OPERATOR] [FLASH] [MOTION]', opts = defaults },
+        { 'M',                               description = 'Flash: Treesitter search', opts = defaults },
+        { '<C-f>', mode = { 'c' },           description = 'Flash: Toggle flash in search', opts = defaults },
 
         -- Neorg
         { '<leader>n', ':Neorg mode norg<CR>', mode = 'n',    description = 'Neorg: Enter norg mode', opts = defaults },
