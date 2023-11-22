@@ -55,31 +55,24 @@ require('lazy').setup(
         },
         {
             'nvim-treesitter/nvim-treesitter',
-            config = function()
-                ---@diagnostic disable-next-line: missing-fields
-                require('nvim-treesitter.configs').setup({
-                    ensure_installed = { 'lua', 'vim', 'vimdoc', 'query', 'c'},
-                    sync_install = false,
-                    auto_install = false,
-                    highlight = {
-                        enable = true,
-                        -- Also use vim built-in highlighting alongside TS for these languages
-                        additional_vim_regex_hightlighting = { 'neorg' },
-                    },
-                    -- Use TS for = indentation. Experimental.
-                    indent = {
-                        enable = true
-                    },
-                    endwise = {
-                        enable = true
-                    }
-                })
-            end,
+            opts = {
+                ensure_installed = { 'lua', 'vim', 'vimdoc', 'query', 'c'},
+                sync_install = false,
+                auto_install = false,
+                highlight = {
+                    enable = true,
+                    -- Also use vim built-in highlighting alongside TS for these languages
+                    additional_vim_regex_hightlighting = { 'neorg' },
+                },
+                -- Use TS for = indentation. Experimental.
+                indent = {
+                    enable = true
+                },
+                endwise = {
+                    enable = true
+                }
+            },
             build = ':TSUpdate',
-            -- build = function()
-            --     local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-            --     ts_update()
-            -- end,
         },
         {
             'hrsh7th/nvim-cmp',
@@ -104,13 +97,11 @@ require('lazy').setup(
         },
         {
             'rcarriga/nvim-notify',
-            config = function()
-                require('notify').setup({
-                    render = 'compact',
-                    fps = '60',
-                    stages = 'static',
-                })
-            end,
+            opts = {
+                render = 'compact',
+                fps = '60',
+                stages = 'static',
+            },
         },
         {
             'folke/noice.nvim',
@@ -118,6 +109,7 @@ require('lazy').setup(
                 'MunifTanjim/nui.nvim',
                 'rcarriga/nvim-notify',
             },
+            event = 'VeryLazy',
             config = function()
                 require('noice').setup({
                     health = { checker = false }, -- Don't bother running health checks anymore.
@@ -163,19 +155,17 @@ require('lazy').setup(
         },
         {
             'lewis6991/gitsigns.nvim',
-            config = function()
-                require('gitsigns').setup({
-                    signs = {
-                        add          = { text = '' },
-                        change       = { text = '' },
-                        delete       = { text = '' },
-                        topdelete    = { text = '‾' },
-                        changedelete = { text = '' },
-                        untracked    = { text = '┆' },
+            opts = {
+                signs = {
+                    add          = { text = '' },
+                    change       = { text = '' },
+                    delete       = { text = '' },
+                    topdelete    = { text = '‾' },
+                    changedelete = { text = '' },
+                    untracked    = { text = '┆' },
 
-                    },
-                })
-            end,
+                },
+            },
         },
         {
             'karb94/neoscroll.nvim',
@@ -183,67 +173,69 @@ require('lazy').setup(
         },
         {
             'nvim-telescope/telescope.nvim',
-            dependencies = { 'nvim-lua/plenary.nvim' },
+            dependencies = {
+                'nvim-lua/plenary.nvim',
+                'BurntSushi/ripgrep',
+            },
         },
         {
             'nvim-lualine/lualine.nvim',
             dependencies = { 'nvim-tree/nvim-web-devicons' },
-            config = function()
-                require('lualine').setup({
-                    options = {
-                        theme = 'auto',
-                        component_separators = {
-                            left  = '│',
-                            right = '│'
+            opts = {
+                options = {
+                    theme = 'auto',
+                    component_separators = {
+                        left  = '│',
+                        right = '│'
+                    },
+                    section_separators = {
+                        left  = '',
+                        right = ''
+                    },
+                },
+                extensions = {
+                    'toggleterm',
+                },
+                sections = {
+                    lualine_a = { 'mode' },
+                    lualine_b = {
+                        'branch',
+                        {
+                            'diff',
+                            symbols = {
+                                added    = ' ',
+                                modified = ' ',
+                                removed  = ' ',
+                            },
                         },
-                        section_separators = {
-                            left  = '',
-                            right = ''
+                        {
+                            'diagnostics',
+                            symbols = {
+                                error = ' ',
+                                warn  = ' ',
+                                info  = ' ',
+                                hint  = ' ',
+                            },
                         },
                     },
-                    extensions = {
-                        'toggleterm',
+                    lualine_c = {
+                        {
+                            'buffers',
+                            mode = 2, -- show name and index
+                            symbols = {
+                                modified = ' '
+                            },
+                        },
                     },
-                    sections = {
-                        lualine_a = { 'mode' },
-                        lualine_b = {
-                            'branch',
-                            {
-                                'diff',
-                                symbols = {
-                                    added    = ' ',
-                                    modified = ' ',
-                                    removed  = ' ',
-                                },
-                            },
-                            {
-                                'diagnostics',
-                                symbols = {
-                                    error = ' ',
-                                    warn  = ' ',
-                                    info  = ' ',
-                                    hint  = ' ',
-                                },
-                            },
+                    lualine_x = {
+                        {
+                            -- Noice showcmd implementation
+                            require('noice').api.statusline.command.get,
+                            cond = require('noice').api.statusline.command.has,
                         },
-                        lualine_c = {
-                            {
-                                'buffers',
-                                mode = 2, -- show name and index
-                                symbols = {
-                                    modified = ' '
-                                },
-                            },
-                        },
-                        lualine_x = {
-                            {
-                                -- Noice showcmd implementation
-                                require('noice').api.statusline.command.get,
-                                cond = require('noice').api.statusline.command.has,
-                            },
-                            'encoding',
-                            'fileformat',
-                            'filetype' },
+                        'encoding',
+                        'fileformat',
+                        'filetype' },
                         lualine_y = { 'progress' },
                         lualine_z = { 'location' },
                     },
@@ -255,27 +247,20 @@ require('lazy').setup(
                         lualine_y = {},
                         lualine_z = {}
                     },
-                })
-            end,
+                },
         },
         {
             'norcalli/nvim-colorizer.lua',
             config = true,
         },
-        -- {
-        --     'xiyaowong/nvim-transparent',
-        --     config = true,
-        -- },
         {
             'nat-418/boole.nvim',
-            config = function()
-                require('boole').setup({
-                    mappings = {
-                        increment = '<C-Up>',
-                        decrement = '<C-Down>',
-                    },
-                })
-            end,
+            opts= {
+                mappings = {
+                    increment = '<C-Up>',
+                    decrement = '<C-Down>',
+                },
+            },
         },
         {
             'folke/flash.nvim',
@@ -298,16 +283,15 @@ require('lazy').setup(
         },
         {
             'lukas-reineke/indent-blankline.nvim',
-            config = function()
-                require('ibl').setup({
+            main = 'ibl',
+            opts = {
+                enabled = true,
+                indent = { char = '▏' },
+                scope = {
                     enabled = true,
-                    indent = { char = '▏' },
-                    scope = {
-                        enabled = true,
-                        show_start = true,
-                    }
-                })
-            end,
+                    show_start = true,
+                }
+            },
         },
         {
             'abecodes/tabout.nvim',
@@ -315,82 +299,74 @@ require('lazy').setup(
                 'nvim-treesitter/nvim-treesitter',
                 'hrsh7th/nvim-cmp'
             },
-            config = function()
-                require('tabout').setup({
-                    tabkey = '<Tab>',
-                    backwards_tabkey = '<S-Tab>',
-                    act_as_tab = true,
-                    act_as_shift_tab = true,
-                    default_tab = '<Tab>',
-                    default_shift_tab = '<C-d>',
-                    enable_backwards = true,
-                    completion = true,
-                    tabouts = {
-                        { open = "'", close = "'" },
-                        { open = '"', close = '"' },
-                        { open = '`', close = '`' },
-                        { open = '(', close = ')' },
-                        { open = '[', close = ']' },
-                        { open = '{', close = '}' },
-                        { open = '<', close = '>' },
-                        { open = '#', close = ']' }, -- Rust macros
-                    },
-                    ignore_beginning = false,
-                    exclude = {},
-                })
-            end,
+            opts = {
+                tabkey = '<Tab>',
+                backwards_tabkey = '<S-Tab>',
+                act_as_tab = true,
+                act_as_shift_tab = true,
+                default_tab = '<Tab>',
+                default_shift_tab = '<C-d>',
+                enable_backwards = true,
+                completion = true,
+                tabouts = {
+                    { open = "'", close = "'" },
+                    { open = '"', close = '"' },
+                    { open = '`', close = '`' },
+                    { open = '(', close = ')' },
+                    { open = '[', close = ']' },
+                    { open = '{', close = '}' },
+                    { open = '<', close = '>' },
+                    { open = '#', close = ']' }, -- Rust macros
+                },
+                ignore_beginning = false,
+                exclude = {},
+            },
 
         },
         {
             'windwp/nvim-autopairs',
-            config = function()
-                require('nvim-autopairs').setup({
-                    fast_wrap = {
-                        -- Before       Input   After
-                        -- ---------------------------------
-                        -- (|foobar     <M-e>l  (|foobar)
-                        -- (|)(foobar)  <M-e>a  (|(foobar))
-                        map = '<C-w>', -- Launch fastwrap
-                        chars = { '{', '[', '(', '"', "'", '<' },
-                        end_key = 'w', -- End of line
-                        keys = 'asetnioh', -- Home row keys for position markers
-                    },
-                    enable_check_bracket_line = false, -- Don't add pair if it already has close pair in same line.
-                    enable_bracket_in_quote = false, -- Don't add a pair inside quotes.
-                })
-            end,
+            opts = {
+                fast_wrap = {
+                    -- Before       Input   After
+                    -- ---------------------------------
+                    -- (|foobar     <M-e>l  (|foobar)
+                    -- (|)(foobar)  <M-e>a  (|(foobar))
+                    map = '<C-w>', -- Launch fastwrap
+                    chars = { '{', '[', '(', '"', "'", '<' },
+                    end_key = 'w', -- End of line
+                    keys = 'asetnioh', -- Home row keys for position markers
+                },
+                enable_check_bracket_line = false, -- Don't add pair if it already has close pair in same line.
+                enable_bracket_in_quote = false, -- Don't add a pair inside quotes.
+            },
         },
         {
             'kylechui/nvim-surround',
-            config = function()
-                ---@diagnostic disable-next-line: missing-fields
-                require('nvim-surround').setup({
-                    keymaps = {
-                        insert          = '<C-p>s',
-                        insert_line     = '<C-p>S',
-                        normal          = 'ps',
-                        normal_line     = 'pS',
-                        normal_cur      = 'Ps',
-                        normal_cur_line = 'PS',
-                        delete          = 'xs',
-                        change          = 'es',
-                    }
-                })
-            end,
+            opts = {
+                keymaps = {
+                    insert          = '<C-p>s',
+                    insert_line     = '<C-p>S',
+                    normal          = 'ps',
+                    normal_line     = 'pS',
+                    normal_cur      = 'Ps',
+                    normal_cur_line = 'PS',
+                    delete          = 'xs',
+                    change          = 'es',
+                }
+            },
         },
         {
             'terrortylor/nvim-comment',
-            config = function()
-                require('nvim_comment').setup({
-                    marker_padding = true, -- Add a space.
-                    comment_empty = true,
-                    comment_empty_trim_whitespace = true,
-                    create_mappings = true,
-                    line_mapping = 'pcc', -- Normal mode, toggle line comment.
-                    operator_mapping = 'pc', -- Visual/operator mode
-                    comment_chunk_text_object = 'ic', -- No idea what this is for
-                })
-            end,
+            main = 'nvim_comment',
+            opts = {
+                marker_padding = true, -- Add a space.
+                comment_empty = true,
+                comment_empty_trim_whitespace = true,
+                create_mappings = true,
+                line_mapping = 'pcc', -- Normal mode, toggle line comment.
+                operator_mapping = 'pc', -- Visual/operator mode
+                comment_chunk_text_object = 'ic', -- No idea what this is for
+            },
         },
         {
             'cameron-wags/rainbow_csv.nvim',
@@ -425,17 +401,15 @@ require('lazy').setup(
         {
             'akinsho/toggleterm.nvim',
             -- tag = '*',
-            config = function()
-                require('toggleterm').setup({
-                    open_mapping = '<C-t>',
-                    autochdir = true,
-                    float_opts = {
-                        border = 'curved',
-                        width = 120,
-                        height = 40,
-                    },
-                })
-            end,
+            opts = {
+                open_mapping = '<C-t>',
+                autochdir = true,
+                float_opts = {
+                    border = 'curved',
+                    width = 120,
+                    height = 40,
+                },
+            },
         },
         {
             'nvim-neorg/neorg',
@@ -444,57 +418,55 @@ require('lazy').setup(
                 'nvim-lua/plenary.nvim',
             },
             ft = 'norg',
-            config = function()
-                require('neorg').setup({
-                    load = {
-                        -- Subset of core.defaults:
-                        ['core.esupports.hop'] = {},
-                        ['core.esupports.indent'] = {},
-                        ['core.esupports.metagen'] = {},
-                        ['core.itero'] = {},
-                        ['core.pivot'] = {},
-                        ['core.promo'] = {},
-                        ['core.qol.toc'] = {},
-                        ['core.qol.todo_items'] = {},
-                        ['core.keybinds'] = {
-                            config = {
-                                default_keybinds = true,
-                                neorg_leader = '<LocalLeader>',
-                            }
-                        },
-                        -- Non-defaults:
-                        ['core.concealer'] = {
-                            config = {
-                                folds = true,
-                                icons = {
-                                    todo = {
-                                        -- enabled = true,
-                                        done      = { icon = "" },
-                                        pending   = { icon = "⭘" },
-                                        undone    = { icon = "" },
-                                        uncertain = { icon = "" },
-                                        on_hold   = { icon = "" },
-                                        cancelled = { icon = "" },
-                                        recurring = { icon = "" },
-                                        urgent    = { icon = "" },
-                                    },
+            opts = {
+                load = {
+                    -- Subset of core.defaults:
+                    ['core.esupports.hop'] = {},
+                    ['core.esupports.indent'] = {},
+                    ['core.esupports.metagen'] = {},
+                    ['core.itero'] = {},
+                    ['core.pivot'] = {},
+                    ['core.promo'] = {},
+                    ['core.qol.toc'] = {},
+                    ['core.qol.todo_items'] = {},
+                    ['core.keybinds'] = {
+                        config = {
+                            default_keybinds = true,
+                            neorg_leader = '<LocalLeader>',
+                        }
+                    },
+                    -- Non-defaults:
+                    ['core.concealer'] = {
+                        config = {
+                            folds = true,
+                            icons = {
+                                todo = {
+                                    -- enabled = true,
+                                    done      = { icon = "" },
+                                    pending   = { icon = "⭘" },
+                                    undone    = { icon = "" },
+                                    uncertain = { icon = "" },
+                                    on_hold   = { icon = "" },
+                                    cancelled = { icon = "" },
+                                    recurring = { icon = "" },
+                                    urgent    = { icon = "" },
                                 },
                             },
                         },
-                        ['core.dirman'] = {
-                            config = {
-                                workspaces = {
-                                    notes = '~/neorg',
-                                },
+                    },
+                    ['core.dirman'] = {
+                        config = {
+                            workspaces = {
+                                notes = '~/neorg',
                             },
                         },
-                        ['core.completion'] = {
-                            config = { engine = 'nvim-cmp' },
-                        },
-                        ['core.highlights'] = {},
-                    }, -- load
-                })
-            end,
+                    },
+                    ['core.completion'] = {
+                        config = { engine = 'nvim-cmp' },
+                    },
+                    ['core.highlights'] = {},
+                }, -- load
+            },
         },
         {
             'mrjones2014/legendary.nvim',
