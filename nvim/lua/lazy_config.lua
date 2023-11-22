@@ -56,23 +56,25 @@ require('lazy').setup(
         },
         {
             'nvim-treesitter/nvim-treesitter',
-            opts = {
-                ensure_installed = { 'lua', 'vim', 'vimdoc', 'query', 'c'},
-                sync_install = false,
-                auto_install = false,
-                highlight = {
-                    enable = true,
-                    -- Also use vim built-in highlighting alongside TS for these languages
-                    additional_vim_regex_hightlighting = { 'neorg' },
-                },
-                -- Use TS for = indentation. Experimental.
-                indent = {
-                    enable = true
-                },
-                endwise = {
-                    enable = true
-                }
-            },
+            config = function()
+                require('nvim-treesitter.configs').setup({
+                    ensure_installed = { 'lua', 'vim', 'vimdoc', 'query', 'c'},
+                    sync_install = false,
+                    auto_install = false,
+                    highlight = {
+                        enable = true,
+                        -- Also use vim built-in highlighting alongside TS for these languages
+                        additional_vim_regex_hightlighting = { 'neorg' },
+                    },
+                    -- Use TS for = indentation. Experimental.
+                    indent = {
+                        enable = true
+                    },
+                    endwise = {
+                        enable = true
+                    }
+                })
+            end,
             build = ':TSUpdate',
         },
         {
