@@ -12,6 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
     })
     print('Installed lazy.nvim!')
 end
+---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 -- Specify plugins
@@ -31,15 +32,13 @@ require('lazy').setup(
                     },
                     plugins = {
                         all = false,
-                        barbar = true,
                         diffview = true,
-                        indentline = true,
-                        gitsigns = true,
                         flash_nvim = true,
+                        gitsigns = true,
+                        indentline = true,
                         nvim_cmp = true,
                         nvim_lsp = true,
                         nvim_notify = true,
-                        packer = true,
                         telescope = true,
                         toggleterm = true,
                         treesitter = true,
@@ -57,6 +56,7 @@ require('lazy').setup(
         {
             'nvim-treesitter/nvim-treesitter',
             config = function()
+                ---@diagnostic disable-next-line: missing-fields
                 require('nvim-treesitter.configs').setup({
                     ensure_installed = { 'lua', 'vim', 'vimdoc', 'query', 'c'},
                     sync_install = false,
@@ -75,10 +75,11 @@ require('lazy').setup(
                     }
                 })
             end,
-            build = function()
-                local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-                ts_update()
-            end,
+            build = ':TSUpdate',
+            -- build = function()
+            --     local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            --     ts_update()
+            -- end,
         },
         {
             'hrsh7th/nvim-cmp',
@@ -261,10 +262,10 @@ require('lazy').setup(
             'norcalli/nvim-colorizer.lua',
             config = true,
         },
-        {
-            'xiyaowong/nvim-transparent',
-            config = true,
-        },
+        -- {
+        --     'xiyaowong/nvim-transparent',
+        --     config = true,
+        -- },
         {
             'nat-418/boole.nvim',
             config = function()
@@ -356,6 +357,7 @@ require('lazy').setup(
         {
             'kylechui/nvim-surround',
             config = function()
+                ---@diagnostic disable-next-line: missing-fields
                 require('nvim-surround').setup({
                     keymaps = {
                         insert          = '<C-p>s',
@@ -416,7 +418,7 @@ require('lazy').setup(
         },
         {
             'akinsho/toggleterm.nvim',
-            tag = '*',
+            -- tag = '*',
             config = function()
                 require('toggleterm').setup({
                     open_mapping = '<C-t>',
@@ -435,6 +437,7 @@ require('lazy').setup(
                 'nvim-treesitter/nvim-treesitter',
                 'nvim-lua/plenary.nvim',
             },
+            ft = 'norg',
             config = function()
                 require('neorg').setup({
                     load = {
