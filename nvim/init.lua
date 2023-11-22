@@ -132,10 +132,10 @@ if vim.g.neovide then
 end
 
 -- Specify plugins:
-require('plugins')
+require('lazy_config')
 
 -- Key mappings:
-require('legendary_config')
+require('config')
 
 -- Plugin configuration:
-require('config')
+require('legendary_config')

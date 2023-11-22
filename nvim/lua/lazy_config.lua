@@ -75,14 +75,13 @@ require('lazy').setup(
                     }
                 })
             end,
-            -- build = ':TSUpdate',
             build = function()
                 local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
                 ts_update()
             end,
         },
         {
-            'hrsh7th/nvim-vmp',
+            'hrsh7th/nvim-cmp',
             dependencies = {
                 'neovim/nvim-lspconfig',
                 'hrsh7th/cmp-nvim-lsp',
@@ -96,7 +95,7 @@ require('lazy').setup(
             }
         },
         {
-            'goolord/alpha.nvim',
+            'goolord/alpha-nvim',
             dependencies = { 'nvim-tree/nvim-web-devicons' },
             config = function()
                 require('alpha').setup(require('dashboard').config)
@@ -186,7 +185,7 @@ require('lazy').setup(
             dependencies = { 'nvim-lua/plenary.nvim' },
         },
         {
-            'nvim-lualine/lualine-nvim',
+            'nvim-lualine/lualine.nvim',
             dependencies = { 'nvim-tree/nvim-web-devicons' },
             config = function()
                 require('lualine').setup({
@@ -496,7 +495,37 @@ require('lazy').setup(
             },
         },
     },
-    { -- Options
-
+    { -- Lazy Options
+        install = {
+            colorscheme = { 'onedark_vivid' },
+        },
+        ui = {
+            border = 'rounded',
+            icons = {
+                cmd        = " ",
+                config     = "",
+                event      = "",
+                ft         = " ",
+                init       = " ",
+                import     = " ",
+                keys       = " ",
+                lazy       = "󰒲 ",
+                loaded     = "●",
+                not_loaded = "○",
+                plugin     = " ",
+                runtime    = " ",
+                require    = "󰢱 ",
+                source     = " ",
+                start      = "",
+                task       = "✔ ",
+                list = {
+                    "●",
+                    "➜",
+                    "★",
+                    "‒",
+                },
+            }
+        },
+        diff = { cmd = 'diffview.nvim' },
     }
 )
