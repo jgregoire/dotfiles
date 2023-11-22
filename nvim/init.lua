@@ -99,28 +99,6 @@ vim.opt.virtualedit = 'block'
 -- vim.cmd('set clipboard+=unnamedplus')
 vim.opt.clipboard:append({ 'unnamedplus' })
 
--- Packer auto-install on new setups.
-local ensure_packer = function()
-    local fn = vim.fn
-    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-    if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({
-            'git',
-            'clone',
-            '--depth',
-            '1',
-            'https://githuvim.opt.com/wbthomason/packer.nvim',
-            install_path
-        })
-        vim.cmd('packadd packer.nvim')
-        return true
-    end
-    return false
-end
-
----@diagnostic disable-next-line:unused-local
-local packer_bootstrap = ensure_packer()
-
 -- Neovide-only options
 ---@diagnostic disable-next-line:undefined-field
 if vim.g.neovide then
