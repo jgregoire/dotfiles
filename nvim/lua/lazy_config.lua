@@ -254,8 +254,8 @@ require('lazy').setup(
                 },
         },
         {
+            -- Only works with config function.
             'norcalli/nvim-colorizer.lua',
-            main = 'colorizer',
             priority = 0,
             config = function ()
                 require('colorizer').setup()
