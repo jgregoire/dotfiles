@@ -57,6 +57,7 @@ require('lazy').setup(
         {
             'nvim-treesitter/nvim-treesitter',
             config = function()
+                ---@diagnostic disable-next-line: missing-fields
                 require('nvim-treesitter.configs').setup({
                     ensure_installed = { 'lua', 'vim', 'vimdoc', 'query', 'c'},
                     sync_install = false,
@@ -254,7 +255,11 @@ require('lazy').setup(
         },
         {
             'norcalli/nvim-colorizer.lua',
-            config = true,
+            main = 'colorizer',
+            priority = 0,
+            config = function ()
+                require('colorizer').setup()
+            end,
         },
         {
             'nat-418/boole.nvim',
