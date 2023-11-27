@@ -5,10 +5,11 @@
 -- vim default mappings. Some decisions I made:
 -- 	-Arrow keys over hjkl. I have better uses for my home row.
 -- 	-Retain intuitive use of Z/X/C/V keys for Undo/Cut/Copy/Paste.
--- 	-Emphasis on Leap for motion. De-emphasis of default vim motions.
+-- 	-Emphasis on Flash for motion. De-emphasis of default vim motions.
 -- 	-Priorities: Ergonomics > Mnemonics > Defaults > Aesthetics.
--- 	-Modifiers: Ctrl for commands when the ideal key is already used, Alt for tabbing, leader for plugin commands.
+-- 	-Modifiers: Ctrl for commands when the ideal key is already used, Alt for buffers, leader for plugin commands.
 
+-- These are set in init.lua
 -- vim.g.vim.g.mapleader = ' '
 -- vim.g.maplocalleader = '-'
 
@@ -30,14 +31,12 @@ require('legendary').setup({
 
     keymaps = {
         -- Modes
-        { 'jk',    '<ESC>',  mode = { 'i' },      description = 'Back to Normal mode', opts = defaults },
         { 'i',               mode = { 'n', 'v' }, description = 'Insert before cursor' },
         { 'I',               mode = { 'n', 'v' }, description = 'Insert at beginning of line' },
         { 'a',               mode = { 'n', 'v' }, description = 'Append after cursor' },
         { 'A',               mode = { 'n', 'v' }, description = 'Append at end of line' },
         { 'n',     'o',      mode = { 'n' },      description = 'Append new line below', opts = defaults },
         { 'N',     'O',      mode = { 'n' },      description = 'Append new line above', opts = defaults },
-        -- { 's',               mode = { 'n' },      description = 'Delete character and insert' },
         { '<C-b>', '<C-v>',  mode = { 'n' },      description = 'Visual Block mode', opts = defaults },
         { 'v',               mode = { 'n', 'i' }, description = 'Visual Char mode' },
         { 'V',               mode = { 'n', 'i' }, description = 'Visual Line mode' },
@@ -55,6 +54,7 @@ require('legendary').setup({
         { 'cw',    'yw',     mode = { 'n' },      description = 'Copy from cursor to start of next word', opts = defaults },
         { 'cc',    'yy',     mode = { 'n' },      description = 'Copy line', opts = defaults },
         { 'C',     'y$',     mode = { 'n' },      description = 'Copy to end of line', opts = defaults },
+        -- { 's',               mode = { 'n' },      description = 'Delete character and insert' },
         -- { 'E',     'r',      mode = { 'n' },      description = 'Replace single character', opts = defaults },
         { 'e',     'c',      mode = { 'n' },      description = 'Edit/change [MOTION]', opts = defaults },
         { 'EE',    'R',      mode = { 'n' },      description = 'Replace characters until ESC', opts = defaults },
@@ -121,7 +121,7 @@ require('legendary').setup({
 
         -- Buffers and such
         { '<A-o>',     ':e ',          mode = { 'n' }, description = 'Open/edit file', opts = defaults },
-	{ '<A-q>',     ':bdelete<CR>',                 description = 'Close buffer', opts = defaults },
+        { '<A-q>',     ':bdelete<CR>',                 description = 'Close buffer', opts = defaults },
         { '<A-Right>', ':bn<CR>',      mode = { 'n' }, description = 'Next tab', opts = defaults },
         { '<A-Left>',  ':bp<CR>',      mode = { 'n' }, description = 'Previous tab', opts = defaults },
 
