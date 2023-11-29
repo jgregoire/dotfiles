@@ -185,7 +185,8 @@ require('lazy').setup(
         {
             'nvim-lualine/lualine.nvim',
             dependencies = { 'nvim-tree/nvim-web-devicons' },
-            opts = {
+            config = function()
+                require('lualine').setup({
                 options = {
                     theme = 'auto',
                     component_separators = {
@@ -251,7 +252,8 @@ require('lazy').setup(
                         lualine_y = {},
                         lualine_z = {}
                     },
-                },
+                })
+            end,
         },
         {
             -- Only works with config function.
