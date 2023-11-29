@@ -27,7 +27,7 @@ vim.opt.relativenumber = true
 vim.opt.ruler = true
 
 -- How many lines above/below cursor to show when scrollinvim.opt.
-vim.opt.scrolloff = 999
+vim.opt.scrolloff = 8
 
 -- Highlight the line the cursor is on.
 -- vim.opt.cursorline = true

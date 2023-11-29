@@ -512,6 +512,7 @@ require('lazy').setup(
                 'nvim-telescope/telescope.nvim',
                 'stevearc/dressing.nvim',
             },
+            priority = 900,
         },
     },
     { -- Lazy Options
