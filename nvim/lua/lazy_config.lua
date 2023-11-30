@@ -50,6 +50,9 @@ require('lazy').setup(
         },
         {
             'neovim/nvim-lspconfig',
+            config = function()
+                require('lsp_config') -- Run my configuration file
+            end
         },
         {
             'RRethy/nvim-treesitter-endwise',
@@ -92,7 +95,7 @@ require('lazy').setup(
                 'hrsh7th/cmp-nvim-lua',
             },
             config = function()
-                require('cmp_config')
+                require('cmp_config') -- Run my configuration file
             end
         },
         {

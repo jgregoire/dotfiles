@@ -113,6 +113,3 @@ vim.g.maplocalleader = '-'
 
 -- Specify plugins:
 require('lazy_config')
-
--- Key mappings:
-require('config')
