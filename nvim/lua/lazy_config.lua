@@ -362,6 +362,9 @@ require('lazy').setup(
                     normal_cur_line = 'PS',
                     delete          = 'xs',
                     change          = 'es',
+                    change_line     = 'eS',
+                    visual          = 'ps',
+                    visual_line     = 'pS',
                 }
             },
         },
