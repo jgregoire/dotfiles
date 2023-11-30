@@ -116,6 +116,3 @@ require('lazy_config')
 
 -- Key mappings:
 require('config')
-
--- Plugin configuration:
-require('legendary_config')

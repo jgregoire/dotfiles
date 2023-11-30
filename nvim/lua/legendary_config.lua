@@ -15,7 +15,7 @@
 
 local defaults = { noremap = true }
 
-require('legendary').setup({
+local M = {
     include_builtin = false, -- Ditch all default vim maps.
     include_legendary_cmds = true,
     formatter = nil,
@@ -217,4 +217,6 @@ require('legendary').setup({
     scratchpad = {
         display_results = 'float'
     },
-})
+}
+
+return M

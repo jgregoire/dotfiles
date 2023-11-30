@@ -516,6 +516,10 @@ require('lazy').setup(
                 'stevearc/dressing.nvim',
             },
             priority = 900,
+            config = function()
+                local opts = require('legendary_config')
+                require('legendary').setup(opts)
+            end
         },
     },
     { -- Lazy Options
