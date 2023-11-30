@@ -96,8 +96,7 @@ vim.opt.inccommand = 'split'
 vim.opt.virtualedit = 'block'
 
 -- Use system clipboard
--- vim.cmd('set clipboard+=unnamedplus')
-vim.opt.clipboard:append({ 'unnamedplus' })
+-- vim.opt.clipboard:append({ 'unnamedplus' })
 
 -- Neovide-only options
 ---@diagnostic disable-next-line:undefined-field

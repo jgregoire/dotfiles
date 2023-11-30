@@ -104,20 +104,20 @@ require('legendary').setup({
         { '\"',     mode = { 'o' }, description = 'Double quotes (Chording)' },
 
         -- Navigation
-        { 'b',  '%',  mode = { 'n' }, description = 'Jump to matching bracket', opts = defaults },
-        { 'B',  '%<Right>', mode = { 'n' }, description = 'Jump after matching bracket', opts = defaults },
-        { 'w',  '^',  mode = { 'n' }, description = 'First non-blank char', opts = defaults },
-        { 'W',  '0',  mode = { 'n' }, description = 'Start of line', opts = defaults },
-        { 'd',  'b',  mode = { 'n' }, description = 'Start of previous word', opts = defaults },
-        { 'D',  'B',  mode = { 'n' }, description = 'Start of previous Word', opts = defaults },
-        { 'f',  'ge', mode = { 'n' }, description = 'End of previous word', opts = defaults },
-        { 'F',  'gE', mode = { 'n' }, description = 'End of previous Word', opts = defaults },
-        { 'u',  'w',  mode = { 'n' }, description = 'Start of next word', opts = defaults },
-        { 'U',  'W',  mode = { 'n' }, description = 'Start of next Word', opts = defaults },
-        { 'r',  'e',  mode = { 'n' }, description = 'End of next word', opts = defaults },
-        { 'R',  'E',  mode = { 'n' }, description = 'End of next Word', opts = defaults },
-        { 'l',  '$',  mode = { 'n' }, description = 'End of line', opts = defaults },
-        { 'L',  'g_', mode = { 'n' }, description = 'Last non-blank character of line', opts = defaults },
+        { 'b',  '%',  mode = { 'n', 'v' }, description = 'Jump to matching bracket', opts = defaults },
+        { 'B',  '%<Right>', mode = { 'n', 'v' }, description = 'Jump after matching bracket', opts = defaults },
+        { 'w',  '^',  mode = { 'n', 'v' }, description = 'First non-blank char', opts = defaults },
+        { 'W',  '0',  mode = { 'n', 'v' }, description = 'Start of line', opts = defaults },
+        { 'd',  'b',  mode = { 'n', 'v '}, description = 'Start of previous word', opts = defaults },
+        { 'D',  'B',  mode = { 'n', 'v '}, description = 'Start of previous Word', opts = defaults },
+        { 'f',  'ge', mode = { 'n', 'v '}, description = 'End of previous word', opts = defaults },
+        { 'F',  'gE', mode = { 'n', 'v '}, description = 'End of previous Word', opts = defaults },
+        { 'u',  'w',  mode = { 'n', 'v '}, description = 'Start of next word', opts = defaults },
+        { 'U',  'W',  mode = { 'n', 'v '}, description = 'Start of next Word', opts = defaults },
+        { 'r',  'e',  mode = { 'n', 'v '}, description = 'End of next word', opts = defaults },
+        { 'R',  'E',  mode = { 'n', 'v '}, description = 'End of next Word', opts = defaults },
+        { 'l',  '$',  mode = { 'n', 'v '}, description = 'End of line', opts = defaults },
+        { 'L',  'g_', mode = { 'n', 'v '}, description = 'Last non-blank character of line', opts = defaults },
 
         -- Buffers and such
         { '<A-o>',     ':e ',          mode = { 'n' }, description = 'Open/edit file', opts = defaults },
@@ -149,14 +149,15 @@ require('legendary').setup({
         { '<S-Tab>', mode = { 'i' }, description = 'Tabout: Backward' },
 
         -- Nvim-Surround
-        { 'ps',     mode = { 'n', 'v' }, description = 'Surround: Add [MOTION] [TYPE]' },
-        { 'pS',     mode = { 'n', 'v' }, description = 'Surround: Add with newlines [MOTION] [TYPE]' },
-        { 'Ps',     mode = { 'n', 'v' }, description = 'Surround: Add around line [TYPE]' },
-        { 'PS',     mode = { 'n', 'v' }, description = 'Surround: Add around line with newlines [TYPE]' },
+        { 'ps',     mode = { 'n' }, description = 'Surround: Add [MOTION] [TYPE]' },
+        { 'pS',     mode = { 'n' }, description = 'Surround: Add with newlines [MOTION] [TYPE]' },
+        { 'Ps',     mode = { 'n' }, description = 'Surround: Add around line [TYPE]' },
+        { 'PS',     mode = { 'n' }, description = 'Surround: Add around line with newlines [TYPE]' },
         { 'xs',     mode = { 'n' }, description = 'Surround: Delete [TYPE]' },
-        { 'es',     mode = { 'n' }, description = 'Surround: Change [FROM TYPE] [TO TYPE]'},
-        { 'S',      mode = { 'v' }, description = 'Surround: Add [TYPE]'},
-        { 'gS',     mode = { 'v' }, description = 'Surround: Add with newlines [TYPE]' },
+        { 'es',     mode = { 'n' }, description = 'Surround: Change [FROM TYPE] [TO TYPE]' },
+        { 'eS',     mode = { 'n' }, description = 'Surround: Change with newlines [FROM TYPE] [TO TYPE]' },
+        { 'ps',     mode = { 'v' }, description = 'Surround: Add [TYPE]'},
+        { 'pS',     mode = { 'v' }, description = 'Surround: Add with newlines [TYPE]' },
         { '<C-p>s', mode = { 'i' }, description = 'Surround: Add [MOTION] [TYPE]' },
         { '<C-p>S', mode = { 'i' }, description = 'Surround: Add with newlines [MOTION] [TYPE]' },
 
@@ -203,7 +204,15 @@ require('legendary').setup({
 
     funcs = {},
 
-    autocmds = {},
+    autocmds = {
+        {
+            'UIEnter',
+            function()
+                vim.opt.clipboard:append({ 'unnamedplus' })
+            end,
+            description = 'Set system clipboard',
+        }
+    },
 
     scratchpad = {
         display_results = 'float'
