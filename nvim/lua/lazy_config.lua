@@ -90,7 +90,10 @@ require('lazy').setup(
                 'saadparwaiz1/cmp_luasnip',
                 'hrsh7th/cmp-calc',
                 'hrsh7th/cmp-nvim-lua',
-            }
+            },
+            config = function()
+                require('cmp_config')
+            end
         },
         {
             'goolord/alpha-nvim',
