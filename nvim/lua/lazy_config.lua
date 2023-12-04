@@ -1,5 +1,6 @@
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+
 ---@diagnostic disable-next-line: undefined-field
 if not vim.loop.fs_stat(lazypath) then
     print('Installing lazy.nvim...')
@@ -13,6 +14,7 @@ if not vim.loop.fs_stat(lazypath) then
     })
     print('Installed lazy.nvim!')
 end
+
 ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
@@ -37,12 +39,21 @@ require('lazy').setup(
                         flash_nvim = true,
                         gitsigns = true,
                         indentline = true,
+                        lsp_semantic_tokens = true,
                         nvim_cmp = true,
                         nvim_lsp = true,
                         nvim_notify = true,
                         telescope = true,
                         toggleterm = true,
                         treesitter = true,
+                    },
+                    options = {
+                        transparency = true,
+                        cursorline = true,
+                        highlight_inactive_windwos = true,
+                    },
+                    colors = {
+                        --cursorline = '#000000' -- Set this if the default choice sucks.
                     }
                 })
                 vim.cmd('colorscheme onedark_vivid')
@@ -177,10 +188,10 @@ require('lazy').setup(
                 },
             },
         },
-        {
-            'karb94/neoscroll.nvim',
-            config = true,
-        },
+        -- {
+        --     'karb94/neoscroll.nvim',
+        --     config = true,
+        -- },
         {
             'nvim-telescope/telescope.nvim',
             dependencies = {
