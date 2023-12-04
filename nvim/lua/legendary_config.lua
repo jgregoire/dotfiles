@@ -37,7 +37,7 @@ local M = {
         { 'A',               mode = { 'n', 'v' }, description = 'Append at end of line' },
         { 'n',     'o',      mode = { 'n' },      description = 'Append new line below', opts = defaults },
         { 'N',     'O',      mode = { 'n' },      description = 'Append new line above', opts = defaults },
-        { '<C-b>', '<C-v>',  mode = { 'n' },      description = 'Visual Block mode', opts = defaults },
+        { '<C-b>', '<C-v>',  mode = { 'n', 'i' }, description = 'Visual Block mode', opts = defaults },
         { 'v',               mode = { 'n', 'i' }, description = 'Visual Char mode' },
         { 'V',               mode = { 'n', 'i' }, description = 'Visual Line mode' },
 
@@ -118,6 +118,14 @@ local M = {
         { 'R',  'E',  mode = { 'n', 'v' }, description = 'End of next Word', opts = defaults },
         { 'l',  '$',  mode = { 'n', 'v' }, description = 'End of line', opts = defaults },
         { 'L',  'g_', mode = { 'n', 'v' }, description = 'Last non-blank character of line', opts = defaults },
+
+        -- Search
+        { '/',              mode = { 'n' }, description = 'Search forward' },
+        { '?',              mode = { 'n' }, description = 'Search backward' },
+        { '*',              mode = { 'n' }, description = 'Find next occurrence of word under cursor' },
+        { '#',              mode = { 'n' }, description = 'Find previous occurrence of word under cursor' },
+        { '<C-Right>', 'n', mode = { 'n' }, description = 'Jump to next result' },
+        { '<C-Left>',  'N', mode = { 'n' }, description = 'Jump to previous result' },
 
         -- Buffers and such
         { '<A-o>',     ':e ',          mode = { 'n' }, description = 'Open/edit file', opts = defaults },
