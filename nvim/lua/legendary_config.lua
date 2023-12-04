@@ -124,8 +124,8 @@ local M = {
         { '?',              mode = { 'n' }, description = 'Search backward' },
         { '*',              mode = { 'n' }, description = 'Find next occurrence of word under cursor' },
         { '#',              mode = { 'n' }, description = 'Find previous occurrence of word under cursor' },
-        { '<C-Right>', 'n', mode = { 'n' }, description = 'Jump to next result' },
-        { '<C-Left>',  'N', mode = { 'n' }, description = 'Jump to previous result' },
+        { '<C-Right>', 'n', mode = { 'n' }, description = 'Jump to next result', opts = defaults },
+        { '<C-Left>',  'N', mode = { 'n' }, description = 'Jump to previous result', opts = defaults },
 
         -- Buffers and such
         { '<A-o>',     ':e ',          mode = { 'n' }, description = 'Open/edit file', opts = defaults },
@@ -206,6 +206,9 @@ local M = {
         -- Boole
         { '<C-Up>',   mode = { 'n' }, description = 'Boole: Increment value' },
         { '<C-Down>', mode = { 'n' }, description = 'Boole: Decrement value' },
+
+        -- Persistence
+        { '<leader>sl', function() require('persistence').load() end, mode = { 'n' }, description = 'Persistence: Load session', opts = defaults },
     },
 
     commands = {},
