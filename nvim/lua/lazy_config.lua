@@ -56,6 +56,21 @@ require('lazy').setup(
             end,
         },
         {
+            'rmagatti/auto-session',
+            config = function()
+                require('auto-session').setup({
+                    log_level = 'error',
+                    auto_session_enable_last_session = false,
+                    auto_session_root_dir = vim.fn.stdpath('data') .. '/sessions/',
+                    auto_session_enabled = true,
+                    auto_session_suppress_dirs = nil,
+                    auto_session_use_git_branch = nil,
+                    auto_session_last_session_dir = '',
+                    bypass_session_save_file_types = nil,
+                })
+            end
+        },
+        {
             'neovim/nvim-lspconfig',
             config = function()
                 require('lsp_config') -- Run my configuration file
@@ -104,13 +119,6 @@ require('lazy').setup(
             config = function()
                 require('cmp_config') -- Run my configuration file
             end
-        },
-        {
-            'goolord/alpha-nvim',
-            dependencies = { 'nvim-tree/nvim-web-devicons' },
-            config = function()
-                require('alpha').setup(require('dashboard').config)
-            end,
         },
         {
             'rcarriga/nvim-notify',
@@ -254,7 +262,9 @@ require('lazy').setup(
                         'encoding',
                         'fileformat',
                         'filetype' },
-                        lualine_y = { 'progress' },
+                        lualine_y = {
+                            require('auto-session.lib').current_session_name
+                        },
                         lualine_z = { 'location' },
                     },
                     inactive_sections = {
