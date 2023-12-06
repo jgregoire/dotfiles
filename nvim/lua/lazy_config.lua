@@ -22,10 +22,6 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup(
     { -- Plugins
         {
-            'folke/persistence.nvim',
-            event = 'BufReadPre',
-        },
-        {
             'olimorris/onedarkpro.nvim',
             priority = 1000, -- Ensure this loads first
             config = function()

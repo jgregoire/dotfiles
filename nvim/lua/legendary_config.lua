@@ -206,9 +206,6 @@ local M = {
         -- Boole
         { '<C-Up>',   mode = { 'n' }, description = 'Boole: Increment value' },
         { '<C-Down>', mode = { 'n' }, description = 'Boole: Decrement value' },
-
-        -- Persistence
-        { '<leader>sl', function() require('persistence').load() end, mode = { 'n' }, description = 'Persistence: Load session', opts = defaults },
     },
 
     commands = {},
