@@ -38,11 +38,6 @@ esac
 ## Set default text editor
 export EDITOR='nvim'
 
-## Not all distros are setting this, yet
-if [ -z ${XDG_STATE_HOME} ]; then
-    export XDG_STATE_HOME='$HOME/.local/state'
-fi
-
 ##
 ## History Settings
 ##
