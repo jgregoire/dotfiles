@@ -14,6 +14,7 @@
 -- vim.g.maplocalleader = '-'
 
 local defaults = { noremap = true }
+local silent = { noremap = true, silent = true }
 
 local M = {
     include_builtin = false, -- Ditch all default vim maps.
@@ -29,17 +30,29 @@ local M = {
     --  A - Alt
     --  M - Alt (No meta key)
 
+    -- Modes:
+    -- nil - normal
+    -- n   - normal
+    -- i   - insert
+    -- l   - insert, command-line, lang-arg
+    -- c   - command-line
+    -- t   - terminal
+    -- v   - visual and select
+    -- s   - select
+    -- x   - visual
+    -- o   - operator-pending
+
     keymaps = {
         -- Modes
-        { 'i',               mode = { 'n', 'v' }, description = 'Insert before cursor' },
-        { 'I',               mode = { 'n', 'v' }, description = 'Insert at beginning of line' },
-        { 'a',               mode = { 'n', 'v' }, description = 'Append after cursor' },
-        { 'A',               mode = { 'n', 'v' }, description = 'Append at end of line' },
+        { 'i',               mode = { 'n' }, description = 'Insert before cursor' },
+        { 'I',               mode = { 'n' }, description = 'Insert at beginning of line' },
+        { 'a',               mode = { 'n' }, description = 'Append after cursor' },
+        { 'A',               mode = { 'n' }, description = 'Append at end of line' },
         { 'n',     'o',      mode = { 'n' },      description = 'Append new line below', opts = defaults },
         { 'N',     'O',      mode = { 'n' },      description = 'Append new line above', opts = defaults },
-        { '<C-b>', '<C-v>',  mode = { 'n', 'i' }, description = 'Visual Block mode', opts = defaults },
-        { 'v',               mode = { 'n', 'i' }, description = 'Visual Char mode' },
-        { 'V',               mode = { 'n', 'i' }, description = 'Visual Line mode' },
+        { '<C-b>', '<C-v>',  mode = { 'n' }, description = 'Visual Block mode', opts = defaults },
+        { 'v',               mode = { 'n' }, description = 'Visual Char mode' },
+        { 'V',               mode = { 'n' }, description = 'Visual Line mode' },
 
         -- Editing
         { '<C-s>', { n = ':w<CR>', i = '<C-o>:w<CR>' }, description = 'Save', opts = defaults },
@@ -56,7 +69,7 @@ local M = {
         { 'C',     'y$',     mode = { 'n' },      description = 'Copy to end of line', opts = defaults },
         -- { 's',               mode = { 'n' },      description = 'Delete character and insert' },
         -- { 'E',     'r',      mode = { 'n' },      description = 'Replace single character', opts = defaults },
-        { 'e',     'c',      mode = { 'n' },      description = 'Edit/change [MOTION]', opts = defaults },
+        { 'e',     'c',      mode = { 'n', 'v' }, description = 'Edit/change [MOTION]', opts = defaults },
         { 'EE',    'R',      mode = { 'n' },      description = 'Replace characters until ESC', opts = defaults },
         { 'ee',    'cc',     mode = { 'n' },      description = 'Edit entire line', opts = defaults },
         { 'E',     'C',      mode = { 'n' },      description = 'Edit to end of line', opts = defaults },
@@ -128,13 +141,13 @@ local M = {
         { '<C-Left>',  'N', mode = { 'n' }, description = 'Jump to previous result', opts = defaults },
 
         -- Buffers and such
-        { '<A-o>',     ':e ',          mode = { 'n' }, description = 'Open/edit file', opts = defaults },
-        { '<A-q>',     ':bdelete<CR>',                 description = 'Close buffer', opts = defaults },
-        { '<A-Right>', ':bn<CR>',      mode = { 'n' }, description = 'Next tab', opts = defaults },
-        { '<A-Left>',  ':bp<CR>',      mode = { 'n' }, description = 'Previous tab', opts = defaults },
+        { '<A-o>',     ':e ',          mode = { 'n' }, description = 'Open/edit file', opts = silent },
+        { '<A-q>',     ':bdelete<CR>',                 description = 'Close buffer', opts = silent },
+        { '<A-Right>', ':bn<CR>',      mode = { 'n' }, description = 'Next tab', opts = silent },
+        { '<A-Left>',  ':bp<CR>',      mode = { 'n' }, description = 'Previous tab', opts = silent },
 
         -- Legendary
-        { '<leader>l', ':Legendary<CR>', mode = { 'n' }, description = 'Legendary: Launch menu', opts = defaults },
+        { '<leader>l', ':Legendary<CR>', mode = { 'n' }, description = 'Legendary: Launch menu', opts = silent },
 
         -- CMP
         { '<C-Space>',               description = 'CMP: Complete' },
@@ -178,14 +191,15 @@ local M = {
         { '<C-t>',     mode = { 'n' }, description = 'Toggleterm: Toggle' },
 
         -- Flash
-        { 's',     mode = { 'n', 'x', 'o' }, description = 'Flash: Jump' , opts = defaults },
-        { 'S',     mode = { 'n', 'x', 'o' }, description = 'Flash: Treesitter', opts = defaults },
-        { 'm',     mode = { 'o' },           description = 'Flash: Remote [OPERATOR] [FLASH] [MOTION]', opts = defaults },
-        { 'M',                               description = 'Flash: Treesitter search', opts = defaults },
-        { '<C-f>', mode = { 'c' },           description = 'Flash: Toggle flash in search', opts = defaults },
+        { 's',     mode = { 'n', 'x', 'o' }, description = 'Flash: Jump' },
+        { 'S',     mode = { 'n', 'x', 'o' }, description = 'Flash: Treesitter' },
+        { '<C-f>', mode = { 'i' },           description = 'Flash: Treesitter' },
+        { 'm',     mode = { 'o' },           description = 'Flash: Remote [OPERATOR] [FLASH] [MOTION]' },
+        { 'M',                               description = 'Flash: Treesitter search' },
+        { '<C-f>', mode = { 'c' },           description = 'Flash: Toggle flash in search' },
 
         -- Neorg
-        { '<leader>n', ':Neorg mode norg<CR>', mode = 'n',    description = 'Neorg: Enter norg mode', opts = defaults },
+        { '<leader>n', ':Neorg mode norg<CR>', mode = 'n',    description = 'Neorg: Enter norg mode', opts = silent },
         { '<leader>tu', mode = { 'norg' }, description = 'Neorg: Set TODO task undone' },
         { '<leader>tp', mode = { 'norg' }, description = 'Neorg: Set TODO task pending' },
         { '<leader>td', mode = { 'norg' }, description = 'Neorg: Set TODO task done' },
@@ -206,6 +220,10 @@ local M = {
         -- Boole
         { '<C-Up>',   mode = { 'n' }, description = 'Boole: Increment value' },
         { '<C-Down>', mode = { 'n' }, description = 'Boole: Decrement value' },
+
+        -- Auto-Session
+        { '<leader>ss', ':SessionSave<CR>',    mode = { 'n' }, description = 'Auto-Session: Save session', opts = silent },
+        { '<leader>sr', ':SessionRestore<CR>', mode = { 'n' }, description = 'Auto-Session: Restore session', opts = silent },
     },
 
     commands = {},

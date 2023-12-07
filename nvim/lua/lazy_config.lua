@@ -307,11 +307,12 @@ require('lazy').setup(
                 }
             },
             keys = {
-                { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash: Jump" },
-                { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash: Treesitter" },
-                { "m", mode = "o", function() require("flash").remote() end, desc = "Flash: Remote" },
-                { "M", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-                { "<c-f>", mode = { "c" }, function() require("flash").toggle() end, desc = "Flash: Toggle in search" },
+                { 's', mode = { 'n', 'x', 'o' }, function() require('flash').jump() end, desc = 'Flash: Jump' },
+                { 'S', mode = { 'n', 'x', 'o' }, function() require('flash').treesitter() end, desc = 'Flash: Treesitter' },
+                { 'm', mode = 'o', function() require('flash').remote() end, desc = 'Flash: Remote' },
+                { 'M', mode = { 'o', 'x' }, function() require('flash').treesitter_search() end, desc = 'Treesitter Search' },
+                { '<C-f>', mode = { 'c' }, function() require('flash').toggle() end, desc = 'Flash: Toggle in search' },
+                { '<C-f>', mode = { 'i' }, function() require('flash').treesitter() end, desc = 'Flash: Treesitter' },
             },
         },
         {
