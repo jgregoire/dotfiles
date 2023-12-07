@@ -103,8 +103,8 @@ alias grep='grep --color'
 alias exa='eza -l --group-directories-first --icons' # exa maintainer MIA.
 alias exaa='exa -a'
 alias exag='exa -a --git'
-alias exat='exa -t'
-alias exaat='exaa -t'
+alias exat='exa -T'
+alias exaat='exaa -T'
 
 ## Nano
 # Nano using line numbers
