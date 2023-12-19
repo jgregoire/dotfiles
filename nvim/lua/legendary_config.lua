@@ -81,14 +81,27 @@ local M = {
         { '<C-,>',           mode = { 'i' },           description = 'De-indent line' },
         { '=',               mode = { 'n', 'v' },      description = 'Auto-indent [MOTION]' },
 
-        -- Visual Mode
-        { 'aw', mode = { 'v' }, description = 'Select a word' },
-        { 'ab', mode = { 'v' }, description = 'Select a ( ) block' },
-        { 'aB', mode = { 'v' }, description = 'Select a { } block' },
-        { 'at', mode = { 'v' }, description = 'Select a < > block' },
-        { 'ib', mode = { 'v' }, description = 'Select inside a ( ) block' },
-        { 'iB', mode = { 'v' }, description = 'Select inside a { } block' },
-        { 'it', mode = { 'v' }, description = 'Select inside a < > block' },
+        -- Textobjects
+        { 'aw', mode = { 'v', 'o' }, description = 'Select a word' },
+        { 'ab', mode = { 'v', 'o' }, description = 'Select a ( ) block' },
+        { 'aB', mode = { 'v', 'o' }, description = 'Select a { } block' },
+        { 'at', mode = { 'v', 'o' }, description = 'Select a < > block' },
+        { 'ib', mode = { 'v', 'o' }, description = 'Select inside a ( ) block' },
+        { 'iB', mode = { 'v', 'o' }, description = 'Select inside a { } block' },
+        { 'it', mode = { 'v', 'o' }, description = 'Select inside a < > block' },
+
+        -- Treesitter textobjects
+        { 'af', mode = { 'v', 'o' }, description = 'Select around a function' },
+        { 'if', mode = { 'v', 'o' }, description = 'Select inside a function' },
+        { 'at', mode = { 'v', 'o' }, description = 'Select around a table' },
+        { 'it', mode = { 'v', 'o' }, description = 'Select inside a table' },
+        { 'ic', mode = { 'v', 'o' }, description = 'Select inside a function call' },
+
+        -- Treesitter selection
+        { '<leader>is', mode = { 'n' }, description = 'Begin treesitter incremental selection' },
+        { '<leader>ii', mode = { 'n' }, description = 'Increment treesitter seleciton' },
+        { '<leader>id', mode = { 'n' }, description = 'Decrement treesitter selection' },
+        { '<leader>si', mode = { 'n' }, description = 'Increment scope selection' },
 
         -- Chording
         { 'i',      mode = { 'o' }, description = 'Inside (Chording)' },

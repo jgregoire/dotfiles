@@ -19,42 +19,41 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Specify plugins
-require('lazy').setup(
-    { -- Plugins
-        {
-            'olimorris/onedarkpro.nvim',
-            priority = 1000, -- Ensure this loads first
-            config = function()
-                require('onedarkpro').setup({
-                    styles = {
-                        comments = 'italic',
-                    },
-                    plugins = {
-                        all = false,
-                        diffview = true,
-                        flash_nvim = true,
-                        gitsigns = true,
-                        indentline = true,
-                        lsp_semantic_tokens = true,
-                        nvim_cmp = true,
-                        nvim_lsp = true,
-                        nvim_notify = true,
-                        telescope = true,
-                        toggleterm = true,
-                        treesitter = true,
-                    },
-                    options = {
-                        transparency = true,
-                        cursorline = true,
-                        highlight_inactive_windwos = true,
-                    },
-                    colors = {
-                        --cursorline = '#000000' -- Set this if the default choice sucks.
-                    }
-                })
-                vim.cmd('colorscheme onedark_vivid')
-            end,
-        },
+require('lazy').setup({ -- Plugins
+    {
+        'olimorris/onedarkpro.nvim',
+        priority = 1000, -- Ensure this loads first
+        config = function()
+            require('onedarkpro').setup({
+                styles = {
+                    comments = 'italic',
+                },
+                plugins = {
+                    all = false,
+                    diffview = true,
+                    flash_nvim = true,
+                    gitsigns = true,
+                    indentline = true,
+                    lsp_semantic_tokens = true,
+                    nvim_cmp = true,
+                    nvim_lsp = true,
+                    nvim_notify = true,
+                    telescope = true,
+                    toggleterm = true,
+                    treesitter = true,
+                },
+                options = {
+                    transparency = true,
+                    cursorline = true,
+                    highlight_inactive_windwos = true,
+                },
+                colors = {
+                    --cursorline = '#000000' -- Set this if the default choice sucks.
+                }
+            })
+            vim.cmd('colorscheme onedark_vivid')
+        end,
+    },
         {
             'rmagatti/auto-session',
             config = function()
@@ -80,6 +79,13 @@ require('lazy').setup(
             'RRethy/nvim-treesitter-endwise',
         },
         {
+            'nvim-treesitter/nvim-treesitter-textobjects'
+        },
+        {
+            'nvim-treesitter/nvim-treesitter-context',
+            dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        },
+        {
             'nvim-treesitter/nvim-treesitter',
             config = function()
                 ---@diagnostic disable-next-line: missing-fields
@@ -96,9 +102,31 @@ require('lazy').setup(
                     indent = {
                         enable = true
                     },
+                    incremental_selection = {
+                        enable = true,
+                        keymaps = {
+                            init_selection    = '<leader>is',
+                            node_incremental  = '<leader>ii',
+                            node_decremental  = '<leader>id',
+                            scope_incremental = '<leader>si',
+                        },
+                    },
                     endwise = {
                         enable = true
-                    }
+                    },
+                    textobjects = {
+                        select = {
+                            enable = true,
+                            lookahead = true,
+                            keymaps = {
+                                ['af'] = '@function.outer',
+                                ['if'] = '@function.inner',
+                                ['at'] = '@parameter.outer',
+                                ['it'] = '@parameter.inner',
+                                ['ic'] = '@call.inner',
+                            },
+                        },
+                    },
                 })
             end,
             build = ':TSUpdate',
@@ -192,10 +220,6 @@ require('lazy').setup(
                 },
             },
         },
-        -- {
-        --     'karb94/neoscroll.nvim',
-        --     config = true,
-        -- },
         {
             'nvim-telescope/telescope.nvim',
             dependencies = {
