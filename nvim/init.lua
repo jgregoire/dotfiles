@@ -90,7 +90,9 @@ vim.opt.showtabline = 0
 -- Split behavior
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.inccommand = 'split'
+if not vim.g.neovide then
+    vim.opt.inccommand = 'split'
+end
 
 -- Allow selection in block mode past line endes
 vim.opt.virtualedit = 'block'
