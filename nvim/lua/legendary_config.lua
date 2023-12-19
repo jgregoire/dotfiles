@@ -29,58 +29,79 @@ local M = {
     --  A - Alt
     --  M - Alt (No meta key)
 
+    -- Modes:
+    -- nil - normal
+    -- n   - normal
+    -- i   - insert
+    -- l   - insert, command-line, lang-arg
+    -- c   - command-line
+    -- t   - terminal
+    -- v   - visual and select
+    -- s   - select
+    -- x   - visual
+    -- o   - operator-pending
+
     keymaps = {
         -- Modes
-        { 'i',               mode = { 'n', 'v' }, description = 'Insert before cursor' },
-        { 'I',               mode = { 'n', 'v' }, description = 'Insert at beginning of line' },
-        { 'a',               mode = { 'n', 'v' }, description = 'Append after cursor' },
-        { 'A',               mode = { 'n', 'v' }, description = 'Append at end of line' },
+        { 'i',               mode = { 'n' }, description = 'Insert before cursor' },
+        { 'I',               mode = { 'n' }, description = 'Insert at beginning of line' },
+        { 'a',               mode = { 'n' }, description = 'Append after cursor' },
+        { 'A',               mode = { 'n' }, description = 'Append at end of line' },
         { 'n',     'o',      mode = { 'n' },      description = 'Append new line below', opts = defaults },
         { 'N',     'O',      mode = { 'n' },      description = 'Append new line above', opts = defaults },
-        { '<C-b>', '<C-v>',  mode = { 'n', 'i' }, description = 'Visual Block mode', opts = defaults },
-        { 'v',               mode = { 'n', 'i' }, description = 'Visual Char mode' },
-        { 'V',               mode = { 'n', 'i' }, description = 'Visual Line mode' },
+        { '<C-b>', '<C-v>',  mode = { 'n' }, description = 'Visual Block mode', opts = defaults },
+        { 'v',               mode = { 'n' }, description = 'Visual Char mode' },
+        { 'V',               mode = { 'n' }, description = 'Visual Line mode' },
 
         -- Editing
-        { '<C-s>', { n = ':w<CR>', i = '<C-o>:w<CR>' }, description = 'Save', opts = defaults },
-        { '<C-z>', { n = 'u',      i = '<C-o>u' },      description = 'Undo', opts = defaults },
-        { '<C-y>', { n = '<C-r>',  i = '<C-o><C-r>' },  description = 'Redo', opts = defaults },
-        { '<C-v>', { n = 'P',      i = '<C-o>P' },      description = 'Paste before cursor', opts = defaults },
-        { 'x',     'd',      mode = { 'n', 'v' }, description = 'Cut/delete [MOTION]', opts = defaults },
-        { 'xw',    'dw',     mode = { 'n' },      description = 'Cut from cursor to start of next word', opts = defaults },
-        { 'xx',    'dd',     mode = { 'n' },      description = 'Cut line', opts = defaults },
-        { 'X',     'd$',     mode = { 'n' },      description = 'Cut to end of line', opts = defaults },
-        { 'c',     'y',      mode = { 'n', 'v' }, description = 'Copy/yank [MOTION]', opts = defaults },
-        { 'cw',    'yw',     mode = { 'n' },      description = 'Copy from cursor to start of next word', opts = defaults },
-        { 'cc',    'yy',     mode = { 'n' },      description = 'Copy line', opts = defaults },
-        { 'C',     'y$',     mode = { 'n' },      description = 'Copy to end of line', opts = defaults },
-        -- { 's',               mode = { 'n' },      description = 'Delete character and insert' },
-        -- { 'E',     'r',      mode = { 'n' },      description = 'Replace single character', opts = defaults },
-        { 'e',     'c',      mode = { 'n' },      description = 'Edit/change [MOTION]', opts = defaults },
-        { 'EE',    'R',      mode = { 'n' },      description = 'Replace characters until ESC', opts = defaults },
-        { 'ee',    'cc',     mode = { 'n' },      description = 'Edit entire line', opts = defaults },
-        { 'E',     'C',      mode = { 'n' },      description = 'Edit to end of line', opts = defaults },
-        { 'j',     'J',      mode = { 'n' },      description = 'Join line below to current line retaining whitespace', opts = defaults },
-        { 'J',     'gJ',     mode = { 'n' },      description = 'Join line below to current line with a space between', opts = defaults },
-        -- { '<C-w>',           mode = { 'i' },      description = 'Delete word before cursor', opts = defaults },
-        { '<C-n>', '<A-o>',  mode = { 'i' },      description = 'Begin new line', opts = defaults },
-        { '>',               mode = { 'n', 'v' }, description = 'Indent [MOTION]' },
-        { '>>',              mode = { 'n' },      description = 'Indent line' },
-        { '<',               mode = { 'n', 'v' }, description = 'De-indent [MOTION]' },
-        { '<<',              mode = { 'n' },      description = 'De-indent line' },
-        { '<C-.>',           mode = { 'i' },      description = 'Indent line' },
-        { '<C-,>',           mode = { 'i' },      description = 'De-indent line' },
-        -- This one's a doozy! But I use tabout.nvim now. Preserving this for posterity.
-        -- { '<C-e>', [[<C-\><C-n>:call search('[>)\]}"'']', 'W')<CR>a]], mode = { 'i' }, description = 'Jump out of brackets or quotes' },
+        { '<C-s>', '<cmd>w<CR>', mode = { 'n', 'i' },  description = 'Save', opts = defaults },
+        { '<C-z>', { n = 'u',      i = '<C-o>u' },     description = 'Undo', opts = defaults },
+        { '<C-y>', { n = '<C-r>',  i = '<C-o><C-r>' }, description = 'Redo', opts = defaults },
+        { '<C-v>', { n = 'P',      i = '<C-o>P' },     description = 'Paste before cursor', opts = defaults },
+        { 'x',     'd',      mode = { 'n', 'v' },      description = 'Cut/delete [MOTION]', opts = defaults },
+        { 'xw',    'dw',     mode = { 'n' },           description = 'Cut from cursor to start of next word', opts = defaults },
+        { 'xx',    'dd',     mode = { 'n' },           description = 'Cut line', opts = defaults },
+        { 'X',     'd$',     mode = { 'n' },           description = 'Cut to end of line', opts = defaults },
+        { 'c',     'y',      mode = { 'n', 'v' },      description = 'Copy/yank [MOTION]', opts = defaults },
+        { 'cw',    'yw',     mode = { 'n' },           description = 'Copy from cursor to start of next word', opts = defaults },
+        { 'cc',    'yy',     mode = { 'n' },           description = 'Copy line', opts = defaults },
+        { 'C',     'y$',     mode = { 'n' },           description = 'Copy to end of line', opts = defaults },
+        { 'e',     'c',      mode = { 'n', 'v' },      description = 'Edit/change [MOTION]', opts = defaults },
+        { 'EE',    'R',      mode = { 'n' },           description = 'Replace characters until ESC', opts = defaults },
+        { 'ee',    'cc',     mode = { 'n' },           description = 'Edit entire line', opts = defaults },
+        { 'E',     'C',      mode = { 'n' },           description = 'Edit to end of line', opts = defaults },
+        { 'j',     'J',      mode = { 'n' },           description = 'Join line below to current line retaining whitespace', opts = defaults },
+        { 'J',     'gJ',     mode = { 'n' },           description = 'Join line below to current line with a space between', opts = defaults },
+        { '<C-n>', '<A-o>',  mode = { 'i' },           description = 'Begin new line', opts = defaults },
+        { '>',               mode = { 'n', 'v' },      description = 'Indent [MOTION]' },
+        { '>>',              mode = { 'n' },           description = 'Indent line' },
+        { '<',               mode = { 'n', 'v' },      description = 'De-indent [MOTION]' },
+        { '<<',              mode = { 'n' },           description = 'De-indent line' },
+        { '<C-.>',           mode = { 'i' },           description = 'Indent line' },
+        { '<C-,>',           mode = { 'i' },           description = 'De-indent line' },
+        { '=',               mode = { 'n', 'v' },      description = 'Auto-indent [MOTION]' },
 
-        -- Visual Mode
-        { 'aw', mode = { 'v' }, description = 'Select a word' },
-        { 'ab', mode = { 'v' }, description = 'Select a ( ) block' },
-        { 'aB', mode = { 'v' }, description = 'Select a { } block' },
-        { 'at', mode = { 'v' }, description = 'Select a < > block' },
-        { 'ib', mode = { 'v' }, description = 'Select inside a ( ) block' },
-        { 'iB', mode = { 'v' }, description = 'Select inside a { } block' },
-        { 'it', mode = { 'v' }, description = 'Select inside a < > block' },
+        -- Textobjects
+        { 'aw', mode = { 'v', 'o' }, description = 'Select a word' },
+        { 'ab', mode = { 'v', 'o' }, description = 'Select a ( ) block' },
+        { 'aB', mode = { 'v', 'o' }, description = 'Select a { } block' },
+        { 'at', mode = { 'v', 'o' }, description = 'Select a < > block' },
+        { 'ib', mode = { 'v', 'o' }, description = 'Select inside a ( ) block' },
+        { 'iB', mode = { 'v', 'o' }, description = 'Select inside a { } block' },
+        { 'it', mode = { 'v', 'o' }, description = 'Select inside a < > block' },
+
+        -- Treesitter textobjects
+        { 'af', mode = { 'v', 'o' }, description = 'Select around a function' },
+        { 'if', mode = { 'v', 'o' }, description = 'Select inside a function' },
+        { 'at', mode = { 'v', 'o' }, description = 'Select around a table' },
+        { 'it', mode = { 'v', 'o' }, description = 'Select inside a table' },
+        { 'ic', mode = { 'v', 'o' }, description = 'Select inside a function call' },
+
+        -- Treesitter selection
+        { '<leader>is', mode = { 'n' }, description = 'Begin treesitter incremental selection' },
+        { '<leader>ii', mode = { 'n' }, description = 'Increment treesitter seleciton' },
+        { '<leader>id', mode = { 'n' }, description = 'Decrement treesitter selection' },
+        { '<leader>si', mode = { 'n' }, description = 'Increment scope selection' },
 
         -- Chording
         { 'i',      mode = { 'o' }, description = 'Inside (Chording)' },
@@ -128,13 +149,13 @@ local M = {
         { '<C-Left>',  'N', mode = { 'n' }, description = 'Jump to previous result', opts = defaults },
 
         -- Buffers and such
-        { '<A-o>',     ':e ',          mode = { 'n' }, description = 'Open/edit file', opts = defaults },
-        { '<A-q>',     ':bdelete<CR>',                 description = 'Close buffer', opts = defaults },
-        { '<A-Right>', ':bn<CR>',      mode = { 'n' }, description = 'Next tab', opts = defaults },
-        { '<A-Left>',  ':bp<CR>',      mode = { 'n' }, description = 'Previous tab', opts = defaults },
+        { '<A-o>',     ':e ',              mode = { 'n' }, description = 'Open/edit file...', opts = defaults },
+        { '<A-q>',     '<cmd>bdelete<CR>', mode = { 'n' }, description = 'Close buffer', opts = defaults },
+        { '<A-Right>', '<cmd>bn<CR>',      mode = { 'n' }, description = 'Next tab', opts = defaults },
+        { '<A-Left>',  '<cmd>bp<CR>',      mode = { 'n' }, description = 'Previous tab', opts = defaults },
 
         -- Legendary
-        { '<leader>l', ':Legendary<CR>', mode = { 'n' }, description = 'Legendary: Launch menu', opts = defaults },
+        { '<leader>l', '<cmd>Legendary<CR>', mode = { 'n' }, description = 'Legendary: Launch menu', opts = defaults },
 
         -- CMP
         { '<C-Space>',               description = 'CMP: Complete' },
@@ -178,14 +199,15 @@ local M = {
         { '<C-t>',     mode = { 'n' }, description = 'Toggleterm: Toggle' },
 
         -- Flash
-        { 's',     mode = { 'n', 'x', 'o' }, description = 'Flash: Jump' , opts = defaults },
-        { 'S',     mode = { 'n', 'x', 'o' }, description = 'Flash: Treesitter', opts = defaults },
-        { 'm',     mode = { 'o' },           description = 'Flash: Remote [OPERATOR] [FLASH] [MOTION]', opts = defaults },
-        { 'M',                               description = 'Flash: Treesitter search', opts = defaults },
-        { '<C-f>', mode = { 'c' },           description = 'Flash: Toggle flash in search', opts = defaults },
+        { 's',     mode = { 'n', 'x', 'o' }, description = 'Flash: Jump' },
+        { 'S',     mode = { 'n', 'x', 'o' }, description = 'Flash: Treesitter' },
+        { '<C-f>', mode = { 'i' },           description = 'Flash: Treesitter' },
+        { 'm',     mode = { 'o' },           description = 'Flash: Remote [OPERATOR] [FLASH] [MOTION]' },
+        { 'M',                               description = 'Flash: Treesitter search' },
+        { '<C-f>', mode = { 'c' },           description = 'Flash: Toggle flash in search' },
 
         -- Neorg
-        { '<leader>n', ':Neorg mode norg<CR>', mode = 'n',    description = 'Neorg: Enter norg mode', opts = defaults },
+        { '<leader>n', '<cmd>Neorg mode norg<CR>', mode = 'n',    description = 'Neorg: Enter norg mode', opts = defaults },
         { '<leader>tu', mode = { 'norg' }, description = 'Neorg: Set TODO task undone' },
         { '<leader>tp', mode = { 'norg' }, description = 'Neorg: Set TODO task pending' },
         { '<leader>td', mode = { 'norg' }, description = 'Neorg: Set TODO task done' },
@@ -206,6 +228,10 @@ local M = {
         -- Boole
         { '<C-Up>',   mode = { 'n' }, description = 'Boole: Increment value' },
         { '<C-Down>', mode = { 'n' }, description = 'Boole: Decrement value' },
+
+        -- Auto-Session
+        { '<leader>ss', '<cmd>SessionSave<CR>',    mode = { 'n' }, description = 'Auto-Session: Save session', opts = defaults },
+        { '<leader>sr', '<cmd>SessionRestore<CR>', mode = { 'n' }, description = 'Auto-Session: Restore session', opts = defaults },
     },
 
     commands = {},

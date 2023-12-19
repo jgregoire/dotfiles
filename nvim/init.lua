@@ -90,7 +90,9 @@ vim.opt.showtabline = 0
 -- Split behavior
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.inccommand = 'split'
+if not vim.g.neovide then
+    vim.opt.inccommand = 'split'
+end
 
 -- Allow selection in block mode past line endes
 vim.opt.virtualedit = 'block'
@@ -106,6 +108,7 @@ if vim.g.neovide then
     vim.g.neovide_remember_window_size = true
     vim.g.neovide_cursor_vfx_mode = 'pixiedust'
     vim.g.neovide_cursor_animate_command_line = true
+    vim.api.nvim_set_hl(0, 'Normal', { bg = '#282C34' })
 end
 
 vim.g.mapleader = ' '
