@@ -117,5 +117,5 @@ vim.g.maplocalleader = '-'
 require('lazy_config')
 
 if vim.g.neovide then
-    vim.cmd([[highlight Normal guifg=#282c34]])
+    vim.cmd([[highlight Normal guibg=#282c34]])
 end
