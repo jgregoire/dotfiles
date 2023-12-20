@@ -108,7 +108,6 @@ if vim.g.neovide then
     vim.g.neovide_remember_window_size = true
     vim.g.neovide_cursor_vfx_mode = 'pixiedust'
     vim.g.neovide_cursor_animate_command_line = true
-    vim.cmd([[highlight Normal guifg=#282c34]])
 end
 
 vim.g.mapleader = ' '
@@ -116,3 +115,7 @@ vim.g.maplocalleader = '-'
 
 -- Specify plugins:
 require('lazy_config')
+
+if vim.g.neovide then
+    vim.cmd([[highlight Normal guifg=#282c34]])
+end
