@@ -87,8 +87,8 @@ alias ssc='sudo systemctl'
 alias ncmp='ncmpcpp -h 192.168.0.102 -p 6600'
 
 # OnePlus Syncing
-alias rsyncpm='rsync -av --size-only --force --del /home/james/Music/ /home/james/OnePlus/Internal\ shared\ storage/Music/.'
-alias rsyncpp='rsync -av --size-only /var/lib/mpd/playlists/ /home/james/OnePlus/Internal\ shared\ storage/Music/.'
+alias rsyncpm='rsync -av --size-only --force --del /home/james/Music/ /home/james/Marconi/Music/.'
+alias rsyncpp='rsync -av --size-only /var/lib/mpd/playlists/ /home/james/Marconi/Music/.'
 
 # BEST ALIAS EVER
 alias fucking='sudo'
