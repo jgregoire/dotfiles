@@ -108,7 +108,7 @@ if vim.g.neovide then
     vim.g.neovide_remember_window_size = true
     vim.g.neovide_cursor_vfx_mode = 'pixiedust'
     vim.g.neovide_cursor_animate_command_line = true
-    vim.api.nvim_set_hl(0, 'Normal', { bg = '#282C34' })
+    vim.cmd([[highlight Normal guifg=#282c34]])
 end
 
 vim.g.mapleader = ' '
