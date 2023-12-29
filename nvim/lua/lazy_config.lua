@@ -45,7 +45,7 @@ require('lazy').setup({ -- Plugins
                 options = {
                     transparency = true,
                     cursorline = true,
-                    highlight_inactive_windwos = true,
+                    highlight_inactive_windows = true,
                 },
                 colors = {
                     --cursorline = '#000000' -- Set this if the default choice sucks.
