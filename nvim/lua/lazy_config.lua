@@ -212,7 +212,7 @@ require('lazy').setup({ -- Plugins
         event = 'UIEnter',
         opts = {
             filter_type = 'SHADE',
-            filter_percent = 0.75,
+            filter_percent = 0.25,
         }
     },
     {
