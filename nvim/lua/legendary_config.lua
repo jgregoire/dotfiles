@@ -147,6 +147,7 @@ local M = {
         { '#',              mode = { 'n' }, description = 'Find previous occurrence of word under cursor' },
         { '<C-Right>', 'n', mode = { 'n' }, description = 'Jump to next result', opts = defaults },
         { '<C-Left>',  'N', mode = { 'n' }, description = 'Jump to previous result', opts = defaults },
+        { '<C-_>', '<cmd>nohl<CR>', mode = { 'n' }, description = 'Clear search highlight', opts = defaults }, -- Actually Ctrl + /
 
         -- Buffers and such
         { '<A-o>',     ':e ',              mode = { 'n' }, description = 'Open/edit file...', opts = defaults },
