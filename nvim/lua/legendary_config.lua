@@ -158,6 +158,9 @@ local M = {
         -- Legendary
         { '<leader>l', '<cmd>Legendary<CR>', mode = { 'n' }, description = 'Legendary: Launch menu', opts = defaults },
 
+        -- LuaSnip
+        { '<C-e>', mode = { 'i', 's' }, description = 'Luasnip: Expand' },
+
         -- CMP
         { '<C-Space>',               description = 'CMP: Complete' },
         { '<Tab>',   mode = { 's' }, description = 'CMP: Previous' },

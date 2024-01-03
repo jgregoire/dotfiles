@@ -132,6 +132,12 @@ require('lazy').setup({ -- Plugins
         build = ':TSUpdate',
     },
     {
+        'L3MON4D3/LuaSnip',
+        config = function()
+            require('luasnip_config') -- Run my configuration file
+        end
+    },
+    {
         'hrsh7th/nvim-cmp',
         dependencies = {
             'neovim/nvim-lspconfig',
