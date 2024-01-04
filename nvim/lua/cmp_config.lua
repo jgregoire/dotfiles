@@ -2,7 +2,7 @@
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require('cmp')
 local luasnip = require('luasnip')
-local has_words_before = function()
+local has_words_before = function ()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line-1, line, true)[1]:sub(col, col):match("%s") == nil
 end
@@ -60,7 +60,7 @@ cmp.setup({
     }, {
         { name = 'buffer' },
     }),
-    enabled = function() -- Disable autocomplete in comments.
+    enabled = function () -- Disable autocomplete in comments.
         local context = require'cmp.config.context'
         if vim.api.nvim_get_mode().mode == 'c' then
             return false -- Default is true, but this conflicts with Noice.

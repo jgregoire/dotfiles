@@ -23,7 +23,7 @@ require('lazy').setup({ -- Plugins
     {
         'olimorris/onedarkpro.nvim',
         priority = 1000, -- Ensure this loads first
-        config = function()
+        config = function ()
             require('onedarkpro').setup({
                 styles = {
                     comments = 'italic',
@@ -56,7 +56,7 @@ require('lazy').setup({ -- Plugins
     },
     {
         'rmagatti/auto-session',
-        config = function()
+        config = function ()
             require('auto-session').setup({
                 log_level = 'error',
                 auto_session_enable_last_session = false,
@@ -71,7 +71,7 @@ require('lazy').setup({ -- Plugins
     },
     {
         'neovim/nvim-lspconfig',
-        config = function()
+        config = function ()
             require('lsp_config') -- Run my configuration file
         end
     },
@@ -87,7 +87,7 @@ require('lazy').setup({ -- Plugins
     },
     {
         'nvim-treesitter/nvim-treesitter',
-        config = function()
+        config = function ()
             ---@diagnostic disable-next-line: missing-fields
             require('nvim-treesitter.configs').setup({
                 ensure_installed = { 'lua', 'vim', 'vimdoc', 'query', 'c'},
@@ -133,7 +133,7 @@ require('lazy').setup({ -- Plugins
     },
     {
         'L3MON4D3/LuaSnip',
-        config = function()
+        config = function ()
             require('luasnip_config') -- Run my configuration file
         end
     },
@@ -150,7 +150,7 @@ require('lazy').setup({ -- Plugins
             'hrsh7th/cmp-calc',
             'hrsh7th/cmp-nvim-lua',
         },
-        config = function()
+        config = function ()
             require('cmp_config') -- Run my configuration file
         end
     },
@@ -169,7 +169,7 @@ require('lazy').setup({ -- Plugins
             'rcarriga/nvim-notify',
         },
         event = 'VeryLazy',
-        config = function()
+        config = function ()
             require('noice').setup({
                 health = { checker = false }, -- Don't bother running health checks anymore.
                 lsp = {
@@ -245,7 +245,7 @@ require('lazy').setup({ -- Plugins
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
-        config = function()
+        config = function ()
             require('lualine').setup({
                 options = {
                     theme = 'auto',
@@ -346,12 +346,12 @@ require('lazy').setup({ -- Plugins
             }
         },
         keys = {
-            { 's', mode = { 'n', 'x', 'o' }, function() require('flash').jump() end, desc = 'Flash: Jump' },
-            { 'S', mode = { 'n', 'x', 'o' }, function() require('flash').treesitter() end, desc = 'Flash: Treesitter' },
-            { 'm', mode = 'o', function() require('flash').remote() end, desc = 'Flash: Remote' },
-            { 'M', mode = { 'o', 'x' }, function() require('flash').treesitter_search() end, desc = 'Treesitter Search' },
-            { '<C-f>', mode = { 'c' }, function() require('flash').toggle() end, desc = 'Flash: Toggle in search' },
-            { '<C-f>', mode = { 'i' }, function() require('flash').treesitter() end, desc = 'Flash: Treesitter' },
+            { 's', mode = { 'n', 'x', 'o' }, function () require('flash').jump() end, desc = 'Flash: Jump' },
+            { 'S', mode = { 'n', 'x', 'o' }, function () require('flash').treesitter() end, desc = 'Flash: Treesitter' },
+            { 'm', mode = 'o', function () require('flash').remote() end, desc = 'Flash: Remote' },
+            { 'M', mode = { 'o', 'x' }, function () require('flash').treesitter_search() end, desc = 'Treesitter Search' },
+            { '<C-f>', mode = { 'c' }, function () require('flash').toggle() end, desc = 'Flash: Toggle in search' },
+            { '<C-f>', mode = { 'i' }, function () require('flash').treesitter() end, desc = 'Flash: Treesitter' },
         },
     },
     {
@@ -468,7 +468,7 @@ require('lazy').setup({ -- Plugins
         keys = {
             {
                 '<leader>ep',
-                function()
+                function ()
                     require('nabla').popup({ border = 'single' })
                 end,
                 mode = 'n',
@@ -476,7 +476,7 @@ require('lazy').setup({ -- Plugins
             },
             {
                 '<leader>ei',
-                function()
+                function ()
                     require('nabla').toggle_virt({ autogen = true })
                 end,
                 mode = 'n',
@@ -498,7 +498,7 @@ require('lazy').setup({ -- Plugins
         keys = {
             {
                 '<leader>t',
-                function()
+                function ()
                     vim.api.nvim_command([[:TermExec go_back=0 direction=float cmd='cd ]] .. vim.fn.getcwd() .. [['<CR>]])
                 end,
                 mode = 'n',
@@ -579,7 +579,7 @@ require('lazy').setup({ -- Plugins
             'stevearc/dressing.nvim',
         },
         priority = 900,
-        config = function()
+        config = function ()
             local opts = require('legendary_config')
             require('legendary').setup(opts)
         end

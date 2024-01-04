@@ -245,7 +245,7 @@ local M = {
     autocmds = {
         {
             'UIEnter',
-            function()
+            function ()
                 vim.opt.clipboard:append({ 'unnamedplus' })
             end,
             description = 'Set system clipboard',
