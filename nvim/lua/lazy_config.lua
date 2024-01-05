@@ -411,6 +411,7 @@ require('lazy').setup({ -- Plugins
             },
             enable_check_bracket_line = false, -- Don't add pair if it already has close pair in same line.
             enable_bracket_in_quote = false, -- Don't add a pair inside quotes.
+            check_ts = true, -- Use Treesitter to check for pairs
         },
     },
     {

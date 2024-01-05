@@ -87,6 +87,6 @@ ls.add_snippets(
         ls.parser.parse_snippet("kr", "{ '$1', mode = { '$2' }, description = '$3' },"),
 
         -- Require
-        s("req", fmt("local {} = require('{}')", { i(1, "module"), rep(1)}))
+        s("req", fmt("local {} = require('{}')", { i(1, "module"), rep(1) })),
     }
 )

@@ -22,6 +22,9 @@ local M = {
     col_separator_char = '|',
     most_recent_item_at_top = false,
     select_prompt = 'Legendary',
+    extensions = {
+        lazy_nvim = true,
+    },
 
     -- Modifiers:
     --  C - C
