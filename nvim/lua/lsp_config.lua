@@ -46,7 +46,7 @@ end
 -- Setup language servers with default config.
 local servers = {
     'rust_analyzer',
-    -- 'arduino_language_server',
+    'arduino_language_server',
     'bashls',
     'jsonls',
     'pylsp',
