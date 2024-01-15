@@ -43,10 +43,23 @@ if vim.fn.executable('ltex-ls') == 1 then
     })
 end
 
+if vim.fn.executable('arduino-language-server') == 1 then
+    lspconfig.arduino_language_server.setup({
+        filetypes = { 'arduino', 'cpp' },
+        cmd = {
+            'arduino-language-server',
+            '--cli-config',
+            '~/.arduino15/arduino-cli.yaml',
+            '--log',
+            '--logpath',
+            '/home/james/.arduino15/logs'
+        }
+    })
+end
 -- Setup language servers with default config.
 local servers = {
     'rust_analyzer',
-    'arduino_language_server',
+    -- 'arduino_language_server',
     'bashls',
     'jsonls',
     'pylsp',
