@@ -19,16 +19,23 @@ config.window_padding = {
     bottom = 0,
 }
 
+-- Figure out what platform we're on by examing the directory char
+-- TODO: use wezterm.target_triple instead.
 local dir_char = package.config:sub(1,1)
+
 -- Linux-specific options
 if dir_char == '/' then
     config.font = wezterm.font('Fira Code')
     config.font_size = 14.0
+
 -- Windows-specific options
 elseif dir_char == '\\' then
     config.font = wezterm.font('FiraCode Nerd Font')
     config.font_size = 12.0
     config.allow_win32_input_mode = true
+
+    -- Launch into WSL
+    config.default_domain = 'WSL:Ubuntu-20.04'
 end
 
 return config
