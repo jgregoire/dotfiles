@@ -19,6 +19,8 @@ config.window_padding = {
     bottom = 0,
 }
 
+config.pane_focus_follows_mouse = true
+
 config.underline_position = '-5px'
 -- Figure out what platform we're on by examing the directory char
 -- TODO: use wezterm.target_triple instead.
