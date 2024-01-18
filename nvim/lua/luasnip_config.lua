@@ -83,7 +83,7 @@ ls.add_snippets(
         ls.parser.parse_snippet("ifn", "function () $1 end"),
 
         -- Legendary keymaps
-        ls.parser.parse_snippet("km", "{ '$1' '$2', mode = { '$3' }, description = '$4', opts = defaults },"),
+        ls.parser.parse_snippet("km", "{ '$1', '$2', mode = { '$3' }, description = '$4', opts = defaults },"),
         ls.parser.parse_snippet("kr", "{ '$1', mode = { '$2' }, description = '$3' },"),
 
         -- Require
