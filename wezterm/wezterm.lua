@@ -21,6 +21,8 @@ config.window_padding = {
 config.pane_focus_follows_mouse = true
 
 config.underline_position = '-5px'
+config.underline_thickness = '2pt'
+
 -- Figure out what platform we're on by examing the directory char
 -- TODO: use wezterm.target_triple instead.
 local dir_char = package.config:sub(1,1)
