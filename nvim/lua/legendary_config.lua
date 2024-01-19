@@ -254,7 +254,19 @@ local M = {
                 vim.opt.clipboard:append({ 'unnamedplus' })
             end,
             description = 'Set system clipboard',
-        }
+        },
+        {
+            'FileType',
+            ':setlocal ts=2',
+            opts = { pattern = { 'ino' } },
+            description = 'Use two-space tabs for Arduino'
+        },
+        {
+            'FileType',
+            ':setlocal conceallevel=2',
+            opts = { pattern = { 'norg' } },
+            description = 'Set conceal for norg files'
+        },
     },
 
     scratchpad = {
