@@ -7,9 +7,9 @@ if wezterm.config_builder then
 end
 
 -- Appearance
+-- use the name property in the scheme file, not the filename
 config.color_scheme = 'onedarkpro_onedark_vivid'
 config.bold_brightens_ansi_colors = false
--- config.enable_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
 config.window_padding = {
     left = 0,
@@ -21,7 +21,7 @@ config.window_padding = {
 config.pane_focus_follows_mouse = true
 
 config.underline_position = '-5px'
-config.underline_thickness = '2pt'
+config.underline_thickness = '300%'
 
 -- Figure out what platform we're on by examing the directory char
 -- TODO: use wezterm.target_triple instead.
