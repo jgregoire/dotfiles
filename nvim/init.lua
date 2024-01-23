@@ -113,6 +113,10 @@ end
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '-'
 
+-- Add package paths
+package.path = package.path .. ';' .. vim.fn.expand('$HOME') .. '/.luarocks/share/lua/5.1/?/init.lua;'
+package.path = package.path .. ';' .. vim.fn.expand('$HOME') .. '/.luarocks/share/lua/5.1/?.lua;'
+
 -- Specify plugins:
 require('lazy_config')
 

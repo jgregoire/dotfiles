@@ -517,6 +517,22 @@ require('lazy').setup({ -- Plugins
         },
     },
     {
+        '3rd/image.nvim',
+        opts = {
+            backend = 'kitty',
+            integrations = {
+                markdown = {
+                    enabled = true,
+                    filetypes = { 'markdown', 'vimwiki' },
+                },
+                neorg = {
+                    enabled = true,
+                    filetypes = { 'norg' },
+                },
+            }
+        }
+    },
+    {
         'nvim-neorg/neorg',
         dependencies = {
             'nvim-treesitter/nvim-treesitter',
