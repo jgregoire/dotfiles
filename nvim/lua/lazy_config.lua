@@ -87,6 +87,7 @@ require('lazy').setup({ -- Plugins
     },
     {
         'nvim-treesitter/nvim-treesitter',
+        build = ':TSUpdate',
         config = function ()
             ---@diagnostic disable-next-line: missing-fields
             require('nvim-treesitter.configs').setup({
@@ -539,6 +540,7 @@ require('lazy').setup({ -- Plugins
             'nvim-lua/plenary.nvim',
         },
         ft = 'norg',
+        build = ':TSUpdate norg',
         opts = {
             load = {
                 -- Subset of core.defaults:
