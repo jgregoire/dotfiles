@@ -58,23 +58,23 @@ if vim.fn.executable('arduino-language-server') == 1 then
 end
 -- Setup language servers with default config.
 local servers = {
-    'rust_analyzer',
-    -- 'arduino_language_server',
     'bashls',
-    'jsonls',
-    'pylsp',
-    'yamlls',
-    'vimls',
-    'openscad_ls',
-    'dotls',
     'clangd',
+    'jsonls',
+    'ltex',
+    'openscad_lsp',
+    'pyright',
+    'rust_analyzer',
+    'yamlls',
 }
-for _, lsp in pairs(servers) do
-    lspconfig[lsp].setup({
-        capabilities = capabilities,
-        flags = {
-            debounce_text_changes = 150,
-        }
-    })
+for _, server in pairs(servers) do
+    if vim.fn.executable(server) == 1 then
+        lspconfig[server].setup({
+            capabilities = capabilities,
+            flags = {
+                debounce_text_changes = 150,
+            }
+        })
+    end
 end
 

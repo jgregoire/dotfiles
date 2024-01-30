@@ -70,7 +70,43 @@ require('lazy').setup({ -- Plugins
         end
     },
     {
+        'williamboman/mason.nvim',
+        config = function ()
+            require('mason').setup({
+                ui = {
+                    border = 'rounded',
+                    icons = {
+                        package_installed = "✔",
+                        package_pending = "",
+                        package_uninstalled = "",
+                    }
+                }
+            })
+        end
+    },
+    {
+        'williamboman/mason-lspconfig.nvim',
+        dependencies = { 'williamboman/mason.nvim' },
+        config = function ()
+            require('mason-lspconfig').setup({
+                ensure_installed = {
+                    'arduino_language_server',
+                    'bashls',
+                    'clangd',
+                    'jsonls',
+                    'ltex',
+                    'lua_ls',
+                    'openscad_lsp',
+                    'pyright',
+                    'rust_analyzer',
+                    'yamlls',
+                },
+            })
+        end
+    },
+    {
         'neovim/nvim-lspconfig',
+        dependencies = { 'williamboman/mason-lspconfig.nvim' },
         config = function ()
             require('lsp_config') -- Run my configuration file
         end
