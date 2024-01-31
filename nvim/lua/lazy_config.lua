@@ -123,7 +123,6 @@ require('lazy').setup({ -- Plugins
     },
     {
         'nvim-treesitter/nvim-treesitter',
-        build = ':TSUpdate',
         config = function ()
             ---@diagnostic disable-next-line: missing-fields
             require('nvim-treesitter.configs').setup({
@@ -359,7 +358,9 @@ require('lazy').setup({ -- Plugins
         'norcalli/nvim-colorizer.lua',
         priority = 0,
         config = function ()
-            require('colorizer').setup()
+            require('colorizer').setup({
+                RGB = false; -- Do not colorize #XYZ values (these are usually git issue numbers)
+            })
         end,
     },
     {
