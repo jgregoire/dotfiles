@@ -19,7 +19,7 @@ cmp.setup({
         ['<C-Space>'] = cmp.mapping.complete(),
 
         -- Abort completion
-        ['<C-e>'] = cmp.mapping.abort(),
+        ['<C-c>'] = cmp.mapping.abort(),
 
         --Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items. 
         ['<CR>'] = cmp.mapping.confirm({ select = false }),

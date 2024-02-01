@@ -167,11 +167,11 @@ local M = {
         { '<C-e>', mode = { 'i', 's' }, description = 'Luasnip: Expand' },
 
         -- CMP
-        { '<C-Space>',               description = 'CMP: Complete' },
-        { '<Tab>',   mode = { 's' }, description = 'CMP: Previous' },
-        { '<C-Tab>', mode = { 's' }, description = 'CMP: Next' },
+        { '<C-Space>',               description = 'CMP: Invoke' },
+        { '<Tab>',   mode = { 's' }, description = 'CMP: Select next' },
+        { '<C-Tab>', mode = { 's' }, description = 'CMP: Select previous' },
         { '<CR>',    mode = { 's' }, description = 'CMP: Confirm' },
-        { '<Esc>',                   description = 'CMP: Cancel' },
+        { '<C-c>',                   description = 'CMP: Cancel' },
 
         -- Telescope
         { '<leader>ff', '<cmd>Telescope find_files<cr>', mode = { 'n' }, description = 'Telescope: Find files', opts = defaults },
