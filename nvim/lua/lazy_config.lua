@@ -193,7 +193,7 @@ require('lazy').setup({ -- Plugins
     {
         'rcarriga/nvim-notify',
         opts = {
-            render = 'compact',
+            render = 'wrapped-compact',
             fps = '60',
             stages = 'static',
         },
@@ -358,8 +358,8 @@ require('lazy').setup({ -- Plugins
         'norcalli/nvim-colorizer.lua',
         priority = 0,
         config = function ()
-            require('colorizer').setup({
-                RGB = false; -- Do not colorize #XYZ values (these are usually git issue numbers)
+            require('colorizer').setup({'*'},{
+                RGB = false, -- Do not colorize #XYZ values (these are usually git issue numbers)
             })
         end,
     },
@@ -471,6 +471,17 @@ require('lazy').setup({ -- Plugins
         },
     },
     {
+        'JoosepAlviste/nvim-ts-context-commentstring',
+        ft = { 'norg' },
+        config = function ()
+            -- Skip backwards compatibility checks for faster load
+            vim.g.skip_ts_context_commentstring_module = true
+            require('ts_context_commentstring').setup({
+                enable_autocmd = false,
+            })
+        end
+    },
+    {
         'terrortylor/nvim-comment',
         main = 'nvim_comment',
         opts = {
@@ -481,6 +492,9 @@ require('lazy').setup({ -- Plugins
             line_mapping = 'pcc', -- Normal mode, toggle line comment.
             operator_mapping = 'pc', -- Visual/operator mode
             comment_chunk_text_object = 'ic', -- No idea what this is for
+            hook = function ()
+                require('ts_context_commentstring').update_commentstring()
+            end
         },
     },
     {
