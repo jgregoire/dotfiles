@@ -11,28 +11,25 @@ end
 cmp.setup({
     snippet = {
         expand = function(args)
-            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+            require('luasnip').lsp_expand(args.body)
         end,
     },
-    mapping = {
-        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-        ['<C-y>'] = cmp.config.disable,
-        ['<C-c>'] = cmp.mapping({
-            i = cmp.mapping.abort(),
-            c = cmp.mapping.close(),
-        }),
+    mapping = cmp.mapping.preset.insert({
+        -- Invoke completion
+        ['<C-Space>'] = cmp.mapping.complete(),
 
-        -- Accept selected item.
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        -- Abort completion
+        ['<C-e>'] = cmp.mapping.abort(),
+
+        --Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items. 
+        ['<CR>'] = cmp.mapping.confirm({ select = false }),
 
         -- Select next suggestion.
         ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
+            elseif luasnip.expand_or_locally_jumpable() then
                 luasnip.expand_or_jump()
-            --elseif has_words_before() then -- use <C-Tab> instead
-            --    cmp.complete()
             else
                 fallback()
             end
@@ -50,7 +47,7 @@ cmp.setup({
                 fallback()
             end
         end, { 'i', 's' }),
-    },
+    }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'nvim_lua' },
@@ -61,12 +58,12 @@ cmp.setup({
         { name = 'buffer' },
     }),
     enabled = function () -- Disable autocomplete in comments.
-        local context = require'cmp.config.context'
+        local context = require('cmp.config.context')
         if vim.api.nvim_get_mode().mode == 'c' then
             return false -- Default is true, but this conflicts with Noice.
         else
-            return not context.in_treesitter_capture("comment")
-            and not context.in_syntax_group("Comment")
+            return not context.in_treesitter_capture('comment')
+            and not context.in_syntax_group('Comment')
         end
     end
 })
@@ -74,7 +71,7 @@ cmp.setup({
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
     sources = cmp.config.sources({
-        { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+        { name = 'git' }, -- You can specify the `cmp_git` source if you were installed it.
     }, {
         { name = 'buffer' },
     })
@@ -97,21 +94,5 @@ cmp.setup.cmdline(':', {
 })
 
 -- cmp autopairs support
-local handlers = require('nvim-autopairs.completion.handlers')
-cmp.event:on(
-    'confirm_done',
-    cmp_autopairs.on_confirm_done({
-        map_char = { tex = '' },
-        filetypes = {
-            ['*'] = {
-                ['('] = {
-                    kind = {
-                        cmp.lsp.CompletionItemKind.Function,
-                        cmp.lsp.CompletionItemKind.Method,
-                    },
-                    handler = handlers['*']
-                }
-            }
-        }
-    })
-)
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())

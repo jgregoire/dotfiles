@@ -31,7 +31,7 @@ ls.config.set_config({
 -- Expand current item or jump to the next item in snippet
 vim.keymap.set(
     { 'i', 's' },
-    '<C-e>',
+    '<c-e>',
     function ()
         if ls.expand_or_jumpable() then
             ls.expand_or_jump()
