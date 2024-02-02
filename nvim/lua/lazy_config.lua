@@ -174,6 +174,10 @@ require('lazy').setup({ -- Plugins
         end
     },
     {
+        'Gelio/cmp-natdat',
+        config = true,
+    },
+    {
         'hrsh7th/nvim-cmp',
         dependencies = {
             'neovim/nvim-lspconfig',
@@ -185,6 +189,7 @@ require('lazy').setup({ -- Plugins
             'saadparwaiz1/cmp_luasnip',
             'hrsh7th/cmp-calc',
             'hrsh7th/cmp-nvim-lua',
+            'Gelio/cmp-natdat',
         },
         config = function ()
             require('cmp_config') -- Run my configuration file

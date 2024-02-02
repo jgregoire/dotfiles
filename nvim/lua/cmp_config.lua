@@ -54,6 +54,7 @@ cmp.setup({
         { name = 'luasnip' },
         { name = 'neorg' },
         { name = 'calc' },
+        { name = 'natdat' },
     }, {
         { name = 'buffer' },
     }),
