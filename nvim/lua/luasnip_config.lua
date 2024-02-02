@@ -99,7 +99,7 @@ ls.add_snippets(
 [[@document.meta
 title: $1
 author: $2
-date: $3
+date: @today$3
 @end]]),
         -- Do this with cmp-natdat instead
         -- ls.parser.parse_snippet("today", function () print("<cmd>.!date<CR>") end)
