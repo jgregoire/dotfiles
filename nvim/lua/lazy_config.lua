@@ -263,6 +263,11 @@ require('lazy').setup({ -- Plugins
         }
     },
     {
+        '0xAdk/full_visual_line.nvim',
+        keys = 'V',
+        opts = {}, -- Do not delete. Borks without.
+    },
+    {
         'lewis6991/gitsigns.nvim',
         opts = {
             signs = {
