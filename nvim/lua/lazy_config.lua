@@ -178,6 +178,7 @@ require('lazy').setup({ -- Plugins
     },
     {
         'Gelio/cmp-natdat',
+        event = 'UIEnter',
         config = true,
     },
     {
@@ -194,6 +195,7 @@ require('lazy').setup({ -- Plugins
             'hrsh7th/cmp-nvim-lua',
             'Gelio/cmp-natdat',
         },
+        event = 'VeryLazy',
         config = function ()
             require('cmp_config') -- Run my configuration file
         end
@@ -212,7 +214,7 @@ require('lazy').setup({ -- Plugins
             'MunifTanjim/nui.nvim',
             'rcarriga/nvim-notify',
         },
-        event = 'VeryLazy',
+        -- event = 'VeryLazy',
         config = function ()
             require('noice').setup({
                 health = { checker = false }, -- Don't bother running health checks anymore.
@@ -258,6 +260,7 @@ require('lazy').setup({ -- Plugins
     },
     {
         'miversen33/sunglasses.nvim',
+        enabled = false,
         config = true,
         event = 'UIEnter',
         opts = {
@@ -556,6 +559,7 @@ require('lazy').setup({ -- Plugins
             'nvim-lua/plenary.nvim',
             'nvim-tree/nvim-web-devicons'
         },
+        lazy = true,
         config = true,
     },
     {
@@ -583,6 +587,11 @@ require('lazy').setup({ -- Plugins
     },
     {
         '3rd/image.nvim',
+        ft = {
+            'norg',
+            'markdown',
+            'vimwiki',
+        },
         opts = {
             backend = 'kitty',
             integrations = {
