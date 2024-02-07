@@ -69,6 +69,7 @@ vim.keymap.set( { 'n' }, '<leader>ls', '<cmd>source ~/.config/nvim/lua/luasnip_c
 -- Now let's define some snippets!
 -- Using VSCode format for portability, except where I need
 -- more advanced features.
+
 ls.add_snippets(
     'all',
     {
@@ -88,5 +89,19 @@ ls.add_snippets(
 
         -- Require
         s("req", fmt("local {} = require('{}')", { i(1, "module"), rep(1) })),
+    }
+)
+
+ls.add_snippets(
+    'norg',
+    {
+        ls.parser.parse_snippet("dm",
+[[@document.meta
+title: $1
+author: $2
+date: @today$3
+@end]]),
+        -- Do this with cmp-natdat instead
+        -- ls.parser.parse_snippet("today", function () print("<cmd>.!date<CR>") end)
     }
 )

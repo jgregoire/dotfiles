@@ -112,6 +112,9 @@ require('lazy').setup({ -- Plugins
         end
     },
     {
+        'onsails/lspkind.nvim'
+    },
+    {
         'RRethy/nvim-treesitter-endwise',
     },
     {
@@ -174,6 +177,11 @@ require('lazy').setup({ -- Plugins
         end
     },
     {
+        'Gelio/cmp-natdat',
+        event = 'UIEnter',
+        config = true,
+    },
+    {
         'hrsh7th/nvim-cmp',
         dependencies = {
             'neovim/nvim-lspconfig',
@@ -185,7 +193,9 @@ require('lazy').setup({ -- Plugins
             'saadparwaiz1/cmp_luasnip',
             'hrsh7th/cmp-calc',
             'hrsh7th/cmp-nvim-lua',
+            'Gelio/cmp-natdat',
         },
+        event = 'VeryLazy',
         config = function ()
             require('cmp_config') -- Run my configuration file
         end
@@ -204,7 +214,7 @@ require('lazy').setup({ -- Plugins
             'MunifTanjim/nui.nvim',
             'rcarriga/nvim-notify',
         },
-        event = 'VeryLazy',
+        -- event = 'VeryLazy',
         config = function ()
             require('noice').setup({
                 health = { checker = false }, -- Don't bother running health checks anymore.
@@ -250,6 +260,7 @@ require('lazy').setup({ -- Plugins
     },
     {
         'miversen33/sunglasses.nvim',
+        enabled = false,
         config = true,
         event = 'UIEnter',
         opts = {
@@ -548,6 +559,7 @@ require('lazy').setup({ -- Plugins
             'nvim-lua/plenary.nvim',
             'nvim-tree/nvim-web-devicons'
         },
+        lazy = true,
         config = true,
     },
     {
@@ -575,6 +587,11 @@ require('lazy').setup({ -- Plugins
     },
     {
         '3rd/image.nvim',
+        ft = {
+            'norg',
+            'markdown',
+            'vimwiki',
+        },
         opts = {
             backend = 'kitty',
             integrations = {
@@ -597,55 +614,11 @@ require('lazy').setup({ -- Plugins
         },
         ft = 'norg',
         build = ':TSUpdate norg',
-        opts = {
-            load = {
-                -- Subset of core.defaults:
-                ['core.esupports.hop'] = {},
-                ['core.esupports.indent'] = {},
-                ['core.esupports.metagen'] = {},
-                ['core.itero'] = {},
-                ['core.pivot'] = {},
-                ['core.promo'] = {},
-                ['core.qol.toc'] = {},
-                ['core.qol.todo_items'] = {},
-                ['core.keybinds'] = {
-                    config = {
-                        default_keybinds = true,
-                        neorg_leader = '<LocalLeader>',
-                    }
-                },
-                -- Non-defaults:
-                ['core.concealer'] = {
-                    config = {
-                        folds = true,
-                        icons = {
-                            todo = {
-                                -- enabled = true,
-                                done      = { icon = "" },
-                                pending   = { icon = "⭘" },
-                                undone    = { icon = "" },
-                                uncertain = { icon = "" },
-                                on_hold   = { icon = "" },
-                                cancelled = { icon = "" },
-                                recurring = { icon = "" },
-                                urgent    = { icon = "" },
-                            },
-                        },
-                    },
-                },
-                ['core.dirman'] = {
-                    config = {
-                        workspaces = {
-                            notes = '~/neorg',
-                        },
-                    },
-                },
-                ['core.completion'] = {
-                    config = { engine = 'nvim-cmp' },
-                },
-                ['core.highlights'] = {},
-            }, -- load
-        },
+        config = function ()
+            local opts = require('neorg_config')
+            ---@diagnostic disable-next-line: missing-parameter
+            require('neorg').setup(opts)
+        end
     },
     {
         'mrjones2014/legendary.nvim',
