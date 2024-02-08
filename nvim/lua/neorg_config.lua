@@ -2,7 +2,12 @@ local opts = {
     load = {
         -- Subset of core.defaults:
         ['core.esupports.hop'] = {},
-        ['core.esupports.indent'] = {},
+        ['core.esupports.indent'] = {
+            config = {
+                format_on_enter = true, -- When true, reformat line on <CR>
+                format_on_escape = true, -- When true, reformat line on <ESC>
+            }
+        },
         ['core.esupports.metagen'] = {},
         ['core.itero'] = {},
         ['core.pivot'] = {},
@@ -18,6 +23,7 @@ local opts = {
         -- Non-defaults:
         ['core.concealer'] = {
             config = {
+                icon_preset = 'basic', -- 'basic', 'diamond', or 'mixed'
                 folds = true,
                 icons = {
                     todo = {

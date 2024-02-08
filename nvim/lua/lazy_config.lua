@@ -610,10 +610,13 @@ require('lazy').setup({ -- Plugins
         'nvim-neorg/neorg',
         dependencies = {
             'nvim-treesitter/nvim-treesitter',
+            'nvim-treesitter/nvim-treesitter-textobjects',
+            'hrsh7th/nvim-cmp',
             'nvim-lua/plenary.nvim',
         },
         ft = 'norg',
-        build = ':TSUpdate norg',
+        cmd = 'Neorg',
+        build = ':Neorg sync-parsers',
         config = function ()
             local opts = require('neorg_config')
             ---@diagnostic disable-next-line: missing-parameter
