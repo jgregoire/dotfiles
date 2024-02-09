@@ -103,5 +103,7 @@ date: @today$3
 @end]]),
         -- Do this with cmp-natdat instead
         -- ls.parser.parse_snippet("today", function () print("<cmd>.!date<CR>") end)
+        ls.parser.parse_snippet('ln', '{$1}[$2]'), -- Link (named)
+        ls.parser.parse_snippet('la', '{$1}'), -- Link (anonymous)
     }
 )
