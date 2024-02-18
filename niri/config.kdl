@@ -111,13 +111,13 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 4
+        width 2
 
         // Color of the ring on the active monitor: red, green, blue, alpha.
-        active-color 127 200 255 255
+        active-color 224 108 117 255
 
         // Color of the ring on inactive monitors: red, green, blue, alpha.
-        inactive-color 80 80 80 255
+        inactive-color 171 178 191 127
     }
 
     // You can also add a border. It's similar to the focus ring, but always visible.
@@ -137,6 +137,7 @@ layout {
         // For example, you can perfectly fit four windows sized "proportion 0.25" on an output.
         // The default preset widths are 1/3, 1/2 and 2/3 of the output.
         proportion 0.33333
+        proportion 0.25
         proportion 0.5
         proportion 0.66667
 
@@ -158,8 +159,8 @@ layout {
     // Top and bottom struts will simply add outer gaps in addition to the area occupied by
     // layer-shell panels and regular gaps.
     struts {
-        // left 64
-        // right 64
+        left 16
+        right 16
         // top 64
         // bottom 64
     }
@@ -170,7 +171,8 @@ layout {
     // - "on-overflow", focusing a column will center it if it doesn't fit
     //   together with the previously focused column.
     // - "always", the focused column will always be centered.
-    center-focused-column "never"
+    // center-focused-column "never"
+    center-focused-column "on-overflow"
 }
 
 // Add lines like this to spawn processes at startup.
@@ -188,7 +190,7 @@ cursor {
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
 // Additionally, clients will be informed that they are tiled, removing some rounded corners.
-// prefer-no-csd
+prefer-no-csd
 
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
@@ -284,17 +286,6 @@ animations {
     // If such an output does not exist, it will open on the currently
     // focused output as usual.
     open-on-output "eDP-1"
-}
-
-// Here's a useful example. Work around WezTerm's initial configure bug
-// by setting an empty default-column-width.
-window-rule {
-    // This regular expression is intentionally made as specific as possible,
-    // since this is the default config, and we want no false positives.
-    // You can get away with just app-id="wezterm" if you want.
-    // The regular expression can match anywhere in the string.
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
 }
 
 binds {
@@ -421,7 +412,7 @@ binds {
     // Mod+BracketLeft  { consume-or-expel-window-left; }
     // Mod+BracketRight { consume-or-expel-window-right; }
 
-    Mod+R { switch-preset-column-width; }
+    Mod+W { switch-preset-column-width; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
     Mod+C { center-column; }
