@@ -288,6 +288,16 @@ animations {
     open-on-output "eDP-1"
 }
 
+window-rule {
+    match title="Firefox"
+    default-column-width { proportion 0.66667; }
+}
+
+window-rule {
+    match app-id=r#".*kitty.*"#
+    default-column-width { proportion 0.33333; }
+}
+
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
