@@ -60,6 +60,7 @@ local servers = {
     'openscad_lsp',
     'pyright',
     'rust_analyzer',
+    'typos_lsp',
     'yamlls',
 }
 for _, server in pairs(servers) do

@@ -99,6 +99,7 @@ require('lazy').setup({ -- Plugins
                     'openscad_lsp',
                     'pyright',
                     'rust_analyzer',
+                    'typos_lsp',
                     'yamlls',
                 },
             })
