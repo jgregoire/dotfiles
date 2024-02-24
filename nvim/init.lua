@@ -62,7 +62,7 @@ vim.opt.foldnestmax = 20 -- default (and max) is 20
 vim.opt.foldlevelstart = -1 -- default -1.
 vim.opt.foldclose = 'all' -- default ''
 vim.opt.foldtext = 'v:lua.vim.treesitter.foldtext()'
-vim.opt.conceallevel = 2
+-- vim.opt.conceallevel = 2
 
 -- Completion
 vim.opt.wildmenu = true
