@@ -376,7 +376,11 @@ require('lazy').setup({ -- Plugins
         priority = 0,
         config = function ()
             require('colorizer').setup({'*'},{
-                RGB = false, -- Do not colorize #XYZ values (these are usually git issue numbers)
+                RGB      = false, -- Do not colorize #XYZ values (these are usually git issue numbers)
+                RRGGBBAA = true,
+                css      = true,
+                css_fn   = true,
+                rgb_fn   = true,
             })
         end,
     },
