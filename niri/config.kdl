@@ -111,13 +111,17 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 2
+        width 4
 
         // Color of the ring on the active monitor: red, green, blue, alpha.
-        active-color 224 108 117 255
+        //active-color 224 108 117 255
 
         // Color of the ring on inactive monitors: red, green, blue, alpha.
         inactive-color 171 178 191 127
+        
+        // Gradient
+        //active-gradient from="#61afef" to="#65b6c2" angle=135
+        active-gradient from="#e06c75" to="#e5c07f" angle=135
     }
 
     // You can also add a border. It's similar to the focus ring, but always visible.
