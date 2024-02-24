@@ -121,7 +121,7 @@ layout {
         
         // Gradient
         //active-gradient from="#61afef" to="#65b6c2" angle=135
-        active-gradient from="#e06c75" to="#e5c07f" angle=135
+        active-gradient from="#e06c75" to="#e5c07f" angle=160
     }
 
     // You can also add a border. It's similar to the focus ring, but always visible.
