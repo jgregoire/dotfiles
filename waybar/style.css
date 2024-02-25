@@ -1,6 +1,6 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FiraCode, sans-serif;
+    font-family: FiraCode, FontAwesome, sans-serif;
     font-size: 14px;
 }
 
