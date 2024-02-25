@@ -182,7 +182,7 @@ layout {
 // Add lines like this to spawn processes at startup.
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
-// spawn-at-startup "redshift"
+spawn-at-startup "waypaper --restore --random"
 
 cursor {
     // Change the theme and size of the cursor as well as set the
