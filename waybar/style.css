@@ -6,7 +6,7 @@
 
 window#waybar {
     background-color: rgba(40, 44, 52, 0.5);
-    border-bottom: 3px solid rgba(213, 95, 222, 0.5);
+    border-bottom: 4px solid rgba(0, 0, 0, 0.5);
     color: #abb2bf;
     transition-property: background-color;
     transition-duration: .5s;
@@ -69,7 +69,7 @@ button:hover {
 
 #mode {
     background-color: #5c6370;
-    border-bottom: 3px solid #abb2bf;
+    border-bottom: 4px solid #abb2bf;
 }
 
 #clock,
@@ -89,7 +89,8 @@ button:hover {
 #scratchpad,
 #mpd {
     padding: 0 10px;
-    color: #282c34;
+    color: #abb2bf;
+    background-color: rgba(40, 44, 52, 0.0);
 }
 
 #window,
@@ -108,7 +109,7 @@ button:hover {
 }
 
 #clock {
-    background-color: #abb2bf;
+    border-bottom: 4px solid #abb2bf;
 }
 
 #battery {
@@ -142,36 +143,35 @@ label:focus {
 }
 
 #cpu {
-    background-color: #61afef;
+    border-bottom: 4px solid #61afef;
 }
 
 #memory {
-    background-color: #2bbac5;
+    border-bottom: 4px solid #2bbac5;
 }
 
 #disk {
-    background-color: #d19a66;
+    border-bottom: 4px solid #d19a66;
 }
 
 #backlight {
-    background-color: #90b1b1;
+    border-bottom: 4px solid #90b1b1;
 }
 
 #network {
-    background-color: #89ca78;
+    border-bottom: 4px solid #89ca78;
 }
 
 #network.disconnected {
-    background-color: #ef596f;
+    border-bottom: #ef596f;
 }
 
 #pulseaudio {
-    background-color: #d55fde;
-    color: #282c34;
+    border-bottom: 4px solid #d55fde;
 }
 
 #pulseaudio.muted {
-    background-color: #d55fde;
+    border-bottom: 4px solid #d55fde;
     color: #2a5c45;
 }
 
@@ -199,11 +199,11 @@ label:focus {
 }
 
 #temperature {
-    background-color: #ef596f;
+    border-bottom: 4px solid #ef596f;
 }
 
 #temperature.critical {
-    background-color: #9a353d;
+    border-bottom: 4px solid #9a353d;
 }
 
 #tray {
@@ -220,29 +220,27 @@ label:focus {
 }
 
 #idle_inhibitor {
-    background-color: #2d3436;
-    color: #abb2bf
+    border-bottom: 4px solid #5c6370;
 }
 
 #idle_inhibitor.activated {
-    background-color: #2d3436;
-    color: #5c6370;
+    border-bottom: 4px solid #5c6370;
 }
 
 #mpd {
-    background-color: #e5c07b;
+    border-bottom: 4px solid #e5c07b;
 }
 
 #mpd.disconnected {
-    background-color: #e5c07b;
+    border-bottom: 4px solid #e5c07b;
 }
 
 #mpd.stopped {
-    background-color: #e5c07b;
+    border-bottom: 4px solid #e5c07b;
 }
 
 #mpd.paused {
-    background-color: #e5c07b;
+    border-bottom: 4px solid #e5c07b;
 }
 
 #language {
