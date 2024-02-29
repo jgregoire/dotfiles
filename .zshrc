@@ -82,6 +82,7 @@ alias kssh='kitty +kitten ssh'
 
 # systemd
 alias ssc='sudo systemctl'
+alias ssu='systemctl --user'
 
 # ncmpcpp remote host
 alias ncmp='ncmpcpp -h 192.168.0.102 -p 6600'
