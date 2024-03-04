@@ -357,7 +357,10 @@ require('lazy').setup({ -- Plugins
                     lualine_y = {
                         require('auto-session.lib').current_session_name
                     },
-                    lualine_z = { 'location' },
+                    lualine_z = {
+                        'location',
+                        'progress',
+                    },
                 },
                 inactive_sections = {
                     lualine_a = {},
