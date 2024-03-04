@@ -238,9 +238,11 @@ local M = {
         { '<C-Up>',   mode = { 'n' }, description = 'Boole: Increment value' },
         { '<C-Down>', mode = { 'n' }, description = 'Boole: Decrement value' },
 
-        -- Auto-Session
-        { '<leader>ss', '<cmd>SessionSave<CR>',    mode = { 'n' }, description = 'Auto-Session: Save session', opts = defaults },
-        { '<leader>sr', '<cmd>SessionRestore<CR>', mode = { 'n' }, description = 'Auto-Session: Restore session', opts = defaults },
+        -- TS Incremental Selection
+        { '<leader>ns', mode = { 'n' }, description = 'Treesitter: Select node at cursor', opts = defaults },
+        { '<leader>is', mode = { 'n' }, description = 'Treesitter: Increment node selection', opts = defaults },
+        { '<leader>id', mode = { 'n' }, description = 'Treesitter: Decrement node selection', opts = defaults },
+        { '<leader>si', mode = { 'n' }, description = 'Treesitter: Increment scope selection', opts = defaults },
     },
 
     commands = {},
