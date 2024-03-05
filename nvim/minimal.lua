@@ -32,7 +32,10 @@ require('lazy').setup({ -- Plugins
     {
         'nvim-neorg/neorg',
         branch = 'luarocks',
-        dependencies = { 'luarocks.nvim' },
+        dependencies = {
+            'luarocks.nvim',
+            'nvim-treesitter/nvim-treesitter',
+        },
         config = function ()
             require('neorg').setup({
                 load = {
