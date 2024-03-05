@@ -5,8 +5,8 @@
     "height": 30, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
     "modules-left": ["sway/workspaces", "tray"],
-    "modules-center": ["wlr/window"],
-    "modules-right": ["mpd", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2", "clock", "idle_inhibitor", "tray"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["mpd", "wireplumber", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat1", "clock", "idle_inhibitor", "tray"],
 
     // Modules configuration
     "sway/workspaces": {
@@ -41,7 +41,7 @@
     "mpd": {
         "server": "192.168.0.102",
         "port": 6600,
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) [{songPosition}/{queueLength}] {volume}%  ",
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) [{songPosition}/{queueLength}] {volume}%",
         "format-disconnected": "Disconnected  ",
         "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped  ",
         "unknown-tag": "N/A",
@@ -79,16 +79,17 @@
         "spacing": 10
     },
     "clock": {
-        // "timezone": "America/New_York",
+        "timezone": "America/New_York",
+        "format": "{:%a, %b %d %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
-        "format": "{usage}% ",
+        "format": "{usage}% ",
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}% "
     },
     "temperature": {
         // "thermal-zone": 2,
@@ -123,31 +124,23 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
+        "format-wifi": "{bandwidthUpBits}  {bandwidthDownBits}  ",
+        "format-ethernet": "{bandwidthUpBits}  {bandwidthDownBits}  ",
+        "tooltip-format": "{ifname} {ipaddr} via {gwaddr}",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon}  {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
+    "wireplumber": {
+        "format": "{volume}% {icon} ",
+        "format-muted": "MUTE ",
+        "format-icons": ["", "", ""],
+        "scroll-step": "1.0",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "qpwgraph",
+        "max-volume": 98,
+        "tooltip": true,
+        "tooltip-format": "{node_name}"
     },
     "custom/media": {
         "format": "{icon} {}",
