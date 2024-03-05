@@ -5,7 +5,7 @@
     "height": 30, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
     "modules-left": ["sway/workspaces", "tray"],
-    "modules-center": ["wlr/window"],
+    "modules-center": ["sway/window"],
     "modules-right": ["mpd", "wireplumber", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat1", "clock", "idle_inhibitor", "tray"],
 
     // Modules configuration
@@ -79,16 +79,17 @@
         "spacing": 10
     },
     "clock": {
-        // "timezone": "America/New_York",
+        "timezone": "America/New_York",
+        "format": "{:%a, %b %d %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
-        "format": "{usage}% ",
+        "format": "{usage}% ",
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}% "
     },
     "temperature": {
         // "thermal-zone": 2,
@@ -123,11 +124,11 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
+        "format-wifi": "{bandwidthUpBits}  {bandwidthDownBits}  ",
+        "format-ethernet": "{bandwidthUpBits}  {bandwidthDownBits}  ",
+        "tooltip-format": "{ifname} {ipaddr} via {gwaddr}",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "wireplumber": {
