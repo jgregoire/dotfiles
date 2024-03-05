@@ -101,12 +101,6 @@ local M = {
         { 'it', mode = { 'v', 'o' }, description = 'Select inside a table' },
         { 'ic', mode = { 'v', 'o' }, description = 'Select inside a function call' },
 
-        -- Treesitter selection
-        { '<leader>is', mode = { 'n' }, description = 'Begin treesitter incremental selection' },
-        { '<leader>ii', mode = { 'n' }, description = 'Increment treesitter seleciton' },
-        { '<leader>id', mode = { 'n' }, description = 'Decrement treesitter selection' },
-        { '<leader>si', mode = { 'n' }, description = 'Increment scope selection' },
-
         -- Chording
         { 'i',      mode = { 'o' }, description = 'Inside (Chording)' },
         { 'a',      mode = { 'o' }, description = 'Around (Chording)' },

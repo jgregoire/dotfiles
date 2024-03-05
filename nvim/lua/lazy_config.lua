@@ -130,8 +130,8 @@ require('lazy').setup({ -- Plugins
                 incremental_selection = {
                     enable = true,
                     keymaps = {
-                        init_selection    = '<leader>is',
-                        node_incremental  = '<leader>ii',
+                        init_selection    = '<leader>ns',
+                        node_incremental  = '<leader>is',
                         node_decremental  = '<leader>id',
                         scope_incremental = '<leader>si',
                     },

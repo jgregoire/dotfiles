@@ -70,18 +70,19 @@ vim.keymap.set( { 'n' }, '<leader>ls', '<cmd>source ~/.config/nvim/lua/luasnip_c
 -- Using VSCode format for portability, except where I need
 -- more advanced features.
 
-ls.add_snippets(
-    'all',
-    {
-        s('Test', { t('--testy text') })
-    }
-)
+-- ls.add_snippets(
+--     'all',
+--     {
+--         s('Test', { t('--testy text') })
+--     }
+-- )
 
 ls.add_snippets(
     'lua',
     {
         -- Inline function
         ls.parser.parse_snippet("ifn", "function () $1 end"),
+        -- ls.parser.parse_snippet("fun", "function ()\n\t$1\nend"),
 
         -- Legendary keymaps
         ls.parser.parse_snippet("km", "{ '$1', '$2', mode = { '$3' }, description = '$4', opts = defaults },"),
