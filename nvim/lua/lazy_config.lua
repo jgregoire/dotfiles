@@ -381,6 +381,13 @@ require('lazy').setup({ -- Plugins
                 increment = '<C-Up>',
                 decrement = '<C-Down>',
             },
+            additions = {
+                { 'inc', 'dec' },
+                { 'enable', 'disable' },
+                { 'Enable', 'Disable' },
+                { 'On', 'Off' },
+                { 'on', 'off' },
+            },
         },
     },
     {

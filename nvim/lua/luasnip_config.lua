@@ -24,7 +24,7 @@ local conds_expand = require("luasnip.extras.conditions.expand")
 ls.config.set_config({
     history = true,
     updateevents = 'TextChanged,TextChangedI',
-    enable_autosnippets = false,
+    enable_autosnippets = true,
 })
 
 -- Keybinds
@@ -90,6 +90,17 @@ ls.add_snippets(
 
         -- Require
         s("req", fmt("local {} = require('{}')", { i(1, "module"), rep(1) })),
+    }
+)
+
+ls.add_snippets(
+    'lua',
+    {
+        ls.parser.parse_snippet("{},", "{ $1 },")
+    },
+    {
+        type = "autosnippets",
+        key = "all_auto"
     }
 )
 
