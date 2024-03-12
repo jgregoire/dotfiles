@@ -88,7 +88,8 @@ alias ssu='systemctl --user'
 alias ncmp='ncmpcpp -h 192.168.0.102 -p 6600'
 
 # OnePlus Syncing
-alias rsyncpm='rsync -av --size-only --force --del /home/james/Music/ /home/james/Marconi/Music/.'
+#alias rsyncpm='rsync -av --size-only --force --del /home/james/Music/ /home/james/Marconi/Music/.'
+alias rsyncpm='adbsync --del --show-progress push Music/ /storage/emulated/0/Music'
 alias rsyncpp='rsync -av --size-only /var/lib/mpd/playlists/ /home/james/Marconi/Music/.'
 
 # BEST ALIAS EVER
