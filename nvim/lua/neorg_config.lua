@@ -23,9 +23,12 @@ local opts = {
         -- Non-defaults:
         ['core.concealer'] = {
             config = {
-                icon_preset = 'basic', -- 'basic', 'diamond', or 'mixed'
+                icon_preset = 'diamond', -- 'basic', 'diamond', or 'mixed'
                 folds = true,
                 icons = {
+                    heading = {
+                        icons = { '◆', '❖', '◈', '◇', '⟡', '⋄' },
+                    },
                     todo = {
                         -- enabled = true,
                         done      = { icon = "" },
@@ -43,7 +46,7 @@ local opts = {
         ['core.dirman'] = {
             config = {
                 workspaces = {
-                    notes = '~/neorg',
+                    notes = '~/Notes',
                 },
             },
         },
