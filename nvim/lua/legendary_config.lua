@@ -259,7 +259,11 @@ local M = {
         },
         {
             'FileType',
-            ':setlocal conceallevel=2',
+            -- ':setlocal conceallevel=2',
+            function ()
+                vim.opt_local.conceallevel = 2
+                vim.opt_local.concealcursor = "nc"
+            end,
             opts = { pattern = { 'norg' } },
             description = 'Set conceal for norg files'
         },
