@@ -55,6 +55,12 @@ require('lazy').setup({ -- Plugins
         end,
     },
     {
+        'vhyrro/luarocks.nvim',
+        config = function ()
+            reqire('luarocks').setup({})
+        end
+    },
+    {
         'williamboman/mason.nvim',
         config = function ()
             require('mason').setup({
@@ -612,6 +618,7 @@ require('lazy').setup({ -- Plugins
             'nvim-treesitter/nvim-treesitter-textobjects',
             'hrsh7th/nvim-cmp',
             'nvim-lua/plenary.nvim',
+            'vhyrro/luarocks.nvim',
         },
         ft = 'norg',
         cmd = 'Neorg',
