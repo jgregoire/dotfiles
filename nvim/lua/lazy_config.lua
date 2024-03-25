@@ -56,9 +56,8 @@ require('lazy').setup({ -- Plugins
     },
     {
         'vhyrro/luarocks.nvim',
-        config = function ()
-            reqire('luarocks').setup({})
-        end
+        priority = 900,
+        config = true
     },
     {
         'williamboman/mason.nvim',
