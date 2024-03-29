@@ -14,4 +14,24 @@
 "rocks.nvim" = "2.19.0" # rocks.nvim can also manage itself :D
 "rocks-git.nvim" = "1.3.0"
 "rocks-config.nvim" = "1.2.3"
-"rocks-treesitter.nvim" = "scm"
+"onedarkpro.nvim" = "0.8.0"
+"mason.nvim" = "1.10.0"
+"mason-lspconfig.nvim" = "1.27.0"
+nvim-lspconfig = "0.1.7"
+nvim-treesitter-context = "scm"
+LuaSnip = "2.2.0"
+nvim-cmp = "0.0.1"
+cmp-natdat = { git = "Gelio/cmp-natdat" }
+"lspkind.nvim" = { git = "onsails/lspkind.nvim" }
+nvim-treesitter-endwise = { git = "RRethy/nvim-treesitter-endwise" }
+cmp-nvim-lsp = "scm"
+cmp-buffer = "scm"
+cmp-path = "scm"
+cmp-cmdline = "scm"
+cmp_luasnip = "scm"
+cmp-calc = { git = "hrsh7th/cmp-calc" }
+cmp-nvim-lua = { git = "hrsh7th/cmp-nvim-lua" }
+
+[config]
+plugins_dir = "plugins/"
+auto_setup = false
