@@ -21,6 +21,94 @@ vim.opt.rtp:prepend(lazypath)
 -- Specify plugins
 require('lazy').setup({ -- Plugins
     {
+        'olimorris/onedarkpro.nvim',
+        priority = 1000, -- Ensure this loads first
+        config = function ()
+            require('onedarkpro').setup({
+                styles = {
+                    comments = 'italic',
+                },
+                plugins = {
+                    all = false,
+                    diffview = true,
+                    flash_nvim = true,
+                    gitsigns = true,
+                    indentline = true,
+                    lsp_semantic_tokens = true,
+                    nvim_cmp = true,
+                    nvim_lsp = true,
+                    nvim_notify = true,
+                    telescope = true,
+                    toggleterm = true,
+                    treesitter = true,
+                },
+                options = {
+                    transparency = true,
+                    cursorline = true,
+                    highlight_inactive_windows = true,
+                },
+                colors = {
+                    --cursorline = '#000000' -- Set this if the default choice sucks.
+                }
+            })
+            vim.cmd('colorscheme onedark_vivid')
+        end,
+    },
+    {
+        'vhyrro/luarocks.nvim',
+        priority = 900,
+        config = true
+    },
+    {
+        'williamboman/mason.nvim',
+        config = function ()
+            require('mason').setup({
+                ui = {
+                    border = 'rounded',
+                    icons = {
+                        package_installed = "✔",
+                        package_pending = "",
+                        package_uninstalled = "",
+                    }
+                }
+            })
+        end
+    },
+    {
+        'williamboman/mason-lspconfig.nvim',
+        dependencies = { 'williamboman/mason.nvim' },
+        config = function ()
+            require('mason-lspconfig').setup({
+                ensure_installed = {
+                    'arduino_language_server',
+                    'bashls',
+                    'clangd',
+                    'jsonls',
+                    'ltex',
+                    'lua_ls',
+                    'openscad_lsp',
+                    'pyright',
+                    'rust_analyzer',
+                    'typos_lsp',
+                    'yamlls',
+                },
+            })
+        end
+    },
+    {
+        'neovim/nvim-lspconfig',
+        dependencies = { 'williamboman/mason-lspconfig.nvim' },
+        config = function ()
+            require('lsp_config') -- Run my configuration file
+        end
+    },
+    {
+        'onsails/lspkind.nvim'
+    },
+    {
+        'RRethy/nvim-treesitter-endwise',
+    },
+    {
         'nvim-treesitter/nvim-treesitter-textobjects'
     },
     {
@@ -72,6 +160,36 @@ require('lazy').setup({ -- Plugins
             })
         end,
         build = ':TSUpdate',
+    },
+    {
+        'L3MON4D3/LuaSnip',
+        config = function ()
+            require('luasnip_config') -- Run my configuration file
+        end
+    },
+    {
+        'Gelio/cmp-natdat',
+        event = 'UIEnter',
+        config = true,
+    },
+    {
+        'hrsh7th/nvim-cmp',
+        dependencies = {
+            'neovim/nvim-lspconfig',
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+            'L3MON4D3/LuaSnip',
+            'saadparwaiz1/cmp_luasnip',
+            'hrsh7th/cmp-calc',
+            'hrsh7th/cmp-nvim-lua',
+            'Gelio/cmp-natdat',
+        },
+        event = 'VeryLazy',
+        config = function ()
+            require('cmp_config') -- Run my configuration file
+        end
     },
     {
         'rcarriga/nvim-notify',

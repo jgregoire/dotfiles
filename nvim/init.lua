@@ -1,5 +1,4 @@
 -- Neovim config, Lua edition.
-
 -- Speedy start
 vim.loader.enable()
 
@@ -113,30 +112,13 @@ end
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '-'
 
-vim.opt.compatible = false
+-- Add package paths
+package.path = package.path .. ';' .. vim.fn.expand('$HOME') .. '/.luarocks/share/lua/5.1/?/init.lua;'
+package.path = package.path .. ';' .. vim.fn.expand('$HOME') .. '/.luarocks/share/lua/5.1/?.lua;'
+
+-- Specify plugins:
+require('lazy_config')
 
 if vim.g.neovide then
     vim.cmd([[highlight Normal guibg=#282c34]])
 end
-
--- Neorocks config
-local rocks_config = {
-    rocks_path = "/home/james/.local/share/nvim/rocks",
-    luarocks_binary = "/home/james/.local/share/nvim/rocks/bin/luarocks",
-}
-
-vim.g.rocks_nvim = rocks_config
-
-local luarocks_path = {
-    vim.fs.joinpath(rocks_config.rocks_path, "share", "lua", "5.1", "?.lua"),
-    vim.fs.joinpath(rocks_config.rocks_path, "share", "lua", "5.1", "?", "init.lua"),
-}
-package.path = package.path .. ";" .. table.concat(luarocks_path, ";")
-
-local luarocks_cpath = {
-    vim.fs.joinpath(rocks_config.rocks_path, "lib", "lua", "5.1", "?.so"),
-    vim.fs.joinpath(rocks_config.rocks_path, "lib64", "lua", "5.1", "?.so"),
-}
-package.cpath = package.cpath .. ";" .. table.concat(luarocks_cpath, ";")
-
-vim.opt.runtimepath:append(vim.fs.joinpath(rocks_config.rocks_path, "lib", "luarocks", "rocks-5.1", "*", "*"))
