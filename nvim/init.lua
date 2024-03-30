@@ -1,5 +1,4 @@
 -- Neovim config, Lua edition.
-
 -- Speedy start
 vim.loader.enable()
 
