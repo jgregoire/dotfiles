@@ -108,6 +108,11 @@ button:hover {
     margin-right: 0;
 }
 
+#custom-activewindow {
+    /*border-bottom: 4px solid linear-gradient(to right, #56b6c2, #89ca78);*/
+    border-bottom: 4px solid #56b6c2;
+}
+
 #clock {
     border-bottom: 4px solid #abb2bf;
 }

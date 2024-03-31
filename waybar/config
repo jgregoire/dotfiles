@@ -4,11 +4,16 @@
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 30, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
-    "modules-left": ["sway/workspaces", "tray"],
+    "modules-left": ["tray", "custom/activewindow"],
     "modules-center": ["wlr/window"],
     "modules-right": ["mpd", "wireplumber", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat1", "clock", "idle_inhibitor", "tray"],
 
     // Modules configuration
+    "custom/activewindow": {
+        "exec": "~/.config/waybar/activewindow.sh",
+        "interval": 1,
+        "format": "{} "
+    },
     "wlr/taskbar": {
         "format": "{icon} {title}",
         "icon-size": 16,
