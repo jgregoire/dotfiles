@@ -338,6 +338,8 @@ binds {
     // Example volume keys mappings for PipeWire & WirePlumber.
     XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
     XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
+    XF86AudioMute        { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioPlay        { spawn "mpc" "toggle"; }
 
     Mod+Q { close-window; }
 
@@ -429,16 +431,16 @@ binds {
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
 
-    Mod+Comma  { consume-window-into-column; }
-    Mod+Period { expel-window-from-column; }
+    // Mod+Comma  { consume-window-into-column; }
+    // Mod+Period { expel-window-from-column; }
 
     // There are also commands that consume or expel a single window to the side.
-    // Mod+BracketLeft  { consume-or-expel-window-left; }
-    // Mod+BracketRight { consume-or-expel-window-right; }
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
 
     Mod+W { switch-preset-column-width; }
-    Mod+F { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
+    Mod+Shift+F { maximize-column; }
+    Mod+F { fullscreen-window; }
     Mod+C { center-column; }
 
     // Finer width adjustments.
