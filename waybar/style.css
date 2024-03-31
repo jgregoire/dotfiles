@@ -109,8 +109,8 @@ button:hover {
 }
 
 #custom-activewindow {
-    /*border-bottom: 4px solid linear-gradient(to right, #56b6c2, #89ca78);*/
-    border-bottom: 4px solid #56b6c2;
+    /*border-bottom: 4px solid linear-gradient(to right, #2bbac5, #89ca78);*/
+    border-bottom: 4px solid #2bbac5;
 }
 
 #clock {
@@ -210,7 +210,7 @@ label:focus {
 }
 
 #tray {
-    background-color: #2980b9;
+    background-color: #61afef;
 }
 
 #tray > .passive {
@@ -219,7 +219,7 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+    background-color: #ef596f;
 }
 
 #idle_inhibitor {
@@ -227,7 +227,7 @@ label:focus {
 }
 
 #idle_inhibitor.activated {
-    border-bottom: 4px solid #5c6370;
+    border-bottom: 4px solid #8fc6f4;
 }
 
 #mpd {
