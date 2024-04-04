@@ -309,6 +309,7 @@ window-rule {
 // Inactive windows are transparent
 window-rule {
     match is-active=false
+    exclude app-id="qimgv"
     opacity 0.9
 }
 
