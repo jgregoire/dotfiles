@@ -621,7 +621,7 @@ require('lazy').setup({ -- Plugins
         },
         ft = 'norg',
         cmd = 'Neorg',
-        build = ':Neorg sync-parsers',
+        -- build = ':Neorg sync-parsers',
         config = function ()
             local opts = require('neorg_config')
             ---@diagnostic disable-next-line: missing-parameter
