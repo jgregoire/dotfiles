@@ -362,6 +362,7 @@ require('lazy').setup({ -- Plugins
         -- Only works with config function.
         'norcalli/nvim-colorizer.lua',
         priority = 0,
+        enabled = false,
         config = function ()
             require('colorizer').setup({'*'},{
                 RGB      = false, -- Do not colorize #XYZ values (these are usually git issue numbers)
@@ -371,6 +372,15 @@ require('lazy').setup({ -- Plugins
                 rgb_fn   = true,
             })
         end,
+    },
+    {
+        'brenoprata10/nvim-highlight-colors',
+        enabled = true,
+        opts = {
+            enable_named_colors = false,
+            enable_tailwind = true
+        },
+        config = true
     },
     {
         'nat-418/boole.nvim',
