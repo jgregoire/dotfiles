@@ -97,6 +97,38 @@ input {
 }
 
 layout {
+    // You can change the default width of the new windows.
+    // If you leave the brackets empty, the windows themselves will decide their initial width.
+    default-column-width { proportion 0.5; }
+
+    // When to center a column when changing focus, options are:
+    // - "never", default behavior, focusing an off-screen column will keep at the left
+    //   or right edge of the screen.
+    // - "on-overflow", focusing a column will center it if it doesn't fit
+    //   together with the previously focused column.
+    // - "always", the focused column will always be centered.
+    // center-focused-column "never"
+    center-focused-column "on-overflow"
+
+    // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
+    preset-column-widths {
+        // Proportion sets the width as a fraction of the output width, taking gaps into account.
+        // For example, you can perfectly fit four windows sized "proportion 0.25" on an output.
+        // The default preset widths are 1/3, 1/2 and 2/3 of the output.
+        proportion 0.25
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 0.75
+        proportion 1.0
+
+        // Fixed sets the width in logical pixels exactly.
+        // fixed 1920
+    }
+
+    // Set gaps around windows in logical pixels.
+    gaps 6
+
     // By default focus ring and border are rendered as a solid background rectangle
     // behind windows. That is, they will show up through semitransparent windows.
     // This is because windows using client-side decorations can have an arbitrary shape.
@@ -115,12 +147,10 @@ layout {
 
         // Color of the ring on the active monitor: red, green, blue, alpha.
         //active-color 224 108 117 255
+        active-gradient from="#2bbac5" to="#89ca78" angle=160
 
         // Color of the ring on inactive monitors: red, green, blue, alpha.
         inactive-color 171 178 191 127
-        
-        // Gradient
-        active-gradient from="#2bbac5" to="#89ca78" angle=160
     }
 
     // You can also add a border. It's similar to the focus ring, but always visible.
@@ -129,35 +159,14 @@ layout {
         // If you enable the border, you probably want to disable the focus ring.
         // off
 
+        // Total border width is border width + focus ring width
         width 2
+        
         // active-color 255 200 127 255
-        inactive-color 92 99 112 255 // #5c6370
         active-gradient from="#2bbac5" to="#89ca78" angle=160
+        
+        inactive-color 92 99 112 255 // #5c6370
     }
-
-    // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
-    preset-column-widths {
-        // Proportion sets the width as a fraction of the output width, taking gaps into account.
-        // For example, you can perfectly fit four windows sized "proportion 0.25" on an output.
-        // The default preset widths are 1/3, 1/2 and 2/3 of the output.
-        proportion 0.25
-        proportion 0.33333
-        proportion 0.5
-        proportion 0.66667
-        proportion 0.75
-        proportion 1.0
-
-        // Fixed sets the width in logical pixels exactly.
-        // fixed 1920
-    }
-
-    // You can change the default width of the new windows.
-    default-column-width { proportion 0.5; }
-    // If you leave the brackets empty, the windows themselves will decide their initial width.
-    // default-column-width {}
-
-    // Set gaps around windows in logical pixels.
-    gaps 6
 
     // Struts shrink the area occupied by windows, similarly to layer-shell panels.
     // You can think of them as a kind of outer gaps. They are set in logical pixels.
@@ -171,14 +180,6 @@ layout {
         // bottom 64
     }
 
-    // When to center a column when changing focus, options are:
-    // - "never", default behavior, focusing an off-screen column will keep at the left
-    //   or right edge of the screen.
-    // - "on-overflow", focusing a column will center it if it doesn't fit
-    //   together with the previously focused column.
-    // - "always", the focused column will always be centered.
-    // center-focused-column "never"
-    center-focused-column "on-overflow"
 }
 
 // Add lines like this to spawn processes at startup.
@@ -211,7 +212,7 @@ screenshot-path "~/Pictures/Screenshots/Screenshot_%Y-%m-%d %H-%M-%S.png"
 // Settings for the "Important Hotkeys" overlay.
 hotkey-overlay {
     // Uncomment this line if you don't want to see the hotkey help at niri startup.
-    // skip-at-startup
+    skip-at-startup
 }
 
 // Animation settings.
@@ -324,6 +325,12 @@ binds {
     // Most actions that you can bind here can also be invoked programmatically with
     // `niri msg action do-something`.
 
+    // Conventions:
+    // Mod:            Change focus, basic commands
+    // Mod+Shift:      Move window/column
+    // Mod+Ctrl:       Change screen focus
+    // Mod+Ctrl+Shift: Move to screen
+
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
@@ -331,7 +338,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T { spawn "kitty"; }
     Mod+R { spawn "fuzzel"; }
-    Super+Alt+L { spawn "swaylock"; }
+    Super+L { spawn "swaylock"; }
 
     // You can also use a shell:
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
@@ -344,45 +351,44 @@ binds {
 
     Mod+Q { close-window; }
 
+    // Mod+Up    { focus-window-up; }
+    // Mod+Down  { focus-window-down; }
     Mod+Left  { focus-column-left; }
-    Mod+Down  { focus-window-down; }
-    Mod+Up    { focus-window-up; }
     Mod+Right { focus-column-right; }
 
-    Mod+Ctrl+Left  { move-column-left; }
-    Mod+Ctrl+Down  { move-window-down; }
-    Mod+Ctrl+Up    { move-window-up; }
-    Mod+Ctrl+Right { move-column-right; }
-
-// Alternative commands that move across workspaces when reaching
-// the first or last window in a column.
-    // Mod+J     { focus-window-or-workspace-down; }
-    // Mod+K     { focus-window-or-workspace-up; }
-    // Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
-    // Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
+    // Alternative commands that move across workspaces when reaching
+    // the first or last window in a column.
+    Mod+Up    { focus-window-or-workspace-up; }
+    Mod+Down  { focus-window-or-workspace-down; }
 
     Mod+Home { focus-column-first; }
     Mod+End  { focus-column-last; }
+
+    Mod+Ctrl+Up    { focus-monitor-up; }
+    Mod+Ctrl+Down  { focus-monitor-down; }
+    Mod+Ctrl+Left  { focus-monitor-left; }
+    Mod+Ctrl+Right { focus-monitor-right; }
+
+    Mod+Page_Up         { focus-workspace-up; }
+    Mod+Page_Down       { focus-workspace-down; }
+    Mod+WheelScrollUp   { focus-workspace-up; }
+    Mod+WheelScrollDown { focus-workspace-down; }
+
+    Mod+Shift+Up    { move-window-up; }
+    Mod+Shift+Down  { move-window-down; }
+    Mod+Shift+Left  { move-column-left; }
+    Mod+Shift+Right { move-column-right; }
+
     Mod+Ctrl+Home { move-column-to-first; }
     Mod+Ctrl+End  { move-column-to-last; }
 
-    Mod+Shift+Left  { focus-monitor-left; }
-    Mod+Shift+Down  { focus-monitor-down; }
-    Mod+Shift+Up    { focus-monitor-up; }
-    Mod+Shift+Right { focus-monitor-right; }
-    Mod+Shift+H     { focus-monitor-left; }
-    Mod+Shift+J     { focus-monitor-down; }
-    Mod+Shift+K     { focus-monitor-up; }
-    Mod+Shift+L     { focus-monitor-right; }
+    Mod+Ctrl+Page_Down  { move-column-to-workspace-down; }
+    Mod+Ctrl+Page_Up    { move-column-to-workspace-up; }
 
-    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
     Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
     Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
-    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
-    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
-    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
@@ -392,23 +398,14 @@ binds {
     // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
     // ...
 
-    Mod+Page_Down       { focus-workspace-down; }
-    Mod+Page_Up         { focus-workspace-up; }
-    Mod+WheelScrollDown { focus-workspace-down; }
-    Mod+WheelScrollUp   { focus-workspace-up; }
-    Mod+Ctrl+Page_Down  { move-column-to-workspace-down; }
-    Mod+Ctrl+Page_Up    { move-column-to-workspace-up; }
-    Mod+Ctrl+U          { move-column-to-workspace-down; }
-    Mod+Ctrl+I          { move-column-to-workspace-up; }
-
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
+    // Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
+    // Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
     // ...
 
     Mod+Shift+Page_Down { move-workspace-down; }
     Mod+Shift+Page_Up   { move-workspace-up; }
-    Mod+Shift+U         { move-workspace-down; }
-    Mod+Shift+I         { move-workspace-up; }
 
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
@@ -419,15 +416,15 @@ binds {
     Mod+7 { focus-workspace 7; }
     Mod+8 { focus-workspace 8; }
     Mod+9 { focus-workspace 9; }
-    Mod+Ctrl+1 { move-column-to-workspace 1; }
-    Mod+Ctrl+2 { move-column-to-workspace 2; }
-    Mod+Ctrl+3 { move-column-to-workspace 3; }
-    Mod+Ctrl+4 { move-column-to-workspace 4; }
-    Mod+Ctrl+5 { move-column-to-workspace 5; }
-    Mod+Ctrl+6 { move-column-to-workspace 6; }
-    Mod+Ctrl+7 { move-column-to-workspace 7; }
-    Mod+Ctrl+8 { move-column-to-workspace 8; }
-    Mod+Ctrl+9 { move-column-to-workspace 9; }
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
