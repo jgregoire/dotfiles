@@ -188,64 +188,6 @@ require('lazy').setup({ -- Plugins
         end
     },
     {
-        'rcarriga/nvim-notify',
-        opts = {
-            render = 'wrapped-compact',
-            fps = '60',
-            stages = 'static',
-        },
-    },
-    {
-        'folke/noice.nvim',
-        dependencies = {
-            'MunifTanjim/nui.nvim',
-            'rcarriga/nvim-notify',
-        },
-        -- event = 'VeryLazy',
-        config = function ()
-            require('noice').setup({
-                health = { checker = false }, -- Don't bother running health checks anymore.
-                lsp = {
-                    progress = { enabled = true },
-                    override = {
-                        ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-                        ['vim.lsp.util.stylize_markdown'] = true,
-                        ['cmp.entry.get_documentation'] = true,
-                    },
-                },
-                presets = {
-                    bottom_search = false, -- use a classic bottom cmdline for search
-                    command_palette = true, -- position the cmdline and popupmenu together
-                    long_message_to_split = true, -- long messages will be sent to a split
-                    inc_rename = false, -- enables an input dialog for inc-rename.nvim
-                    lsp_doc_border = true, -- add a border to hover docs and signature help
-                },
-                views = {
-                    cmdline_popup = {
-                        position = {
-                            row = -2,
-                            col = '50%',
-                        },
-                    },
-                    cmdline_popupmenu = {
-                        position = {
-                            row = -5,
-                            col = '50%',
-                        },
-                    },
-                },
-                routes = {
-                    { -- Disable mini popup (lsp_progress) in insert mode. Less distracting.
-                        view = 'mini',
-                        filter = { mode = 'i' },
-                        opts = { skip = true },
-                    },
-                },
-            })
-            require('telescope').load_extension('noice')
-        end,
-    },
-    {
         'miversen33/sunglasses.nvim',
         enabled = false,
         config = true,
@@ -332,11 +274,6 @@ require('lazy').setup({ -- Plugins
                         },
                     },
                     lualine_x = {
-                        {
-                            -- Noice showcmd implementation
-                            require('noice').api.statusline.command.get,
-                            cond = require('noice').api.statusline.command.has,
-                        },
                         'encoding',
                         'fileformat',
                         'filetype' },
