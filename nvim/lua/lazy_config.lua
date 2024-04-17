@@ -188,16 +188,6 @@ require('lazy').setup({ -- Plugins
         end
     },
     {
-        'miversen33/sunglasses.nvim',
-        enabled = false,
-        config = true,
-        event = 'UIEnter',
-        opts = {
-            filter_type = 'SHADE',
-            filter_percent = 0.25,
-        }
-    },
-    {
         '0xAdk/full_visual_line.nvim',
         keys = 'V',
         opts = {}, -- Do not delete. Borks without.
