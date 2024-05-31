@@ -18,6 +18,7 @@ require('lazy').setup({ -- Plugins
     {
         'olimorris/onedarkpro.nvim',
         priority = 1000, -- Ensure this loads first
+        enabled = true,
         config = function ()
             require('onedarkpro').setup({
                 styles = {
@@ -48,6 +49,20 @@ require('lazy').setup({ -- Plugins
             })
             vim.cmd('colorscheme onedark_vivid')
         end,
+    },
+    {
+        'sainnhe/gruvbox-material',
+        lazy = false,
+        enabled = false,
+        priority = 1000,
+        config = function()
+            vim.opt.background = 'dark'
+            vim.g.gruvbox_material_background = 'hard'
+            vim.g.gruvbox_material_foreground = 'material'
+            vim.g.gruvbox_material_enable_italic = true
+            vim.g.gruvbox_material_enable_bold = true
+            vim.cmd.colorscheme('gruvbox-material')
+        end
     },
     {
         'vhyrro/luarocks.nvim',
@@ -220,6 +235,7 @@ require('lazy').setup({ -- Plugins
             require('lualine').setup({
                 options = {
                     theme = 'auto',
+                    -- theme = 'gruvbox-material',
                     component_separators = {
                         left  = '│',
                         right = '│'
