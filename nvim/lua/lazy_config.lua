@@ -2,15 +2,10 @@
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 ---@diagnostic disable-next-line: undefined-field
-if not vim.loop.fs_stat(lazypath) then
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
     print('Installing lazy.nvim...')
     vim.fn.system({
-        'git',
-        'clone',
-        '--filter=blob:none',
-        'https://github.com/folke/lazy.nvim.git',
-        '--branch=stable',
-        lazypath,
+        'git', 'clone', '--filter=blob:none', 'https://github.com/folke/lazy.nvim.git', '--branch=stable', lazypath
     })
     print('Installed lazy.nvim!')
 end
@@ -23,6 +18,7 @@ require('lazy').setup({ -- Plugins
     {
         'olimorris/onedarkpro.nvim',
         priority = 1000, -- Ensure this loads first
+        enabled = true,
         config = function ()
             require('onedarkpro').setup({
                 styles = {
@@ -53,6 +49,20 @@ require('lazy').setup({ -- Plugins
             })
             vim.cmd('colorscheme onedark_vivid')
         end,
+    },
+    {
+        'sainnhe/gruvbox-material',
+        lazy = false,
+        enabled = false,
+        priority = 1000,
+        config = function()
+            vim.opt.background = 'dark'
+            vim.g.gruvbox_material_background = 'hard'
+            vim.g.gruvbox_material_foreground = 'material'
+            vim.g.gruvbox_material_enable_italic = true
+            vim.g.gruvbox_material_enable_bold = true
+            vim.cmd.colorscheme('gruvbox-material')
+        end
     },
     {
         'vhyrro/luarocks.nvim',
@@ -163,13 +173,14 @@ require('lazy').setup({ -- Plugins
     },
     {
         'L3MON4D3/LuaSnip',
+        event = 'InsertEnter',
         config = function ()
             require('luasnip_config') -- Run my configuration file
         end
     },
     {
         'Gelio/cmp-natdat',
-        event = 'UIEnter',
+        lazy = true,
         config = true,
     },
     {
@@ -186,78 +197,10 @@ require('lazy').setup({ -- Plugins
             'hrsh7th/cmp-nvim-lua',
             'Gelio/cmp-natdat',
         },
-        event = 'VeryLazy',
+        event = 'InsertEnter',
         config = function ()
             require('cmp_config') -- Run my configuration file
         end
-    },
-    {
-        'rcarriga/nvim-notify',
-        opts = {
-            render = 'wrapped-compact',
-            fps = '60',
-            stages = 'static',
-        },
-    },
-    {
-        'folke/noice.nvim',
-        dependencies = {
-            'MunifTanjim/nui.nvim',
-            'rcarriga/nvim-notify',
-        },
-        -- event = 'VeryLazy',
-        config = function ()
-            require('noice').setup({
-                health = { checker = false }, -- Don't bother running health checks anymore.
-                lsp = {
-                    progress = { enabled = true },
-                    override = {
-                        ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-                        ['vim.lsp.util.stylize_markdown'] = true,
-                        ['cmp.entry.get_documentation'] = true,
-                    },
-                },
-                presets = {
-                    bottom_search = false, -- use a classic bottom cmdline for search
-                    command_palette = true, -- position the cmdline and popupmenu together
-                    long_message_to_split = true, -- long messages will be sent to a split
-                    inc_rename = false, -- enables an input dialog for inc-rename.nvim
-                    lsp_doc_border = true, -- add a border to hover docs and signature help
-                },
-                views = {
-                    cmdline_popup = {
-                        position = {
-                            row = -2,
-                            col = '50%',
-                        },
-                    },
-                    cmdline_popupmenu = {
-                        position = {
-                            row = -5,
-                            col = '50%',
-                        },
-                    },
-                },
-                routes = {
-                    { -- Disable mini popup (lsp_progress) in insert mode. Less distracting.
-                        view = 'mini',
-                        filter = { mode = 'i' },
-                        opts = { skip = true },
-                    },
-                },
-            })
-            require('telescope').load_extension('noice')
-        end,
-    },
-    {
-        'miversen33/sunglasses.nvim',
-        enabled = false,
-        config = true,
-        event = 'UIEnter',
-        opts = {
-            filter_type = 'SHADE',
-            filter_percent = 0.25,
-        }
     },
     {
         '0xAdk/full_visual_line.nvim',
@@ -292,6 +235,7 @@ require('lazy').setup({ -- Plugins
             require('lualine').setup({
                 options = {
                     theme = 'auto',
+                    -- theme = 'gruvbox-material',
                     component_separators = {
                         left  = '│',
                         right = '│'
@@ -336,11 +280,6 @@ require('lazy').setup({ -- Plugins
                         },
                     },
                     lualine_x = {
-                        {
-                            -- Noice showcmd implementation
-                            require('noice').api.statusline.command.get,
-                            cond = require('noice').api.statusline.command.has,
-                        },
                         'encoding',
                         'fileformat',
                         'filetype' },
@@ -404,7 +343,7 @@ require('lazy').setup({ -- Plugins
     },
     {
         'folke/flash.nvim',
-        event = 'VeryLazy',
+        -- event = 'VeryLazy',
         opts = {
             labels = 'asetniohqwdfurlgykjzxcvmbp',
             label = {
@@ -420,6 +359,8 @@ require('lazy').setup({ -- Plugins
             { 'M', mode = { 'o', 'x' }, function () require('flash').treesitter_search() end, desc = 'Treesitter Search' },
             { '<C-f>', mode = { 'c' }, function () require('flash').toggle() end, desc = 'Flash: Toggle in search' },
             { '<C-f>', mode = { 'i' }, function () require('flash').treesitter() end, desc = 'Flash: Treesitter' },
+            { '/' },
+            { '?' },
         },
     },
     {
@@ -436,6 +377,11 @@ require('lazy').setup({ -- Plugins
     },
     {
         'abecodes/tabout.nvim',
+        keys = {
+            { '<Tab>' },
+            { '<S-Tab>'},
+            { '<C-d>' },
+        },
         dependencies = {
             'nvim-treesitter/nvim-treesitter',
             'hrsh7th/nvim-cmp'
@@ -466,6 +412,7 @@ require('lazy').setup({ -- Plugins
     },
     {
         'windwp/nvim-autopairs',
+        event = 'InsertEnter',
         opts = {
             fast_wrap = {
                 -- Before       Input   After
@@ -484,6 +431,7 @@ require('lazy').setup({ -- Plugins
     },
     {
         'kylechui/nvim-surround',
+        event = 'InsertEnter',
         opts = {
             keymaps = {
                 insert          = '<C-p>s',
@@ -513,6 +461,11 @@ require('lazy').setup({ -- Plugins
     },
     {
         'terrortylor/nvim-comment',
+        keys = {
+            { 'pcc', 'n' },
+            { 'pc', 'v' },
+            { 'ic', 'o' }
+        },
         main = 'nvim_comment',
         opts = {
             marker_padding = true, -- Add a space.
