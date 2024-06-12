@@ -521,6 +521,29 @@ require('lazy').setup({ -- Plugins
         },
     },
     {
+        'protex/better-digraphs.nvim',
+        keys = {
+            {
+                '<C-d>',
+                function() require('better-digraphs').digraphs('insert') end,
+                mode = 'i',
+                desc = 'Pick digraph'
+            },
+            {
+                'es<C-d>',
+                function() require('better-digraphs').digraphs('normal') end,
+                mode = 'n',
+                desc = 'Substitute with digraph'
+            },
+            {
+                'es<C-d>',
+                function() require('better-digraphs').digraphs('visual') end,
+                mode = 'v',
+                desc = 'Substitute with digraph'
+            }
+        }
+    },
+    {
         'sindrets/diffview.nvim',
         dependencies = {
             'nvim-lua/plenary.nvim',

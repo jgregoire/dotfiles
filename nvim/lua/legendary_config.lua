@@ -73,6 +73,7 @@ local M = {
         { 'EE',    'R',     mode = { 'n' },           description = 'Replace characters until ESC', opts = defaults },
         { 'ee',    'cc',    mode = { 'n' },           description = 'Edit entire line', opts = defaults },
         { 'E',     'C',     mode = { 'n' },           description = 'Edit to end of line', opts = defaults },
+        { 'es',    'r',     mode = { 'n' },           description = 'Replace character', opts = defaults },
         { 'j',     'J',     mode = { 'n' },           description = 'Join line below to current line retaining whitespace', opts = defaults },
         { 'J',     'gJ',    mode = { 'n' },           description = 'Join line below to current line with a space between', opts = defaults },
         { '<C-n>', '<A-o>', mode = { 'i' },           description = 'Begin new line', opts = defaults },
@@ -237,6 +238,10 @@ local M = {
         { '<leader>is', mode = { 'n' }, description = 'Treesitter: Increment node selection', opts = defaults },
         { '<leader>id', mode = { 'n' }, description = 'Treesitter: Decrement node selection', opts = defaults },
         { '<leader>si', mode = { 'n' }, description = 'Treesitter: Increment scope selection', opts = defaults },
+
+        -- Better-digraphs
+        { '<C-d>', mode = { 'i' }, description = 'Insert digraph' },
+        { 'es<C-d>', mode = { 'n', 'v' }, description = 'Replace character with digraph' },
     },
 
     commands = {},
