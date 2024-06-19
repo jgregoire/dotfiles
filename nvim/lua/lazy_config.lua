@@ -65,6 +65,16 @@ require('lazy').setup({ -- Plugins
         end
     },
     {
+        'eldritch-theme/eldritch.nvim',
+        enabled = false,
+        lazy = false,
+        priority = 1000,
+        opts = {  },
+        config = function ()
+            vim.cmd.colorscheme('eldritch')
+        end
+    },
+    {
         'vhyrro/luarocks.nvim',
         priority = 900,
         config = true
@@ -235,6 +245,7 @@ require('lazy').setup({ -- Plugins
             require('lualine').setup({
                 options = {
                     theme = 'auto',
+                    -- theme = 'eldritch',
                     -- theme = 'gruvbox-material',
                     component_separators = {
                         left  = '│',
