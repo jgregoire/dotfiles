@@ -58,6 +58,7 @@ local opts = {
         },
         ['core.integrations.nvim-cmp'] = {},
         ['core.highlights'] = {},
+        ['core.tangle'] = {},
     },
 }
 
