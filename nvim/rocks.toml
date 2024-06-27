@@ -14,8 +14,7 @@
 "rocks.nvim" = "2.31.0" # rocks.nvim can also manage itself :D
 "rocks-git.nvim" = "1.5.1"
 neorg = "8.7.1"
-"onedarkpro.nvim" = "0.8.0"
-"gruvbox-material" = { git = "sainnhe/gruvbox-material" }
+"onedarkpro.nvim" = { version = "0.8.0", opt = true }
 "legendary.nvim" = "2.13.11"
 "mason.nvim" = "1.10.0"
 "mason-lspconfig.nvim" = "1.29.0"
@@ -40,3 +39,9 @@ gitsigns = { git = "lewis6991/gitsigns.nvim" }
 "full_visual_line.nvim" = { git = "0xAdk/full_visual_line.nvim" }
 "telescope.nvim" = "scm"
 "lualine.nvim" = { git = "nvim-lualine/lualine.nvim" }
+"rocks-config.nvim" = "2.1.1"
+
+[config]
+plugins_dir = "plugins/"
+auto_setup = false
+

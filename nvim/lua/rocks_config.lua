@@ -1,38 +1,28 @@
--- Colorscheme
-require('onedarkpro').setup({
-    styles = {
-        comments = 'italic',
-    },
-    plugins = {
-        all = false,
-        diffview = true,
---        flash_nvim = true,
-        gitsigns = true,
-        indentline = true,
-        lsp_semantic_tokens = true,
-        nvim_cmp = true,
-        nvim_lsp = true,
-        telescope = true,
-        toggleterm = true,
-        treesitter = true,
-    },
-    options = {
-        transparency = true,
-        cursorline = true,
-        highlight_inactive_windows = true,
-    },
-})
--- vim.cmd('colorscheme onedark_vivid')
+local rocks_config = {
+    rocks_path = vim.env.HOME .. "/.local/share/nvim/rocks",
+}
 
-vim.opt.background = 'dark'
-vim.g.gruvbox_material_background = 'hard'
-vim.g.gruvbox_material_foreground = 'material'
-vim.g.gruvbox_material_enable_italic = true
-vim.g.gruvbox_material_enable_bold = true
-vim.cmd.colorscheme('gruvbox-material')
+vim.g.rocks_nvim = rocks_config
+
+local luarocks_path = {
+    vim.fs.joinpath(rocks_config.rocks_path, "share", "lua", "5.1", "?.lua"),
+    vim.fs.joinpath(rocks_config.rocks_path, "share", "lua", "5.1", "?", "init.lua"),
+}
+package.path = package.path .. ";" .. table.concat(luarocks_path, ";")
+
+local luarocks_cpath = {
+    vim.fs.joinpath(rocks_config.rocks_path, "lib", "lua", "5.1", "?.so"),
+    vim.fs.joinpath(rocks_config.rocks_path, "lib64", "lua", "5.1", "?.so"),
+    vim.fs.joinpath(rocks_config.rocks_path, "lib", "lua", "5.1", "?.dll"),
+    vim.fs.joinpath(rocks_config.rocks_path, "lib64", "lua", "5.1", "?.dll"),
+}
+package.cpath = package.cpath .. ";" .. table.concat(luarocks_cpath, ";")
+
+vim.opt.runtimepath:append(vim.fs.joinpath(rocks_config.rocks_path, "lib", "luarocks", "rocks-5.1", "*", "*"))
+
 
 -- Keybinds
-require('legendary').setup(require('legendary_config'))
+--require('legendary').setup(require('legendary_config'))
 
 -- Treesitter
 ---@diagnostic disable-next-line: missing-fields
@@ -141,8 +131,7 @@ require('gitsigns').setup({
 -- Lualine
 require('lualine').setup({
     options = {
-        -- theme = 'auto',
-        theme = 'gruvbox-material',
+        theme = 'auto',
         component_separators = {
             left  = '│',
             right = '│'
@@ -202,4 +191,3 @@ require('lualine').setup({
         lualine_z = {}
     },
 })
-
