@@ -24,6 +24,5 @@ require('onedarkpro').setup({
         --cursorline = '#000000' -- Set this if the default choice sucks.
     }
 })
---require('rocks-config').configure('onedarkpro')
-vim.cmd.packadd('onedarkpro')
+vim.cmd.packadd('onedarkpro.nvim')
 vim.cmd.colorscheme('onedark_vivid')

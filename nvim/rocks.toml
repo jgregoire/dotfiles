@@ -10,8 +10,8 @@
 "rocks-config.nvim" = "2.1.1"
 "onedarkpro.nvim" = { version = "0.8.0", opt = true }
 "legendary.nvim" = "2.13.11"
+"rocks-edit.nvim" = "scm"
 
 [config]
 plugins_dir = "plugins/"
 auto_setup = false
-
