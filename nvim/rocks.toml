@@ -11,6 +11,7 @@
 "onedarkpro.nvim" = { version = "0.8.0", opt = true }
 "legendary.nvim" = "2.13.11"
 "rocks-edit.nvim" = "scm"
+"lualine.nvim" = "scm"
 
 [config]
 plugins_dir = "plugins/"
