@@ -14,5 +14,5 @@
 "lualine.nvim" = "scm"
 
 [config]
-plugins_dir = "plugins/"
+plugins_dir = "plugins"
 auto_setup = false

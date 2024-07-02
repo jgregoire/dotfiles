@@ -22,3 +22,4 @@ vim.opt.runtimepath:append(vim.fs.joinpath(rocks_config.rocks_path, "lib", "luar
 
 require('rocks-config').configure('onedarkpro.nvim')
 
+
