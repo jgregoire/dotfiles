@@ -12,6 +12,36 @@
 "legendary.nvim" = "2.13.11"
 "rocks-edit.nvim" = "scm"
 "lualine.nvim" = "scm"
+"mason.nvim" = "1.10.0"
+"mason-lspconfig.nvim" = "1.29.0"
+nvim-lspconfig = "0.1.8"
+"lspkind.nvim" = "scm"
+nvim-treesitter-endwise = { git = 'RRethy/nvim-treesitter-endwise' }
+nvim-treesitter-textobjects = "scm"
+nvim-treesitter-context = "scm"
+nvim-treesitter = { git = 'nvim-treesitter/nvim-treesitter' }
+luasnip = "2.3.0"
+nvim-cmp = "0.0.1"
+cmp-nvim-lsp = "scm"
+cmp-buffer = "scm"
+cmp-path = "scm"
+cmp-cmdline = "scm"
+cmp_luasnip = "scm"
+cmp-natdat = { git = "Gelio/cmp-natdat" }
+cmp-calc = { git = "hrsh7th/cmp-calc" }
+cmp-nvim-lua = { git = "hrsh7th/cmp-nvim-lua" }
+nvim-autopairs = "scm"
+"gitsigns.nvim" = { git = "lewis6991/gitsigns.nvim" }
+"full_visual_line.nvim" = { git = "0xAdk/full_visual_line.nvim" }
+"telescope.nvim" = "scm"
+neorg = "8.7.1"
+
+[bundles.mason]
+items = [
+    "mason.nvim",
+    "mason-lspconfig.nvim",
+    "nvim-lspconfig"
+]
 
 [config]
 plugins_dir = "plugins"
