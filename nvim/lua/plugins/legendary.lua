@@ -1,4 +1,3 @@
-vim.notify('Entered legendary config file')
 -- Setup for legendary.nvim plugin.
 -- N.B. I use Norman keymap and ErgoDox keyboard with Auto Shift. Below is an extreme remapping
 -- of vim commands to suit my setup. Choices may be surprising and controversial.

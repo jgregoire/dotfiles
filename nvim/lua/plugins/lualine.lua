@@ -1,4 +1,3 @@
-vim.notify('Entered lualine config file')
 require('lualine').setup({
     options = {
         theme = 'auto',

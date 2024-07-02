@@ -1,4 +1,3 @@
-vim.notify('Entered onedarkpro config file')
 require('onedarkpro').setup({
     styles = {
         comments = 'italic',

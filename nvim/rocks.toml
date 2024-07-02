@@ -5,9 +5,9 @@
 # List of Neovim plugins to install alongside their versions.
 # If the plugin name contains a dot then you must add quotes to the key name!
 [plugins]
-"rocks.nvim" = "2.31.0" # rocks.nvim can also manage itself :D
+"rocks.nvim" = "2.32.1"
 "rocks-git.nvim" = "1.5.1"
-"rocks-config.nvim" = "2.1.1"
+"rocks-config.nvim" = "2.1.2"
 "onedarkpro.nvim" = { version = "0.8.0", opt = true }
 "legendary.nvim" = "2.13.11"
 "rocks-edit.nvim" = "scm"
@@ -15,4 +15,4 @@
 
 [config]
 plugins_dir = "plugins"
-auto_setup = false
+auto_setup = false # This doesn't seem to work
