@@ -59,6 +59,7 @@ local opts = {
         ['core.integrations.nvim-cmp'] = {},
         ['core.highlights'] = {},
         ['core.tangle'] = {},
+        ['external.conceal-wrap'] = {}
     },
 }
 

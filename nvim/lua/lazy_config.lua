@@ -54,7 +54,7 @@ require('lazy').setup({ -- Plugins
         'rebelot/kanagawa.nvim',
         enabled = false,
         config = function ()
-            vim.cmd('colorscheme kanagawa-wave')
+            vim.cmd('colorscheme kanagawa-dragon')
         end
     },
     {
@@ -245,17 +245,34 @@ require('lazy').setup({ -- Plugins
                         right = '│'
                     },
                     section_separators = {
-                        left  = '',
-                        right = ''
+                        -- left  = '',
+                        -- right = ''
+                        right = '',
+                        left = '',
                     },
                 },
                 extensions = {
                     'toggleterm',
                 },
                 sections = {
-                    lualine_a = { 'mode' },
+                    lualine_a = {
+                        {
+                            'mode',
+                            separator = {
+                                left = '',
+                                right = '',
+                            },
+                        },
+                    },
                     lualine_b = {
-                        'branch',
+                        {
+                            'branch',
+                            separator = {
+                                left = '',
+                                right = '',
+                            },
+                            draw_empty = true,
+                        },
                         {
                             'diff',
                             symbols = {
@@ -288,7 +305,15 @@ require('lazy').setup({ -- Plugins
                         'fileformat',
                         'filetype' },
                     lualine_y = { 'progress', },
-                    lualine_z = { 'location', },
+                    lualine_z = {
+                        {
+                            'location',
+                            separator = {
+                                left = '',
+                                right = '',
+                            },
+                        },
+                    },
                 },
                 inactive_sections = {
                     lualine_a = {},
@@ -383,7 +408,7 @@ require('lazy').setup({ -- Plugins
         'abecodes/tabout.nvim',
         keys = {
             { '<Tab>' },
-            { '<S-Tab>'},
+            { '<S-Tab>' },
             { '<C-d>' },
         },
         dependencies = {
@@ -416,6 +441,7 @@ require('lazy').setup({ -- Plugins
     },
     {
         'windwp/nvim-autopairs',
+        enabled = true,
         event = 'InsertEnter',
         opts = {
             fast_wrap = {
@@ -451,6 +477,12 @@ require('lazy').setup({ -- Plugins
                 visual_line     = 'pS',
             }
         },
+    },
+    {
+        'altermo/ultimate-autopair.nvim',
+        enabled = false,
+        event = { 'InsertEnter', 'CmdlineEnter' },
+        branch = 'v0.6',
     },
     {
         'JoosepAlviste/nvim-ts-context-commentstring',
@@ -504,6 +536,17 @@ require('lazy').setup({ -- Plugins
         },
     },
     {
+        'MeanderingProgrammer/markdown.nvim',
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter',
+            'nvim-tree/nvim-web-devicons'
+        },
+        config = function ()
+            require('render-markdown').setup({})
+        end,
+        ft = { 'md' },
+    },
+    {
         'jbyuki/nabla.nvim',
         keys = {
             {
@@ -523,6 +566,10 @@ require('lazy').setup({ -- Plugins
                 desc = 'Render inline',
             },
         },
+    },
+    {
+        'Makaze/watch.nvim',
+        cmd = { 'WatchStart', 'WatchStop', 'WatchFile' }
     },
     {
         'protex/better-digraphs.nvim',
@@ -608,6 +655,7 @@ require('lazy').setup({ -- Plugins
             'hrsh7th/nvim-cmp',
             'nvim-lua/plenary.nvim',
             'vhyrro/luarocks.nvim',
+            'benlubas/neorg-conceal-wrap'
         },
         ft = 'norg',
         cmd = 'Neorg',
@@ -630,6 +678,24 @@ require('lazy').setup({ -- Plugins
             require('legendary').setup(opts)
         end
     },
+    {
+        'tris203/precognition.nvim',
+        event = 'VeryLazy',
+        opts = {
+            hints = {
+                Caret = { text = 'w' },
+                Dollar = { text = 'l' },
+                MatchingPair = { text = 'b' },
+                Zero = { text = 'W' },
+                w = { text = 'u' },
+                b = { text = 'd' },
+                e = { text = 'r' },
+                W = { text = 'U' },
+                B = { text = 'D' },
+                E = { text = 'R' },
+            }
+        }
+    }
 },
     { -- Lazy Options
         install = {
