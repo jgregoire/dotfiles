@@ -51,23 +51,6 @@ require('lazy').setup({ -- Plugins
         end,
     },
     {
-        'rebelot/kanagawa.nvim',
-        enabled = false,
-        config = function ()
-            vim.cmd('colorscheme kanagawa-dragon')
-        end
-    },
-    {
-        'eldritch-theme/eldritch.nvim',
-        enabled = false,
-        lazy = false,
-        priority = 1000,
-        opts = {  },
-        config = function ()
-            vim.cmd.colorscheme('eldritch')
-        end
-    },
-    {
         'vhyrro/luarocks.nvim',
         priority = 900,
         config = true
