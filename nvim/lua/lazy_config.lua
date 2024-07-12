@@ -665,6 +665,7 @@ require('lazy').setup({ -- Plugins
         'tris203/precognition.nvim',
         event = 'VeryLazy',
         opts = {
+            sartVisible = false,
             hints = {
                 Caret = { text = 'w' },
                 Dollar = { text = 'l' },
