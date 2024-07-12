@@ -138,6 +138,8 @@ local M = {
         { 'R',  'E',  mode = { 'n', 'v' }, description = 'End of next Word', opts = defaults },
         { 'l',  '$',  mode = { 'n', 'v' }, description = 'End of line', opts = defaults },
         { 'L',  'g_', mode = { 'n', 'v' }, description = 'Last non-blank character of line', opts = defaults },
+        { '<C-Up>', '<C-g>k', mode = { 'i' }, description = 'Move cursor to same start position on line above', opts = defaults },
+        { '<C-Down>', '<C-g>j', mode = { 'i' }, description = 'Move cursor to same start position on line below', opts = defaults },
 
         -- Search
         { '/',              mode = { 'n' }, description = 'Search forward' },
