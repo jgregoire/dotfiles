@@ -1,4 +1,4 @@
--- Bootstrap lazy.nvim
+-- Bootstrap lazy.nvim definite
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 ---@diagnostic disable-next-line: undefined-field
@@ -102,7 +102,7 @@ require('lazy').setup({ -- Plugins
                     'openscad_lsp',
                     'pyright',
                     'rust_analyzer',
-                    'typos_lsp',
+                    -- 'typos_lsp',
                     'yamlls',
                 },
             })
@@ -173,6 +173,13 @@ require('lazy').setup({ -- Plugins
             })
         end,
         build = ':TSUpdate',
+    },
+    {
+        'ravibrock/spellwarn.nvim',
+        event = 'VeryLazy',
+        opts = {
+            prefix = 'spellwarn: ',
+        },
     },
     {
         'L3MON4D3/LuaSnip',

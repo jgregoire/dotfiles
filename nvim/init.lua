@@ -93,6 +93,10 @@ if not vim.g.neovide then
     vim.opt.inccommand = 'split'
 end
 
+-- Spellcheck
+-- vim.opt.spell = true
+-- vim.opt.spelllang = 'en_us,en_gb'
+
 -- Allow selection in block mode past line endes
 vim.opt.virtualedit = 'block'
 
