@@ -1,7 +1,7 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: FiraCode, FontAwesome, sans-serif;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 window#waybar {
@@ -110,7 +110,7 @@ button:hover {
 
 #custom-activewindow {
     /*border-bottom: 4px solid linear-gradient(to right, #2bbac5, #89ca78);*/
-    border-bottom: 4px solid #2bbac5;
+    border-bottom: 4px solid #e5c07b;
 }
 
 #clock {
