@@ -316,6 +316,7 @@ window-rule {
 window-rule {
     match is-active=false
     exclude app-id="qimgv"
+    exclude app-id="firefox"
     opacity 0.9
 }
 
@@ -469,7 +470,7 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
-    Print { screenshot; }
+    Mod+P { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
