@@ -1,24 +1,35 @@
-## Oh-My-Zsh stuff ##
-export ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="agnoster"
-plugins=(colored-man-pages extract)
-source $ZSH/oh-my-zsh.sh
+# Created by Zap installer
+[ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
+plug "zsh-users/zsh-autosuggestions"
+plug "zap-zsh/supercharge"
+plug "zap-zsh/zap-prompt"
+plug "agnoster/agnoster-zsh-theme"
 
-## The following lines were added by compinstall
-zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
-zstyle :compinstall filename '/home/james/.zshrc'
- 
+# Load and initialise completion system
+# zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+# zstyle :compinstall filename '/home/james/.zshrc'
+# zstyle ':completion:*' list-colors "=(#b) #([0-9]#)*=36=31"
+
 autoload -Uz compinit
 compinit
 
 bindkey -e
 
+plug "Aloxaf/fzf-tab"
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+zstyle ':fzf-tab:*' switch-group '<' '>'
+
+plug "zsh-users/zsh-syntax-highlighting"
 ##
 ## Add directories to default PATH
 ##
 pathdirs=(
 	~/Scripts
-        ~/.local/bin
+    ~/.local/bin
 )
 
 # Now we make sure they exist before adding them
@@ -85,7 +96,7 @@ alias ssc='sudo systemctl'
 alias ssu='systemctl --user'
 
 # ncmpcpp remote host
-alias ncmp='ncmpcpp -h 192.168.0.102 -p 6600'
+alias ncmp='ncmpcpp -h $MPD_HOST -p 6600'
 
 # Music Syncing
 #alias rsyncpm='rsync -av --size-only --force --del /home/james/Music/ /home/james/Marconi/Music/.'
@@ -181,11 +192,6 @@ bindkey "\e[3~" delete-char			# Delete
 # Magic space!?
 bindkey -M viins ' ' magic-space
 
-##
-## Completion Voodoo
-##
-# Color-coding
-zstyle ':completion:*' list-colors "=(#b) #([0-9]#)*=36=31"
 
 # Separate man page sections.  Neat.
 zstyle ':completion:*:manuals' separate-sections true
@@ -198,9 +204,6 @@ expand-or-complete-with-dots() {
 }
 zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
-
-# This is the greatest program ever.
-eval $(thefuck --alias)
 
 # WSL likes to start us somewhere besides the home directory. Fix that.
 cd
