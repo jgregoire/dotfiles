@@ -140,7 +140,7 @@ alias drtu='sudo start-stop-daemon --start --chuid james --name rtorrent --exec 
 alias drtd='sudo start-stop-daemon --stop --name rtorrent'
 
 # Install shit quicker, apt edition
-alias agi='sudo apt-get install --update --autoremove'
+alias agi='sudo apt-get install --autoremove'
 alias agu='sudo apt-get upgrade --update'
 alias agr='sudo apt-get remove --update --autoremove'
 
