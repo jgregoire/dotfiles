@@ -4,7 +4,7 @@ library: /home/james/.config/beets/musiclibrary.blb
 import:
     move: no
 
-plugins: lastgenre fetchart ftintitle mpdupdate smartplaylist random embedart replaygain convert
+plugins: lastgenre fetchart ftintitle mpdupdate smartplaylist random embedart replaygain convert lyrics
 
 embedart:
     auto: yes
@@ -25,3 +25,8 @@ convert:
     never_convert_lossy_files: yes
     delete_originals: no
     format: flac
+
+lyrics:
+    auto: yes
+    sources: lrclib genius
+    synced: yes
