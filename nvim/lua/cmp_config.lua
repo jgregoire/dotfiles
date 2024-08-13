@@ -24,13 +24,13 @@ cmp.setup({
     },
     mapping = cmp.mapping.preset.insert({
         -- Invoke completion
-        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-Right>'] = cmp.mapping.complete(),
 
         -- Abort completion
         ['<C-c>'] = cmp.mapping.abort(),
 
         --Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items. 
-        ['<CR>'] = cmp.mapping.confirm({ select = false }),
+        ['<Right>'] = cmp.mapping.confirm({ select = true }),
 
         -- Select next suggestion.
         ['<Tab>'] = cmp.mapping(function(fallback)

@@ -165,10 +165,10 @@ local M = {
         { '<C-e>', mode = { 'i', 's' }, description = 'Luasnip: Expand' },
 
         -- CMP
-        { '<C-Space>',               description = 'CMP: Invoke' },
+        { '<C-Right>',               description = 'CMP: Invoke' },
         { '<Tab>',   mode = { 's' }, description = 'CMP: Select next' },
         { '<C-Tab>', mode = { 's' }, description = 'CMP: Select previous' },
-        { '<CR>',    mode = { 's' }, description = 'CMP: Confirm' },
+        { '<Right>',    mode = { 's' }, description = 'CMP: Confirm' },
         { '<C-c>',                   description = 'CMP: Cancel' },
 
         -- Telescope
