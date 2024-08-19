@@ -83,51 +83,55 @@ setopt NUMERIC_GLOB_SORT
 ## Aliases
 ##
 
-alias fire='rpicam-still -n --timelapse=1000ms --datetime'
+# Create session aliases and shut up about it.
+alias abbr='abbr --session --quiet'
+
+abbr fire='rpicam-still -n --timelapse=1000ms --datetime'
+
 # Give up and start over
 # by calling `$ git unfuck`
-abbr --session 'git unfuck'='git reset --hard HEAD'
-# alias unfuck='git reset --hard HEAD'
+abbr 'git unfuck'='git reset --hard HEAD'
+# abbr unfuck='git reset --hard HEAD'
 
 # systemd
-alias ssc='sudo systemctl'
-alias ssu='systemctl --user'
+abbr ssc='sudo systemctl'
+abbr ssu='systemctl --user'
 
 # ncmpcpp remote host
-alias ncmp='ncmpcpp -h $MPD_HOST -p 6600'
+abbr ncmp='ncmpcpp -h $MPD_HOST -p 6600'
 
 # Music Syncing
-#alias rsyncpm='rsync -av --size-only --force --del /home/james/Music/ /home/james/Marconi/Music/.'
-alias rsyncpm='adbsync --del --show-progress push Music/ /storage/emulated/0/Music'
-# alias rsyncpp='rsync -av --size-only /var/lib/mpd/playlists/ /home/james/Marconi/Music/.'
-alias rsynccm='rsync -av --force --del james@192.168.0.102:/home/james/Music/. Music/. && tput bel'
+#abbr rsyncpm='rsync -av --size-only --force --del /home/james/Music/ /home/james/Marconi/Music/.'
+abbr rsyncpm='adbsync --del --show-progress push Music/ /storage/emulated/0/Music'
+# abbr rsyncpp='rsync -av --size-only /var/lib/mpd/playlists/ /home/james/Marconi/Music/.'
+abbr rsynccm='rsync -av --force --del james@192.168.0.102:/home/james/Music/. Music/. && tput bel'
 
 # BEST ALIAS EVER
-alias fucking='sudo'
+abbr fucking='sudo'
 
 # Add color
-alias ls='ls -lh --color --group-directories-first'
-alias la='ls -a' # Also show hidden files
-alias lsd='ls /dev | grep sd'
-alias grep='grep --color'
+abbr ls='ls -lh --color --group-directories-first'
+abbr la='ls -a' # Also show hidden files
+abbr lsd='ls /dev | grep sd'
+abbr grep='grep --color'
 
 # Exa
-alias exa='eza -l --group-directories-first --icons' # exa maintainer MIA.
-alias exaa='exa -a'
-alias exag='exa -a --git'
-alias exat='exa -T'
-alias exaat='exaa -T'
+abbr exa='eza -l --group-directories-first --icons' # exa maintainer MIA.
+abbr exaa='exa -a'
+abbr exag='exa -a --git'
+abbr exat='exa -T'
+abbr exaat='exaa -T'
 
 ## Nano
 # Nano using line numbers
-alias nano='nano -c'
+abbr nano='nano -c'
 
 # Use neovim instead of vi
-alias vi='nvim'
+abbr vi='nvim'
 # Use neovim instead of vim
-alias vim='nvim'
+abbr vim='nvim'
 # Use nvim with user rc file for sudo
-alias svi='sudoedit'
+abbr svi='sudoedit'
 
 
 # dc undoes cd! \o/
@@ -135,45 +139,45 @@ setopt AUTO_CD
 setopt AUTO_PUSHD
 setopt PUSHD_SILENT
 setopt PUSHD_TO_HOME
-alias dc='popd'
+abbr dc='popd'
 
 # Aliases for safety
 setopt RM_STAR_WAIT
-alias rm='rm -i'
-alias mv='mv -i'
-alias cp='cp -i'
+abbr rm='rm -i'
+abbr mv='mv -i'
+abbr cp='cp -i'
 
 ## Torrent Box Aliases
-alias drt='dtach -a /home/james/.rtorrent.dtach'
-alias drtu='sudo start-stop-daemon --start --chuid james --name rtorrent --exec /usr/bin/dtach -- -n /home/james/.rtorrent.dtach /usr/bin/rtorrent'
-alias drtd='sudo start-stop-daemon --stop --name rtorrent'
+abbr drt='dtach -a /home/james/.rtorrent.dtach'
+abbr drtu='sudo start-stop-daemon --start --chuid james --name rtorrent --exec /usr/bin/dtach -- -n /home/james/.rtorrent.dtach /usr/bin/rtorrent'
+abbr drtd='sudo start-stop-daemon --stop --name rtorrent'
 
 # Install shit quicker, apt edition
-alias agi='sudo apt-get install --autoremove'
-alias agu='sudo apt-get upgrade --update'
-alias agr='sudo apt-get remove --update --autoremove'
+abbr agi='sudo apt-get install --autoremove'
+abbr agu='sudo apt-get upgrade --update'
+abbr agr='sudo apt-get remove --update --autoremove'
 
 # Install shit quicker, pacman edition
-alias pacman='pacman --color auto'
-alias pacs='sudo pacman -S'
-alias pacr='sudo pacman -Rsn'
-alias pacsu='sudo pacman -Syyu'
-alias pacc='sudo pacman -Sc'
+abbr pacman='pacman --color auto'
+abbr pacs='sudo pacman -S'
+abbr pacr='sudo pacman -Rsn'
+abbr pacsu='sudo pacman -Syyu'
+abbr pacc='sudo pacman -Sc'
 
 # Install shit quicker, AUR edition
-alias auri='makepkg -sic'
+abbr auri='makepkg -sic'
 
 # Randomize wallpaper
-alias rwp='feh --randomize --bg-fill /home/james/Pictures/Desktops/21x9/3440x1440'
+abbr rwp='feh --randomize --bg-fill /home/james/Pictures/Desktops/21x9/3440x1440'
 
 # Beets
-alias bim='beet import'
+abbr bim='beet import'
 
 # Volume control (pulse)
 # e.g. '$ vol 50%'
-alias vol='pactl set-sink-volume 1'
+abbr vol='pactl set-sink-volume 1'
 
-alias luamake=/home/james/Code/lua-language-server/3rd/luamake/luamake
+abbr luamake=/home/james/Code/lua-language-server/3rd/luamake/luamake
 
 ##
 ## Keybinds
