@@ -4,6 +4,7 @@ plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
 plug "zap-zsh/zap-prompt"
 plug "agnoster/agnoster-zsh-theme"
+plug "olets/zsh-abbr"
 
 # Load and initialise completion system
 # zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
@@ -46,9 +47,6 @@ case $TERM in
     ;;
 esac
 
-## Set default text editor
-export EDITOR='nvim'
-
 ##
 ## History Settings
 ##
@@ -87,10 +85,9 @@ setopt NUMERIC_GLOB_SORT
 
 alias fire='rpicam-still -n --timelapse=1000ms --datetime'
 # Give up and start over
-alias unfuck='git reset --hard HEAD'
-
-# SSH with kitty terminfo
-alias kssh='kitty +kitten ssh'
+# by calling `$ git unfuck`
+abbr --session 'git unfuck'='git reset --hard HEAD'
+# alias unfuck='git reset --hard HEAD'
 
 # systemd
 alias ssc='sudo systemctl'
