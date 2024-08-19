@@ -84,54 +84,54 @@ setopt NUMERIC_GLOB_SORT
 ##
 
 # Create session aliases and shut up about it.
-alias abbr='abbr --session --quiet'
+alias abr='abbr --session --force --quieter'
 
-abbr fire='rpicam-still -n --timelapse=1000ms --datetime'
+abr fire='rpicam-still -n --timelapse=1000ms --datetime'
 
 # Give up and start over
 # by calling `$ git unfuck`
-abbr 'git unfuck'='git reset --hard HEAD'
-# abbr unfuck='git reset --hard HEAD'
+abr 'git unfuck'='git reset --hard HEAD'
+# abr unfuck='git reset --hard HEAD'
 
 # systemd
-abbr ssc='sudo systemctl'
-abbr ssu='systemctl --user'
+abr ssc='sudo systemctl'
+abr ssu='systemctl --user'
 
 # ncmpcpp remote host
-abbr ncmp='ncmpcpp -h $MPD_HOST -p 6600'
+abr ncmp='ncmpcpp -h $MPD_HOST -p 6600'
 
 # Music Syncing
-#abbr rsyncpm='rsync -av --size-only --force --del /home/james/Music/ /home/james/Marconi/Music/.'
-abbr rsyncpm='adbsync --del --show-progress push Music/ /storage/emulated/0/Music'
-# abbr rsyncpp='rsync -av --size-only /var/lib/mpd/playlists/ /home/james/Marconi/Music/.'
-abbr rsynccm='rsync -av --force --del james@192.168.0.102:/home/james/Music/. Music/. && tput bel'
+#abr rsyncpm='rsync -av --size-only --force --del /home/james/Music/ /home/james/Marconi/Music/.'
+abr rsyncpm='adbsync --del --show-progress push Music/ /storage/emulated/0/Music'
+# abr rsyncpp='rsync -av --size-only /var/lib/mpd/playlists/ /home/james/Marconi/Music/.'
+abr rsynccm='rsync -av --force --del james@192.168.0.102:/home/james/Music/. Music/. && tput bel'
 
 # BEST ALIAS EVER
-abbr fucking='sudo'
+abr fucking='sudo'
 
 # Add color
-abbr ls='ls -lh --color --group-directories-first'
-abbr la='ls -a' # Also show hidden files
-abbr lsd='ls /dev | grep sd'
-abbr grep='grep --color'
+abr ls='ls -lh --color --group-directories-first'
+abr la='ls -a' # Also show hidden files
+abr lsd='ls /dev | grep sd'
+abr grep='grep --color'
 
 # Exa
-abbr exa='eza -l --group-directories-first --icons' # exa maintainer MIA.
-abbr exaa='exa -a'
-abbr exag='exa -a --git'
-abbr exat='exa -T'
-abbr exaat='exaa -T'
+abr exa='eza -l --group-directories-first --icons' # exa maintainer MIA.
+abr exaa='exa -a'
+abr exag='exa -a --git'
+abr exat='exa -T'
+abr exaat='exaa -T'
 
 ## Nano
 # Nano using line numbers
-abbr nano='nano -c'
+abr nano='nano -c'
 
 # Use neovim instead of vi
-abbr vi='nvim'
+abr vi='nvim'
 # Use neovim instead of vim
-abbr vim='nvim'
+abr vim='nvim'
 # Use nvim with user rc file for sudo
-abbr svi='sudoedit'
+abr svi='sudoedit'
 
 
 # dc undoes cd! \o/
@@ -139,45 +139,45 @@ setopt AUTO_CD
 setopt AUTO_PUSHD
 setopt PUSHD_SILENT
 setopt PUSHD_TO_HOME
-abbr dc='popd'
+abr dc='popd'
 
 # Aliases for safety
 setopt RM_STAR_WAIT
-abbr rm='rm -i'
-abbr mv='mv -i'
-abbr cp='cp -i'
+abr rm='rm -i'
+abr mv='mv -i'
+abr cp='cp -i'
 
 ## Torrent Box Aliases
-abbr drt='dtach -a /home/james/.rtorrent.dtach'
-abbr drtu='sudo start-stop-daemon --start --chuid james --name rtorrent --exec /usr/bin/dtach -- -n /home/james/.rtorrent.dtach /usr/bin/rtorrent'
-abbr drtd='sudo start-stop-daemon --stop --name rtorrent'
+abr drt='dtach -a /home/james/.rtorrent.dtach'
+abr drtu='sudo start-stop-daemon --start --chuid james --name rtorrent --exec /usr/bin/dtach -- -n /home/james/.rtorrent.dtach /usr/bin/rtorrent'
+abr drtd='sudo start-stop-daemon --stop --name rtorrent'
 
 # Install shit quicker, apt edition
-abbr agi='sudo apt-get install --autoremove'
-abbr agu='sudo apt-get upgrade --update'
-abbr agr='sudo apt-get remove --update --autoremove'
+abr agi='sudo apt-get install --autoremove'
+abr agu='sudo apt-get upgrade --update'
+abr agr='sudo apt-get remove --update --autoremove'
 
 # Install shit quicker, pacman edition
-abbr pacman='pacman --color auto'
-abbr pacs='sudo pacman -S'
-abbr pacr='sudo pacman -Rsn'
-abbr pacsu='sudo pacman -Syyu'
-abbr pacc='sudo pacman -Sc'
+abr pacman='pacman --color auto'
+abr pacs='sudo pacman -S'
+abr pacr='sudo pacman -Rsn'
+abr pacsu='sudo pacman -Syyu'
+abr pacc='sudo pacman -Sc'
 
 # Install shit quicker, AUR edition
-abbr auri='makepkg -sic'
+abr auri='makepkg -sic'
 
 # Randomize wallpaper
-abbr rwp='feh --randomize --bg-fill /home/james/Pictures/Desktops/21x9/3440x1440'
+abr rwp='feh --randomize --bg-fill /home/james/Pictures/Desktops/21x9/3440x1440'
 
 # Beets
-abbr bim='beet import'
+abr bim='beet import'
 
 # Volume control (pulse)
 # e.g. '$ vol 50%'
-abbr vol='pactl set-sink-volume 1'
+abr vol='pactl set-sink-volume 1'
 
-abbr luamake=/home/james/Code/lua-language-server/3rd/luamake/luamake
+abr luamake=/home/james/Code/lua-language-server/3rd/luamake/luamake
 
 ##
 ## Keybinds
