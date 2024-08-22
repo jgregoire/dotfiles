@@ -177,7 +177,7 @@ abbr bim='beet import'
 # e.g. '$ vol 50%'
 abbr vol='pactl set-sink-volume 1'
 
-abbr luamake=/home/james/Code/lua-language-server/3rd/luamake/luamake
+abbr luamake='/home/james/Code/lua-language-server/3rd/luamake/luamake'
 
 ##
 ## Keybinds
