@@ -18,22 +18,25 @@ Arch Linux
     - intel-ucode
     - dkms
     - broadcom-wl-dkms
-    - nvidia-dkms
-    - nvidia-settings
     - networkmanager
     - coreutils
-    - base-devel
+    - base-devel / build-essential
     - zsh
     - git
-    - oh-my-zsh
+    - zsh-zap
     - rustup
-    - exa
+    - eza
+    - rm-improved
     - neovim
+    - wl-clipboard
 - Graphical System
-    - xorg
-    - feh
-    - xcompmgr
-    - redshift
+    - ly
+    - niri
+    - powerkit (AUR)
+    - waybar
+    - swaylock
+    - waypaper
+    - swaybg
     - gvfs
     - gvfs-smb
     - gvfs-mtp
@@ -45,20 +48,14 @@ Arch Linux
     - thunar-volman
     - tumbler
     - ffmpegthumbnailer
-    - qimgv (AUR)
+    - qimgv-git (AUR)
     - usbutils
     - firefox
-    - opera
     - ttf-fira-code
     - ttf-symbola (AUR)
-    - awesome
-    - lain-git (AUR)
-    - dropbox-cli (AUR)
-    - thunar-dropbox (AUR)
-    - powerkit (AUR)
     - kitty
     - gparted
-    - pipewire
+    - pipewire-audio
     - paprefs
     - pavucontrol
     - rsync
