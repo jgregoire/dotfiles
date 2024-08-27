@@ -2,6 +2,8 @@
 // "/-" comments out the following node.
 
 input {
+    focus-follows-mouse max-scroll-amount="99%"
+
     keyboard {
         xkb {
             // You can set rules, model, layout, variant and options.
@@ -145,7 +147,7 @@ layout {
 
         // Color of the ring on the active monitor: red, green, blue, alpha.
         //active-color 224 108 117 255
-        active-gradient from="#2bbac5" to="#89ca78" angle=160
+        active-gradient from="#2bbac5" to="#89ca78" angle=100 in="oklch longer hue"
 
         // Color of the ring on inactive monitors: red, green, blue, alpha.
         inactive-color 171 178 191 127
@@ -161,7 +163,7 @@ layout {
         width 2
         
         // active-color 255 200 127 255
-        active-gradient from="#2bbac5" to="#89ca78" angle=160
+        active-gradient from="#2bbac5" to="#89ca78" angle=100 in="oklch longer hue"
         
         inactive-color 92 99 112 255 // #5c6370
     }
@@ -186,6 +188,7 @@ layout {
 spawn-at-startup "waypaper --restore --random"
 spawn-at-startup "firefox"
 spawn-at-startup "kitty"
+spawn-at-startup "powerkit"
 
 cursor {
     // Change the theme and size of the cursor as well as set the

@@ -6,13 +6,14 @@
     "spacing": 4, // Gaps between modules (4px)
     // "modules-center": ["custom/activewindow"],
     "modules-left": ["tray", "custom/activewindow"],
-    "modules-right": ["wireplumber", "network", "cpu", "memory", "temperature", "clock", "idle_inhibitor"],
+    "modules-right": ["wireplumber", "network", "cpu", "memory", "temperature", "battery", "clock", "idle_inhibitor"],
 
     // Modules configuration
     "custom/activewindow": {
         "exec": "~/.config/waybar/activewindow.sh",
         "interval": 1,
-        "format": "{} "
+        "format": "{} ",
+        "max-length": 64
     },
     "mpd": {
         "server": "192.168.0.102",
@@ -43,6 +44,11 @@
         "tooltip-format-disconnected": "MPD (disconnected)",
         "on-click": "mpc --host=192.168.0.102 --port=6600 toggle"
     },
+    "battery": {
+        "design-capacity": true,
+        "format": "{icon}{capacity}%",
+        "format-icons": [ " ", " ", " ", " ", " " ]
+    },
     "cava": {
         "framerate": 30,
         "autosens": 1,
@@ -55,8 +61,8 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": " ",
+            "deactivated": " "
         }
     },
     "tray": {
@@ -70,33 +76,33 @@
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
-        "format": "{usage}%  ",
+        "format": " {usage}%",
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": " {}%"
     },
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format": "{icon}{temperatureC}°C",
+        "format-icons": [" ", " ", " "]
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{bandwidthUpBits}  {bandwidthDownBits}   ",
-        "format-ethernet": "{bandwidthUpBits}  {bandwidthDownBits}   ",
+        "format-wifi": "  {bandwidthUpBits} {bandwidthDownBits}",
+        "format-ethernet": "  {bandwidthUpBits} {bandwidthDownBits}",
         "tooltip-format": "{ifname} {ipaddr} via {gwaddr}",
         "format-linked": "{ifname} (No IP)  ",
         "format-disconnected": "Disconnected  ",
         "format-alt": "{ifname}: {ipaddr}/{cidr} "
     },
     "wireplumber": {
-        "format": "{volume}% {icon} ",
+        "format": "{icon}{volume}%",
         "format-muted": "MUTE ",
-        "format-icons": ["", "", ""],
+        "format-icons": [" ", " ", " "],
         "scroll-step": "1.0",
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click-right": "qpwgraph",

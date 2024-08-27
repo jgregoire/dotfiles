@@ -46,9 +46,6 @@ case $TERM in
     ;;
 esac
 
-## Set default text editor
-export EDITOR='nvim'
-
 ##
 ## History Settings
 ##
@@ -85,11 +82,12 @@ setopt NUMERIC_GLOB_SORT
 ## Aliases
 ##
 
-# Give up and start over
-alias unfuck='git reset --hard HEAD'
+alias fire='rpicam-still -n --timelapse=1000ms --datetime'
 
-# SSH with kitty terminfo
-alias kssh='kitty +kitten ssh'
+# Give up and start over
+# by calling `$ git unfuck`
+alias 'git unfuck'='git reset --hard HEAD'
+# alias unfuck='git reset --hard HEAD'
 
 # systemd
 alias ssc='sudo systemctl'
@@ -151,9 +149,9 @@ alias drtu='sudo start-stop-daemon --start --chuid james --name rtorrent --exec 
 alias drtd='sudo start-stop-daemon --stop --name rtorrent'
 
 # Install shit quicker, apt edition
-alias agi='sudo apt-get install --autoremove'
-alias agu='sudo apt-get upgrade --update'
-alias agr='sudo apt-get remove --update --autoremove'
+alias agi='sudo apt install --autoremove'
+alias agu='sudo apt update && sudo apt-get upgrade'
+alias agr='sudo apt remove --autoremove'
 
 # Install shit quicker, pacman edition
 alias pacman='pacman --color auto'
@@ -175,7 +173,7 @@ alias bim='beet import'
 # e.g. '$ vol 50%'
 alias vol='pactl set-sink-volume 1'
 
-alias luamake=/home/james/Code/lua-language-server/3rd/luamake/luamake
+alias luamake='/home/james/Code/lua-language-server/3rd/luamake/luamake'
 
 ##
 ## Keybinds
