@@ -1,4 +1,4 @@
-directory: /home/james/Music
+directory: /media/pidrive/Music
 library: /home/james/.config/beets/musiclibrary.blb
 
 import:
@@ -28,5 +28,5 @@ convert:
 
 lyrics:
     auto: yes
-    sources: lrclib genius
+    sources: lrclib
     synced: yes
