@@ -148,7 +148,7 @@ layout {
         width 2
 
         // Color of the ring on the active monitor: red, green, blue, alpha.
-        //active-color 224 108 117 255
+        active-color 224 108 117 255
         active-gradient from="#2bbac5" to="#89ca78" angle=100 in="oklch longer hue"
 
         // Color of the ring on inactive monitors: red, green, blue, alpha.
@@ -165,7 +165,7 @@ layout {
         width 2
         
         // active-color 255 200 127 255
-        active-gradient from="#2bbac5" to="#89ca78" angle=100 in "oklch longer hue"
+        active-gradient from="#2bbac5" to="#89ca78" angle=100 in="oklch longer hue"
         
         inactive-color 92 99 112 255 // #5c6370
     }
@@ -346,6 +346,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T { spawn "kitty"; }
     Mod+R { spawn "fuzzel"; }
+    Ctrl+R { spawn "fuzzel"; }
     Super+L { spawn "swaylock"; }
 
     // You can also use a shell:
