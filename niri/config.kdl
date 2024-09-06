@@ -190,6 +190,7 @@ layout {
 spawn-at-startup "waypaper --restore --random"
 spawn-at-startup "firefox"
 spawn-at-startup "kitty"
+spawn-at-startup "xwayland-satellite"
 
 cursor {
     // Change the theme and size of the cursor as well as set the
