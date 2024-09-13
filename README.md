@@ -32,6 +32,7 @@ Arch Linux
 - Graphical System
     - ly
     - niri
+    - xwayland-satellite
     - powerkit (AUR)
     - waybar
     - swaylock
