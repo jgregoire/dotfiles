@@ -86,7 +86,7 @@ alias fire='rpicam-still -n --timelapse=1000ms --datetime'
 
 # Give up and start over
 # by calling `$ git unfuck`
-alias 'git unfuck'='git reset --hard HEAD'
+alias 'unfuck'='git reset --hard HEAD'
 # alias unfuck='git reset --hard HEAD'
 
 # systemd
