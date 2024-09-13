@@ -13,7 +13,7 @@
         "exec": "~/.config/waybar/activewindow.sh",
         "interval": 1,
         "format": "{} ",
-        "max-length": 64
+        "max-length": 48
     },
     "mpd": {
         "server": "192.168.0.102",
@@ -92,8 +92,8 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "  {bandwidthUpBits} {bandwidthDownBits}",
-        "format-ethernet": "  {bandwidthUpBits} {bandwidthDownBits}",
+        "format-wifi": "  {bandwidthTotalBits}",
+        "format-ethernet": "  {bandwidthTotalBitsBits}",
         "tooltip-format": "{ifname} {ipaddr} via {gwaddr}",
         "format-linked": "{ifname} (No IP)  ",
         "format-disconnected": "Disconnected  ",
