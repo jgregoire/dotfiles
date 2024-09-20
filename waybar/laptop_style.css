@@ -117,6 +117,10 @@ button:hover {
     border-bottom: 4px solid #abb2bf;
 }
 
+#window {
+    border-bottom: 4px solid #e5c07b;
+}
+
 #battery {
     border-bottom: 4px solid #e5c07b;
 }
