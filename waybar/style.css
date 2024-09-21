@@ -113,6 +113,10 @@ button:hover {
     border-bottom: 4px solid #2bbac5;
 }
 
+#window {
+    border-bottom: 4px solid #e5c07b;
+}
+
 #clock {
     border-bottom: 4px solid #abb2bf;
 }
@@ -231,19 +235,19 @@ label:focus {
 }
 
 #mpd {
-    border-bottom: 4px solid #e5c07b;
+    border-bottom: 4px solid #61afef;
 }
 
 #mpd.disconnected {
-    border-bottom: 4px solid #e5c07b;
+    border-bottom: 4px solid #61afef;
 }
 
 #mpd.stopped {
-    border-bottom: 4px solid #e5c07b;
+    border-bottom: 4px solid #61afef;
 }
 
 #mpd.paused {
-    border-bottom: 4px solid #e5c07b;
+    border-bottom: 4px solid #61afef;
 }
 
 #language {

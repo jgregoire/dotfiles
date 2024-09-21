@@ -4,7 +4,7 @@
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 30, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
-    "modules-center": ["custom/activewindow"],
+    "modules-center": ["niri/window"],
     "modules-left": ["tray", "mpd"],
     "modules-right": ["wireplumber", "network", "cpu", "memory", "temperature", "clock", "idle_inhibitor"],
 
@@ -14,6 +14,12 @@
         "interval": 1,
         "format": "{}",
         "max-length": 128
+    },
+    "niri/window": {
+        "format": " {} ",
+        "rewrite": {
+            "(.*) - Mozilla Firefox": "$1"
+        }
     },
     "mpd": {
         "server": "192.168.0.100",
