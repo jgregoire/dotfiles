@@ -1,3 +1,43 @@
+/* AlexvZyl/nordic.nvim theme */
+/*
+:root {
+    --black0: #191D24;
+    --black1: #1E222A;
+    --black2: #222630;
+    --gray0: #242933;
+    --gray1: #2E3440;
+    --gray2: #3B4252;
+    --gray3: #434C5E;
+    --gray4: #4C566A;
+    --gray5: #60728A;
+    --white0_normal: #BBC3D4;
+    --white0_reduce_blue: #C0C8D8;
+    --white1: #D8DEE9;
+    --white2: #E5E9F0;
+    --white3: #ECEFF4;
+    --blue0: #5E81AC;
+    --blue1: #81A1C1;
+    --blue2: #88C0D0;
+    --cyan0: #80B3B2;
+    --cyan1: #8FBCBB;
+    --cyan2: #9FC6C5;
+    --green0: #97B67C;
+    --green1: #A3BE8C;
+    --green2: #B1C89D;
+    --yellow0: #E7C173;
+    --yellow1: #EBCB8B;
+    --yellow2: #EFD49F;
+    --orange0: #CB775D;
+    --orange1: #D08770;
+    --orange2: #D79784;
+    --red0: #B74E58;
+    --red1: #BF616A;
+    --red2: #C5727A;
+    --magenta0: #A97EA1;
+    --magenta1: #B38EAD;
+    --magenta2: #BE9DB8;
+}
+*/
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: FiraCode, FontAwesome, sans-serif;
@@ -193,7 +233,7 @@ label:focus {
 
 #custom-media {
     background-color: #109868;
-    color: #ffffff;
+    color: #FFFFFF;
     min-width: 100px;
 }
 
