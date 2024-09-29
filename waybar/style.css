@@ -70,26 +70,15 @@ button:hover {
     box-shadow: inset 0 -3px #BBC3D4;
 }
 
-#mode {
-    background-color: #5c6370;
-    border-bottom: 4px solid #BBC3D4;
-}
-
 #clock,
-#battery,
 #cpu,
 #memory,
 #disk,
 #temperature,
-#backlight,
 #network,
-#pulseaudio,
 #wireplumber,
-#custom-media,
 #tray,
-#mode,
 #idle_inhibitor,
-#scratchpad,
 #mpd {
     padding: 0 10px;
     color: #BBC3D4;
