@@ -2,7 +2,7 @@
 // "/-" comments out the following node.
 
 input {
-    focus-follows-mouse max-scroll-amount="99%"
+    focus-follows-mouse max-scroll-amount="0%"
 
     keyboard {
         xkb {
@@ -28,7 +28,7 @@ input {
     // Next sections include libinput settings.
     // Omitting settings disables them, or leaves them at their default values.
     touchpad {
-        tap
+        // tap
         // dwt
         // dwtp
         natural-scroll
