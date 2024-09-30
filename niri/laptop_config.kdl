@@ -347,6 +347,9 @@ binds {
     XF86AudioMute        { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioPlay        { spawn "mpc" "toggle"; }
 
+    XF86MonBrightnessUp { spawn "brightnessctl" "-d" "intel_backlight" "s" "+10%"; }
+    XF86MonBrightnessDown  { spawn "brightnessctl" "-d" "intel_backlight" "s" "10%-"; }
+
     Mod+Q { close-window; }
 
     // Mod+Up    { focus-window-up; }
