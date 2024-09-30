@@ -86,7 +86,7 @@ alias fire='rpicam-still -n --timelapse=1000ms --datetime'
 
 # Give up and start over
 # by calling `$ git unfuck`
-alias 'git unfuck'='git reset --hard HEAD'
+alias 'unfuck'='git reset --hard HEAD'
 # alias unfuck='git reset --hard HEAD'
 
 # systemd
@@ -100,7 +100,7 @@ alias ncmp='ncmpcpp -h $MPD_HOST -p 6600'
 #alias rsyncpm='rsync -av --size-only --force --del /home/james/Music/ /home/james/Marconi/Music/.'
 alias rsyncpm='adbsync --del --show-progress push Music/ /storage/emulated/0/Music'
 # alias rsyncpp='rsync -av --size-only /var/lib/mpd/playlists/ /home/james/Marconi/Music/.'
-alias rsynccm='rsync -av --force --del james@192.168.0.102:/home/james/Music/. Music/. && tput bel'
+alias rsynccm='rsync -av --force --del james@heaviside:/media/pidrive/Music/. Music/. && tput bel'
 
 # BEST ALIAS EVER
 alias fucking='sudo'

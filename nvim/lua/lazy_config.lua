@@ -18,10 +18,11 @@ require('lazy').setup({ -- Plugins
     {
         'olimorris/onedarkpro.nvim',
         priority = 1000, -- Ensure this loads first
-        enabled = true,
+        enabled = false,
         config = function ()
             require('onedarkpro').setup({
                 styles = {
+
                     comments = 'italic',
                 },
                 plugins = {
@@ -49,6 +50,36 @@ require('lazy').setup({ -- Plugins
             })
             vim.cmd('colorscheme onedark_vivid')
         end,
+    },
+    {
+        'AlexvZyl/nordic.nvim',
+        priority = 1000,
+        enabled = true,
+        config = function ()
+            require('nordic').load()
+        end
+    },
+    {
+        'sainnhe/gruvbox-material',
+        priority = 1000,
+        enabled = false,
+        config = function ()
+            vim.g.gruvbox_material_enable_italic = true
+            vim.g.gruvbox_material_background = 'hard'
+            vim.g.gruvbox_material_foreground = 'mix'
+            vim.cmd.colorscheme('gruvbox-material')
+        end
+    },
+    {
+        'sainnhe/edge',
+        priority = 1000,
+        enabled = false,
+        config = function ()
+            vim.g.edge_enable_italic = true
+            vim.g.edge_style = 'neon'
+            vim.g.edge_dim_foreground = 1
+            vim.cmd.colorscheme('edge')
+        end
     },
     {
         'vhyrro/luarocks.nvim',
@@ -227,9 +258,9 @@ require('lazy').setup({ -- Plugins
         config = function ()
             require('lualine').setup({
                 options = {
-                    theme = 'auto',
+                    -- theme = 'auto',
                     -- theme = 'eldritch',
-                    -- theme = 'gruvbox-material',
+                    theme = 'nordic',
                     component_separators = {
                         left  = '│',
                         right = '│'

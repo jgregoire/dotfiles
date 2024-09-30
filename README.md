@@ -21,6 +21,7 @@ Arch Linux
     - networkmanager
     - coreutils
     - base-devel / build-essential
+    - clang
     - zsh
     - git
     - zsh-zap
@@ -32,6 +33,8 @@ Arch Linux
 - Graphical System
     - ly
     - niri
+    - xorg-xwayland
+    - xwayland-satellite
     - powerkit (AUR)
     - waybar
     - swaylock

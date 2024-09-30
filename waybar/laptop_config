@@ -5,7 +5,7 @@
     "height": 24, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
     // "modules-center": ["custom/activewindow"],
-    "modules-left": ["tray", "custom/activewindow"],
+    "modules-left": ["tray", "niri/window"],
     "modules-right": ["wireplumber", "network", "cpu", "memory", "temperature", "battery", "clock", "idle_inhibitor"],
 
     // Modules configuration
@@ -13,7 +13,13 @@
         "exec": "~/.config/waybar/activewindow.sh",
         "interval": 1,
         "format": "{} ",
-        "max-length": 64
+        "max-length": 48
+    },
+    "niri/window": {
+        "format": " {} ",
+        "rewrite": {
+            "(.*) - Mozilla Firefox": "$1"
+        }
     },
     "mpd": {
         "server": "192.168.0.102",
@@ -92,8 +98,8 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "  {bandwidthUpBits} {bandwidthDownBits}",
-        "format-ethernet": "  {bandwidthUpBits} {bandwidthDownBits}",
+        "format-wifi": "  {bandwidthTotalBits}",
+        "format-ethernet": "  {bandwidthTotalBitsBits}",
         "tooltip-format": "{ifname} {ipaddr} via {gwaddr}",
         "format-linked": "{ifname} (No IP)  ",
         "format-disconnected": "Disconnected  ",
