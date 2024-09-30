@@ -4,7 +4,7 @@ library: /home/james/.config/beets/musiclibrary.blb
 import:
     move: no
 
-plugins: lastgenre fetchart ftintitle mpdupdate smartplaylist random embedart replaygain convert lyrics
+plugins: lastgenre fetchart ftintitle mpdupdate smartplaylist random embedart replaygain convert lyrics hook importfeeds
 
 embedart:
     auto: yes
@@ -30,3 +30,14 @@ lyrics:
     auto: yes
     sources: lrclib
     synced: yes
+
+hook:
+    hooks:
+      - event: cli_exit
+        command: tput bel
+
+importfeeds:
+    formats: m3u
+    dir: /media/pidrive/Playlists/
+    relative_to: /media/pidrive/Music/
+    m3u_name: Recently_Added.m3u
