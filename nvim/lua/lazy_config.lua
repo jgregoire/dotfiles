@@ -48,7 +48,7 @@ require('lazy').setup({ -- Plugins
                     --cursorline = '#000000' -- Set this if the default choice sucks.
                 }
             })
-            vim.cmd('colorscheme onedark_vivid')
+            vim.cmd('colorscheme onedark')
         end,
     },
     {
@@ -57,6 +57,14 @@ require('lazy').setup({ -- Plugins
         enabled = true,
         config = function ()
             require('nordic').load()
+        end
+    },
+    {
+        'xero/miasma.nvim',
+        enabled = false,
+        priority = 100,
+        config = function ()
+            vim.cmd.colorscheme('miasma')
         end
     },
     {
@@ -258,9 +266,9 @@ require('lazy').setup({ -- Plugins
         config = function ()
             require('lualine').setup({
                 options = {
-                    -- theme = 'auto',
+                    theme = 'auto',
                     -- theme = 'eldritch',
-                    theme = 'nordic',
+                    -- theme = 'nordic',
                     component_separators = {
                         left  = '│',
                         right = '│'
