@@ -3,7 +3,7 @@
 plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
 plug "zap-zsh/zap-prompt"
-plug "fcamblor/oh-my-zsh-agnoster-fcamblor"
+plug "jgregoire/agnoster-custom"
 
 # Load and initialise completion system
 # zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
