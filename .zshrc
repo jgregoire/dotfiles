@@ -3,7 +3,8 @@
 plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
 plug "zap-zsh/zap-prompt"
-plug "jgregoire/agnoster-custom"
+# plug "jgregoire/agnoster-custom"
+eval "$(croque init zsh)"
 
 # Load and initialise completion system
 # zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
