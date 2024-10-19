@@ -48,15 +48,40 @@ require('lazy').setup({ -- Plugins
                     --cursorline = '#000000' -- Set this if the default choice sucks.
                 }
             })
-            vim.cmd('colorscheme onedark')
+            vim.cmd('colorscheme onedark_vivid')
         end,
+    },
+    {
+        'diegoulloao/neofusion.nvim',
+        priority = 1000,
+        enabled = true,
+        config = function ()
+            require('neofusion').setup()
+            vim.cmd.colorscheme('neofusion')
+        end
     },
     {
         'AlexvZyl/nordic.nvim',
         priority = 1000,
-        enabled = true,
+        enabled = false,
         config = function ()
             require('nordic').load()
+        end
+    },
+    {
+        'lvim-tech/lvim-colorscheme',
+        priority = 1000,
+        enabled = false,
+        config = function ()
+            require('lvim-colorscheme').setup({
+                style = 'dark',
+                styles = {
+                    comments = { italic = true, bold = false },
+                    keywords = { italic = false, bold = true },
+                    functions = { italic = false, bold = false },
+                    variables = {  },
+                }
+            })
         end
     },
     {
@@ -266,7 +291,7 @@ require('lazy').setup({ -- Plugins
         config = function ()
             require('lualine').setup({
                 options = {
-                    theme = 'auto',
+                    theme = require('neofusion.lualine'),
                     -- theme = 'eldritch',
                     -- theme = 'nordic',
                     component_separators = {
@@ -683,11 +708,10 @@ require('lazy').setup({ -- Plugins
             'nvim-treesitter/nvim-treesitter-textobjects',
             'hrsh7th/nvim-cmp',
             'nvim-lua/plenary.nvim',
-            'vhyrro/luarocks.nvim',
             'benlubas/neorg-conceal-wrap'
         },
+        version = '*',
         ft = 'norg',
-        cmd = 'Neorg',
         -- build = ':Neorg sync-parsers',
         config = function ()
             local opts = require('neorg_config')
