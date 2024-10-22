@@ -289,9 +289,53 @@ require('lazy').setup({ -- Plugins
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function ()
+            local colors = {
+                black        = '#070f1c',
+                white        = '#e0d9c7',
+                red          = '#ea6847',
+                cyan         = '#86dbf5',
+                blue         = '#5db2f8',
+                magenta      = '#d943a8',
+                gray         = '#0e0807',
+                darkgray     = '#050539',
+                lightgray    = '#2f516c',
+                inactivegray = '#7c6f64',
+            }
+            local neofusion_theme = {
+                normal = {
+                    a = {bg = colors.cyan, fg = colors.black, gui = 'bold'},
+                    b = {bg = colors.lightgray, fg = colors.white},
+                    c = {bg = colors.darkgray, fg = colors.white}
+                },
+                insert = {
+                    a = {bg = colors.blue, fg = colors.black, gui = 'bold'},
+                    b = {bg = colors.lightgray, fg = colors.white},
+                    c = {bg = colors.darkgray, fg = colors.white}
+                },
+                visual = {
+                    a = {bg = colors.red, fg = colors.black, gui = 'bold'},
+                    b = {bg = colors.lightgray, fg = colors.white},
+                    c = {bg = colors.darkgray, fg = colors.white}
+                },
+                replace = {
+                    a = {bg = colors.magenta, fg = colors.black, gui = 'bold'},
+                    b = {bg = colors.lightgray, fg = colors.white},
+                    c = {bg = colors.darkgray, fg = colors.white}
+                },
+                command = {
+                    a = {bg = colors.green, fg = colors.black, gui = 'bold'},
+                    b = {bg = colors.lightgray, fg = colors.white},
+                    c = {bg = colors.darkgray, fg = colors.white}
+                },
+                inactive = {
+                    a = {bg = colors.darkgray, fg = colors.white, gui = 'bold'},
+                    b = {bg = colors.darkgray, fg = colors.white},
+                    c = {bg = colors.darkgray, fg = colors.white}
+                }
+            }
             require('lualine').setup({
                 options = {
-                    theme = require('neofusion.lualine'),
+                    theme = neofusion_theme,
                     -- theme = 'eldritch',
                     -- theme = 'nordic',
                     component_separators = {
@@ -301,8 +345,10 @@ require('lazy').setup({ -- Plugins
                     section_separators = {
                         -- left  = '',
                         -- right = ''
-                        right = '',
-                        left = '',
+                        -- right = '',
+                        -- left = '',
+                        left = '',
+                        right = '',
                     },
                 },
                 extensions = {
@@ -312,19 +358,19 @@ require('lazy').setup({ -- Plugins
                     lualine_a = {
                         {
                             'mode',
-                            separator = {
-                                left = '',
-                                right = '',
-                            },
+                            -- separator = {
+                            --     left = '',
+                            --     right = '',
+                            -- },
                         },
                     },
                     lualine_b = {
                         {
                             'branch',
-                            separator = {
-                                left = '',
-                                right = '',
-                            },
+                            -- separator = {
+                            --     left = '',
+                            --     right = '',
+                            -- },
                             draw_empty = true,
                         },
                         {
@@ -362,10 +408,10 @@ require('lazy').setup({ -- Plugins
                     lualine_z = {
                         {
                             'location',
-                            separator = {
-                                left = '',
-                                right = '',
-                            },
+                            -- separator = {
+                            --     left = '',
+                            --     right = '',
+                            -- },
                         },
                     },
                 },
