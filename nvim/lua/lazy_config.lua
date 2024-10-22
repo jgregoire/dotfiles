@@ -296,10 +296,9 @@ require('lazy').setup({ -- Plugins
                 cyan         = '#86dbf5',
                 blue         = '#5db2f8',
                 magenta      = '#d943a8',
-                gray         = '#0e0807',
-                darkgray     = '#050539',
+                darkgray     = '#0e0807',
+                darkblue     = '#050539',
                 lightgray    = '#2f516c',
-                inactivegray = '#7c6f64',
             }
             local neofusion_theme = {
                 normal = {
@@ -318,12 +317,12 @@ require('lazy').setup({ -- Plugins
                     c = {bg = colors.darkgray, fg = colors.white}
                 },
                 replace = {
-                    a = {bg = colors.magenta, fg = colors.black, gui = 'bold'},
+                    a = {bg = colors.darkblue, fg = colors.white, gui = 'bold'},
                     b = {bg = colors.lightgray, fg = colors.white},
                     c = {bg = colors.darkgray, fg = colors.white}
                 },
                 command = {
-                    a = {bg = colors.green, fg = colors.black, gui = 'bold'},
+                    a = {bg = colors.magenta, fg = colors.white, gui = 'bold'},
                     b = {bg = colors.lightgray, fg = colors.white},
                     c = {bg = colors.darkgray, fg = colors.white}
                 },
