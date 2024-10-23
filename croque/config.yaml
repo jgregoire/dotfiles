@@ -168,6 +168,8 @@ git_status:
   remotes:
     - pattern: github.com
       icon: " "
+    - pattern: gitlab.com
+      icon: " "
     - pattern: ""
       icon: " "
   display_master: false
