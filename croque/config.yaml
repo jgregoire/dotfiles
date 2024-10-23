@@ -143,8 +143,8 @@ git_status:
     deleted: "-"
     renamed: "→"
     conflicted: ""
-    behind: ""
-    ahead: ""
+    behind: " "
+    ahead: " "
   clean:
     style:
       foreground: black
