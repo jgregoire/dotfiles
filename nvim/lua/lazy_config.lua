@@ -302,34 +302,52 @@ require('lazy').setup({ -- Plugins
             }
             local neofusion_theme = {
                 normal = {
-                    a = {bg = colors.cyan, fg = colors.black, gui = 'bold'},
-                    b = {bg = colors.lightgray, fg = colors.white},
-                    c = {bg = colors.darkgray, fg = colors.white}
+                    a = { bg = colors.red, fg = colors.black, gui = 'bold' },
+                    b = { bg = colors.lightgray, fg = colors.white },
+                    c = { bg = colors.darkgray, fg = colors.white },
+                    x = { bg = colors.darkgray, fg = colors.white },
+                    y = { bg = colors.blue, fg = colors.black },
+                    z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
                 },
                 insert = {
-                    a = {bg = colors.blue, fg = colors.black, gui = 'bold'},
-                    b = {bg = colors.lightgray, fg = colors.white},
-                    c = {bg = colors.darkgray, fg = colors.white}
+                    a = { bg = colors.blue, fg = colors.black, gui = 'bold' },
+                    b = { bg = colors.lightgray, fg = colors.white },
+                    c = { bg = colors.darkgray, fg = colors.white },
+                    x = { bg = colors.darkgray, fg = colors.white },
+                    y = { bg = colors.blue, fg = colors.black },
+                    z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
                 },
                 visual = {
-                    a = {bg = colors.red, fg = colors.black, gui = 'bold'},
-                    b = {bg = colors.lightgray, fg = colors.white},
-                    c = {bg = colors.darkgray, fg = colors.white}
+                    a = { bg = colors.magenta, fg = colors.black, gui = 'bold'},
+                    b = { bg = colors.lightgray, fg = colors.white },
+                    c = { bg = colors.darkgray, fg = colors.white },
+                    x = { bg = colors.darkgray, fg = colors.white },
+                    y = { bg = colors.blue, fg = colors.black },
+                    z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
                 },
                 replace = {
-                    a = {bg = colors.darkblue, fg = colors.white, gui = 'bold'},
-                    b = {bg = colors.lightgray, fg = colors.white},
-                    c = {bg = colors.darkgray, fg = colors.white}
+                    a = { bg = colors.cyan, fg = colors.black, gui = 'bold'},
+                    b = { bg = colors.lightgray, fg = colors.white },
+                    c = { bg = colors.darkgray, fg = colors.white },
+                    x = { bg = colors.darkgray, fg = colors.white },
+                    y = { bg = colors.blue, fg = colors.black },
+                    z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
                 },
                 command = {
-                    a = {bg = colors.magenta, fg = colors.white, gui = 'bold'},
-                    b = {bg = colors.lightgray, fg = colors.white},
-                    c = {bg = colors.darkgray, fg = colors.white}
+                    a = { bg = colors.darkblue, fg = colors.white, gui = 'bold'},
+                    b = { bg = colors.lightgray, fg = colors.white },
+                    c = { bg = colors.darkgray, fg = colors.white },
+                    x = { bg = colors.darkgray, fg = colors.white },
+                    y = { bg = colors.blue, fg = colors.black },
+                    z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
                 },
                 inactive = {
-                    a = {bg = colors.darkgray, fg = colors.white, gui = 'bold'},
-                    b = {bg = colors.darkgray, fg = colors.white},
-                    c = {bg = colors.darkgray, fg = colors.white}
+                    a = { bg = colors.darkgray, fg = colors.white, gui = 'bold'},
+                    b = { bg = colors.darkgray, fg = colors.white },
+                    c = { bg = colors.darkgray, fg = colors.white },
+                    x = { bg = colors.darkgray, fg = colors.white },
+                    y = { bg = colors.blue, fg = colors.black },
+                    z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
                 }
             }
             require('lualine').setup({
