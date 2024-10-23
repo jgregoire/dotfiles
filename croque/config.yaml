@@ -143,12 +143,12 @@ git_status:
     deleted: "-"
     renamed: "→"
     conflicted: ""
-    behind: " "
-    ahead: " "
+    behind: " "
+    ahead: " "
   clean:
     style:
       foreground: black
-      background: green
+      background: yellow
       decoration: []
   unstaged:
     style:
@@ -158,7 +158,7 @@ git_status:
   staged:
     style:
       foreground: black
-      background: green
+      background: yellow
       decoration: []
   conflicted:
     style:
