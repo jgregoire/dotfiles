@@ -100,14 +100,14 @@ path:
 
 status:
   icons:
-    success: "✔"
+    success: ""
     error: ""
     root: ""
     jobs: ""
   success:
     style:
-      foreground: green
-      background: white
+      foreground: white
+      background: red
       decoration: []
   error:
     style:
@@ -143,8 +143,8 @@ git_status:
     deleted: "-"
     renamed: "→"
     conflicted: ""
-    behind: ""
-    ahead: ""
+    behind: ""
+    ahead: ""
   clean:
     style:
       foreground: black
