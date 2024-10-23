@@ -310,7 +310,8 @@ require('lazy').setup({ -- Plugins
                     z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
                 },
                 insert = {
-                    a = { bg = colors.blue, fg = colors.black, gui = 'bold' },
+                    a = { bg = colors.blue, fg = colors.black
+                        , gui = 'bold' },
                     b = { bg = colors.lightgray, fg = colors.white },
                     c = { bg = colors.darkgray, fg = colors.white },
                     x = { bg = colors.darkgray, fg = colors.white },
@@ -346,8 +347,8 @@ require('lazy').setup({ -- Plugins
                     b = { bg = colors.darkgray, fg = colors.white },
                     c = { bg = colors.darkgray, fg = colors.white },
                     x = { bg = colors.darkgray, fg = colors.white },
-                    y = { bg = colors.blue, fg = colors.black },
-                    z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
+                    y = { bg = colors.darkgray, fg = colors.white },
+                    z = { bg = colors.darkgray, fg = colors.white, gui = 'bold' }
                 }
             }
             require('lualine').setup({
