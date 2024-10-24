@@ -56,7 +56,14 @@ require('lazy').setup({ -- Plugins
         priority = 1000,
         enabled = true,
         config = function ()
-            require('neofusion').setup()
+            require('neofusion').setup({
+                overrides = {
+                    ['@operator'] = { fg = '#B2F85D' },
+                    -- ['@punctuation.delimiter'] = { fg = '#B2F85D' },
+                    ['@string.escape'] = { fg = '#B2F85D' },
+                    ['@punctuation.special'] = { fg = '#F53424' },
+                },
+            })
             vim.cmd.colorscheme('neofusion')
         end
     },
@@ -292,17 +299,19 @@ require('lazy').setup({ -- Plugins
             local colors = {
                 black        = '#070f1c',
                 white        = '#e0d9c7',
-                red          = '#ea6847',
-                cyan         = '#86dbf5',
+                orange       = '#ea6847',
+                red          = '#F53424',
+                lightgray    = '#2f516c',
                 blue         = '#5db2f8',
+                cyan         = '#86dbf5',
+                green        = '#B2F85D',
                 magenta      = '#d943a8',
                 darkgray     = '#0e0807',
                 darkblue     = '#050539',
-                lightgray    = '#2f516c',
             }
             local neofusion_theme = {
                 normal = {
-                    a = { bg = colors.red, fg = colors.black, gui = 'bold' },
+                    a = { bg = colors.orange, fg = colors.black, gui = 'bold' },
                     b = { bg = colors.lightgray, fg = colors.white },
                     c = { bg = colors.darkgray, fg = colors.white },
                     x = { bg = colors.darkgray, fg = colors.white },
@@ -310,7 +319,7 @@ require('lazy').setup({ -- Plugins
                     z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
                 },
                 insert = {
-                    a = { bg = colors.blue, fg = colors.black
+                    a = { bg = colors.green, fg = colors.black
                         , gui = 'bold' },
                     b = { bg = colors.lightgray, fg = colors.white },
                     c = { bg = colors.darkgray, fg = colors.white },
@@ -319,7 +328,7 @@ require('lazy').setup({ -- Plugins
                     z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
                 },
                 visual = {
-                    a = { bg = colors.magenta, fg = colors.black, gui = 'bold'},
+                    a = { bg = colors.red, fg = colors.black, gui = 'bold'},
                     b = { bg = colors.lightgray, fg = colors.white },
                     c = { bg = colors.darkgray, fg = colors.white },
                     x = { bg = colors.darkgray, fg = colors.white },
@@ -327,7 +336,7 @@ require('lazy').setup({ -- Plugins
                     z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
                 },
                 replace = {
-                    a = { bg = colors.cyan, fg = colors.black, gui = 'bold'},
+                    a = { bg = colors.blue, fg = colors.black, gui = 'bold'},
                     b = { bg = colors.lightgray, fg = colors.white },
                     c = { bg = colors.darkgray, fg = colors.white },
                     x = { bg = colors.darkgray, fg = colors.white },
@@ -335,7 +344,7 @@ require('lazy').setup({ -- Plugins
                     z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
                 },
                 command = {
-                    a = { bg = colors.darkblue, fg = colors.white, gui = 'bold'},
+                    a = { bg = colors.magenta, fg = colors.white, gui = 'bold'},
                     b = { bg = colors.lightgray, fg = colors.white },
                     c = { bg = colors.darkgray, fg = colors.white },
                     x = { bg = colors.darkgray, fg = colors.white },
