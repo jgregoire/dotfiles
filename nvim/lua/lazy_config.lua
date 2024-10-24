@@ -58,9 +58,8 @@ require('lazy').setup({ -- Plugins
         config = function ()
             require('neofusion').setup({
                 overrides = {
-                    ['@operator'] = { fg = '#B2F85D' },
-                    -- ['@punctuation.delimiter'] = { fg = '#B2F85D' },
-                    ['@string.escape'] = { fg = '#B2F85D' },
+                    ['@operator']            = { fg = '#B2F85D' },
+                    ['@string.escape']       = { fg = '#B2F85D' },
                     ['@punctuation.special'] = { fg = '#F53424' },
                 },
             })
