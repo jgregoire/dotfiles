@@ -67,14 +67,6 @@ require('lazy').setup({ -- Plugins
         end
     },
     {
-        'AlexvZyl/nordic.nvim',
-        priority = 1000,
-        enabled = false,
-        config = function ()
-            require('nordic').load()
-        end
-    },
-    {
         'lvim-tech/lvim-colorscheme',
         priority = 1000,
         enabled = false,
@@ -97,33 +89,6 @@ require('lazy').setup({ -- Plugins
         config = function ()
             vim.cmd.colorscheme('miasma')
         end
-    },
-    {
-        'sainnhe/gruvbox-material',
-        priority = 1000,
-        enabled = false,
-        config = function ()
-            vim.g.gruvbox_material_enable_italic = true
-            vim.g.gruvbox_material_background = 'hard'
-            vim.g.gruvbox_material_foreground = 'mix'
-            vim.cmd.colorscheme('gruvbox-material')
-        end
-    },
-    {
-        'sainnhe/edge',
-        priority = 1000,
-        enabled = false,
-        config = function ()
-            vim.g.edge_enable_italic = true
-            vim.g.edge_style = 'neon'
-            vim.g.edge_dim_foreground = 1
-            vim.cmd.colorscheme('edge')
-        end
-    },
-    {
-        'vhyrro/luarocks.nvim',
-        priority = 900,
-        config = true
     },
     {
         'williamboman/mason.nvim',
@@ -298,7 +263,7 @@ require('lazy').setup({ -- Plugins
             local colors = {
                 black        = '#06101e',
                 white        = '#e2d9c5',
-                orange       = '#ea6847',
+                orange       = '#fa7a61',
                 red          = '#FD5E3A',
                 lightgray    = '#22536f',
                 blue         = '#35b5ff',
@@ -320,8 +285,7 @@ require('lazy').setup({ -- Plugins
                     z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
                 },
                 insert = {
-                    a = { bg = colors.green, fg = colors.black
-                        , gui = 'bold' },
+                    a = { bg = colors.green, fg = colors.black, gui = 'bold' },
                     b = { bg = colors.lightgray, fg = colors.white },
                     c = { bg = colors.darkgray, fg = colors.white },
                     x = { bg = colors.darkgray, fg = colors.white },
