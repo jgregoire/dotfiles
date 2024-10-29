@@ -26,10 +26,14 @@ Arch Linux
     - git
     - zsh-zap
     - rustup
-    - eza
-    - rm-improved
     - neovim
     - wl-clipboard
+- Rust Packages
+    - eza
+    - rm-improved
+    - cargo-update
+    - croque
+    - rmpc
 - Graphical System
     - ly
     - niri
