@@ -116,6 +116,19 @@ end
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '-'
 
+-- zsh lacks a TS parser, so treat it like sh
+vim.filetype.add({
+    extension = {
+        zsh = 'sh',
+        sh = 'sh',
+    },
+    filename = {
+        ['.zshrc'] = 'sh',
+        ['.zprofile'] = 'sh',
+        ['.zshenv'] = 'sh',
+    },
+})
+
 -- Add package paths
 package.path = package.path .. ';' .. vim.fn.expand('$HOME') .. '/.luarocks/share/lua/5.1/?/init.lua;'
 package.path = package.path .. ';' .. vim.fn.expand('$HOME') .. '/.luarocks/share/lua/5.1/?.lua;'
@@ -123,6 +136,6 @@ package.path = package.path .. ';' .. vim.fn.expand('$HOME') .. '/.luarocks/shar
 -- Specify plugins:
 require('lazy_config')
 
-if vim.g.neovide then
-    vim.cmd([[highlight Normal guibg=#282c34]])
-end
+-- if vim.g.neovide then
+    -- vim.cmd([[highlight Normal guibg=#282c34]])
+-- end

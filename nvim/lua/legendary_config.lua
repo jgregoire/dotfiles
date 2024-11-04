@@ -58,7 +58,7 @@ local M = {
 
         -- Editing
         { '<C-s>', '<cmd>w<CR>', mode = { 'n', 'i' }, description = 'Save', opts = defaults },
-        { '<C-z>', { n = 'u',     i = '<C-o>u' },     description = 'Undo', opts = defaults },
+        { '<C-z>', { n = 'u',     i = '<C-o>u', v = '<nop>' },     description = 'Undo', opts = defaults },
         { '<C-y>', { n = '<C-r>', i = '<C-o><C-r>' }, description = 'Redo', opts = defaults },
         { '<C-v>', { n = 'pcc',     i = '<C-o>p' },     description = 'Paste before cursor', opts = defaults },
         { '<C-V>', { n = 'P',     i = '<C-o>P' },     description = 'Paste after cursor', opts = defaults },

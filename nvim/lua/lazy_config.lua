@@ -60,18 +60,10 @@ require('lazy').setup({ -- Plugins
                 overrides = {
                     ['@operator']            = { fg = '#B2F85D' },
                     ['@string.escape']       = { fg = '#B2F85D' },
-                    ['@punctuation.special'] = { fg = '#F53424' },
+                    ['@punctuation.special'] = { fg = '#FD5E3A' },
                 },
             })
             vim.cmd.colorscheme('neofusion')
-        end
-    },
-    {
-        'AlexvZyl/nordic.nvim',
-        priority = 1000,
-        enabled = false,
-        config = function ()
-            require('nordic').load()
         end
     },
     {
@@ -97,33 +89,6 @@ require('lazy').setup({ -- Plugins
         config = function ()
             vim.cmd.colorscheme('miasma')
         end
-    },
-    {
-        'sainnhe/gruvbox-material',
-        priority = 1000,
-        enabled = false,
-        config = function ()
-            vim.g.gruvbox_material_enable_italic = true
-            vim.g.gruvbox_material_background = 'hard'
-            vim.g.gruvbox_material_foreground = 'mix'
-            vim.cmd.colorscheme('gruvbox-material')
-        end
-    },
-    {
-        'sainnhe/edge',
-        priority = 1000,
-        enabled = false,
-        config = function ()
-            vim.g.edge_enable_italic = true
-            vim.g.edge_style = 'neon'
-            vim.g.edge_dim_foreground = 1
-            vim.cmd.colorscheme('edge')
-        end
-    },
-    {
-        'vhyrro/luarocks.nvim',
-        priority = 900,
-        config = true
     },
     {
         'williamboman/mason.nvim',
@@ -296,21 +261,23 @@ require('lazy').setup({ -- Plugins
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function ()
             local colors = {
-                black        = '#070f1c',
-                white        = '#e0d9c7',
-                orange       = '#ea6847',
-                red          = '#F53424',
-                lightgray    = '#2f516c',
-                blue         = '#5db2f8',
-                cyan         = '#86dbf5',
+                black        = '#06101e',
+                white        = '#e2d9c5',
+                orange       = '#fa7a61',
+                red          = '#FD5E3A',
+                lightgray    = '#22536f',
+                blue         = '#35b5ff',
+                cyan         = '#66def9',
                 green        = '#B2F85D',
-                magenta      = '#d943a8',
-                darkgray     = '#0e0807',
-                darkblue     = '#050539',
+                magenta      = '#ec30ac',
+                maroon       = '#722529',
+                darkgray     = '#052839',
+                darkblue     = '#004752',
+                darkcyan     = '#008DA3',
             }
             local neofusion_theme = {
                 normal = {
-                    a = { bg = colors.orange, fg = colors.black, gui = 'bold' },
+                    a = { bg = colors.red, fg = colors.black, gui = 'bold' },
                     b = { bg = colors.lightgray, fg = colors.white },
                     c = { bg = colors.darkgray, fg = colors.white },
                     x = { bg = colors.darkgray, fg = colors.white },
@@ -318,8 +285,7 @@ require('lazy').setup({ -- Plugins
                     z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
                 },
                 insert = {
-                    a = { bg = colors.green, fg = colors.black
-                        , gui = 'bold' },
+                    a = { bg = colors.green, fg = colors.black, gui = 'bold' },
                     b = { bg = colors.lightgray, fg = colors.white },
                     c = { bg = colors.darkgray, fg = colors.white },
                     x = { bg = colors.darkgray, fg = colors.white },
@@ -327,7 +293,7 @@ require('lazy').setup({ -- Plugins
                     z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
                 },
                 visual = {
-                    a = { bg = colors.red, fg = colors.black, gui = 'bold'},
+                    a = { bg = colors.magenta, fg = colors.black, gui = 'bold'},
                     b = { bg = colors.lightgray, fg = colors.white },
                     c = { bg = colors.darkgray, fg = colors.white },
                     x = { bg = colors.darkgray, fg = colors.white },
@@ -351,12 +317,12 @@ require('lazy').setup({ -- Plugins
                     z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
                 },
                 inactive = {
-                    a = { bg = colors.darkgray, fg = colors.white, gui = 'bold'},
+                    a = { bg = colors.maroon, fg = colors.white, gui = 'bold'},
                     b = { bg = colors.darkgray, fg = colors.white },
                     c = { bg = colors.darkgray, fg = colors.white },
                     x = { bg = colors.darkgray, fg = colors.white },
                     y = { bg = colors.darkgray, fg = colors.white },
-                    z = { bg = colors.darkgray, fg = colors.white, gui = 'bold' }
+                    z = { bg = colors.darkcyan, fg = colors.black, gui = 'bold' }
                 }
             }
             require('lualine').setup({
@@ -831,21 +797,21 @@ require('lazy').setup({ -- Plugins
             border = 'rounded',
             icons = {
                 cmd        = " ",
-                config     = "",
-                event      = "",
+                config     = " ",
+                event      = " ",
                 ft         = " ",
                 init       = " ",
                 import     = " ",
                 keys       = " ",
                 lazy       = "󰒲 ",
-                loaded     = "●",
-                not_loaded = "○",
+                loaded     = "● ",
+                not_loaded = "○ ",
                 plugin     = " ",
                 runtime    = " ",
                 require    = "󰢱 ",
                 source     = " ",
-                start      = "",
-                task       = "✔ ",
+                start      = " ",
+                task       = " ",
                 list = {
                     "●",
                     "➜",
