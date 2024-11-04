@@ -1,4 +1,4 @@
--- Bootstrap lazy.nvim definite
+-- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 ---@diagnostic disable-next-line: undefined-field
@@ -52,39 +52,43 @@ require('lazy').setup({ -- Plugins
         end,
     },
     {
-        'AlexvZyl/nordic.nvim',
+        'diegoulloao/neofusion.nvim',
         priority = 1000,
         enabled = true,
         config = function ()
-            require('nordic').load()
+            require('neofusion').setup({
+                overrides = {
+                    ['@operator']            = { fg = '#B2F85D' },
+                    ['@string.escape']       = { fg = '#B2F85D' },
+                    ['@punctuation.special'] = { fg = '#FD5E3A' },
+                },
+            })
+            vim.cmd.colorscheme('neofusion')
         end
     },
     {
-        'sainnhe/gruvbox-material',
+        'lvim-tech/lvim-colorscheme',
         priority = 1000,
         enabled = false,
         config = function ()
-            vim.g.gruvbox_material_enable_italic = true
-            vim.g.gruvbox_material_background = 'hard'
-            vim.g.gruvbox_material_foreground = 'mix'
-            vim.cmd.colorscheme('gruvbox-material')
+            require('lvim-colorscheme').setup({
+                style = 'dark',
+                styles = {
+                    comments = { italic = true, bold = false },
+                    keywords = { italic = false, bold = true },
+                    functions = { italic = false, bold = false },
+                    variables = {  },
+                }
+            })
         end
     },
     {
-        'sainnhe/edge',
-        priority = 1000,
+        'xero/miasma.nvim',
         enabled = false,
+        priority = 100,
         config = function ()
-            vim.g.edge_enable_italic = true
-            vim.g.edge_style = 'neon'
-            vim.g.edge_dim_foreground = 1
-            vim.cmd.colorscheme('edge')
+            vim.cmd.colorscheme('miasma')
         end
-    },
-    {
-        'vhyrro/luarocks.nvim',
-        priority = 900,
-        config = true
     },
     {
         'williamboman/mason.nvim',
@@ -256,11 +260,76 @@ require('lazy').setup({ -- Plugins
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function ()
+            local colors = {
+                black        = '#06101e',
+                white        = '#e2d9c5',
+                orange       = '#fa7a61',
+                red          = '#FD5E3A',
+                lightgray    = '#22536f',
+                blue         = '#35b5ff',
+                cyan         = '#66def9',
+                green        = '#B2F85D',
+                magenta      = '#ec30ac',
+                maroon       = '#722529',
+                darkgray     = '#052839',
+                darkblue     = '#004752',
+                darkcyan     = '#008DA3',
+            }
+            local neofusion_theme = {
+                normal = {
+                    a = { bg = colors.red, fg = colors.black, gui = 'bold' },
+                    b = { bg = colors.lightgray, fg = colors.white },
+                    c = { bg = colors.darkgray, fg = colors.white },
+                    x = { bg = colors.darkgray, fg = colors.white },
+                    y = { bg = colors.blue, fg = colors.black },
+                    z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
+                },
+                insert = {
+                    a = { bg = colors.green, fg = colors.black, gui = 'bold' },
+                    b = { bg = colors.lightgray, fg = colors.white },
+                    c = { bg = colors.darkgray, fg = colors.white },
+                    x = { bg = colors.darkgray, fg = colors.white },
+                    y = { bg = colors.blue, fg = colors.black },
+                    z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
+                },
+                visual = {
+                    a = { bg = colors.magenta, fg = colors.black, gui = 'bold'},
+                    b = { bg = colors.lightgray, fg = colors.white },
+                    c = { bg = colors.darkgray, fg = colors.white },
+                    x = { bg = colors.darkgray, fg = colors.white },
+                    y = { bg = colors.blue, fg = colors.black },
+                    z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
+                },
+                replace = {
+                    a = { bg = colors.blue, fg = colors.black, gui = 'bold'},
+                    b = { bg = colors.lightgray, fg = colors.white },
+                    c = { bg = colors.darkgray, fg = colors.white },
+                    x = { bg = colors.darkgray, fg = colors.white },
+                    y = { bg = colors.blue, fg = colors.black },
+                    z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
+                },
+                command = {
+                    a = { bg = colors.magenta, fg = colors.white, gui = 'bold'},
+                    b = { bg = colors.lightgray, fg = colors.white },
+                    c = { bg = colors.darkgray, fg = colors.white },
+                    x = { bg = colors.darkgray, fg = colors.white },
+                    y = { bg = colors.blue, fg = colors.black },
+                    z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
+                },
+                inactive = {
+                    a = { bg = colors.maroon, fg = colors.white, gui = 'bold'},
+                    b = { bg = colors.darkgray, fg = colors.white },
+                    c = { bg = colors.darkgray, fg = colors.white },
+                    x = { bg = colors.darkgray, fg = colors.white },
+                    y = { bg = colors.darkgray, fg = colors.white },
+                    z = { bg = colors.darkcyan, fg = colors.black, gui = 'bold' }
+                }
+            }
             require('lualine').setup({
                 options = {
-                    -- theme = 'auto',
+                    theme = neofusion_theme,
                     -- theme = 'eldritch',
-                    theme = 'nordic',
+                    -- theme = 'nordic',
                     component_separators = {
                         left  = '│',
                         right = '│'
@@ -268,8 +337,10 @@ require('lazy').setup({ -- Plugins
                     section_separators = {
                         -- left  = '',
                         -- right = ''
-                        right = '',
-                        left = '',
+                        -- right = '',
+                        -- left = '',
+                        left = '',
+                        right = '',
                     },
                 },
                 extensions = {
@@ -279,19 +350,19 @@ require('lazy').setup({ -- Plugins
                     lualine_a = {
                         {
                             'mode',
-                            separator = {
-                                left = '',
-                                right = '',
-                            },
+                            -- separator = {
+                            --     left = '',
+                            --     right = '',
+                            -- },
                         },
                     },
                     lualine_b = {
                         {
                             'branch',
-                            separator = {
-                                left = '',
-                                right = '',
-                            },
+                            -- separator = {
+                            --     left = '',
+                            --     right = '',
+                            -- },
                             draw_empty = true,
                         },
                         {
@@ -329,10 +400,10 @@ require('lazy').setup({ -- Plugins
                     lualine_z = {
                         {
                             'location',
-                            separator = {
-                                left = '',
-                                right = '',
-                            },
+                            -- separator = {
+                            --     left = '',
+                            --     right = '',
+                            -- },
                         },
                     },
                 },
@@ -675,11 +746,10 @@ require('lazy').setup({ -- Plugins
             'nvim-treesitter/nvim-treesitter-textobjects',
             'hrsh7th/nvim-cmp',
             'nvim-lua/plenary.nvim',
-            'vhyrro/luarocks.nvim',
             'benlubas/neorg-conceal-wrap'
         },
+        version = '*',
         ft = 'norg',
-        cmd = 'Neorg',
         -- build = ':Neorg sync-parsers',
         config = function ()
             local opts = require('neorg_config')
@@ -727,21 +797,21 @@ require('lazy').setup({ -- Plugins
             border = 'rounded',
             icons = {
                 cmd        = " ",
-                config     = "",
-                event      = "",
+                config     = " ",
+                event      = " ",
                 ft         = " ",
                 init       = " ",
                 import     = " ",
                 keys       = " ",
                 lazy       = "󰒲 ",
-                loaded     = "●",
-                not_loaded = "○",
+                loaded     = "● ",
+                not_loaded = "○ ",
                 plugin     = " ",
                 runtime    = " ",
                 require    = "󰢱 ",
                 source     = " ",
-                start      = "",
-                task       = "✔ ",
+                start      = " ",
+                task       = " ",
                 list = {
                     "●",
                     "➜",

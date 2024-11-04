@@ -40,7 +40,8 @@
 */
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FiraCode, FontAwesome, sans-serif;
+    /* font-family: FiraCode, FontAwesome, sans-serif; */
+    font-family: CartographCF Nerd Font Mono, FiraCode, FontAwesome, sans-serif;
     font-size: 16px;
 }
 

@@ -5,9 +5,9 @@
 }
 
 window#waybar {
-    background-color: rgba(36, 41, 51, 0.5);
-    border-bottom: 4px solid rgba(0, 0, 0, 0.5);
-    color: #BBC3D4;
+    background-color: rgba(7, 15, 28, 0.5);
+    border-bottom: 4px solid rgba(14, 8, 7, 0.5);
+    color: #e0d9c7;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -27,13 +27,13 @@ button {
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
     background: inherit;
-    box-shadow: inset 0 -3px #BBC3D4;
+    box-shadow: inset 0 -3px #E0D9C7;
 }
 
 #workspaces button {
     padding: 0 5px;
     background-color: transparent;
-    color: #BBC3D4;
+    color: #E0D9C7;
 }
 
 #workspaces button:hover {
@@ -42,7 +42,7 @@ button:hover {
 
 #workspaces button.focused {
     background-color: #4C566A;
-    box-shadow: inset 0 -3px #BBC3D4;
+    box-shadow: inset 0 -3px #E0D9C7;
 }
 
 #workspaces button.urgent {
@@ -62,7 +62,7 @@ button:hover {
 #idle_inhibitor,
 #mpd {
     padding: 0 10px;
-    color: #BBC3D4;
+    color: #E0D9C7;
     background-color: rgba(36, 41, 51, 0.0);
 }
 
@@ -82,7 +82,7 @@ button:hover {
 }
 
 #clock {
-    border-bottom: 4px solid #BBC3D4;
+    border-bottom: 4px solid #E0D9C7;
 }
 
 #window {
@@ -95,7 +95,7 @@ button:hover {
 
 @keyframes blink {
     to {
-        background-color: #BBC3D4;
+        background-color: #E0D9C7;
         color: #242933;
     }
 }
@@ -103,7 +103,7 @@ button:hover {
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
     background-color: #B74E58;
-    color: #BBC3D4;
+    color: #E0D9C7;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
