@@ -78,7 +78,7 @@ format = '[ $user ](bold $style)'
 
 [hostname]
 ssh_only = false
-ssh_symbol =' 󱫋' 
+ssh_symbol =' 󰱠' 
 style = 'bg:color_bg3 fg:color_fg0'
 format = '[ $hostname$ssh_symbol ]($style)'
 
