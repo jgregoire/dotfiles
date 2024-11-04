@@ -147,7 +147,7 @@ layout {
 
         // Color of the ring on the active monitor: red, green, blue, alpha.
         // active-gradient from="#88C0D0" to="#97B67C" angle=100 in="oklch longer hue"
-        active-gradient from="#ea6847" to="#5db2f8" angle=100 in="oklch shorter hue"
+        active-gradient from="#fd5e3a" to="#86dbf5" angle=100 in="oklch shorter hue"
 
         // Color of the ring on inactive monitors: red, green, blue, alpha.
         inactive-color "#2f516c"
@@ -164,7 +164,7 @@ layout {
         
         // active-color 255 200 127 255
         // active-gradient from="#88C0D0" to="#97B67C" angle=100 in="oklch longer hue"
-        active-gradient from="#ea6847" to="#5db2f8" angle=100 in="oklch shorter hue"
+        active-gradient from="#fd5e3a" to="#86dbf5" angle=100 in="oklch shorter hue"
         
         inactive-color "#2f516c"
     }
