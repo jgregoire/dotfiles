@@ -4,7 +4,8 @@ plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
 plug "zap-zsh/zap-prompt"
 # plug "jgregoire/agnoster-custom"
-eval "$(croque init zsh)"
+# eval "$(croque init zsh)"
+eval "$(starship init zsh)"
 
 # Load and initialise completion system
 # zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
@@ -88,14 +89,14 @@ alias fire='rpicam-still -n --timelapse=1000ms --datetime'
 # Give up and start over
 # by calling `$ git unfuck`
 alias 'unfuck'='git reset --hard HEAD'
-# alias unfuck='git reset --hard HEAD'
 
 # systemd
 alias ssc='sudo systemctl'
 alias ssu='systemctl --user'
 
 # ncmpcpp remote host
-alias ncmp='ncmpcpp -h $MPD_HOST -p 6600'
+# I set MPD_HOST and MPD_PORT in .zprofile now.
+# alias ncmp='ncmpcpp -h $MPD_HOST -p 6600'
 
 # Music Syncing
 #alias rsyncpm='rsync -av --size-only --force --del /home/james/Music/ /home/james/Marconi/Music/.'
@@ -125,11 +126,12 @@ alias nano='nano -c'
 
 # Use neovim instead of vi
 alias vi='nvim'
+
 # Use neovim instead of vim
 alias vim='nvim'
-# Use nvim with user rc file for sudo
-alias svi='sudoedit'
 
+# Use nvim with user rc file for sudo. EDITOR set in .zprofile.
+alias svi='sudoedit'
 
 # dc undoes cd! \o/
 setopt AUTO_CD
@@ -165,14 +167,14 @@ alias pacc='sudo pacman -Sc'
 alias auri='makepkg -sic'
 
 # Randomize wallpaper
-alias rwp='feh --randomize --bg-fill /home/james/Pictures/Desktops/21x9/3440x1440'
+# alias rwp='feh --randomize --bg-fill /home/james/Pictures/Desktops/21x9/3440x1440'
 
 # Beets
 alias bim='beet import'
 
 # Volume control (pulse)
 # e.g. '$ vol 50%'
-alias vol='pactl set-sink-volume 1'
+# alias vol='pactl set-sink-volume 1'
 
 alias luamake='/home/james/Code/lua-language-server/3rd/luamake/luamake'
 
@@ -191,7 +193,6 @@ bindkey "\e[3~" delete-char			# Delete
 # Magic space!?
 bindkey -M viins ' ' magic-space
 
-
 # Separate man page sections.  Neat.
 zstyle ':completion:*:manuals' separate-sections true
 
@@ -206,5 +207,8 @@ bindkey "^I" expand-or-complete-with-dots
 
 # WSL likes to start us somewhere besides the home directory. Fix that.
 cd
+
+# In WSL, jump to Windows home dir
+alias cdh='cd /mnt/c/Users/jfg'
 
 # That's all, folks!
