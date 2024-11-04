@@ -1,4 +1,4 @@
--- Bootstrap lazy.nvim definite
+-- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 ---@diagnostic disable-next-line: undefined-field
