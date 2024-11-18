@@ -208,11 +208,13 @@ require('lazy').setup({ -- Plugins
     },
     {
         'Gelio/cmp-natdat',
+        enabled = false,
         lazy = true,
         config = true,
     },
     {
         'hrsh7th/nvim-cmp',
+        enabled = false,
         dependencies = {
             'neovim/nvim-lspconfig',
             'hrsh7th/cmp-nvim-lsp',
@@ -229,6 +231,15 @@ require('lazy').setup({ -- Plugins
         config = function ()
             require('cmp_config') -- Run my configuration file
         end
+    },
+    {
+        'max397574/care.nvim',
+        dependencies = {
+            'max397574/care-cmp',
+            'saadparwaiz1/cmp_luasnip',
+            'L3MON4D3/LuaSnip',
+        },
+        config = true,
     },
     {
         '0xAdk/full_visual_line.nvim',
@@ -498,11 +509,7 @@ require('lazy').setup({ -- Plugins
     },
     {
         'abecodes/tabout.nvim',
-        keys = {
-            { '<Tab>' },
-            { '<S-Tab>' },
-            { '<C-d>' },
-        },
+        event = 'InsertCharPre',
         dependencies = {
             'nvim-treesitter/nvim-treesitter',
             'hrsh7th/nvim-cmp'

@@ -2,12 +2,12 @@
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
 
 -- Configure Lua language server.
 lspconfig.lua_ls.setup({
-    capabilities = capabilities,
+    -- capabilities = capabilities,
     flags = {
         debounce_text_changes = 150,
     },

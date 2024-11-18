@@ -164,13 +164,61 @@ local M = {
         -- LuaSnip
         { '<C-e>', mode = { 'i', 's' }, description = 'Luasnip: Expand' },
 
+        -- care.nvim, tabout
+        { '<S-Right>', function () vim.snippet.jump(1) end, mode = { 'i' }, description = 'Jump to next placeholder in snippet', opts = defaults },
+        { '<S-Left>', function () vim.snippet.jump(-1) end, mode = { 'i' }, description = 'Jump to previous placeholder in snippet', opts = defaults },
+        { '<S-Space>', function () require('care').api.complete() end, mode = { 'i' }, description = 'Open completion menu', opts = defaults },
+        { '<C-Right>', '<Plug>(CareConfirm)', mode = { 'i' }, description = 'Confirm completion', opts = defaults },
+        { '<C-Left>', '<Plug>(CareClose)', mode = { 'i' }, description = 'Close Care menu', opts = defaults },
+        {
+            '<Esc>',
+            function ()
+                if require('care').api.is_open() then
+                    require('care').api.close()
+                else
+                    vim.api.nvim_feedkeys(vim.keycode('<Esc>'), 'n', false)
+                end
+            end,
+            mode = { 'i' },
+            description = 'Close Care menu if open, otherwise send Esc',
+            opts = defaults
+        },
+        {
+            '<Tab>',
+            function ()
+                if require('care').api.is_open() then
+                    require('care').api.select_next()
+                else
+                    vim.api.nvim_feedkeys(vim.keycode('<Tab>'), 'n', false)
+                end
+            end,
+            mode = { 'i' },
+            description = 'Care: Select next if open, otherwise send Tab',
+            opts = defaults
+        },
+        {
+            '<S-Tab>',
+            function ()
+                if require('care').api.is_open() then
+                    require('care').select_prev()
+                else
+                    vim.api.nvim_feedkeys(vim.keycode('<S-Tab>'), 'n', false)
+                end
+            end,
+            mode = { 'i' },
+            description = 'Care: Select previous if open, or send S-Tab',
+            opts = defaults
+        },
+
         -- CMP
+        --[[
         { '<C-Right>',               description = 'CMP: Invoke' },
         { '<Tab>',   mode = { 's' }, description = 'CMP: Select next' },
         { '<C-Tab>', mode = { 's' }, description = 'CMP: Select previous' },
         { '<Right>',    mode = { 's' }, description = 'CMP: Confirm' },
         { '<C-c>',                   description = 'CMP: Cancel' },
-
+        --]]
+        --
         -- Telescope
         { '<leader>ff', '<cmd>Telescope find_files<cr>', mode = { 'n' }, description = 'Telescope: Find files', opts = defaults },
         { '<leader>fg', '<cmd>Telescope live_grep<cr>',  mode = { 'n' }, description = 'Telescope: Live grep', opts = defaults },
@@ -181,8 +229,10 @@ local M = {
         { '<C-w>', mode = { 'n', 'i' }, description = 'Autopairs: Fast wrap' },
 
         -- Tabout
+        --[[
         { '<Tab>',   mode = { 'i' }, description = 'Tabout: Forward' },
         { '<S-Tab>', mode = { 'i' }, description = 'Tabout: Backward' },
+        --]]
 
         -- Nvim-Surround
         { 'ps',     mode = { 'n' }, description = 'Surround: Add [MOTION] [TYPE]' },
