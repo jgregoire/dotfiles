@@ -116,7 +116,7 @@ stashed = ' '
 untracked = ' '
 up_to_date = ' '
 style = 'bg:color_bg2 fg:color_fg0'
-format = '[($all_status$ahead_behind)]($style)'
+format = '[( $all_status$ahead_behind)]($style)'
 
 [git_commit]
 style = 'bg:color_blue fg:color_bg1'
@@ -127,7 +127,7 @@ only_detached = false
 disabled = false
 added_style = 'bg:color_bg2 fg:color_green'
 deleted_style = 'bg:color_bg2 fg:color_red'
-format ='([ +$added ](bold $added_style))([-$deleted ](bold $deleted_style ))'
+format ='([ +$added_style](bold $added_style))([ -$deleted](bold $deleted_style ))'
 
 [git_branch]
 symbol = ""
