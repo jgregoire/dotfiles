@@ -116,7 +116,7 @@ stashed = ' '
 untracked = ' '
 up_to_date = ' '
 style = 'bg:color_bg2 fg:color_fg0'
-format = '[( $all_status$ahead_behind)]($style)'
+format = '[( $all_status$ahead_behind )]($style)'
 
 [git_commit]
 style = 'bg:color_blue fg:color_bg1'
