@@ -114,6 +114,7 @@ renamed = ' '
 staged = ' '
 stashed = ' '
 untracked = ' '
+up_to_date = ' '
 style = 'bg:color_bg2 fg:color_fg0'
 format = '[( $all_status$ahead_behind)]($style)'
 
