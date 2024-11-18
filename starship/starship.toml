@@ -1,18 +1,24 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
+[](bg:color_bg1 fg:color_red)\
 $os\
+$jobs\
 $username\
 [](bg:color_bg3 fg:color_red)\
 $hostname\
 [](bg:color_bg2 fg:color_bg3)\
 $directory\
-[](bg:color_blue fg:color_bg2)\
-$git_branch\
+[](bg:color_bg1 fg:color_bg2)\
+$fill\
+[](bg:color_bg1 fg:color_bg2)\
 $git_status\
-[](fg:color_blue bg:color_aqua)\
-$jobs\
-[ ](fg:color_aqua)\
+$git_metrics\
+[](bg:color_bg2 fg:color_blue)\
+$git_commit\
+[](bg:color_blue fg:color_aqua)\
+$git_branch\
+[](bg:color_bg1 fg:color_aqua)\
 $line_break$character"""
 
 palette = 'neofusion'
@@ -45,7 +51,7 @@ color_yellow = '#35b5ff'
 [os]
 disabled = false
 style = "bg:color_red fg:color_fg0"
-format = "[ $symbol]($style)"
+format = "[$symbol]($style)"
 
 [os.symbols]
 Windows = "󰍲"
@@ -69,6 +75,13 @@ Debian = "󰣚"
 Redhat = "󱄛"
 RedHatEnterprise = "󱄛"
 Pop = ""
+
+[jobs]
+symbol_threshold = 1
+number_threshold = 2
+symbol = ' '
+style = 'bg:color_aqua fg:color_bg1'
+format = '[ $symbol$number ]($style)'
 
 [username]
 show_always = true
@@ -95,21 +108,32 @@ truncation_symbol = "…/"
 "Pictures" = " "
 "Developer" = "󰲋 "
 
-[jobs]
-symbol_threshold = 1
-number_threshold = 2
-symbol = ' '
-style = 'bg:color_aqua fg:color_bg1'
-format = '[ $symbol$number ]($style)'
+[fill]
+symbol = '-'
+style = 'bg:color_bg1 fg:color_fg0'
+
+[git_status]
+ahead = ' '
+behind = ' '
+conflicted = '󰦍 '
+deleted = ' '
+diverged = ' '
+modified = ' '
+renamed = ' ' 
+staged = ' '
+stashed = ' '
+untracked = ' '
+style = 'bg:color_bg2 fg:color_fg0'
+format = '[( $all_status$ahead_behind)]($style)'
+
+[git_commit]
+style = 'bg:color_blue bg:color:bg1'
+# format = '[ \($hash$tag\) ]($style)'
 
 [git_branch]
 symbol = ""
-style = "bg:color_blue fg:color_bg1"
-format = '[[ $symbol $branch ](fg:color_bg1 bg:color_blue)]($style)'
-
-[git_status]
-style = "bg:color_blue fg:color_bg1"
-format = '[[($all_status$ahead_behind )](fg:color_bg1 bg:color_blue)]($style)'
+style = "bg:color_aqua fg:color_bg1"
+format = '[ $symbol $branch ]($style)'
 
 [nodejs]
 symbol = ""
