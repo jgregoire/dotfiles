@@ -127,7 +127,7 @@ style = 'bg:color_bg2 fg:color_fg0'
 format = '[( $all_status$ahead_behind)]($style)'
 
 [git_commit]
-style = 'bg:color_blue bg:color:bg1'
+style = 'bg:color_blue fg:color:bg1'
 format = '[ \($hash$tag\) ]($style)'
 only_detached = false
 
