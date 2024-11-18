@@ -129,6 +129,10 @@ format = '[( $all_status$ahead_behind)]($style)'
 [git_commit]
 style = 'bg:color_blue bg:color:bg1'
 # format = '[ \($hash$tag\) ]($style)'
+only_detached = false
+
+[git_metrics]
+disabled = false
 
 [git_branch]
 symbol = ""
