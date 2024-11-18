@@ -23,18 +23,6 @@ $line_break$character"""
 
 palette = 'neofusion'
 
-[palettes.gruvbox_dark]
-color_fg0 = '#fbf1c7'
-color_bg1 = '#3c3836'
-color_bg3 = '#665c54'
-color_blue = '#458588'
-color_aqua = '#689d6a'
-color_green = '#98971a'
-color_orange = '#d65d0e'
-color_purple = '#b16286'
-color_red = '#cc241d'
-color_yellow = '#d79921'
-
 [palettes.neofusion]
 color_fg0 = '#e2d9c5'
 color_bg1 = '#06101e'
@@ -57,7 +45,7 @@ format = "[$symbol]($style)"
 Windows = "󰍲"
 Ubuntu = "󰕈"
 SUSE = ""
-Raspbian = "󰐿"
+Raspbian = ""
 Mint = "󰣭"
 Macos = "󰀵"
 Manjaro = ""
@@ -135,12 +123,24 @@ only_detached = false
 disabled = false
 added_style = 'bg:color_bg2 fg:color_green'
 deleted_style = 'bg:color_bg2 fg:color_red'
-format ='([ +$added]($added_style))([ -$deleted]($deleted_style ))'
+format ='([ +$added](bold $added_style))([ -$deleted](bold $deleted_style ))'
 
 [git_branch]
 symbol = ""
 style = "bg:color_aqua fg:color_bg1"
-format = '[ $symbol $branch ]($style)'
+format = '[ $symbol $branch ](bold $style)'
+
+[line_break]
+disabled = false
+
+[character.arrow]
+disabled = false
+success_symbol = '[](bold fg:color_green)'
+error_symbol = '[](bold fg:color_red)'
+vimcmd_symbol = '[](bold fg:color_green)'
+vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
+vimcmd_replace_symbol = '[](bold fg:color_purple)'
+vimcmd_visual_symbol = '[](bold fg:color_yellow)'
 
 [nodejs]
 symbol = ""
@@ -201,15 +201,3 @@ disabled = false
 time_format = "%R"
 style = "bg:color_aqua"
 format = '[[  $time ](fg:color_bg1 bg:color_aqua)]($style)'
-
-[line_break]
-disabled = false
-
-[character]
-disabled = false
-success_symbol = '[](bold fg:color_green)'
-error_symbol = '[](bold fg:color_red)'
-vimcmd_symbol = '[](bold fg:color_green)'
-vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
-vimcmd_replace_symbol = '[](bold fg:color_purple)'
-vimcmd_visual_symbol = '[](bold fg:color_yellow)'
