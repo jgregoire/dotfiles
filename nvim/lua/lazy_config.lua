@@ -274,8 +274,8 @@ require('lazy').setup({ -- Plugins
             local colors = {
                 black        = '#06101e',
                 white        = '#e2d9c5',
-                orange       = '#fa7a61',
-                red          = '#FD5E3A',
+                orange       = '#FD5E3A',
+                red          = '#F53424',
                 lightgray    = '#22536f',
                 blue         = '#35b5ff',
                 cyan         = '#66def9',

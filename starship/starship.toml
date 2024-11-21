@@ -1,33 +1,30 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
+[╭─](bold)\
+[](bg:color_bg1 fg:color_red)\
 $os\
+$jobs\
 $username\
 [](bg:color_bg3 fg:color_red)\
 $hostname\
 [](bg:color_bg2 fg:color_bg3)\
 $directory\
-[](bg:color_blue fg:color_bg2)\
-$git_branch\
+[](bg:color_bg1 fg:color_bg2)\
+$fill\
+[](bg:color_bg1 fg:color_bg2)\
+$git_metrics\
 $git_status\
-[](fg:color_blue bg:color_aqua)\
-$jobs\
-[ ](fg:color_aqua)\
-$line_break$character"""
+[](bg:color_bg2 fg:color_blue)\
+$git_commit\
+[](bg:color_blue fg:color_aqua)\
+$git_branch\
+[](bg:color_bg1 fg:color_aqua)\
+$line_break\
+[╰─](bold)\
+$character"""
 
 palette = 'neofusion'
-
-[palettes.gruvbox_dark]
-color_fg0 = '#fbf1c7'
-color_bg1 = '#3c3836'
-color_bg3 = '#665c54'
-color_blue = '#458588'
-color_aqua = '#689d6a'
-color_green = '#98971a'
-color_orange = '#d65d0e'
-color_purple = '#b16286'
-color_red = '#cc241d'
-color_yellow = '#d79921'
 
 [palettes.neofusion]
 color_fg0 = '#e2d9c5'
@@ -37,21 +34,21 @@ color_bg3 = '#22536f'
 color_blue = '#35b5ff'
 color_aqua = '#66def9'
 color_green = '#b2f85d'
-color_orange = '#fa7a61'
+color_orange = '#fd5e3a'
 color_purple = '#ec30ac'
-color_red = '#fd5e3a'
+color_red = '#f53424'
 color_yellow = '#35b5ff'
 
 [os]
 disabled = false
 style = "bg:color_red fg:color_fg0"
-format = "[ $symbol]($style)"
+format = "[$symbol ]($style)"
 
 [os.symbols]
 Windows = "󰍲"
 Ubuntu = "󰕈"
 SUSE = ""
-Raspbian = "󰐿"
+Raspbian = ""
 Mint = "󰣭"
 Macos = "󰀵"
 Manjaro = ""
@@ -70,14 +67,21 @@ Redhat = "󱄛"
 RedHatEnterprise = "󱄛"
 Pop = ""
 
+[jobs]
+symbol_threshold = 1
+number_threshold = 2
+symbol = ' '
+style = 'bg:color_red fg:color_fg0'
+format = '[$symbol$number]($style)'
+
 [username]
 show_always = true
 style_user = "bg:color_red fg:color_bg1"
 style_root = "bg:color_red fg:color_bg1"
-format = '[ $user ](bold $style)'
+format = '[$user ](bold $style)'
 
 [hostname]
-ssh_only = false
+ssh_only = true
 ssh_symbol =' 󰱠' 
 style = 'bg:color_bg3 fg:color_fg0'
 format = '[ $hostname$ssh_symbol ]($style)'
@@ -95,89 +99,49 @@ truncation_symbol = "…/"
 "Pictures" = " "
 "Developer" = "󰲋 "
 
-[jobs]
-symbol_threshold = 1
-number_threshold = 2
-symbol = ' '
-style = 'bg:color_aqua fg:color_bg1'
-format = '[ $symbol$number ]($style)'
+[fill]
+symbol = '─'
+style = 'bg:color_bg1 fg:color_fg0'
+
+[git_status]
+ahead = ' '
+behind = ' '
+conflicted = '󰦍 '
+deleted = ' '
+diverged = ' '
+modified = ' '
+renamed = ' ' 
+staged = ' '
+stashed = ' '
+untracked = ' '
+# up_to_date = ' '
+up_to_date = '󰸞 '
+style = 'bg:color_bg2 fg:color_fg0'
+format = '[( $all_status$ahead_behind)]($style)'
+
+[git_commit]
+style = 'bg:color_blue fg:color_bg1'
+format = '[  $hash$tag ]($style)'
+only_detached = false
+
+[git_metrics]
+disabled = false
+added_style = 'bg:color_bg2 fg:color_green'
+deleted_style = 'bg:color_bg2 fg:color_red'
+format ='([ +$added_style](bold $added_style))([ -$deleted](bold $deleted_style ))'
 
 [git_branch]
 symbol = ""
-style = "bg:color_blue fg:color_bg1"
-format = '[[ $symbol $branch ](fg:color_bg1 bg:color_blue)]($style)'
-
-[git_status]
-style = "bg:color_blue fg:color_bg1"
-format = '[[($all_status$ahead_behind )](fg:color_bg1 bg:color_blue)]($style)'
-
-[nodejs]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[c]
-symbol = " "
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[rust]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[golang]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[php]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[java]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[kotlin]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[haskell]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[python]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[docker_context]
-symbol = ""
-style = "bg:color_bg3"
-format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
-
-[conda]
-style = "bg:color_bg3"
-format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_bg3)]($style)'
-
-[time]
-disabled = false
-time_format = "%R"
-style = "bg:color_aqua"
-format = '[[  $time ](fg:color_bg1 bg:color_aqua)]($style)'
+style = "bg:color_aqua fg:color_bg1"
+format = '[ $symbol $branch ](bold $style)'
 
 [line_break]
 disabled = false
 
 [character]
 disabled = false
-success_symbol = '[](bold fg:color_green)'
-error_symbol = '[](bold fg:color_red)'
+success_symbol = '[󰁔](fg:color_green)'
+error_symbol = '[󰁔](fg:color_red)'
 vimcmd_symbol = '[](bold fg:color_green)'
 vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
 vimcmd_replace_symbol = '[](bold fg:color_purple)'
