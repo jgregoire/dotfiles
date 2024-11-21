@@ -129,6 +129,24 @@ vim.filetype.add({
     },
 })
 
+-- SPICE files
+vim.filetype.add({
+    filename = {
+        ['.asy'] = 'spice',
+        ['.asc'] = 'spice',
+        ['.bead'] = 'spice',
+        ['.bjt'] = 'spice',
+        ['.cap'] = 'spice',
+        ['.dio'] = 'spice',
+        ['.ind'] = 'spice',
+        ['.jft'] = 'spice',
+        ['.mos'] = 'spice',
+        ['.res'] = 'spice',
+        ['.sub'] = 'spice',
+        ['.lib'] = 'spice',
+    }
+})
+
 -- Add package paths
 package.path = package.path .. ';' .. vim.fn.expand('$HOME') .. '/.luarocks/share/lua/5.1/?/init.lua;'
 package.path = package.path .. ';' .. vim.fn.expand('$HOME') .. '/.luarocks/share/lua/5.1/?.lua;'
