@@ -167,9 +167,9 @@ local M = {
         -- care.nvim, tabout
         { '<S-Right>', function () vim.snippet.jump(1) end, mode = { 'i' }, description = 'Jump to next placeholder in snippet', opts = defaults },
         { '<S-Left>', function () vim.snippet.jump(-1) end, mode = { 'i' }, description = 'Jump to previous placeholder in snippet', opts = defaults },
+
         { '<S-Space>', function () require('care').api.complete() end, mode = { 'i' }, description = 'Open completion menu', opts = defaults },
-        { '<C-Right>', '<Plug>(CareConfirm)', mode = { 'i' }, description = 'Confirm completion', opts = defaults },
-        { '<C-Left>', '<Plug>(CareClose)', mode = { 'i' }, description = 'Close Care menu', opts = defaults },
+        { '<CR>', '<Plug>(CareConfirm)', mode = { 'i' }, description = 'Confirm completion', opts = defaults },
         {
             '<Esc>',
             function ()
@@ -189,7 +189,7 @@ local M = {
                 if require('care').api.is_open() then
                     require('care').api.select_next()
                 else
-                    vim.api.nvim_feedkeys(vim.keycode('<Tab>'), 'n', false)
+                    vim.api.nvim_replace_termcodes('<Plug>(Tabout)', true, true, false)
                 end
             end,
             mode = { 'i' },
@@ -202,7 +202,7 @@ local M = {
                 if require('care').api.is_open() then
                     require('care').select_prev()
                 else
-                    vim.api.nvim_feedkeys(vim.keycode('<S-Tab>'), 'n', false)
+                    vim.api.nvim_replace_termcodes('<Plug>(TaboutBack)', true, true, false)
                 end
             end,
             mode = { 'i' },

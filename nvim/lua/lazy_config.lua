@@ -239,7 +239,14 @@ require('lazy').setup({ -- Plugins
             'saadparwaiz1/cmp_luasnip',
             'L3MON4D3/LuaSnip',
         },
-        config = true,
+        config = function ()
+            require('luasnip.loaders.from_vscode').lazy_load()
+            require('care').setup({
+                snippet_expansion = function (body)
+                    require('luasnip').lsp_expand(body)
+                end,
+            })
+        end
     },
     {
         '0xAdk/full_visual_line.nvim',
@@ -512,16 +519,15 @@ require('lazy').setup({ -- Plugins
         event = 'InsertCharPre',
         dependencies = {
             'nvim-treesitter/nvim-treesitter',
-            'hrsh7th/nvim-cmp'
         },
         opts = {
-            tabkey = '<Tab>',
-            backwards_tabkey = '<S-Tab>',
+            tabkey = '',
+            backwards_tabkey = '',
             act_as_tab = true,
             act_as_shift_tab = true,
             default_tab = '<Tab>',
             default_shift_tab = '<C-d>',
-            enable_backwards = true,
+            enable_backwards = tr,
             completion = true,
             tabouts = {
                 { open = "'", close = "'" },
