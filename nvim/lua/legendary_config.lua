@@ -15,6 +15,8 @@
 
 local defaults = { noremap = true }
 
+local FirstBufEnter = true
+
 local M = {
     include_builtin = false, -- Ditch all default vim maps.
     include_legendary_cmds = true,
@@ -253,9 +255,13 @@ local M = {
 
     autocmds = {
         {
-            'UIEnter',
+            'BufWinEnter',
             function ()
-                vim.opt.clipboard:append({ 'unnamedplus' })
+                if (FirstBufEnter == true) then
+                    vim.opt.clipboard:append({ 'unnamedplus' })
+                    FirstBufEnter = false
+                    vim.notify('Set clipboard=unnamedplus')
+                end
             end,
             description = 'Set system clipboard',
         },
