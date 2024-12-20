@@ -186,11 +186,13 @@ layout {
 // Add lines like this to spawn processes at startup.
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
-spawn-at-startup "waypaper --random"
+spawn-at-startup "waypaper" "--random"
 spawn-at-startup "zen"
 spawn-at-startup "kitty"
 spawn-at-startup "powerkit"
-spawn-at-startup "xwayland-satellite"
+// Using the systemd service file now.
+// spawn-at-startup "xwayland-satellite"
+spawn-at-startup "export" "DISPLAY=:0"
 
 cursor {
     // Change the theme and size of the cursor as well as set the
