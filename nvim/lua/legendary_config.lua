@@ -255,6 +255,14 @@ local M = {
 
     autocmds = {
         {
+            'Filetype',
+            function()
+                vim.api.nvim_set_option_value('commentstring', '// %s', { buf = buf })
+            end,
+            opts = { pattern = { 'kdl' } },
+            description = 'Set commentstring for KDL files',
+        },
+        {
             'BufWinEnter',
             function ()
                 if (FirstBufEnter == true) then
