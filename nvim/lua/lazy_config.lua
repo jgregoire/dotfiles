@@ -589,6 +589,7 @@ require('lazy').setup({ -- Plugins
     },
     {
         'terrortylor/nvim-comment',
+        dependencies = { 'JoosepAlviste/nvim-ts-context-commentstring' },
         keys = {
             { 'pcc', 'n' },
             { 'pc', 'v' },
@@ -602,7 +603,7 @@ require('lazy').setup({ -- Plugins
             create_mappings = true,
             line_mapping = 'pcc', -- Normal mode, toggle line comment.
             operator_mapping = 'pc', -- Visual/operator mode
-            comment_chunk_text_object = 'ic', -- No idea what this is for
+            comment_chunk_text_object = 'ic',
             hook = function ()
                 require('ts_context_commentstring').update_commentstring()
             end
