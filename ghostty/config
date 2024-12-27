@@ -1,0 +1,15 @@
+# Theme
+theme = neofission
+
+# Font
+font-family = Fira Code
+config-file = /home/james/.config/ghostty/fontsize
+
+adjust-underline-position = 3
+# adjust-underline-thickness = 1
+
+# Cursor
+cursor-style = underline
+
+window-decoration = false
+gtk-single-instance = true
