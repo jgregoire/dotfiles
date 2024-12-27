@@ -1,5 +1,6 @@
 # Theme
 theme = neofission
+bold-is-bright = true
 
 # Font
 font-family = Fira Code
@@ -11,5 +12,9 @@ adjust-underline-position = 3
 # Cursor
 cursor-style = underline
 
+# General
 window-decoration = false
 gtk-single-instance = true
+clipboard-read = allow
+clipboard-write = allow
+
