@@ -164,7 +164,8 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+T { spawn "kitty"; }
+    Mod+B { spawn "zen"; }
+    Mod+T { spawn "ghostty"; }
     Mod+R { spawn "fuzzel"; }
     Mod+L { spawn "swaylock"; }
     Mod+Period { spawn "env" "DISPLAY=:0" "1password"; }
@@ -271,7 +272,7 @@ binds {
 
 spawn-at-startup "waypaper" "--random"
 spawn-at-startup "zen"
-spawn-at-startup "kitty"
+spawn-at-startup "ghostty"
 spawn-at-startup "powerkit"
 // Using the systemd service file now.
 // spawn-at-startup "xwayland-satellite"
