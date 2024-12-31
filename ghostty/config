@@ -1,6 +1,6 @@
 # Theme
 theme = neofission
-bold-is-bright = true
+bold-is-bright = false
 
 # Font
 font-family = Fira Code
