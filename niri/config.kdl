@@ -189,7 +189,7 @@ layout {
 spawn-at-startup "powerkit"
 spawn-at-startup "waypaper --restore --random"
 spawn-at-startup "firefox"
-spawn-at-startup "kitty"
+spawn-at-startup "ghostty"
 spawn-at-startup "xwayland-satellite"
 
 cursor {
@@ -315,6 +315,11 @@ window-rule {
     default-column-width { proportion 0.33333; }
 }
 
+window-rule {
+    match app-id=r#".*ghostty.*"#
+    default-column-width { proportion 0.33333; }
+}
+
 // Inactive windows are transparent
 window-rule {
     match is-active=false
@@ -345,7 +350,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+T { spawn "kitty"; }
+    Mod+T { spawn "ghostty"; }
     Mod+R { spawn "fuzzel"; }
     Ctrl+R { spawn "fuzzel"; }
     Super+L { spawn "swaylock"; }
