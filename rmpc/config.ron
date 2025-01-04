@@ -22,7 +22,7 @@
             "<Tab>":   NextTab,
             "<S-Tab>": PreviousTab,
             "1":       SwitchToTab("Queue"),
-            "2":       SwitchToTab("AlbumArtists"),
+            "2":       SwitchToTab("Album Artists"),
             "3":       SwitchToTab("Playlists"),
             "4":       SwitchToTab("Search"),
             "5":       SwitchToTab("Lyrics"),
