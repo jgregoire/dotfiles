@@ -54,7 +54,7 @@ require('lazy').setup({ -- Plugins
     {
         'diegoulloao/neofusion.nvim',
         priority = 1000,
-        enabled = true,
+        enabled = false,
         config = function ()
             require('neofusion').setup({
                 overrides = {
@@ -64,6 +64,15 @@ require('lazy').setup({ -- Plugins
                 },
             })
             vim.cmd.colorscheme('neofusion')
+        end
+    },
+    {
+        dir = "~/Code/neofission.nvim",
+        priority = 1000,
+        enabled = true,
+        config = function ()
+            require('neofission').setup()
+            vim.cmd.colorscheme('neofission')
         end
     },
     {
@@ -260,74 +269,9 @@ require('lazy').setup({ -- Plugins
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function ()
-            local colors = {
-                black        = '#06101e',
-                white        = '#e2d9c5',
-                orange       = '#FD5E3A',
-                red          = '#F53424',
-                lightgray    = '#22536f',
-                blue         = '#35b5ff',
-                cyan         = '#66def9',
-                green        = '#B2F85D',
-                magenta      = '#ec30ac',
-                maroon       = '#722529',
-                darkgray     = '#052839',
-                darkblue     = '#004752',
-                darkcyan     = '#008DA3',
-            }
-            local neofusion_theme = {
-                normal = {
-                    a = { bg = colors.red, fg = colors.black, gui = 'bold' },
-                    b = { bg = colors.lightgray, fg = colors.white },
-                    c = { bg = colors.darkgray, fg = colors.white },
-                    x = { bg = colors.darkgray, fg = colors.white },
-                    y = { bg = colors.blue, fg = colors.black },
-                    z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
-                },
-                insert = {
-                    a = { bg = colors.green, fg = colors.black, gui = 'bold' },
-                    b = { bg = colors.lightgray, fg = colors.white },
-                    c = { bg = colors.darkgray, fg = colors.white },
-                    x = { bg = colors.darkgray, fg = colors.white },
-                    y = { bg = colors.blue, fg = colors.black },
-                    z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
-                },
-                visual = {
-                    a = { bg = colors.magenta, fg = colors.black, gui = 'bold'},
-                    b = { bg = colors.lightgray, fg = colors.white },
-                    c = { bg = colors.darkgray, fg = colors.white },
-                    x = { bg = colors.darkgray, fg = colors.white },
-                    y = { bg = colors.blue, fg = colors.black },
-                    z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
-                },
-                replace = {
-                    a = { bg = colors.blue, fg = colors.black, gui = 'bold'},
-                    b = { bg = colors.lightgray, fg = colors.white },
-                    c = { bg = colors.darkgray, fg = colors.white },
-                    x = { bg = colors.darkgray, fg = colors.white },
-                    y = { bg = colors.blue, fg = colors.black },
-                    z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
-                },
-                command = {
-                    a = { bg = colors.magenta, fg = colors.white, gui = 'bold'},
-                    b = { bg = colors.lightgray, fg = colors.white },
-                    c = { bg = colors.darkgray, fg = colors.white },
-                    x = { bg = colors.darkgray, fg = colors.white },
-                    y = { bg = colors.blue, fg = colors.black },
-                    z = { bg = colors.cyan, fg = colors.black, gui = 'bold' }
-                },
-                inactive = {
-                    a = { bg = colors.maroon, fg = colors.white, gui = 'bold'},
-                    b = { bg = colors.darkgray, fg = colors.white },
-                    c = { bg = colors.darkgray, fg = colors.white },
-                    x = { bg = colors.darkgray, fg = colors.white },
-                    y = { bg = colors.darkgray, fg = colors.white },
-                    z = { bg = colors.darkcyan, fg = colors.black, gui = 'bold' }
-                }
-            }
             require('lualine').setup({
                 options = {
-                    theme = neofusion_theme,
+                    theme = require('neofission.lualine'),
                     -- theme = 'eldritch',
                     -- theme = 'nordic',
                     component_separators = {
