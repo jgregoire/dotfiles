@@ -52,21 +52,6 @@ require('lazy').setup({ -- Plugins
         end,
     },
     {
-        'diegoulloao/neofusion.nvim',
-        priority = 1000,
-        enabled = false,
-        config = function ()
-            require('neofusion').setup({
-                overrides = {
-                    ['@operator']            = { fg = '#B2F85D' },
-                    ['@string.escape']       = { fg = '#B2F85D' },
-                    ['@punctuation.special'] = { fg = '#FD5E3A' },
-                },
-            })
-            vim.cmd.colorscheme('neofusion')
-        end
-    },
-    {
         dir = "~/Code/neofission.nvim",
         priority = 1000,
         enabled = true,
