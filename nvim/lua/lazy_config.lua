@@ -52,7 +52,8 @@ require('lazy').setup({ -- Plugins
         end,
     },
     {
-        dir = "~/Code/neofission.nvim",
+        dir = '~/Code/neofission.nvim',
+        -- 'jgregoire/neofission.nvim',
         priority = 1000,
         enabled = true,
         config = function ()
