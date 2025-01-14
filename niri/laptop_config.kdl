@@ -271,7 +271,7 @@ binds {
 }
 
 spawn-at-startup "waypaper" "--random"
-spawn-at-startup "zen"
+spawn-at-startup "firefox"
 spawn-at-startup "ghostty"
 spawn-at-startup "powerkit"
 // Using the systemd service file now.
