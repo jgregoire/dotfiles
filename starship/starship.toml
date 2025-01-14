@@ -24,9 +24,9 @@ $line_break\
 [╰─](bold)\
 $character"""
 
-palette = 'neofusion'
+palette = 'neofission'
 
-[palettes.neofusion]
+[palettes.neofission]
 color_fg0 = '#e2d9c5'
 color_bg1 = '#06101e'
 color_bg2 = '#052839'
@@ -128,7 +128,7 @@ only_detached = false
 disabled = false
 added_style = 'bg:color_bg2 fg:color_green'
 deleted_style = 'bg:color_bg2 fg:color_red'
-format ='([ +$added_style](bold $added_style))([ -$deleted](bold $deleted_style ))'
+format ='([ +$added](bold $added_style))([ -$deleted](bold $deleted_style ))'
 
 [git_branch]
 symbol = ""
