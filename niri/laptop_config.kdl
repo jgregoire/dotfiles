@@ -1,4 +1,9 @@
 // Config for laptop with puny 1366x768 screen res
+environment {
+    // For apps using xwayland-satellite
+    DISPLAY ":0"
+}
+
 input {
     focus-follows-mouse max-scroll-amount="0%"
     warp-mouse-to-focus
@@ -66,17 +71,14 @@ layout {
         active-gradient from="#fd5e3a" to="#86dbf5" angle=100 in="oklch shorter hue"
         inactive-color "#2f516c"
     }
-
     struts {
         left 10
         right 10
     }
-
     insert-hint {
-        color "#fd5e3aaa"
+        color "#fd5e3a"
     }
 }
-
 
 cursor {
     hide-when-typing
@@ -150,9 +152,6 @@ window-rule {
 }
 
 binds {
-    // Most actions that you can bind here can also be invoked programmatically with
-    // `niri msg action do-something`.
-
     // Conventions:
     // Mod:            Change focus, basic commands
     // Mod+Shift:      Move window/column
@@ -163,12 +162,11 @@ binds {
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+B { spawn "zen"; }
     Mod+T { spawn "ghostty"; }
     Mod+R { spawn "fuzzel"; }
     Mod+L { spawn "swaylock"; }
-    Mod+Period { spawn "env" "DISPLAY=:0" "1password"; }
+    Mod+Period { spawn "1password"; }
     // You can also use a shell:
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
 
