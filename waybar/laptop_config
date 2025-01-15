@@ -5,8 +5,8 @@
     "height": 24, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
     // "modules-center": ["custom/activewindow"],
-    "modules-left": ["tray", "niri/window"],
-    "modules-right": ["wireplumber", "network", "cpu", "memory", "temperature", "battery", "clock", "idle_inhibitor"],
+    "modules-left": ["tray", "idle_inhibitor", "niri/window"],
+    "modules-right": ["wireplumber", "network", "cpu", "memory", "temperature", "battery", "clock"],
 
     // Modules configuration
     "custom/activewindow": {

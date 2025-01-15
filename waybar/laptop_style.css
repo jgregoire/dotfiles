@@ -5,8 +5,8 @@
 }
 
 window#waybar {
-    background-color: rgba(7, 15, 28, 0.5);
-    border-bottom: 4px solid rgba(14, 8, 7, 0.5);
+    background-color: rgba(5, 40, 57, 0.5);
+    border-bottom: 4px solid rgba(6, 16, 30, 0.5);
     color: #e0d9c7;
     transition-property: background-color;
     transition-duration: .5s;
@@ -27,26 +27,7 @@ button {
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
     background: inherit;
-    box-shadow: inset 0 -3px #E0D9C7;
-}
-
-#workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
-    color: #E0D9C7;
-}
-
-#workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#workspaces button.focused {
-    background-color: #4C566A;
-    box-shadow: inset 0 -3px #E0D9C7;
-}
-
-#workspaces button.urgent {
-    background-color: #BF616A;
+    box-shadow: inset 0 -3px #E2D9C5;
 }
 
 #clock,
@@ -62,8 +43,8 @@ button:hover {
 #idle_inhibitor,
 #mpd {
     padding: 0 10px;
-    color: #E0D9C7;
-    background-color: rgba(36, 41, 51, 0.0);
+    color: #E2D9C5;
+    background-color: rgba(5, 40, 57, 0.0);
 }
 
 #window,
@@ -82,28 +63,28 @@ button:hover {
 }
 
 #clock {
-    border-bottom: 4px solid #E0D9C7;
+    border-bottom: 4px solid #66DEF9;
 }
 
 #window {
-    border-bottom: 4px solid #EBCB8B;
+    border-bottom: 4px solid #22536F;
 }
 
 #battery {
-    border-bottom: 4px solid #EBCB8B;
+    border-bottom: 4px solid #35B5FF;
 }
 
 @keyframes blink {
     to {
-        background-color: #E0D9C7;
-        color: #242933;
+        background-color: #E2D9C5;
+        color: #06364B;
     }
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: #B74E58;
-    color: #E0D9C7;
+    background-color: #F53424;
+    color: #E2D9C5;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
@@ -112,15 +93,15 @@ button:hover {
 }
 
 label:focus {
-    background-color: #242933;
+    background-color: #06364B;
 }
 
 #cpu {
-    border-bottom: 4px solid #81A1C1;
+    border-bottom: 4px solid #B21368;
 }
 
 #memory {
-    border-bottom: 4px solid #8FBCBB;
+    border-bottom: 4px solid #47EA68;
 }
 
 #disk {
@@ -132,31 +113,31 @@ label:focus {
 }
 
 #network {
-    border-bottom: 4px solid #A3BE8C;
+    border-bottom: 4px solid #B2F85D;
 }
 
 #network.disconnected {
-    border-bottom: #B74E58;
+    border-bottom: #F53424;
 }
 
 #wireplumber {
-    border-bottom: 4px solid #B38EAD;
+    border-bottom: 4px solid #008DA3;
 }
 
 #wireplumber.muted {
-    border-bottom: 4px solid #A97EA1;
+    border-bottom: 4px solid #004752;
 }
 
 #temperature {
-    border-bottom: 4px solid #BF616A;
+    border-bottom: 4px solid #FD5E3A;
 }
 
 #temperature.critical {
-    border-bottom: 4px solid #B74E58;
+    border-bottom: 4px solid #F53424;
 }
 
 #tray {
-    background-color: #81A1C1;
+    background-color: #F53424;
 }
 
 #tray > .passive {
@@ -165,15 +146,15 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #BF616A;
+    background-color: #B21368;
 }
 
 #idle_inhibitor {
-    border-bottom: 4px solid #4C566A;
+    border-bottom: 4px solid #F53424;
 }
 
 #idle_inhibitor.activated {
-    border-bottom: 4px solid #60728A;
+    border-bottom: 4px solid #B2F85D;
 }
 
 #mpd {
