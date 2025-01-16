@@ -60,12 +60,12 @@ layout {
 
     focus-ring {
         width 2
-        active-gradient from="#FD5E3A" to="#86DBF5" angle=100 in="oklch longer hue"
+        active-gradient from="#FD5E3A" to="#86DBF5" angle=100 in="oklch shorter hue"
         inactive-color "#2F516C"
     }
     border {
         width 2
-        active-gradient from="#FD5E3A" to="#86DBF5" angle=100 in="oklch longer hue"
+        active-gradient from="#FD5E3A" to="#86DBF5" angle=100 in="oklch shorter hue"
         inactive-color "#2F516C"
     }
     struts {
