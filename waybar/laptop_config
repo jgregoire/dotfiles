@@ -62,7 +62,7 @@
         "lower_cutuff_freq": 20,
         "higher_cutoff_freq": 20000,
         "method": "pipewire",
-        "stereo": true,
+        "stereo": true
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -107,7 +107,7 @@
     },
     "wireplumber": {
         "format": "{icon}{volume}%",
-        "format-muted": "MUTE ",
+        "format-muted": "  MUTE",
         "format-icons": [" ", " ", " "],
         "scroll-step": "1.0",
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
@@ -115,6 +115,6 @@
         "max-volume": 98,
         "tooltip": true,
         "tooltip-format": "{node_name}"
-    },
+    }
 }
 
