@@ -671,6 +671,12 @@ require('lazy').setup({ -- Plugins
         }
     },
     {
+        'benlubas/neorg-query'
+    },
+    {
+        'benlubas/neorg-interim-ls'
+    },
+    {
         'nvim-neorg/neorg',
         dependencies = {
             'nvim-treesitter/nvim-treesitter',
@@ -723,6 +729,9 @@ require('lazy').setup({ -- Plugins
     { -- Lazy Options
         install = {
             colorscheme = { 'onedark_vivid' },
+        },
+        git = { 
+            timeout = 1200
         },
         ui = {
             border = 'rounded',
