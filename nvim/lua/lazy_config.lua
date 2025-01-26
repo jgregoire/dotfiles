@@ -78,14 +78,6 @@ require('lazy').setup({ -- Plugins
         end
     },
     {
-        'xero/miasma.nvim',
-        enabled = false,
-        priority = 100,
-        config = function ()
-            vim.cmd.colorscheme('miasma')
-        end
-    },
-    {
         'williamboman/mason.nvim',
         config = function ()
             require('mason').setup({
@@ -132,6 +124,16 @@ require('lazy').setup({ -- Plugins
         'onsails/lspkind.nvim'
     },
     {
+        url = 'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+        dependencies = { 'neovim/nvim-lspconfig' },
+        config = function ()
+            vim.diagnostic.config({
+                virtual_text = false,
+                require('lsp_lines').setup({})
+            })
+        end
+    },
+    --[[{
         'RRethy/nvim-treesitter-endwise',
     },
     {
@@ -140,9 +142,14 @@ require('lazy').setup({ -- Plugins
     {
         'nvim-treesitter/nvim-treesitter-context',
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    },
+    },--]]
     {
         'nvim-treesitter/nvim-treesitter',
+        dependencies = {
+            'RRethy/nvim-treesitter-endwise',
+            'nvim-treesitter/nvim-treesitter-textobjects',
+            'nvim-treesitter/nvim-treesitter-context'
+        },
         config = function ()
             ---@diagnostic disable-next-line: missing-fields
             require('nvim-treesitter.configs').setup({
@@ -186,13 +193,6 @@ require('lazy').setup({ -- Plugins
             })
         end,
         build = ':TSUpdate',
-    },
-    {
-        'ravibrock/spellwarn.nvim',
-        event = 'VeryLazy',
-        opts = {
-            prefix = 'spellwarn: ',
-        },
     },
     {
         'L3MON4D3/LuaSnip',
@@ -255,101 +255,11 @@ require('lazy').setup({ -- Plugins
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function ()
-            require('lualine').setup({
-                options = {
-                    theme = require('neofission.lualine'),
-                    -- theme = 'eldritch',
-                    -- theme = 'nordic',
-                    component_separators = {
-                        left  = '│',
-                        right = '│'
-                    },
-                    section_separators = {
-                        -- left  = '',
-                        -- right = ''
-                        -- right = '',
-                        -- left = '',
-                        left = '',
-                        right = '',
-                    },
-                },
-                extensions = {
-                    'toggleterm',
-                },
-                sections = {
-                    lualine_a = {
-                        {
-                            'mode',
-                            -- separator = {
-                            --     left = '',
-                            --     right = '',
-                            -- },
-                        },
-                    },
-                    lualine_b = {
-                        {
-                            'branch',
-                            -- separator = {
-                            --     left = '',
-                            --     right = '',
-                            -- },
-                            draw_empty = true,
-                        },
-                        {
-                            'diff',
-                            symbols = {
-                                added    = ' ',
-                                modified = ' ',
-                                removed  = ' ',
-                            },
-                        },
-                        {
-                            'diagnostics',
-                            symbols = {
-                                error = ' ',
-                                warn  = ' ',
-                                info  = ' ',
-                                hint  = ' ',
-                            },
-                        },
-                    },
-                    lualine_c = {
-                        {
-                            'buffers',
-                            mode = 2, -- show name and index
-                            symbols = {
-                                modified = ' '
-                            },
-                        },
-                    },
-                    lualine_x = {
-                        'encoding',
-                        'fileformat',
-                        'filetype' },
-                    lualine_y = { 'progress', },
-                    lualine_z = {
-                        {
-                            'location',
-                            -- separator = {
-                            --     left = '',
-                            --     right = '',
-                            -- },
-                        },
-                    },
-                },
-                inactive_sections = {
-                    lualine_a = {},
-                    lualine_b = {},
-                    lualine_c = { 'filename' },
-                    lualine_x = { 'location' },
-                    lualine_y = {},
-                    lualine_z = {}
-                },
-            })
-        end,
+            local opts = require('lualine_config')
+            require('lualine').setup(opts)
+        end
     },
     {
-        -- Only works with config function.
         'norcalli/nvim-colorizer.lua',
         priority = 0,
         enabled = false,
@@ -508,7 +418,7 @@ require('lazy').setup({ -- Plugins
     },
     {
         'JoosepAlviste/nvim-ts-context-commentstring',
-        ft = { 'norg' },
+        ft = { 'norg', 'md' },
         config = function ()
             -- Skip backwards compatibility checks for faster load
             vim.g.skip_ts_context_commentstring_module = true
@@ -591,10 +501,6 @@ require('lazy').setup({ -- Plugins
         },
     },
     {
-        'Makaze/watch.nvim',
-        cmd = { 'WatchStart', 'WatchStop', 'WatchFile' }
-    },
-    {
         'protex/better-digraphs.nvim',
         keys = {
             {
@@ -671,10 +577,13 @@ require('lazy').setup({ -- Plugins
         }
     },
     {
-        'benlubas/neorg-query'
-    },
-    {
-        'benlubas/neorg-interim-ls'
+        'nvim-tree/nvim-tree.lua',
+        config = function ()
+            vim.g.loaded_netrw = 1
+            vim.g.loaded_netrwPlugin = 1
+            require('nvim.tree.lua').setup({})
+        end,
+        lazy = true
     },
     {
         'nvim-neorg/neorg',
@@ -683,7 +592,9 @@ require('lazy').setup({ -- Plugins
             'nvim-treesitter/nvim-treesitter-textobjects',
             'hrsh7th/nvim-cmp',
             'nvim-lua/plenary.nvim',
-            'benlubas/neorg-conceal-wrap'
+            'benlubas/neorg-conceal-wrap',
+            'benlubas/neorg-query',
+            'benlubas/neorg-interim-ls'
         },
         version = '*',
         ft = 'norg',
@@ -710,7 +621,7 @@ require('lazy').setup({ -- Plugins
         'tris203/precognition.nvim',
         event = 'VeryLazy',
         opts = {
-            sartVisible = false,
+            startVisible = false,
             hints = {
                 Caret = { text = 'w' },
                 Dollar = { text = 'l' },
@@ -728,9 +639,9 @@ require('lazy').setup({ -- Plugins
 },
     { -- Lazy Options
         install = {
-            colorscheme = { 'onedark_vivid' },
+            colorscheme = { 'neofission' },
         },
-        git = { 
+        git = {
             timeout = 1200
         },
         ui = {
