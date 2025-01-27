@@ -1,5 +1,9 @@
 // Config for desktop with ultrawide 3440x1440 screen res
 environment {
+    // Persuade electron apps to use wayland
+    ELECTRON_OZONE_PLATFORM_HINT "wayland"
+
+    // Set display for apps using xwayland-satellite
     DISPLAY ":0"
 }
 

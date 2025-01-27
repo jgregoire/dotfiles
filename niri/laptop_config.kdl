@@ -1,6 +1,9 @@
 // Config for laptop with puny 1366x768 screen res
 environment {
-    // For apps using xwayland-satellite
+    // Persuade electron apps to use wayland
+    ELECTRON_OZONE_PLATFORM_HINT "wayland"
+
+    // Set display for apps using xwayland-satellite
     DISPLAY ":0"
 }
 
