@@ -26,6 +26,10 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 zstyle ':fzf-tab:*' switch-group '<' '>'
 
 plug "zsh-users/zsh-syntax-highlighting"
+
+# vi-mode by default
+bindkey -v
+
 ##
 ## Add directories to default PATH
 ##
