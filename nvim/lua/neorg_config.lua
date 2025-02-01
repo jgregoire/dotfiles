@@ -52,14 +52,33 @@ local opts = {
         },
         ['core.completion'] = {
             config = {
-                engine = 'nvim-cmp',
-                name = '[Neorg]',
+                engine = {
+                    module_name = 'external.lsp-completion'
+                },
+                -- name = '[Neorg]',
             },
         },
         ['core.integrations.nvim-cmp'] = {},
         ['core.highlights'] = {},
         ['core.tangle'] = {},
-        ['external.conceal-wrap'] = {}
+        ['external.conceal-wrap'] = {},
+        ['external.interim-ls'] = {
+            config = {
+                completion_provider = {
+                    enable = true,
+                    documentation = true,
+                    categories = false,
+                    people = {
+                        enable = false,
+                        path = "people",
+                    },
+                },
+            },
+        },
+        ['external.query'] = {
+            index_on_launch = true,
+            update_on_change = true,
+        },
     },
 }
 

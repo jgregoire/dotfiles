@@ -103,7 +103,7 @@
     },
     "wireplumber": {
         "format": "{icon}{volume}%",
-        "format-muted": " MUTE",
+        "format-muted": "  MUTE",
         "format-icons": [" ", " ", " "],
         "scroll-step": "1.0",
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
