@@ -32,8 +32,9 @@ Arch Linux
     - eza
     - rm-improved
     - cargo-update
-    - croque
+    - starship
     - rmpc
+    - yazi
 - Graphical System
     - ly
     - niri
