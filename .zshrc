@@ -3,8 +3,6 @@
 plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
 plug "zap-zsh/zap-prompt"
-# plug "jgregoire/agnoster-custom"
-# eval "$(croque init zsh)"
 eval "$(starship init zsh)"
 
 # Load and initialise completion system
@@ -214,5 +212,8 @@ cd
 
 # In WSL, jump to Windows home dir
 alias cdh='cd /mnt/c/Users/jfg'
+
+# load fzf
+source <(fzf --zsh)
 
 # That's all, folks!
