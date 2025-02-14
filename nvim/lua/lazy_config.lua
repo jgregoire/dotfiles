@@ -85,22 +85,6 @@ require('lazy').setup({ -- Plugins
         end
     },
     {
-        'lvim-tech/lvim-colorscheme',
-        priority = 1000,
-        enabled = false,
-        config = function ()
-            require('lvim-colorscheme').setup({
-                style = 'dark',
-                styles = {
-                    comments = { italic = true, bold = false },
-                    keywords = { italic = false, bold = true },
-                    functions = { italic = false, bold = false },
-                    variables = {  },
-                }
-            })
-        end
-    },
-    {
         'williamboman/mason.nvim',
         config = function ()
             require('mason').setup({
