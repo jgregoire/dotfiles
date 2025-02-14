@@ -17,9 +17,9 @@ $git_metrics\
 $git_status\
 [](bg:color_gray2 fg:color_cyan_b)\
 $git_commit\
-[](bg:color_cyan_b fg:color_cyan)\
+[](bg:color_cyan_b fg:color_cyan_d)\
 $git_branch\
-[](bg:color_black0 fg:color_cyan)\
+[](bg:color_black0 fg:color_cyan_d)\
 $line_break\
 [╰─](bold)\
 $character"""
@@ -169,7 +169,7 @@ format ='([ +$added](bold $added_style))([ -$deleted](bold $deleted_style ))'
 
 [git_branch]
 symbol = ""
-style = "bg:color_cyan fg:color_black0"
+style = "bg:color_cyan_d fg:color_black0"
 format = '[ $symbol $branch ](bold $style)'
 
 [line_break]
