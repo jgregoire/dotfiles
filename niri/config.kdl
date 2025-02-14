@@ -64,20 +64,22 @@ layout {
 
     focus-ring {
         width 2
-        active-gradient from="#FD5E3A" to="#86DBF5" angle=100 in="oklch shorter hue"
-        inactive-color "#2F516C"
+        // active-gradient from="#B74E58" to="#5E81AC" angle=100 in="oklch shorter hue"
+        active-gradient from="#EBCB8B" to="#D08770" angle=100 in="oklch shorter hue"
+        inactive-color "#3B4252"
     }
     border {
         width 2
-        active-gradient from="#FD5E3A" to="#86DBF5" angle=100 in="oklch shorter hue"
-        inactive-color "#2F516C"
+        // active-gradient from="#B74E58" to="#5E81AC" angle=100 in="oklch shorter hue"
+        active-gradient from="#EBCB8B" to="#D08770" angle=100 in="oklch shorter hue"
+        inactive-color "#3B4252"
     }
     struts {
         left 14
         right 14
     }
     insert-hint {
-        color "#FD5E3A"
+        color "#B1C89D"
     }
 }
 
