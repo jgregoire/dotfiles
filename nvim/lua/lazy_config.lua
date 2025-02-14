@@ -66,6 +66,21 @@ require('lazy').setup({ -- Plugins
         priority = 1000,
         enabled = true,
         config = function ()
+            require('nordic').setup({
+                bold_keywords = true,
+                italic_comments = true,
+                transparent = {
+                    bg = false,
+                    float = false,
+                },
+                bright_border = true,
+                swap_backgrounds = false,
+                cursorline = {
+                    bold_number = true,
+                    -- theme = 'light',
+                },
+                telescope = 'classic',
+            })
             require('nordic').load()
         end
     },
