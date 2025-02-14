@@ -2,24 +2,24 @@
 
 format = """
 [╭─](bold)\
-[](bg:color_bg1 fg:green)\
+[](bg:color_black0 fg:color_blue0)\
 $os\
 $jobs\
 $username\
-[](bg:color_aqua fg:color_green)\
+[](bg:color_blue1 fg:color_blue0)\
 $hostname\
-[](bg:color_bg3 fg:color_aqua)\
+[](bg:color_blue2 fg:color_blue1)\
 $directory\
-[](bg:color_bg1 fg:color_bg3)\
+[](bg:color_black0 fg:color_blue2)\
 $fill\
-[](bg:color_bg1 fg:color_bg2)\
+[](bg:color_black0 fg:color_gray2)\
 $git_metrics\
 $git_status\
-[](bg:color_bg2 fg:color_bg3)\
+[](bg:color_gray2 fg:color_cyan_b)\
 $git_commit\
-[](bg:color_bg3 fg:color_aqua)\
+[](bg:color_cyan_b fg:color_cyan)\
 $git_branch\
-[](bg:color_bg1 fg:color_aqua)\
+[](bg:color_black0 fg:color_cyan)\
 $line_break\
 [╰─](bold)\
 $character"""
@@ -40,21 +40,45 @@ color_red = '#f53424'
 color_yellow = '#35b5ff'
 
 [palettes.nordic]
-color_fg0 = '#D8DEE9'
-color_bg1 = '#191D24'
-color_bg2 = '#4C566A'
-color_bg3 = '#81A1Ca'
-color_blue = '#5E81AC'
-color_aqua = '#8FBCBB'
-color_green = '#A3BE8C'
+color_black0 = '#191D24'
+color_black1 = '#1E222A'
+color_black2 = '#222630'
+color_gray0 = '#242933'
+color_gray1 = '#2E3440'
+color_gray2 = '#2B4252'
+color_gray3 = '#434C5E'
+color_gray4 = '#4C566A'
+color_gray5 = '#60728A'
+color_white0 = '#BBC3D4'
+color_white1 = '#D8DEE9'
+color_white2 = '#E5E9F0'
+color_white3 = '#ECEFF4'
+color_white4 = '#C0C8D8'
+color_blue0 = '#5E81AC'
+color_blue1 = '#81A1C1'
+color_blue2 = '#88C0D0'
+color_cyan = '#8FBCBB'
+color_cyan_b = '#9FC6C5'
+color_cyan_d = '#80B3B2'
+color_red = '#BF616A'
+color_red_b = '#C5627A'
+color_red_d = '#B74E58'
 color_orange = '#D08770'
-color_purple = '#B48EAD'
-color_red = '#B74E58'
+color_orange_b = '#D79784'
+color_orange_d = '#CB775D'
 color_yellow = '#EBCB8B'
+color_yellow_b = '#EFD49F'
+color_yellow_d = '#E7C173'
+color_green = '#A3BE8C'
+color_green_b = '#B1C89D'
+color_green_d = '#97B67C'
+color_magenta = '#B48EAD'
+color_magenta_b = '#BE9DB8'
+color_magenta_d = '#A97EA1'
 
 [os]
 disabled = false
-style = "bg:color_green fg:color_fg0"
+style = "bg:color_blue0 fg:color_white0"
 format = "[$symbol ]($style)"
 
 [os.symbols]
@@ -84,23 +108,23 @@ Pop = ""
 symbol_threshold = 1
 number_threshold = 2
 symbol = ' '
-style = 'bg:color_green fg:color_fg0'
+style = 'bg:color_blue0 fg:color_black0'
 format = '[$symbol$number]($style)'
 
 [username]
 show_always = true
-style_user = "bg:color_green fg:color_bg1"
-style_root = "bg:color_green fg:color_bg1"
+style_user = "bg:color_blue0 fg:color_black0"
+style_root = "bg:color_blue0 fg:color_black0"
 format = '[$user ](bold $style)'
 
 [hostname]
 ssh_only = true
 ssh_symbol =' 󰱠' 
-style = 'bg:color_aqua fg:color_bg1'
+style = 'bg:color_blue1 fg:color_black0'
 format = '[ $hostname$ssh_symbol ]($style)'
 
 [directory]
-style = "bg:color_bg3 fg:color_bg1"
+style = "bg:color_blue2 fg:color_black0"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -129,23 +153,23 @@ stashed = ' '
 untracked = ' '
 # up_to_date = ' '
 up_to_date = '󰸞 '
-style = 'bg:color_bg2 fg:color_fg0'
+style = 'bg:color_gray2 fg:color_white0'
 format = '[( $all_status$ahead_behind)]($style)'
 
 [git_commit]
-style = 'bg:color_bg3 fg:color_bg1'
+style = 'bg:color_cyan_b fg:color_black0'
 format = '[  $hash$tag ]($style)'
 only_detached = false
 
 [git_metrics]
 disabled = false
-added_style = 'bg:color_bg2 fg:color_green'
-deleted_style = 'bg:color_bg2 fg:color_red'
+added_style = 'bg:color_gray2 fg:color_green'
+deleted_style = 'bg:color_gray2 fg:color_red'
 format ='([ +$added](bold $added_style))([ -$deleted](bold $deleted_style ))'
 
 [git_branch]
 symbol = ""
-style = "bg:color_aqua fg:color_bg1"
+style = "bg:color_cyan fg:color_black0"
 format = '[ $symbol $branch ](bold $style)'
 
 [line_break]
@@ -156,6 +180,6 @@ disabled = false
 success_symbol = '[>](fg:color_green)'
 error_symbol = '[>](fg:color_red)'
 vimcmd_symbol = '[<](fg:color_green)'
-vimcmd_replace_one_symbol = '[<](fg:color_purple)'
-vimcmd_replace_symbol = '[<](fg:color_purple)'
+vimcmd_replace_one_symbol = '[<](fg:color_magenta)'
+vimcmd_replace_symbol = '[<](fg:color_magenta)'
 vimcmd_visual_symbol = '[<](bfg:color_yellow)'
