@@ -55,10 +55,18 @@ require('lazy').setup({ -- Plugins
         -- dir = '~/Code/neofission.nvim',
         'jgregoire/neofission.nvim',
         priority = 1000,
-        enabled = true,
+        enabled = false,
         config = function ()
             require('neofission').setup()
             vim.cmd.colorscheme('neofission')
+        end
+    },
+    {
+        'AlexvZyl/nordic.nvim',
+        priority = 1000,
+        enabled = true,
+        config = function ()
+            require('nordic').load()
         end
     },
     {

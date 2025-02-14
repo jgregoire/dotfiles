@@ -1,8 +1,8 @@
 local opts = {
     options = {
-        theme = require('neofission.lualine'),
+        -- theme = require('neofission.lualine'),
         -- theme = 'eldritch',
-        -- theme = 'nordic',
+        theme = 'nordic',
         component_separators = {
             left  = '│',
             right = '│'

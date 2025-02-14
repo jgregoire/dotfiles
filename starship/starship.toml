@@ -2,29 +2,29 @@
 
 format = """
 [╭─](bold)\
-[](bg:color_bg1 fg:color_red)\
+[](bg:color_bg1 fg:green)\
 $os\
 $jobs\
 $username\
-[](bg:color_bg3 fg:color_red)\
+[](bg:color_aqua fg:color_green)\
 $hostname\
-[](bg:color_bg2 fg:color_bg3)\
+[](bg:color_bg3 fg:color_aqua)\
 $directory\
-[](bg:color_bg1 fg:color_bg2)\
+[](bg:color_bg1 fg:color_bg3)\
 $fill\
 [](bg:color_bg1 fg:color_bg2)\
 $git_metrics\
 $git_status\
-[](bg:color_bg2 fg:color_blue)\
+[](bg:color_bg2 fg:color_bg3)\
 $git_commit\
-[](bg:color_blue fg:color_aqua)\
+[](bg:color_bg3 fg:color_aqua)\
 $git_branch\
 [](bg:color_bg1 fg:color_aqua)\
 $line_break\
 [╰─](bold)\
 $character"""
 
-palette = 'neofission'
+palette = 'nordic'
 
 [palettes.neofission]
 color_fg0 = '#e2d9c5'
@@ -39,9 +39,22 @@ color_purple = '#ec30ac'
 color_red = '#f53424'
 color_yellow = '#35b5ff'
 
+[palettes.nordic]
+color_fg0 = '#D8DEE9'
+color_bg1 = '#191D24'
+color_bg2 = '#4C566A'
+color_bg3 = '#81A1Ca'
+color_blue = '#5E81AC'
+color_aqua = '#8FBCBB'
+color_green = '#A3BE8C'
+color_orange = '#D08770'
+color_purple = '#B48EAD'
+color_red = '#B74E58'
+color_yellow = '#EBCB8B'
+
 [os]
 disabled = false
-style = "bg:color_red fg:color_fg0"
+style = "bg:color_green fg:color_fg0"
 format = "[$symbol ]($style)"
 
 [os.symbols]
@@ -71,23 +84,23 @@ Pop = ""
 symbol_threshold = 1
 number_threshold = 2
 symbol = ' '
-style = 'bg:color_red fg:color_fg0'
+style = 'bg:color_green fg:color_fg0'
 format = '[$symbol$number]($style)'
 
 [username]
 show_always = true
-style_user = "bg:color_red fg:color_bg1"
-style_root = "bg:color_red fg:color_bg1"
+style_user = "bg:color_green fg:color_bg1"
+style_root = "bg:color_green fg:color_bg1"
 format = '[$user ](bold $style)'
 
 [hostname]
 ssh_only = true
 ssh_symbol =' 󰱠' 
-style = 'bg:color_bg3 fg:color_fg0'
+style = 'bg:color_aqua fg:color_bg1'
 format = '[ $hostname$ssh_symbol ]($style)'
 
 [directory]
-style = "bg:color_bg2 fg:color_fg0"
+style = "bg:color_bg3 fg:color_bg1"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -120,7 +133,7 @@ style = 'bg:color_bg2 fg:color_fg0'
 format = '[( $all_status$ahead_behind)]($style)'
 
 [git_commit]
-style = 'bg:color_blue fg:color_bg1'
+style = 'bg:color_bg3 fg:color_bg1'
 format = '[  $hash$tag ]($style)'
 only_detached = false
 
