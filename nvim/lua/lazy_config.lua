@@ -600,7 +600,7 @@ require('lazy').setup({ -- Plugins
             'hrsh7th/nvim-cmp',
             'nvim-lua/plenary.nvim',
             'benlubas/neorg-conceal-wrap',
-            'benlubas/neorg-query',
+            -- 'benlubas/neorg-query',
             'benlubas/neorg-interim-ls'
         },
         version = '*',
