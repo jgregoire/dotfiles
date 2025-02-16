@@ -28,6 +28,9 @@ Arch Linux
     - rustup
     - neovim
     - wl-clipboard
+    - pipewire
+    - pipewire-pulse
+    - pipewire-zeroconf
 - Rust Packages
     - eza
     - rm-improved
