@@ -70,8 +70,8 @@ require('lazy').setup({ -- Plugins
                 bold_keywords = true,
                 italic_comments = true,
                 transparent = {
-                    bg = false,
-                    float = false,
+                    bg = true,
+                    float = true,
                 },
                 bright_border = true,
                 swap_backgrounds = false,
