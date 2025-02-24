@@ -16,6 +16,37 @@ vim.opt.rtp:prepend(lazypath)
 -- Specify plugins
 require('lazy').setup({ -- Plugins
     {
+        'AlexvZyl/nordic.nvim',
+        priority = 1000,
+        enabled = true,
+        config = function ()
+            require('nordic').setup({
+                bold_keywords = true,
+                italic_comments = true,
+                transparent = {
+                    bg = false,
+                    float = false,
+                },
+                bright_border = true,
+                swap_backgrounds = false,
+                cursorline = {
+                    bold = true,
+                    bold_number = true,
+                    theme = 'dark',
+                    blend = 0.50,
+                },
+                telescope = 'classic',
+                after_palette = function(palette)
+                    local U = require('nordic.utils')
+                    -- palette.bg_visual = palette.gray2.base
+                    palette.bg_visual = U.blend(palette.orange.base, palette.bg, 0.15)
+                    palette.cursorline = palette.black2
+                end,
+            })
+            require('nordic').load()
+        end
+    },
+    {
         'olimorris/onedarkpro.nvim',
         priority = 1000, -- Ensure this loads first
         enabled = false,
@@ -59,29 +90,6 @@ require('lazy').setup({ -- Plugins
         config = function ()
             require('neofission').setup()
             vim.cmd.colorscheme('neofission')
-        end
-    },
-    {
-        'AlexvZyl/nordic.nvim',
-        priority = 1000,
-        enabled = true,
-        config = function ()
-            require('nordic').setup({
-                bold_keywords = true,
-                italic_comments = true,
-                transparent = {
-                    bg = true,
-                    float = true,
-                },
-                bright_border = true,
-                swap_backgrounds = false,
-                cursorline = {
-                    bold_number = true,
-                    -- theme = 'light',
-                },
-                telescope = 'classic',
-            })
-            require('nordic').load()
         end
     },
     {
