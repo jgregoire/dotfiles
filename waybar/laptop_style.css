@@ -5,9 +5,9 @@
 }
 
 window#waybar {
-    background-color: rgba(5, 40, 57, 0.5);
-    border-bottom: 4px solid rgba(6, 16, 30, 0.5);
-    color: #e0d9c7;
+    background-color: rgba(25, 29, 36, 0.5);
+    border-bottom: 4px solid rgba(0, 0, 0, 0.5);
+    color: #BBC3D4;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -44,7 +44,7 @@ button:hover {
 #mpd {
     padding: 0 10px;
     color: #E2D9C5;
-    background-color: rgba(5, 40, 57, 0.0);
+    background-color: rgba(25, 29, 36, 0.0);
 }
 
 #window,
@@ -63,28 +63,28 @@ button:hover {
 }
 
 #clock {
-    border-bottom: 4px solid #66DEF9;
+    border-bottom: 4px solid #C0C8D8;
 }
 
 #window {
-    border-bottom: 4px solid #22536F;
+    border-bottom: 4px solid #81A1C1;
 }
 
 #battery {
-    border-bottom: 4px solid #35B5FF;
+    border-bottom: 4px solid #EBCB8B;
 }
 
 @keyframes blink {
     to {
-        background-color: #E2D9C5;
-        color: #06364B;
+        background-color: #ECEFF4;
+        color: #191D24;
     }
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: #F53424;
-    color: #E2D9C5;
+    background-color: #BF616A;
+    color: #191D24;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
@@ -97,11 +97,11 @@ label:focus {
 }
 
 #cpu {
-    border-bottom: 4px solid #B21368;
+    border-bottom: 4px solid #5E81AC;
 }
 
 #memory {
-    border-bottom: 4px solid #47EA68;
+    border-bottom: 4px solid #8FBCBB;
 }
 
 #disk {
@@ -109,35 +109,35 @@ label:focus {
 }
 
 #backlight {
-    border-bottom: 4px solid #ECEFF4;
+    border-bottom: 4px solid #EFD49F;
 }
 
 #network {
-    border-bottom: 4px solid #B2F85D;
+    border-bottom: 4px solid #A3BE8C;
 }
 
 #network.disconnected {
-    border-bottom: #F53424;
+    border-bottom: #C5727A;
 }
 
 #wireplumber {
-    border-bottom: 4px solid #008DA3;
+    border-bottom: 4px solid #B48EAD;
 }
 
 #wireplumber.muted {
-    border-bottom: 4px solid #004752;
+    border-bottom: 4px solid #BE9DB8;
 }
 
 #temperature {
-    border-bottom: 4px solid #FD5E3A;
+    border-bottom: 4px solid #D08770;
 }
 
 #temperature.critical {
-    border-bottom: 4px solid #F53424;
+    border-bottom: 4px solid #B74E58;
 }
 
 #tray {
-    background-color: #F53424;
+    background-color: #B74E58;
 }
 
 #tray > .passive {
@@ -150,11 +150,11 @@ label:focus {
 }
 
 #idle_inhibitor {
-    border-bottom: 4px solid #F53424;
+    border-bottom: 4px solid #60728A;
 }
 
 #idle_inhibitor.activated {
-    border-bottom: 4px solid #B2F85D;
+    border-bottom: 4px solid #81A1C1;
 }
 
 #mpd {
