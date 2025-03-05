@@ -90,7 +90,7 @@ layout {
         gap 4
         width 4
         length total-proportion=0.98
-        position "right"
+        position "left"
         gaps-between-tabs 2
         corner-radius 2
         active-color "#EBCB8B"
