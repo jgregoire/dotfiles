@@ -24,9 +24,9 @@
     symbols: (song: " ", dir: " ", marker: " "),
     progress_bar: (
         symbols: ["=", ">>", " "],
-        track_style: (fg: "#A3BE8C"),
-        elapsed_style: (fg: "#A3BE8C"),
-        thumb_style: (fg: "#A3BE8C"),
+        track_style: (fg: "#97B67C"),
+        elapsed_style: (fg: "#97B67C"),
+        thumb_style: (fg: "#97B67C"),
     ),
     scrollbar: (
         symbols: ["│", "█", "󰶣", "󰶡"],
