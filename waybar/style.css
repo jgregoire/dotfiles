@@ -46,7 +46,7 @@
 }
 
 window#waybar {
-    background-color: rgba(36, 41, 51, 0.5);
+    background-color: rgba(25, 29, 36, 0.5);
     border-bottom: 4px solid rgba(0, 0, 0, 0.5);
     color: #BBC3D4;
     transition-property: background-color;
@@ -83,7 +83,7 @@ button:hover {
 #mpd {
     padding: 0 10px;
     color: #BBC3D4;
-    background-color: rgba(36, 41, 51, 0.0);
+    background-color: rgba(25, 29, 36, 0.0);
 }
 
 #window,
@@ -106,13 +106,13 @@ button:hover {
 }
 
 #clock {
-    border-bottom: 4px solid #BBC3D4;
+    border-bottom: 4px solid #C0C8D8;
 }
 
 @keyframes blink {
     to {
-        background-color: #BBC3D4;
-        color: #242933;
+        background-color: #ECEFF4;
+        color: #191D24;
     }
 }
 
@@ -121,7 +121,7 @@ label:focus {
 }
 
 #cpu {
-    border-bottom: 4px solid #81A1C1;
+    border-bottom: 4px solid #5E81AC;
 }
 
 #memory {
@@ -133,23 +133,23 @@ label:focus {
 }
 
 #network {
-    border-bottom: 4px solid #A3BE8C;
+    border-bottom: 4px solid #97B67C;
 }
 
 #network.disconnected {
-    border-bottom: #B74E58;
+    border-bottom: #C5727A;
 }
 
 #wireplumber {
-    border-bottom: 4px solid #B38EAD;
+    border-bottom: 4px solid #A97EA1;
 }
 
 #wireplumber.muted {
-    border-bottom: 4px solid #B38EAD;
+    border-bottom: 4px solid #BE9DB8;
 }
 
 #temperature {
-    border-bottom: 4px solid #BF616A;
+    border-bottom: 4px solid #D08770;
 }
 
 #temperature.critical {
@@ -157,7 +157,7 @@ label:focus {
 }
 
 #tray {
-    background-color: #81A1C1;
+    border-bottom: 4px solid #C0C8D8
 }
 
 #tray > .passive {
@@ -170,11 +170,11 @@ label:focus {
 }
 
 #idle_inhibitor {
-    border-bottom: 4px solid #4C566A;
+    border-bottom: 4px solid #60728A;
 }
 
 #idle_inhibitor.activated {
-    border-bottom: 4px solid #60728A;
+    border-bottom: 4px solid #81A1C1;
 }
 
 #mpd {
