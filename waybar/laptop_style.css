@@ -27,7 +27,7 @@ button {
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
     background: inherit;
-    box-shadow: inset 0 -3px #E2D9C5;
+    box-shadow: inset 0 -3px #BBC3D4;
 }
 
 #clock,
@@ -43,7 +43,7 @@ button:hover {
 #idle_inhibitor,
 #mpd {
     padding: 0 10px;
-    color: #E2D9C5;
+    color: #BBC3D4;
     background-color: rgba(25, 29, 36, 0.0);
 }
 
@@ -93,7 +93,7 @@ button:hover {
 }
 
 label:focus {
-    background-color: #06364B;
+    background-color: #242933;
 }
 
 #cpu {
