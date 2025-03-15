@@ -65,12 +65,12 @@ layout {
 
     focus-ring {
         width 2
-        active-gradient from="#DBCB8B" to="#D08770" angle=100 in="oklch shorter hue"
+        active-gradient from="#DBCB8B" to="#A97EA1" angle=100 in="oklch shorter hue"
         inactive-color "#3B4252"
     }
     border {
         width 2
-        active-gradient from="#DBCB8B" to="#D08770" angle=100 in="oklch shorter hue"
+        active-gradient from="#DBCB8B" to="#A97EA1" angle=100 in="oklch shorter hue"
         inactive-color "#3B4252"
     }
     struts {
@@ -164,7 +164,7 @@ window-rule {
 }
 
 // Inactive windows are transparent
-window-rule {
+/- window-rule {
     match is-active=false
     exclude app-id="qimgv"
     exclude app-id="thunar"
@@ -183,7 +183,7 @@ layer-rule {
     match namespace="^launcher$"
     shadow {
         on
-        softness 8
+        softness 4
     }
     geometry-corner-radius 10
     // color "#191D2480"
