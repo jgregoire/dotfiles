@@ -1,6 +1,6 @@
 # Theme
 theme = nordic
-bold-is-bright = false
+bold-is-bright = true
 
 # Font
 font-family = Fira Code
