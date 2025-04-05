@@ -1,24 +1,18 @@
 // vi: ft=json
 {
     "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
+    "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 24, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
-    // "modules-center": ["custom/activewindow"],
     "modules-left": ["tray", "idle_inhibitor", "niri/window"],
     "modules-right": ["wireplumber", "network", "cpu", "memory", "temperature", "battery", "clock"],
 
     // Modules configuration
-    "custom/activewindow": {
-        "exec": "~/.config/waybar/activewindow.sh",
-        "interval": 1,
-        "format": "{} ",
-        "max-length": 48
-    },
     "niri/window": {
         "format": " {} ",
         "rewrite": {
-            "(.*) - Mozilla Firefox": "$1"
+            "(.*) - Mozilla Firefox": "$1",
+            "(.*) - Zen Browser": "$1"
         }
     },
     "mpd": {
@@ -40,7 +34,7 @@
             "on": " "
         },
         "single-icons": {
-            "on": "1 "
+            "on": "1"
         },
         "state-icons": {
             "paused": "",
@@ -100,7 +94,7 @@
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "  {bandwidthTotalBits}",
         "format-ethernet": "  {bandwidthTotalBitsBits}",
-        "tooltip-format": "{ifname} {ipaddr} via {gwaddr}",
+        "tooltip-format": "{ifname} {ipaddr} on {essid}",
         "format-linked": "{ifname} (No IP)  ",
         "format-disconnected": "Disconnected  ",
         "format-alt": "{ifname}: {ipaddr}/{cidr} "
@@ -111,8 +105,8 @@
         "format-icons": [" ", " ", " "],
         "scroll-step": "1.0",
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-        "on-click-right": "qpwgraph",
-        "max-volume": 98,
+        "on-click-right": "pavucontrol",
+        "max-volume": 100,
         "tooltip": true,
         "tooltip-format": "{node_name}"
     }
