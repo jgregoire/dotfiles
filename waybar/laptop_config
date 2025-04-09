@@ -18,7 +18,7 @@
     "mpd": {
         "server": "192.168.0.102",
         "port": 6600,
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) [{songPosition}/{queueLength}]",
+        "format": "{stateIcon}{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) [{songPosition}/{queueLength}]",
         "format-disconnected": "Disconnected  ",
         "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped  ",
         "unknown-tag": "N/A",
@@ -37,8 +37,8 @@
             "on": "1"
         },
         "state-icons": {
-            "paused": "",
-            "playing": ""
+            "paused": " ",
+            "playing": " "
         },
         "tooltip-format": "MPD (connected)",
         "tooltip-format-disconnected": "MPD (disconnected)",
@@ -76,11 +76,11 @@
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
-        "format": " {usage}%",
+        "format": " {usage}%",
         "tooltip": false
     },
     "memory": {
-        "format": " {}%"
+            "format": " {}%"
     },
     "temperature": {
         // "thermal-zone": 2,
@@ -88,12 +88,12 @@
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{icon}{temperatureC}°C",
-        "format-icons": [" ", " ", " "]
+        "format-icons": [" ", " ", " "]
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "  {bandwidthTotalBits}",
-        "format-ethernet": "  {bandwidthTotalBitsBits}",
+        "format-ethernet": "  {bandwidthTotalBits}",
         "tooltip-format": "{ifname} {ipaddr} on {essid}",
         "format-linked": "{ifname} (No IP)  ",
         "format-disconnected": "Disconnected  ",
