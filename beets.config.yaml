@@ -41,7 +41,7 @@ hook:
         command: tput bel
 
 importfeeds:
-    formats: m3u
+    formats: m3u_session
     dir: /media/pidrive/Playlists/
     relative_to: /media/pidrive/Music/
-    m3u_name: Recently_Added.m3u
+    m3u_name: Added_
