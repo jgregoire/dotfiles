@@ -1,0 +1,100 @@
+// vi: ft=json
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 64, // Waybar height (to be removed for auto height)
+    "spacing": 4, // Gaps between modules (4px)
+    "modules-center": ["niri/window"],
+    "modules-left": ["tray", "mpd"],
+    "modules-right": ["wireplumber", "network", "cpu", "memory", "temperature", "clock", "idle_inhibitor"],
+
+    "niri/window": {
+        "format": " {} ",
+        "rewrite": {
+            "(.*) - Mozilla Firefox": "$1"
+        }
+    },
+    "mpd": {
+        "server": "192.168.0.100",
+        "port": 6600,
+        "format": "{stateIcon}{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) [{songPosition}/{queueLength}]",
+        "format-disconnected": "Disconnected  ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped  ",
+        "unknown-tag": "N/A",
+        "interval": 2,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1"
+        },
+        "state-icons": {
+            "paused": " ",
+            "playing": " "
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)",
+        "on-click": "mpc --host=192.168.0.100 --port=6600 toggle",
+        "max-length": 128
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "timezone": "America/New_York",
+        "format": "{:%a, %b %d %H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": false
+    },
+    "memory": {
+        "format": " {}%"
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{icon}{temperatureC}°C",
+        "format-icons": [" ", " ", " "]
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": " {bandwidthUpBits}  {bandwidthDownBits} ",
+        "format-ethernet": "  {bandwidthUpBits}  {bandwidthDownBits} ",
+        "tooltip-format": "{ifname} {ipaddr} on {essid}",
+        "format-linked": "{ifname} (No IP)  ",
+        "format-disconnected": " Disconnected ",
+        "format-alt": "{ifname}: {ipaddr}/{cidr} "
+    },
+    "wireplumber": {
+        "format": "{icon}{volume}%",
+        "format-muted": "  MUTE",
+        "format-icons": [" ", " ", " "],
+        "scroll-step": "1.0",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "max-volume": 98,
+        "tooltip": true,
+        "tooltip-format": "{node_name}"
+    }
+}
+
