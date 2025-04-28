@@ -49,6 +49,8 @@
             "<Down>":  Down,
             "<Left>":  Left,
             "<Right>": Right,
+            "<PageUp>": PageUp,
+            "<PageDown>": PageDown,
             "<C-k>":   PaneUp,
             "<C-j>":   PaneDown,
             "<C-h>":   PaneLeft,
