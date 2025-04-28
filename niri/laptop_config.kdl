@@ -44,6 +44,8 @@ input {
 }
 
 layout {
+    empty-workspace-above-first
+
     default-column-width { proportion 0.5; }
 
     // When to center a column when changing focus, options are:
