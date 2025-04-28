@@ -40,7 +40,7 @@ input {
 }
 
 layout {
-    default-column-width { proportion 0.5; }
+    default-column-width { proportion 1.0; }
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -74,9 +74,9 @@ layout {
         active-gradient from="#EBCB8B" to="#D08770" angle=100 in="oklch shorter hue"
         inactive-color "#3B4252"
     }
-    struts {
-        left 14
-        right 14
+    /- struts {
+        left 32
+        right 32
     }
     insert-hint {
         color "#B1C89D"
@@ -147,21 +147,6 @@ animations {
 window-rule {
     geometry-corner-radius 8
     clip-to-geometry true
-}
-
-window-rule {
-    match title="Firefox"
-    default-column-width { proportion 0.66667; }
-}
-
-window-rule {
-    match app-id=r#".*kitty.*"#
-    default-column-width { proportion 0.33333; }
-}
-
-window-rule {
-    match app-id=r#".*ghostty.*"#
-    default-column-width { proportion 0.33333; }
 }
 
 // Inactive windows are transparent
@@ -298,6 +283,6 @@ binds {
 }
 
 spawn-at-startup "powerkit"
-spawn-at-startup "kitty --hold sh -c 'rmpc'"
+spawn-at-startup "kitty" "--hold" "sh" "-c" "'rmpc'"
 // Using the systemd service file now
 // spawn-at-startup "xwayland-satellite"
