@@ -7,7 +7,7 @@
     default_album_art_path: None,
     show_song_table_header: true,
     draw_borders: true,
-    browser_column_widths: [20, 38, 42],
+    browser_column_widths: [30, 30, 40],
     background_color: None,
     text_color: "#BBC3D4",
     header_background_color: None,
@@ -39,13 +39,13 @@
             prop: (kind: Property(Artist), style: (fg: "#D08770"),
                 default: (kind: Text("Unknown"))
             ),
-            width_percent: 20,
+            width_percent: 30,
         ),
         (
             prop: (kind: Property(Title), style: (fg: "#EBCB8B"),
                 default: (kind: Text("Unknown"))
             ),
-            width_percent: 35,
+            width_percent: 30,
         ),
         (
             prop: (kind: Property(Album), style: (fg: "#8FBCBB"),
@@ -58,7 +58,7 @@
                 default: (kind: Text("-")),
                 style: (fg: "#B48EAD")
             ),
-            width_percent: 15,
+            width_percent: 10,
             alignment: Right,
         ),
     ],
