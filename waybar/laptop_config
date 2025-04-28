@@ -82,13 +82,12 @@
         "format-icons": [" ", " ", " "]
     },
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "  {bandwidthTotalBits}",
-        "format-ethernet": "  {bandwidthTotalBits}",
+        "format-wifi": " {bandwidthTotalBits}",
+        "format-ethernet": " {bandwidthTotalBits}",
         "tooltip-format": "{ifname} {ipaddr} on {essid}",
         "format-linked": "{ifname} (No IP)  ",
-        "format-disconnected": " Disconnected ",
-        "format-alt": "{ifname}: {ipaddr}/{cidr} "
+        "format-disconnected": " Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "wireplumber": {
         "format": "{icon}{volume}%",
