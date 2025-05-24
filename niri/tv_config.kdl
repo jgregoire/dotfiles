@@ -282,7 +282,8 @@ binds {
     Mod+Shift+Ctrl+T { toggle-debug-tint; }
 }
 
-spawn-at-startup "powerkit"
 spawn-at-startup "kitty" "--hold" "sh" "-c" "'rmpc'"
+spawn-at-startup "dunst"
+
 // Using the systemd service file now
 // spawn-at-startup "xwayland-satellite"
