@@ -68,14 +68,12 @@ layout {
     focus-ring {
         width 2
         active-gradient from="#DBCB8B" to="#A97EA1" angle=100 in="oklch shorter hue"
-        // inactive-color "#3B4252"
-        inactive-gradient from="#2B4252" to="#434C5E" angle=100 in="oklch shorter hue"
+        inactive-gradient from="#60728A" to="#2B4252" angle=100 in="oklch shorter hue"
     }
     border {
         width 2
         active-gradient from="#DBCB8B" to="#A97EA1" angle=100 in="oklch shorter hue"
-        // inactive-color "#3B4252"
-        inactive-gradient from="#2B4252" to="#434C5E" angle=100 in="oklch shorter hue"
+        inactive-gradient from="#60728A" to="#2B4252" angle=100 in="oklch shorter hue"
 
     }
     struts {
@@ -83,7 +81,6 @@ layout {
         right 10
     }
     insert-hint {
-        // color "#B1C89D"
         gradient from="#B1C89DFF" to="#97B67CFF" angle=100 in="oklch shorter hue" relative-to="workspace-view"
     }
     shadow {
