@@ -17,3 +17,5 @@ gtk-single-instance = true
 clipboard-read = allow
 clipboard-write = allow
 
+shell-integration = zsh
+shell-integration-features = sudo,title
