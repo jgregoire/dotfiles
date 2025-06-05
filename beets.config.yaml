@@ -8,7 +8,7 @@ import:
     none_rec_action: asis
     bell: yes
 
-plugins: lastgenre fetchart ftintitle mpdupdate smartplaylist random embedart replaygain convert lyrics hook importfeeds
+plugins: lastgenre fetchart ftintitle mpdupdate smartplaylist random embedart replaygain convert lyrics hook importfeeds edit
 
 embedart:
     auto: yes
