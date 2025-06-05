@@ -30,18 +30,18 @@ require('lazy').setup({ -- Plugins
                 bright_border = true,
                 swap_backgrounds = false,
                 cursorline = {
-                    bold = true,
+                    bold = false,
                     bold_number = true,
                     theme = 'dark',
                     blend = 0.50,
                 },
                 telescope = 'classic',
-                after_palette = function(palette)
-                    local U = require('nordic.utils')
+                -- after_palette = function(palette)
+                    -- local U = require('nordic.utils')
                     -- palette.bg_visual = palette.gray2.base
-                    palette.bg_visual = U.blend(palette.orange.base, palette.bg, 0.15)
-                    palette.cursorline = palette.black2
-                end,
+                    -- palette.bg_visual = U.blend(palette.orange.base, palette.bg, 0.15)
+                    -- palette.cursorline = palette.black2
+                -- end,
             })
             require('nordic').load()
         end
@@ -350,6 +350,25 @@ require('lazy').setup({ -- Plugins
                 show_start = true,
             }
         },
+    },
+    {
+        'mvllow/modes.nvim',
+        config = function ()
+            require('modes').setup({
+                colors = {
+                    bg = '#191D24',
+                    copy = '#8FBCBB',
+                    delete = '#EBCB8B',
+                    insert = '#A3BE8C',
+                    visual = '#BF616A',
+                },
+                line_opacity = 0.15,
+                set_cursor = true,
+                set_cursorline = true,
+                set_number = true,
+                set_signcolumn = true,
+            })
+        end
     },
     {
         'abecodes/tabout.nvim',
