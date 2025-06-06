@@ -47,52 +47,6 @@ require('lazy').setup({ -- Plugins
         end
     },
     {
-        'olimorris/onedarkpro.nvim',
-        priority = 1000, -- Ensure this loads first
-        enabled = false,
-        config = function ()
-            require('onedarkpro').setup({
-                styles = {
-
-                    comments = 'italic',
-                },
-                plugins = {
-                    all = false,
-                    diffview = true,
-                    flash_nvim = true,
-                    gitsigns = true,
-                    indentline = true,
-                    lsp_semantic_tokens = true,
-                    nvim_cmp = true,
-                    nvim_lsp = true,
-                    nvim_notify = true,
-                    telescope = true,
-                    toggleterm = true,
-                    treesitter = true,
-                },
-                options = {
-                    transparency = true,
-                    cursorline = true,
-                    highlight_inactive_windows = true,
-                },
-                colors = {
-                    --cursorline = '#000000' -- Set this if the default choice sucks.
-                }
-            })
-            vim.cmd('colorscheme onedark_vivid')
-        end,
-    },
-    {
-        -- dir = '~/Code/neofission.nvim',
-        'jgregoire/neofission.nvim',
-        priority = 1000,
-        enabled = false,
-        config = function ()
-            require('neofission').setup()
-            vim.cmd.colorscheme('neofission')
-        end
-    },
-    {
         'williamboman/mason.nvim',
         config = function ()
             require('mason').setup({
@@ -148,16 +102,6 @@ require('lazy').setup({ -- Plugins
             })
         end
     },
-    --[[{
-        'RRethy/nvim-treesitter-endwise',
-    },
-    {
-        'nvim-treesitter/nvim-treesitter-textobjects'
-    },
-    {
-        'nvim-treesitter/nvim-treesitter-context',
-        dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    },--]]
     {
         'nvim-treesitter/nvim-treesitter',
         dependencies = {
