@@ -104,7 +104,7 @@ alias ssu='systemctl --user'
 #alias rsyncpm='rsync -av --size-only --force --del /home/james/Music/ /home/james/Marconi/Music/.'
 alias rsyncpm='adbsync --del --show-progress push Music/ /storage/emulated/0/Music'
 # alias rsyncpp='rsync -av --size-only /var/lib/mpd/playlists/ /home/james/Marconi/Music/.'
-alias rsynccm='rsync -av --force --del james@heaviside:/media/pidrive/Music/. Music/. && tput bel'
+alias rsynccm='rsync -av --force --del james@heaviside.local:/media/pidrive/Music/. Music/. && tput bel'
 
 # BEST ALIAS EVER
 alias fucking='sudo'

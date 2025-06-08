@@ -1,0 +1,195 @@
+/* AlexvZyl/nordic.nvim theme */
+/*
+:root {
+    --black0: #191D24;
+    --black1: #1E222A;
+    --black2: #222630;
+    --gray0: #242933;
+    --gray1: #2E3440;
+    --gray2: #3B4252;
+    --gray3: #434C5E;
+    --gray4: #4C566A;
+    --gray5: #60728A;
+    --white0_normal: #BBC3D4;
+    --white0_reduce_blue: #C0C8D8;
+    --white1: #D8DEE9;
+    --white2: #E5E9F0;
+    --white3: #ECEFF4;
+    --blue0: #5E81AC;
+    --blue1: #81A1C1;
+    --blue2: #88C0D0;
+    --cyan0: #80B3B2;
+    --cyan1: #8FBCBB;
+    --cyan2: #9FC6C5;
+    --green0: #97B67C;
+    --green1: #A3BE8C;
+    --green2: #B1C89D;
+    --yellow0: #E7C173;
+    --yellow1: #EBCB8B;
+    --yellow2: #EFD49F;
+    --orange0: #CB775D;
+    --orange1: #D08770;
+    --orange2: #D79784;
+    --red0: #B74E58;
+    --red1: #BF616A;
+    --red2: #C5727A;
+    --magenta0: #A97EA1;
+    --magenta1: #B38EAD;
+    --magenta2: #BE9DB8;
+}
+*/
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    /* font-family: FiraCode, FontAwesome, sans-serif; */
+    font-family: FiraCode Nerd Font, FontAwesome, sans-serif;
+    font-size: 36px;
+}
+
+window#waybar {
+    background-color: rgba(25, 29, 36, 0.5);
+    border-bottom: 10px solid rgba(0, 0, 0, 0.5);
+    color: #BBC3D4;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #BBC3D4;
+}
+
+#clock,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#network,
+#wireplumber,
+#tray,
+#idle_inhibitor,
+#mpd {
+    padding: 0 10px;
+    color: #BBC3D4;
+    background-color: rgba(25, 29, 36, 0.0);
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#window {
+    border-bottom: 10px solid #EBCB8B;
+}
+
+#clock {
+    border-bottom: 10px solid #C0C8D8;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ECEFF4;
+        color: #191D24;
+    }
+}
+
+label:focus {
+    background-color: #242933;
+}
+
+#cpu {
+    border-bottom: 10px solid #5E81AC;
+}
+
+#memory {
+    border-bottom: 10px solid #8FBCBB;
+}
+
+#disk {
+    border-bottom: 10px solid #D08770;
+}
+
+#network {
+    border-bottom: 10px solid #97B67C;
+}
+
+#network.disconnected {
+    border-bottom: #C5727A;
+}
+
+#wireplumber {
+    border-bottom: 10px solid #A97EA1;
+}
+
+#wireplumber.muted {
+    border-bottom: 10px solid #BE9DB8;
+}
+
+#temperature {
+    border-bottom: 10px solid #D08770;
+}
+
+#temperature.critical {
+    border-bottom: 10px solid #B74E58;
+}
+
+#tray {
+    border-bottom: 10px solid #C0C8D8
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #B74E58;
+}
+
+#idle_inhibitor {
+    border-bottom: 10px solid #60728A;
+}
+
+#idle_inhibitor.activated {
+    border-bottom: 10px solid #81A1C1;
+}
+
+#mpd {
+    border-bottom: 10px solid #81A1C1;
+}
+
+#mpd.disconnected {
+    border-bottom: 10px solid #5E81AC;
+}
+
+#mpd.stopped {
+    border-bottom: 10px solid #81A1C1;
+}
+
+#mpd.paused {
+    border-bottom: 10px solid #81A1C1;
+}
+

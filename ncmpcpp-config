@@ -10,7 +10,7 @@ ncmpcpp_directory = ~/.ncmpcpp
 mpd_host = localhost
 mpd_port = 6600
 mpd_connection_timeout = 5
-mpd_music_dir = ~/Music
+mpd_music_dir = /media/pidrive/Music
 
 ## Music Visualizer ##
 # visualizer_fifo_path = /tmp/mpd.fifo

@@ -8,13 +8,6 @@
     "modules-left": ["tray", "mpd"],
     "modules-right": ["wireplumber", "network", "cpu", "memory", "temperature", "clock", "idle_inhibitor"],
 
-    // Modules configuration
-    "custom/activewindow": {
-        "exec": "~/.config/waybar/activewindow.sh",
-        "interval": 1,
-        "format": "{}",
-        "max-length": 128
-    },
     "niri/window": {
         "format": " {} ",
         "rewrite": {
@@ -25,8 +18,8 @@
         "server": "192.168.0.100",
         "port": 6600,
         "format": "{stateIcon}{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) [{songPosition}/{queueLength}]",
-        "format-disconnected": "Disconnected 🎜 ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped 🎜",
+        "format-disconnected": "Disconnected  ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped  ",
         "unknown-tag": "N/A",
         "interval": 2,
         "consume-icons": {
@@ -51,15 +44,6 @@
         "on-click": "mpc --host=192.168.0.100 --port=6600 toggle",
         "max-length": 128
     },
-    "cava": {
-        "framerate": 30,
-        "autosens": 1,
-        "bars": 24,
-        "lower_cutuff_freq": 20,
-        "higher_cutoff_freq": 20000,
-        "method": "pipewire",
-        "stereo": true
-    },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -78,11 +62,11 @@
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
-        "format": " {usage}%",
+        "format": " {usage}%",
         "tooltip": false
     },
     "memory": {
-        "format": " {}%"
+        "format": " {}%"
     },
     "temperature": {
         // "thermal-zone": 2,
@@ -90,15 +74,15 @@
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{icon}{temperatureC}°C",
-        "format-icons": [" ", " ", " "]
+        "format-icons": [" ", " ", " "]
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": " {bandwidthUpBits}  {bandwidthDownBits} ",
-        "format-ethernet": "  {bandwidthUpBits}  {bandwidthDownBits} ",
-        "tooltip-format": "{ifname} {ipaddr} via {gwaddr}",
+        "format-ethernet": "  {bandwidthUpBits}  {bandwidthDownBits} ",
+        "tooltip-format": "{ifname} {ipaddr} on {essid}",
         "format-linked": "{ifname} (No IP)  ",
-        "format-disconnected": " Disconnected",
+        "format-disconnected": " Disconnected ",
         "format-alt": "{ifname}: {ipaddr}/{cidr} "
     },
     "wireplumber": {
@@ -107,7 +91,7 @@
         "format-icons": [" ", " ", " "],
         "scroll-step": "1.0",
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-        "on-click-right": "qpwgraph",
+        "on-click-right": "pavucontrol",
         "max-volume": 98,
         "tooltip": true,
         "tooltip-format": "{node_name}"

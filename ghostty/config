@@ -1,10 +1,9 @@
 # Theme
 theme = nordic
-bold-is-bright = false
+bold-is-bright = true
 
-# Font
-font-family = Fira Code
-config-file = /home/james/.config/ghostty/fontsize
+# Font stuff is machine-specific, so keep it separate
+config-file = /home/james/.config/ghostty/font
 
 adjust-underline-position = 3
 # adjust-underline-thickness = 1
@@ -18,3 +17,5 @@ gtk-single-instance = true
 clipboard-read = allow
 clipboard-write = allow
 
+shell-integration = zsh
+shell-integration-features = sudo,title

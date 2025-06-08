@@ -16,52 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 -- Specify plugins
 require('lazy').setup({ -- Plugins
     {
-        'olimorris/onedarkpro.nvim',
-        priority = 1000, -- Ensure this loads first
-        enabled = false,
-        config = function ()
-            require('onedarkpro').setup({
-                styles = {
-
-                    comments = 'italic',
-                },
-                plugins = {
-                    all = false,
-                    diffview = true,
-                    flash_nvim = true,
-                    gitsigns = true,
-                    indentline = true,
-                    lsp_semantic_tokens = true,
-                    nvim_cmp = true,
-                    nvim_lsp = true,
-                    nvim_notify = true,
-                    telescope = true,
-                    toggleterm = true,
-                    treesitter = true,
-                },
-                options = {
-                    transparency = true,
-                    cursorline = true,
-                    highlight_inactive_windows = true,
-                },
-                colors = {
-                    --cursorline = '#000000' -- Set this if the default choice sucks.
-                }
-            })
-            vim.cmd('colorscheme onedark_vivid')
-        end,
-    },
-    {
-        -- dir = '~/Code/neofission.nvim',
-        'jgregoire/neofission.nvim',
-        priority = 1000,
-        enabled = false,
-        config = function ()
-            require('neofission').setup()
-            vim.cmd.colorscheme('neofission')
-        end
-    },
-    {
         'AlexvZyl/nordic.nvim',
         priority = 1000,
         enabled = true,
@@ -76,10 +30,18 @@ require('lazy').setup({ -- Plugins
                 bright_border = true,
                 swap_backgrounds = false,
                 cursorline = {
+                    bold = false,
                     bold_number = true,
-                    -- theme = 'light',
+                    theme = 'dark',
+                    blend = 0.50,
                 },
                 telescope = 'classic',
+                -- after_palette = function(palette)
+                    -- local U = require('nordic.utils')
+                    -- palette.bg_visual = palette.gray2.base
+                    -- palette.bg_visual = U.blend(palette.orange.base, palette.bg, 0.15)
+                    -- palette.cursorline = palette.black2
+                -- end,
             })
             require('nordic').load()
         end
@@ -140,16 +102,6 @@ require('lazy').setup({ -- Plugins
             })
         end
     },
-    --[[{
-        'RRethy/nvim-treesitter-endwise',
-    },
-    {
-        'nvim-treesitter/nvim-treesitter-textobjects'
-    },
-    {
-        'nvim-treesitter/nvim-treesitter-context',
-        dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    },--]]
     {
         'nvim-treesitter/nvim-treesitter',
         dependencies = {
@@ -342,6 +294,25 @@ require('lazy').setup({ -- Plugins
                 show_start = true,
             }
         },
+    },
+    {
+        'mvllow/modes.nvim',
+        config = function ()
+            require('modes').setup({
+                colors = {
+                    bg = '#191D24',
+                    copy = '#8FBCBB',
+                    delete = '#EBCB8B',
+                    insert = '#A3BE8C',
+                    visual = '#BF616A',
+                },
+                line_opacity = 0.15,
+                set_cursor = true,
+                set_cursorline = true,
+                set_number = true,
+                set_signcolumn = true,
+            })
+        end
     },
     {
         'abecodes/tabout.nvim',

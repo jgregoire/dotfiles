@@ -15,6 +15,7 @@ Arch Linux
 ----------
 
 - Base System
+    - pacman-mirrorlist
     - intel-ucode
     - dkms
     - broadcom-wl-dkms

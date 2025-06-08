@@ -40,6 +40,8 @@ input {
 }
 
 layout {
+    empty-workspace-above-first
+
     default-column-width { proportion 0.5; }
 
     // When to center a column when changing focus, options are:
@@ -64,15 +66,13 @@ layout {
 
     focus-ring {
         width 2
-        // active-gradient from="#B74E58" to="#5E81AC" angle=100 in="oklch shorter hue"
         active-gradient from="#EBCB8B" to="#D08770" angle=100 in="oklch shorter hue"
-        inactive-color "#3B4252"
+        inactive-gradient from="#60728A" to="#2B4252" angle=100 in="oklch shorter hue"
     }
     border {
         width 2
-        // active-gradient from="#B74E58" to="#5E81AC" angle=100 in="oklch shorter hue"
         active-gradient from="#EBCB8B" to="#D08770" angle=100 in="oklch shorter hue"
-        inactive-color "#3B4252"
+        inactive-gradient from="#60728A" to="#2B4252" angle=100 in="oklch shorter hue"
     }
     struts {
         left 14

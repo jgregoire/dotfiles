@@ -268,7 +268,6 @@ local M = {
                 if (FirstBufEnter == true) then
                     vim.opt.clipboard:append({ 'unnamedplus' })
                     FirstBufEnter = false
-                    vim.notify('Set clipboard=unnamedplus')
                 end
             end,
             description = 'Set system clipboard',

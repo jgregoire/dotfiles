@@ -44,6 +44,8 @@ input {
 }
 
 layout {
+    empty-workspace-above-first
+
     default-column-width { proportion 0.5; }
 
     // When to center a column when changing focus, options are:
@@ -65,21 +67,38 @@ layout {
 
     focus-ring {
         width 2
-        active-gradient from="#fd5e3a" to="#86dbf5" angle=100 in="oklch shorter hue"
-        inactive-color "#2f516c"
+        active-gradient from="#DBCB8B" to="#A97EA1" angle=100 in="oklch shorter hue"
+        inactive-gradient from="#60728A" to="#2B4252" angle=100 in="oklch shorter hue"
     }
-
     border {
         width 2
-        active-gradient from="#fd5e3a" to="#86dbf5" angle=100 in="oklch shorter hue"
-        inactive-color "#2f516c"
+        active-gradient from="#DBCB8B" to="#A97EA1" angle=100 in="oklch shorter hue"
+        inactive-gradient from="#60728A" to="#2B4252" angle=100 in="oklch shorter hue"
+
     }
     struts {
         left 10
         right 10
     }
     insert-hint {
-        color "#fd5e3a"
+        gradient from="#B1C89DFF" to="#97B67CFF" angle=100 in="oklch shorter hue" relative-to="workspace-view"
+    }
+    shadow {
+       // on
+    }
+    tab-indicator {
+        hide-when-single-tab
+        place-within-column
+        gap 4
+        width 4
+        length total-proportion=0.98
+        position "left"
+        gaps-between-tabs 2
+        corner-radius 2
+        active-color "#EBCB8B"
+        inactive-color "#60728A"
+        // active-gradient from="#80c8ff" to="#bbddff" angle=45
+        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 }
 
@@ -147,11 +166,29 @@ window-rule {
 }
 
 // Inactive windows are transparent
-window-rule {
+/- window-rule {
     match is-active=false
     exclude app-id="qimgv"
     exclude app-id="thunar"
     opacity 0.9
+}
+
+window-rule {
+    match is-floating=true
+    shadow {
+        on
+        softness 8
+    }
+}
+
+layer-rule {
+    match namespace="^launcher$"
+    shadow {
+        on
+        softness 4
+    }
+    geometry-corner-radius 10
+    // color "#191D2480"
 }
 
 binds {
@@ -242,6 +279,7 @@ binds {
     Mod+Shift+9 { move-column-to-workspace 9; }
 
     Mod+W { switch-preset-column-width; }
+    Mod+Shift+T { toggle-column-tabbed-display; }
     Mod+Shift+F { maximize-column; }
     Mod+F { fullscreen-window; }
     Mod+C { center-column; }
@@ -272,7 +310,7 @@ binds {
 }
 
 spawn-at-startup "waypaper" "--random"
-spawn-at-startup "firefox"
+spawn-at-startup "zen"
 spawn-at-startup "ghostty"
 spawn-at-startup "powerkit"
 // Using the systemd service file now.
