@@ -32,6 +32,7 @@ Arch Linux
     - pipewire
     - pipewire-pulse
     - pipewire-zeroconf
+    - unar(chiver)
 - Rust Packages
     - eza
     - rm-improved
@@ -78,6 +79,4 @@ Arch Linux
     - lxappearance
     - materia-gtk-theme
     - atril
-    - zip
-    - unzip
-    - xarchiver
+    - 7zip
