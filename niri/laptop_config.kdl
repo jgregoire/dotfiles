@@ -280,8 +280,8 @@ binds {
 
     Mod+W { switch-preset-column-width; }
     Mod+Shift+T { toggle-column-tabbed-display; }
-    Mod+Shift+F { maximize-column; }
-    Mod+F { fullscreen-window; }
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
     Mod+C { center-column; }
 
     // Finer width adjustments.
