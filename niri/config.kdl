@@ -66,12 +66,12 @@ layout {
 
     focus-ring {
         width 2
-        active-gradient from="#EBCB8B" to="#D08770" angle=100 in="oklch shorter hue"
+        active-gradient from="#DBCB8B" to="#A97EA1" angle=100 in="oklch shorter hue"
         inactive-gradient from="#60728A" to="#2B4252" angle=100 in="oklch shorter hue"
     }
     border {
         width 2
-        active-gradient from="#EBCB8B" to="#D08770" angle=100 in="oklch shorter hue"
+        active-gradient from="#DBCB8B" to="#A97EA1" angle=100 in="oklch shorter hue"
         inactive-gradient from="#60728A" to="#2B4252" angle=100 in="oklch shorter hue"
     }
     struts {
@@ -79,7 +79,22 @@ layout {
         right 14
     }
     insert-hint {
-        color "#B1C89D"
+        gradient from="#B1C89DFF" to="#97B67CFF" angle=100 in="oklch shorter hue" relative-to="workspace-view"
+    }
+    shadow {
+        // on
+    }
+    tab-indicator {
+        hide-when-single-tab
+        place-within-column
+        gap 8
+        width 8
+        length total-proportion=0.98
+        position "left"
+        gaps-between-tabs 4
+        corner-radius 4
+        active-color "#EBCB8B"
+        inactive-color "#60728A"
     }
 }
 
@@ -259,8 +274,9 @@ binds {
     Mod+BracketRight { consume-or-expel-window-right; }
 
     Mod+W { switch-preset-column-width; }
-    Mod+Shift+F { maximize-column; }
-    Mod+F { fullscreen-window; }
+    Mod+Shift+T { toggle-column-tabbed-display; }
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
     Mod+C { center-column; }
 
     // Finer width adjustments.
@@ -298,7 +314,7 @@ binds {
 }
 
 spawn-at-startup "powerkit"
-spawn-at-startup "waypaper --random"
+spawn-at-startup "waypaper" "--random"
 spawn-at-startup "firefox"
 spawn-at-startup "ghostty"
 // Using the systemd service file now
