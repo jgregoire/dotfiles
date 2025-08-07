@@ -63,28 +63,28 @@ require('lazy').setup({ -- Plugins
     },
     {
         'williamboman/mason-lspconfig.nvim',
-        dependencies = { 'williamboman/mason.nvim' },
-        config = function ()
-            require('mason-lspconfig').setup({
-                ensure_installed = {
-                    'arduino_language_server',
-                    'bashls',
-                    'clangd',
-                    'jsonls',
-                    'ltex',
-                    'lua_ls',
-                    'openscad_lsp',
-                    'pyright',
-                    'rust_analyzer',
-                    -- 'typos_lsp',
-                    'yamlls',
-                },
-            })
-        end
+        dependencies = {
+            'williamboman/mason.nvim',
+            'neovim/nvim-lspconfig',
+        },
+        opts = {
+            ensure_installed = {
+                'arduino_language_server',
+                'bashls',
+                'clangd',
+                'jsonls',
+                'ltex',
+                'lua_ls',
+                'openscad_lsp',
+                'pyright',
+                'rust_analyzer',
+                -- 'typos_lsp',
+                'yamlls',
+            },
+        }
     },
     {
         'neovim/nvim-lspconfig',
-        dependencies = { 'williamboman/mason-lspconfig.nvim' },
         config = function ()
             require('lsp_config') -- Run my configuration file
         end
