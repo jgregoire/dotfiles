@@ -26,7 +26,7 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 plug "zsh-users/zsh-syntax-highlighting"
 
 # vi-mode by default
-bindkey -v
+# bindkey -v
 
 ##
 ## Add directories to default PATH
