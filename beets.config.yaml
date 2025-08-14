@@ -7,13 +7,14 @@ import:
     write: yes
     none_rec_action: asis
     bell: yes
+    incremental: yes
 
-plugins: lastgenre fetchart ftintitle mpdupdate smartplaylist random embedart replaygain convert lyrics hook importfeeds edit
+plugins: lastgenre fetchart ftintitle mpdupdate smartplaylist random embedart replaygain lyrics hook importfeeds edit info
 
 embedart:
     auto: yes
 
-mpdupdate:
+mpd:
     host: localhost
     port: 6600
 
