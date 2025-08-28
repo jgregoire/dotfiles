@@ -2,10 +2,6 @@
 -- Speedy start
 vim.loader.enable()
 
--- Figure out what kind of machine we're on.
--- Dev plugins (most LSPs, neorg, et al.) will
--- be disabled on headless machines.
--- headless = true and os.getenv("HEADLESS") or false
 -- This needs to be set before loading certain plugins.
 vim.opt.termguicolors = true
 
@@ -158,5 +154,4 @@ package.path = package.path .. ';' .. vim.fn.expand('$HOME') .. '/.luarocks/shar
 -- Specify plugins:
 require('lazy_config')
 
--- vim.notify(headless and "HEADLESS" or "NOT HEADLESS")
 -- end

@@ -104,6 +104,8 @@ require('lazy').setup({ -- Plugins
     },
     {
         'nvim-treesitter/nvim-treesitter',
+        branch = 'master',
+        lazy = false,
         dependencies = {
             'RRethy/nvim-treesitter-endwise',
             'nvim-treesitter/nvim-treesitter-textobjects',
@@ -112,9 +114,9 @@ require('lazy').setup({ -- Plugins
         config = function ()
             ---@diagnostic disable-next-line: missing-fields
             require('nvim-treesitter.configs').setup({
-                ensure_installed = { 'lua', 'vim', 'vimdoc', 'query', 'c'},
+                ensure_installed = { 'lua', 'vim', 'vimdoc', 'query', 'c', 'markdown', 'markdown_inline' },
                 sync_install = false,
-                auto_install = false,
+                auto_install = true,
                 highlight = {
                     enable = true,
                     -- Also use vim built-in highlighting alongside TS for these languages
@@ -133,9 +135,9 @@ require('lazy').setup({ -- Plugins
                         scope_incremental = '<leader>si',
                     },
                 },
-                endwise = {
-                    enable = true
-                },
+                -- endwise = {
+                    -- enable = true
+                -- },
                 textobjects = {
                     select = {
                         enable = true,
@@ -387,12 +389,6 @@ require('lazy').setup({ -- Plugins
                 visual_line     = 'pS',
             }
         },
-    },
-    {
-        'altermo/ultimate-autopair.nvim',
-        enabled = false,
-        event = { 'InsertEnter', 'CmdlineEnter' },
-        branch = 'v0.6',
     },
     {
         'JoosepAlviste/nvim-ts-context-commentstring',
