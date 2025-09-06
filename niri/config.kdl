@@ -192,6 +192,14 @@ window-rule {
     opacity 0.9
 }
 
+layer-rule {
+    match namespace="^launcher%"
+    shadow {
+        on
+        softness 4
+    }
+}
+
 binds {
     // Conventions:
     // Mod:            Change focus, basic commands
