@@ -3,6 +3,9 @@ environment {
     // Persuade electron apps to use wayland
     ELECTRON_OZONE_PLATFORM_HINT "wayland"
 
+    // Persuade QT apps to use wayland
+    QT_QPA_PLATFORM "wayland"
+
     // Set display for apps using xwayland-satellite
     // Not needed after niri 25.08.
     // DISPLAY ":0"
@@ -97,6 +100,11 @@ layout {
 
 cursor {
     hide-when-typing
+}
+
+overview {
+    backdrop-color "#1E222A"
+    workspace-shadow {}
 }
 
 prefer-no-csd
