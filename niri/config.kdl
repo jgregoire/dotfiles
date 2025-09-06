@@ -4,7 +4,8 @@ environment {
     ELECTRON_OZONE_PLATFORM_HINT "wayland"
 
     // Set display for apps using xwayland-satellite
-    DISPLAY ":0"
+    // Not needed after niri 25.08.
+    // DISPLAY ":0"
 }
 
 input {
@@ -16,13 +17,7 @@ input {
         xkb { }
     }
     touchpad {
-        tap
-        // dwt
-        // dwtp
-        natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // tap-button-map "left-middle-right"
+        off
     }
     mouse {
         scroll-factor 1.0
@@ -33,8 +28,10 @@ input {
     trackpoint {
         off
     }
-
     tablet {
+        off
+    }
+    trackball {
         off
     }
 }
@@ -241,14 +238,18 @@ binds {
 
     Mod+Ctrl+Page_Down  { move-column-to-workspace-down; }
     Mod+Ctrl+Page_Up    { move-column-to-workspace-up; }
+    Mod+Ctrl+WheelScrollDown  { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp    { move-column-to-workspace-up; }
 
     Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
     Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
     Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
     Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
 
-    Mod+Shift+Page_Down { move-workspace-down; }
-    Mod+Shift+Page_Up   { move-workspace-up; }
+    Mod+Shift+Page_Down  { move-workspace-down; }
+    Mod+Shift+Page_Up    { move-workspace-up; }
+    Mod+Shift+WheelScrollDown { move-workspace-down; }
+    Mod+Shift+WheelScrollUp   { move-workspace-up; }
 
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
@@ -272,6 +273,8 @@ binds {
 
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
+    Mod+MouseBack    { consume-or-expel-window-left; }
+    Mod+MouseForward { consume-or-expel-window-right; }
 
     Mod+W { switch-preset-column-width; }
     Mod+Shift+T { toggle-column-tabbed-display; }
