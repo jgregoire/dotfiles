@@ -198,6 +198,7 @@ layer-rule {
         on
         softness 4
     }
+    geometry-corner-radius 10
 }
 
 binds {
