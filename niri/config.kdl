@@ -82,7 +82,7 @@ layout {
         gradient from="#B1C89DFF" to="#97B67CFF" angle=100 in="oklch shorter hue" relative-to="workspace-view"
     }
     shadow {
-        // on
+        on
     }
     tab-indicator {
         hide-when-single-tab
@@ -193,10 +193,15 @@ window-rule {
 }
 
 layer-rule {
-    match namespace="^launcher%"
+    match namespace="^launcher$"
+    // match namespace="fuzzel"
     shadow {
         on
-        softness 4
+        color "#00000099"
+        softness 16
+        spread 6
+        offset x=4 y=4
+        draw-behind-window false
     }
     geometry-corner-radius 10
 }
