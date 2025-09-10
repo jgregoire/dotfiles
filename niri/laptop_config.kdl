@@ -3,8 +3,8 @@ environment {
     // Persuade electron apps to use wayland
     ELECTRON_OZONE_PLATFORM_HINT "wayland"
 
-    // Set display for apps using xwayland-satellite
-    DISPLAY ":0"
+    // Persuade QT apps to use wayland
+    QT_QPA_PLATFORM "wayland"
 }
 
 input {
@@ -44,8 +44,8 @@ input {
 }
 
 layout {
+    background-color "transparent"
     empty-workspace-above-first
-
     default-column-width { proportion 0.5; }
 
     // When to center a column when changing focus, options are:
@@ -165,14 +165,6 @@ window-rule {
     clip-to-geometry true
 }
 
-// Inactive windows are transparent
-/- window-rule {
-    match is-active=false
-    exclude app-id="qimgv"
-    exclude app-id="thunar"
-    opacity 0.9
-}
-
 window-rule {
     match is-floating=true
     shadow {
@@ -185,9 +177,18 @@ layer-rule {
     match namespace="^launcher$"
     shadow {
         on
-        softness 4
+        color "#00000099"
+        softness 16
+        spread 6
+        offset x=4 y=4
+        draw-behind-window false
     }
     geometry-corner-radius 10
+}
+
+layer-rule {
+    match namespace="^wallpaper$"
+    place-within-backdrop true
 }
 
 binds {
@@ -201,20 +202,30 @@ binds {
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+B { spawn "zen"; }
+    Mod+B { spawn "zen-browser"; }
     Mod+T { spawn "ghostty"; }
     Mod+R { spawn "fuzzel"; }
     Mod+L { spawn "swaylock"; }
     Mod+Period { spawn "1password"; }
-    // You can also use a shell:
-    // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
 
-    XF86AudioRaiseVolume  { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
-    XF86AudioLowerVolume  { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
-    XF86AudioMute         { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-    XF86AudioPlay         { spawn "mpc" "toggle"; }
-    XF86MonBrightnessUp   { spawn "brightnessctl" "-d" "intel_backlight" "s" "+10%"; }
-    XF86MonBrightnessDown { spawn "brightnessctl" "-d" "intel_backlight" "s" "10%-"; }
+    XF86AudioRaiseVolume allow-when-locked=true {
+        spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+";
+    }
+    XF86AudioLowerVolume allow-when-locked=true {
+        spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-";
+    }
+    XF86AudioMute allow-when-locked=true {
+        spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
+    }
+    XF86AudioPlay allow-when-locked=true {
+        spawn "mpc" "toggle";
+    }
+    XF86MonBrightnessUp allow-when-locked=true {
+        spawn "brightnessctl" "-d" "intel_backlight" "s" "+10%";
+    }
+    XF86MonBrightnessDown allow-when-locked=true {
+        spawn "brightnessctl" "-d" "intel_backlight" "s" "10%-";
+    }
 
     Mod+Q { close-window; }
 
@@ -309,8 +320,6 @@ binds {
 }
 
 spawn-at-startup "waypaper" "--random"
-spawn-at-startup "zen"
+spawn-at-startup "zen-browser"
 spawn-at-startup "ghostty"
 spawn-at-startup "powerkit"
-// Using the systemd service file now.
-// spawn-at-startup "xwayland-satellite"

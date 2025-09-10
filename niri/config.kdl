@@ -40,8 +40,8 @@ input {
 }
 
 layout {
+    background-color "transparent"
     empty-workspace-above-first
-
     default-column-width { proportion 0.5; }
 
     // When to center a column when changing focus, options are:
@@ -206,6 +206,11 @@ layer-rule {
     geometry-corner-radius 10
 }
 
+layer-rule {
+    match namespace="^wallpaper$"
+    place-within-backdrop true
+}
+
 binds {
     // Conventions:
     // Mod:            Change focus, basic commands
@@ -217,19 +222,24 @@ binds {
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
 
+    Mod+B { spawn "zen-browser"; }
     Mod+T { spawn "ghostty"; }
     Mod+R { spawn "fuzzel"; }
-    Ctrl+R { spawn "fuzzel"; }
-    Super+L { spawn "swaylock"; }
+    Mod+L { spawn "swaylock"; }
     Mod+Period { spawn "1password"; }
 
-    // You can also use a shell:
-    // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
-
-    XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
-    XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
-    XF86AudioMute        { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-    XF86AudioPlay        { spawn "mpc" "toggle"; }
+    XF86AudioRaiseVolume allow-when-locked=true {
+        spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+";
+    }
+    XF86AudioLowerVolume allow-when-locked=true {
+        spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-";
+    }
+    XF86AudioMute allow-when-locked=true {
+        spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
+    }
+    XF86AudioPlay allow-when-locked=true {
+        spawn "mpc" "toggle";
+    }
 
     Mod+Q { close-window; }
 
@@ -255,8 +265,8 @@ binds {
     Mod+Shift+Left  { move-column-left; }
     Mod+Shift+Right { move-column-right; }
 
-    Mod+Ctrl+Home { move-column-to-first; }
-    Mod+Ctrl+End  { move-column-to-last; }
+    Mod+Shift+Home { move-column-to-first; }
+    Mod+Shift+End  { move-column-to-last; }
 
     Mod+Ctrl+Page_Down  { move-column-to-workspace-down; }
     Mod+Ctrl+Page_Up    { move-column-to-workspace-up; }
