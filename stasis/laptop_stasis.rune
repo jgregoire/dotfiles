@@ -1,0 +1,29 @@
+idle:
+    monitor-media true
+    respect-idle-inhibitors true
+    pre-suspend-command None
+    debounce-seconds 4
+
+    inhibit_apps [
+        "mpv"
+    ]
+
+    lock-screen:
+        lock-command "swaylock"
+        timeout = 5
+        command "swaylock"
+        resume-command None
+    end
+
+    dpms:
+        timeout = 10
+        command "niri msg action power-off-monitors"
+        resume-command "niri msg action power-on-monitors"
+    end
+
+    suspend:
+        timeout 30
+        command "systemctl suspend"
+        resume-command None
+    end
+end
