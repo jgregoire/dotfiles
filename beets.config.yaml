@@ -46,3 +46,7 @@ importfeeds:
     dir: /media/pidrive/Playlists/
     relative_to: /media/pidrive/Music/
     m3u_name: Added_
+
+paths:
+    # default: $albumartist/($year) $album%aunique{}/$track $title
+    nosync:1: NoSync/$albumartist/($year) $album%aunique{}/$track $title
