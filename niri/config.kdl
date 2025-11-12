@@ -348,10 +348,8 @@ binds {
     Mod+Shift+Ctrl+T { toggle-debug-tint; }
 }
 
-spawn-at-startup "powerkit"
+spawn-at-startup "stasis"
 spawn-at-startup "waypaper" "--random"
 spawn-at-startup "firefox"
 spawn-at-startup "ghostty"
 spawn-at-startup "xhost" "+SI:localuser:root"
-// Using the systemd service file now
-// spawn-at-startup "xwayland-satellite"
