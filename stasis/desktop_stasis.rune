@@ -1,0 +1,73 @@
+@author "Dustin Pilgrim"
+@description "Stasis configuration file"
+
+# Default timeout for apps (in seconds)
+app_default_timeout 300
+
+#
+# Stasis configuration
+#
+stasis:
+  pre_suspend_command "swaylock"
+  monitor_media true
+  ignore_remote_media true
+  respect_idle_inhibitors true
+  #lid_close_action "lock-screen" (lock-screen | suspend | custom | ignore)
+  #lid_open_action "wake" (wake | custom | ignore)
+  # debounce: default is 3s; can be customized if needed
+  # debounce-seconds 4
+
+  inhibit_apps [
+    "vlc"
+    "Spotify"
+    "mpv"
+    r".*\.exe"
+    r"steam_app_.*"
+    r"firefox.*"
+  ]
+
+  # desktop-only idle actions (applies to all devices)
+  lock_screen:
+    timeout 300
+    command "swaylock"
+    # resume-command "notify-send 'Welcome Back $env.USER!'"
+  end
+
+  dpms:
+    timeout 60
+    command "niri msg action power-off-monitors"
+    resume-command "niri msg action power-on-monitors"
+  end
+
+  suspend:
+    timeout 1800
+    command "systemctl suspend"
+    resume-command None
+  end
+
+  # laptop-only AC actions
+  on_ac:
+
+    # Step 1: Adjust brightness (instant)
+    # define it first so it does not retrigger later
+    custom-brightness-instant:
+      timeout 0
+      command "brightnessctl set 100%"
+    end
+
+    brightness:
+      timeout 10
+      command "brightnessctl set 30%"
+    end
+
+    dpms:
+      timeout 60
+      command "niri msg action power-off-monitors"
+    end
+
+    suspend:
+      timeout 120
+      command "systemctl suspend"
+    end
+  end
+end
