@@ -1,0 +1,23 @@
+[Unit]
+Description=Mount Proton Drive via rclone
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/rclone mount proton: /home/james/ProtonDrive \
+    --vfs-cache-mode writes \
+    --vfs-cache-max-size 500M \
+    --vfs-cache-max-age 1h \
+    --dir-cache-time 12h \
+    --poll-interval 1m \
+    --log-level INFO \
+    --log-file /home/james/.cache/rclone/rclone-proton.log \
+    --umask 002 \
+    --allow-other
+ExecStop=/bin/fusermount3 -u /home/james/ProtonDrive
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
