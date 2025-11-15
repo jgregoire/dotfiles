@@ -348,7 +348,7 @@ binds {
     Mod+Shift+Ctrl+T { toggle-debug-tint; }
 }
 
-spawn-at-startup "stasis"
+// spawn-at-startup "stasis"
 spawn-at-startup "waypaper" "--random"
 spawn-at-startup "firefox"
 spawn-at-startup "ghostty"

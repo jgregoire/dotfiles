@@ -23,51 +23,24 @@ stasis:
     "mpv"
     r".*\.exe"
     r"steam_app_.*"
-    r"firefox.*"
+    # r"firefox.*"
   ]
 
   # desktop-only idle actions (applies to all devices)
   lock_screen:
-    timeout 300
+    timeout 1800
     command "swaylock"
-    # resume-command "notify-send 'Welcome Back $env.USER!'"
   end
 
   dpms:
-    timeout 60
+    timeout 1860
     command "niri msg action power-off-monitors"
     resume-command "niri msg action power-on-monitors"
   end
 
   suspend:
-    timeout 1800
+    timeout 7200
     command "systemctl suspend"
     resume-command None
-  end
-
-  # laptop-only AC actions
-  on_ac:
-
-    # Step 1: Adjust brightness (instant)
-    # define it first so it does not retrigger later
-    custom-brightness-instant:
-      timeout 0
-      command "brightnessctl set 100%"
-    end
-
-    brightness:
-      timeout 10
-      command "brightnessctl set 30%"
-    end
-
-    dpms:
-      timeout 60
-      command "niri msg action power-off-monitors"
-    end
-
-    suspend:
-      timeout 120
-      command "systemctl suspend"
-    end
   end
 end
