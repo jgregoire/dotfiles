@@ -5,8 +5,8 @@
 }
 
 window#waybar {
-    background-color: rgba(25, 29, 36, 0.7);
-    border-bottom: 4px solid rgba(0, 0, 0, 0.7);
+    background-color: rgba(25, 29, 36, 0.8);
+    border-bottom: 4px solid rgba(0, 0, 0, 0.8);
     color: #BBC3D4;
     transition-property: background-color;
     transition-duration: .5s;
@@ -139,11 +139,9 @@ label:focus {
 #tray {
     background-color: #B74E58;
 }
-
 #tray > .passive {
     -gtk-icon-effect: dim;
 }
-
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
     background-color: #B21368;
@@ -152,24 +150,23 @@ label:focus {
 #idle_inhibitor {
     border-bottom: 4px solid #60728A;
 }
-
 #idle_inhibitor.activated {
     border-bottom: 4px solid #81A1C1;
+}
+
+#custom-stasis {
+    border-bottom: 4px solid #60728A;
 }
 
 #mpd {
     border-bottom: 4px solid #EBCB8B;
 }
-
 #mpd.disconnected {
     border-bottom: 4px solid #EBCB8B;
 }
-
 #mpd.stopped {
     border-bottom: 4px solid #EBCB8B;
 }
-
 #mpd.paused {
     border-bottom: 4px solid #EBCB8B;
 }
-

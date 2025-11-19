@@ -1,29 +1,74 @@
-idle:
-    monitor-media true
-    respect-idle-inhibitors true
-    pre-suspend-command None
+@author "Dustin Pilgrim"
+@description "Stasis configuration file"
+
+# Default timeout for apps (in seconds)
+app_default_timeout 300
+
+stasis:
+    monitor_media true
+    respect_idle_inhibitors true
+    pre_suspend_command "swaylock"
     debounce-seconds 4
 
     inhibit_apps [
         "mpv"
     ]
 
-    lock-screen:
-        lock-command "swaylock"
-        timeout = 5
-        command "swaylock"
-        resume-command None
+  # desktop-only idle actions (applies to all devices)
+  lock_screen:
+    timeout 1800
+    command "swaylock"
+  end
+
+  dpms:
+    timeout 1860
+    command "niri msg action power-off-monitors"
+    resume-command "niri msg action power-on-monitors"
+  end
+
+  suspend:
+    timeout 7200
+    command "systemctl suspend"
+    resume-command None
+  end
+
+    on_ac:
+        custom-brightness-instant:
+            timeout 0
+            command "brightnessctl set 100%"
+        end
+
+        lock_screen:
+            timeout 1800
+            command "swaylock"
+        end
     end
 
-    dpms:
-        timeout = 10
-        command "niri msg action power-off-monitors"
-        resume-command "niri msg action power-on-monitors"
-    end
+    on_battery:
+        custom-brightness-instant:
+            timeout 0
+            command "brightnessctl set 100%"
+        end
 
-    suspend:
-        timeout 30
-        command "systemctl suspend"
-        resume-command None
+        brightness:
+            timeout 300
+            command "brightnessctl set 50%"
+        end
+
+        lock_screen:
+            timeout 1800
+            command "swaylock"
+        end
+
+        dpms:
+            timeout 1860
+            command "niri msg action power-off-monitors"
+            resume-command "niri msg action power-on-monitors"
+        end
+
+        suspend:
+            timeout 7200
+            command "systemctl suspend"
+        end
     end
 end
