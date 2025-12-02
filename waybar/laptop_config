@@ -4,7 +4,7 @@
     "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 24, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
-    "modules-left": ["tray", "idle_inhibitor", "niri/window"],
+    "modules-left": ["tray", "custom/stasis", "niri/window"],
     "modules-right": ["wireplumber", "network", "cpu", "memory", "temperature", "battery", "clock"],
 
     // Modules configuration
@@ -55,6 +55,21 @@
             "activated": " ",
             "deactivated": " "
         }
+    },
+    "custom/stasis": {
+        "exec": "stasis info --json",
+        "format": " {icon}",
+        "format-icons": {
+            "idle_active": "󰔟 ",
+            "idle_inhibited": "󱦟 ",
+            "manually_inhibited": "󱦠 ",
+            "not_running": "󰚭 "
+        },
+        "tooltip": true,
+        "on-click": "stasis toggle-inhibit",
+        "interval": 2,
+        "restart-interval": 2,
+        "return-type": "json"
     },
     "tray": {
         // "icon-size": 21,

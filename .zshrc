@@ -148,11 +148,6 @@ alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 
-## Torrent Box Aliases
-alias drt='dtach -a /home/james/.rtorrent.dtach'
-alias drtu='sudo start-stop-daemon --start --chuid james --name rtorrent --exec /usr/bin/dtach -- -n /home/james/.rtorrent.dtach /usr/bin/rtorrent'
-alias drtd='sudo start-stop-daemon --stop --name rtorrent'
-
 # Install shit quicker, apt edition
 alias agi='sudo apt install --autoremove'
 alias agu='sudo apt update && sudo apt-get upgrade'
@@ -168,15 +163,12 @@ alias pacc='sudo pacman -Sc'
 # Install shit quicker, AUR edition
 alias auri='makepkg -sic'
 
-# Randomize wallpaper
-# alias rwp='feh --randomize --bg-fill /home/james/Pictures/Desktops/21x9/3440x1440'
-
 # Beets
 alias bim='beet import'
 
 # Volume control (pulse)
 # e.g. '$ vol 50%'
-# alias vol='pactl set-sink-volume 1'
+alias vol='wpctl set-volume @DEFAULT_AUDIO_SINK@'
 
 alias luamake='/home/james/Code/lua-language-server/3rd/luamake/luamake'
 

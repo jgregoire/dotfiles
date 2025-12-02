@@ -322,5 +322,4 @@ binds {
 spawn-at-startup "waypaper" "--random"
 spawn-at-startup "zen-browser"
 spawn-at-startup "ghostty"
-spawn-at-startup "stasis"
 spawn-sh-at-startup "while true; do sleep 600; waypaper --random; done"
