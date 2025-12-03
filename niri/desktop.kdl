@@ -1,0 +1,47 @@
+input {
+    touchpad {
+        off
+    }
+}
+
+layout {
+    preset-column-widths {
+        proportion 0.25
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 0.75
+        proportion 1.0
+    }
+
+    gaps 6
+
+    struts {
+        left 14
+        right 14
+    }
+
+    tab-indicator {
+        gap 8
+        width 8
+        gaps-between-tabs 4
+        corner-radius 4
+    }
+}
+
+window-rule {
+    match title="Firefox"
+    default-column-width { proportion 0.66667; }
+}
+
+window-rule {
+    match app-id=r#".*kitty.*"#
+    default-column-width { proportion 0.33333; }
+}
+
+window-rule {
+    match app-id=r#".*ghostty.*"#
+    default-column-width { proportion 0.33333; }
+}
+
+spawn-at-startup "firefox"

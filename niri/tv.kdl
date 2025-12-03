@@ -1,0 +1,40 @@
+input {
+    touchpad {
+        tap
+        // dwt
+        // dwtp
+        natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // tap-button-map "left-middle-right"
+    }
+}
+
+layout {
+    preset-column-widths {
+        proportion 0.25
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 0.75
+        proportion 1.0
+    }
+
+    gaps 6
+
+    /- struts {
+        left 32
+        right 32
+    }
+}
+
+// Inactive windows are transparent
+window-rule {
+    match is-active=false
+    exclude app-id="qimgv"
+    exclude app-id="firefox"
+    opacity 0.9
+}
+
+spawn-at-startup "kitty" "--hold" "sh" "-c" "'rmpc'"
+spawn-at-startup "dunst"
