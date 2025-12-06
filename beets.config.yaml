@@ -48,5 +48,23 @@ importfeeds:
     m3u_name: Added_
 
 paths:
-    # default: $albumartist/($year) $album%aunique{}/$track $title
-    nosync:1: NoSync/$albumartist/($year) $album%aunique{}/$track $title
+    default: Sync/$albumartist/$year%if{$month,-$month} $album%aunique{}/$track $title
+    nosync:1: NoSync/$albumartist/$year%if{$month,-$month} $album%aunique{}/$track $title
+
+ui:
+    colors:
+        text_success: ['bold', 'green']
+        text_warning: ['bold', 'yellow']
+        text_error: ['bold', 'red']
+        text_highlight: ['bold', 'white']
+        text_highlight_minor: ['bold', 'black']
+        action_default: ['bold', 'cyan']
+        action: ['bold', 'cyan']
+        # New colors after UI overhaul
+        text_faint: ['faint']
+        import_path: ['bold', 'blue']
+        import_path_items: ['bold', 'blue']
+        changed: ['yellow']
+        text_diff_added: ['bold', 'green']
+        text_diff_removed: ['bold', 'red']
+        action_description: ['white']
