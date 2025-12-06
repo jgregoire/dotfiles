@@ -177,6 +177,16 @@ label:focus {
     border-bottom: 4px solid #81A1C1;
 }
 
+#custom-stasis {
+    border-bottom: 4px solid #60728A;
+}
+#custom-stasis.idle_inhibited {
+    border-bottom: 4px solid #81A1C1;
+}
+#custom-stasis.manually_inhibited {
+    border-bottom: 4px solid #D08770;
+}
+
 #mpd {
     border-bottom: 4px solid #81A1C1;
 }

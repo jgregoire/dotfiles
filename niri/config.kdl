@@ -19,9 +19,6 @@ input {
     keyboard {
         xkb { }
     }
-    touchpad {
-        off
-    }
     mouse {
         scroll-factor 1.0
         // natural-scroll
@@ -53,17 +50,6 @@ layout {
     // center-focused-column "never"
     center-focused-column "on-overflow"
 
-    preset-column-widths {
-        proportion 0.25
-        proportion 0.33333
-        proportion 0.5
-        proportion 0.66667
-        proportion 0.75
-        proportion 1.0
-    }
-
-    gaps 6
-
     focus-ring {
         width 2
         active-gradient from="#DBCB8B" to="#A97EA1" angle=100 in="oklch shorter hue"
@@ -74,10 +60,6 @@ layout {
         active-gradient from="#DBCB8B" to="#A97EA1" angle=100 in="oklch shorter hue"
         inactive-gradient from="#60728A" to="#2B4252" angle=100 in="oklch shorter hue"
     }
-    struts {
-        left 14
-        right 14
-    }
     insert-hint {
         gradient from="#B1C89DFF" to="#97B67CFF" angle=100 in="oklch shorter hue" relative-to="workspace-view"
     }
@@ -87,12 +69,8 @@ layout {
     tab-indicator {
         hide-when-single-tab
         place-within-column
-        gap 8
-        width 8
         length total-proportion=0.98
         position "left"
-        gaps-between-tabs 4
-        corner-radius 4
         active-color "#EBCB8B"
         inactive-color "#60728A"
     }
@@ -170,18 +148,11 @@ window-rule {
 }
 
 window-rule {
-    match title="Firefox"
-    default-column-width { proportion 0.66667; }
-}
-
-window-rule {
-    match app-id=r#".*kitty.*"#
-    default-column-width { proportion 0.33333; }
-}
-
-window-rule {
-    match app-id=r#".*ghostty.*"#
-    default-column-width { proportion 0.33333; }
+    match is-floating=true
+    shadow {
+        on
+        softness 8
+    }
 }
 
 // Inactive windows are transparent
@@ -348,10 +319,11 @@ binds {
     Mod+Shift+Ctrl+T { toggle-debug-tint; }
 }
 
-spawn-at-startup "powerkit"
-spawn-at-startup "waypaper" "--random"
-spawn-at-startup "firefox"
+// spawn-at-startup "stasis"
 spawn-at-startup "ghostty"
 spawn-at-startup "xhost" "+SI:localuser:root"
-// Using the systemd service file now
-// spawn-at-startup "xwayland-satellite"
+// spawn-at-startup "waypaper" "--random"
+spawn-sh-at-startup "while true; do sleep 600; waypaper --random"
+
+// symlink the appropriate machine-specific file to this name
+include "specific.kdl"
