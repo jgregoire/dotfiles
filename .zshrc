@@ -88,6 +88,9 @@ setopt NUMERIC_GLOB_SORT
 
 alias fire='rpicam-still -n --timelapse=1000ms --datetime'
 
+# Be more informative
+alias which='which -a'
+
 # Give up and start over
 # by calling `$ git unfuck`
 alias 'unfuck'='git reset --hard HEAD'
