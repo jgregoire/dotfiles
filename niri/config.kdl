@@ -163,6 +163,14 @@ window-rule {
     opacity 0.9
 }
 
+window-rule {
+    match title="File Operation Progress"
+    match title="^Rename.*"
+    match title="Create a new archive"
+    open-floating true
+}
+
+
 layer-rule {
     match namespace="^launcher$"
     // match namespace="fuzzel"
