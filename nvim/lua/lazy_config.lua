@@ -1,15 +1,22 @@
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-
 ---@diagnostic disable-next-line: undefined-field
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
     print('Installing lazy.nvim...')
-    vim.fn.system({
+    local out = vim.fn.system({
         'git', 'clone', '--filter=blob:none', 'https://github.com/folke/lazy.nvim.git', '--branch=stable', lazypath
     })
+    if vim.v.shell_error ~= 0 then
+        vim.api.nvim_echo({
+            { 'Failed to clone lazy.nvim:\n', 'ErrorMsg' },
+            { out, 'WarningMsg' },
+            { '\nPress any key to exit...' }
+        }, true, {})
+        vim.fn.getchar()
+        os.exit(1)
+    end
     print('Installed lazy.nvim!')
 end
-
 ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
@@ -155,6 +162,7 @@ require('lazy').setup({ -- Plugins
         end,
         build = ':TSUpdate',
     },
+--[[
     {
         'L3MON4D3/LuaSnip',
         event = 'InsertEnter',
@@ -185,6 +193,29 @@ require('lazy').setup({ -- Plugins
         config = function ()
             require('cmp_config') -- Run my configuration file
         end
+    },
+--]]
+    {
+        'saghen/blink.cmp',
+        dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
+        version = '*',
+        opts = {
+            keymap = {
+                preset = 'none',
+                ['<Up>'] = { 'select_prev', 'fallback' },
+                ['<Down>'] = { 'select_next', 'fallback' },
+                ['<Esc>'] = { 'cancel', 'fallback' },
+                ['<Left>'] = { 'hide', 'fallback' },
+                ['<Right>'] = { 'accept', 'fallback' },
+                ['<Tab>'] = { 'snippet_forward', 'fallback' },
+                ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
+            },
+            sources = {
+                default = { 'lsp', 'path', 'snippets', 'buffer' },
+            },
+            snippets = { preset = 'luasnip' },
+        },
+        opts_extend = { 'sources.default' },
     },
     {
         '0xAdk/full_visual_line.nvim',
@@ -225,12 +256,10 @@ require('lazy').setup({ -- Plugins
         priority = 0,
         enabled = false,
         config = function ()
-            require('colorizer').setup({'*'},{
+            require('colorizer').setup({ '*' }, {
                 RGB      = false, -- Do not colorize #XYZ values (these are usually git issue numbers)
                 RRGGBBAA = true,
                 css      = true,
-                css_fn   = true,
-                rgb_fn   = true,
             })
         end,
     },
@@ -238,6 +267,9 @@ require('lazy').setup({ -- Plugins
         'brenoprata10/nvim-highlight-colors',
         enabled = true,
         opts = {
+            render = 'virtual',
+            virtual_symbol = '██',
+            virtual_symbol_position = 'inline',
             enable_named_colors = false,
             enable_tailwind = true
         },
@@ -325,7 +357,7 @@ require('lazy').setup({ -- Plugins
         },
         dependencies = {
             'nvim-treesitter/nvim-treesitter',
-            'hrsh7th/nvim-cmp'
+            -- 'hrsh7th/nvim-cmp'
         },
         opts = {
             tabkey = '<Tab>',

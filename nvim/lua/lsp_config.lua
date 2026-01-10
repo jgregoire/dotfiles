@@ -2,11 +2,11 @@
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local lspconfig = require('lspconfig')
+-- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- local lspconfig = require('lspconfig')
 
 -- Configure Lua language server.
-lspconfig.lua_ls.setup({
+vim.lsp.config('lua_ls', {
     capabilities = capabilities,
     flags = {
         debounce_text_changes = 150,
@@ -30,16 +30,18 @@ lspconfig.lua_ls.setup({
         },
     },
 })
+vim.lsp.enable('lua_ls')
 
-lspconfig.ltex.setup({
+vim.lsp.config('ltex', {
     settings = {
         ltex = {
             language = 'en-US',
         },
     },
 })
+vim.lsp.enable('ltex')
 
-lspconfig.arduino_language_server.setup({
+vim.lsp.config('arduino_language_server', {
     filetypes = { 'arduino', 'cpp' },
     cmd = {
         'arduino-language-server',
@@ -50,6 +52,7 @@ lspconfig.arduino_language_server.setup({
         '/home/james/.arduino15/logs'
     }
 })
+vim.lsp.enable('arduino_language_server')
 
 -- Setup language servers with default config.
 local servers = {
@@ -65,12 +68,13 @@ local servers = {
 }
 for _, server in pairs(servers) do
     if vim.fn.executable(server) == 1 then
-        lspconfig[server].setup({
-            capabilities = capabilities,
+        vim.lsp.config(server, {
+            -- capabilities = capabilities,
             flags = {
                 debounce_text_changes = 150,
             }
         })
+        vim.lsp.enable(server)
     end
 end
 
