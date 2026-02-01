@@ -5,32 +5,23 @@
 app_default_timeout 300
 
 stasis:
-    monitor_media true
-    respect_idle_inhibitors true
     pre_suspend_command "swaylock"
-    debounce-seconds 4
+    monitor_media true
+    ignore_remote_media true
+    respect_idle_inhibitors true
+    # debounce-seconds 4
+    lid_close_action "lock-screen"
 
     inhibit_apps [
         "mpv"
     ]
 
-  # desktop-only idle actions (applies to all devices)
-  lock_screen:
-    timeout 1800
-    command "swaylock"
-  end
-
-  dpms:
+    # desktop-only idle actions (applies to all devices)
+    dpms:
     timeout 1860
     command "niri msg action power-off-monitors"
     resume-command "niri msg action power-on-monitors"
-  end
-
-  suspend:
-    timeout 7200
-    command "systemctl suspend"
-    resume-command None
-  end
+    end
 
     on_ac:
         custom-brightness-instant:
