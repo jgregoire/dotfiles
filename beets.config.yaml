@@ -9,7 +9,7 @@ import:
     bell: yes
     incremental: yes
 
-plugins: lastgenre fetchart ftintitle mpdupdate smartplaylist random embedart replaygain lyrics hook importfeeds edit info
+plugins: lastgenre fetchart ftintitle mpdupdate smartplaylist random embedart replaygain lyrics hook importfeeds edit info playlist
 
 embedart:
     auto: yes
@@ -46,6 +46,11 @@ importfeeds:
     dir: /media/pidrive/Playlists/
     relative_to: /media/pidrive/Music/
     m3u_name: Added_
+
+playlist:
+    auto: yes
+    relative_to: /media/pidrive/Music/
+    playlist_dir: /media/pidrive/Playlists/
 
 paths:
     default: Sync/$albumartist/$year%if{$month,-$month} $album%aunique{}/$track $title
