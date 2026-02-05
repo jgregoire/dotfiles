@@ -1,4 +1,4 @@
--- Setup lspconfig lua server.
+--[[-- Setup lspconfig lua server.
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
@@ -31,6 +31,7 @@ vim.lsp.config('lua_ls', {
     },
 })
 vim.lsp.enable('lua_ls')
+--]]
 
 vim.lsp.config('ltex', {
     settings = {
@@ -58,6 +59,7 @@ vim.lsp.enable('arduino_language_server')
 local servers = {
     'bashls',
     'clangd',
+    'emmylua_ls',
     'jsonls',
     'ltex',
     'openscad_lsp',
