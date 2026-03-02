@@ -166,13 +166,6 @@ local M = {
         -- LuaSnip
         { '<C-e>', mode = { 'i', 's' }, description = 'Luasnip: Expand' },
 
-        -- CMP
-        { '<C-Right>',               description = 'CMP: Invoke' },
-        { '<Tab>',   mode = { 's' }, description = 'CMP: Select next' },
-        { '<C-Tab>', mode = { 's' }, description = 'CMP: Select previous' },
-        { '<Right>',    mode = { 's' }, description = 'CMP: Confirm' },
-        { '<C-c>',                   description = 'CMP: Cancel' },
-
         -- Telescope
         { '<leader>ff', '<cmd>Telescope find_files<cr>', mode = { 'n' }, description = 'Telescope: Find files', opts = defaults },
         { '<leader>fg', '<cmd>Telescope live_grep<cr>',  mode = { 'n' }, description = 'Telescope: Live grep', opts = defaults },

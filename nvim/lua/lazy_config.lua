@@ -79,9 +79,9 @@ require('lazy').setup({ -- Plugins
                 'arduino_language_server',
                 'bashls',
                 'clangd',
+                'emmylua_ls',
                 'jsonls',
                 'ltex',
-                'lua_ls',
                 'openscad_lsp',
                 'pyright',
                 'rust_analyzer',
@@ -162,7 +162,6 @@ require('lazy').setup({ -- Plugins
         end,
         build = ':TSUpdate',
     },
---[[
     {
         'L3MON4D3/LuaSnip',
         event = 'InsertEnter',
@@ -170,7 +169,7 @@ require('lazy').setup({ -- Plugins
             require('luasnip_config') -- Run my configuration file
         end
     },
-    {
+--[[    {
         'Gelio/cmp-natdat',
         lazy = true,
         config = true,
