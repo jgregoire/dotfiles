@@ -405,21 +405,7 @@ require('lazy').setup({ -- Plugins
     {
         'kylechui/nvim-surround',
         event = 'InsertEnter',
-        opts = {
-            keymaps = {
-                insert          = '<C-p>s',
-                insert_line     = '<C-p>S',
-                normal          = 'ps',
-                normal_line     = 'pS',
-                normal_cur      = 'Ps',
-                normal_cur_line = 'PS',
-                delete          = 'xs',
-                change          = 'es',
-                change_line     = 'eS',
-                visual          = 'ps',
-                visual_line     = 'pS',
-            }
-        },
+        opts = { },
     },
     {
         'JoosepAlviste/nvim-ts-context-commentstring',
