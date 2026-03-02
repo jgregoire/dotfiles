@@ -40,7 +40,7 @@ stasis:
 
   suspend:
     timeout 7200
-    command "systemctl suspend"
+    command "mpc disable 3 4 5; systemctl suspend"
     resume-command None
   end
 end
