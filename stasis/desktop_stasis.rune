@@ -7,7 +7,7 @@ app_default_timeout 300
 #
 # Stasis configuration
 #
-stasis:
+default:
   pre_suspend_command "swaylock"
   monitor_media true
   ignore_remote_media true
@@ -41,6 +41,6 @@ stasis:
   suspend:
     timeout 7200
     command "mpc disable 3 4 5; systemctl suspend"
-    resume-command None
+    # resume-command None
   end
 end
