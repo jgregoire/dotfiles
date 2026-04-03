@@ -4,7 +4,7 @@
 # Default timeout for apps (in seconds)
 app_default_timeout 300
 
-stasis:
+default:
     pre_suspend_command "swaylock"
     monitor_media true
     ignore_remote_media true
