@@ -405,6 +405,7 @@ require('lazy').setup({ -- Plugins
     {
         'kylechui/nvim-surround',
         event = 'InsertEnter',
+        opts = { },
     },
     {
         'JoosepAlviste/nvim-ts-context-commentstring',

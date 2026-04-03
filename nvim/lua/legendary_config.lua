@@ -180,17 +180,17 @@ local M = {
         { '<S-Tab>', mode = { 'i' }, description = 'Tabout: Backward' },
 
         -- Nvim-Surround
-        { 'ps',     mode = { 'n' }, description = 'Surround: Add [MOTION] [TYPE]' },
-        { 'pS',     mode = { 'n' }, description = 'Surround: Add with newlines [MOTION] [TYPE]' },
-        { 'Ps',     mode = { 'n' }, description = 'Surround: Add around line [TYPE]' },
-        { 'PS',     mode = { 'n' }, description = 'Surround: Add around line with newlines [TYPE]' },
-        { 'xs',     mode = { 'n' }, description = 'Surround: Delete [TYPE]' },
-        { 'es',     mode = { 'n' }, description = 'Surround: Change [FROM TYPE] [TO TYPE]' },
-        { 'eS',     mode = { 'n' }, description = 'Surround: Change with newlines [FROM TYPE] [TO TYPE]' },
-        { 'ps',     mode = { 'v' }, description = 'Surround: Add [TYPE]'},
-        { 'pS',     mode = { 'v' }, description = 'Surround: Add with newlines [TYPE]' },
-        { '<C-p>s', mode = { 'i' }, description = 'Surround: Add [MOTION] [TYPE]' },
-        { '<C-p>S', mode = { 'i' }, description = 'Surround: Add with newlines [MOTION] [TYPE]' },
+        { 'ps', '<Plug>(nvim-surround-normal)', mode = { 'n' }, description = 'Surround: Add [MOTION] [TYPE]' },
+        { 'pS', '<Plug>(nvim-surround-normal-line)', mode = { 'n' }, description = 'Surround: Add with newlines [MOTION] [TYPE]' },
+        { 'Ps', '<Plug>(nvim-surround-normal-cur)', mode = { 'n' }, description = 'Surround: Add around line [TYPE]' },
+        { 'PS', '<Plug>(nvim-surround-normal-cur-line)', mode = { 'n' }, description = 'Surround: Add around line with newlines [TYPE]' },
+        { 'xs', '<Plug>(nvim-surround-delete)', mode = { 'n' }, description = 'Surround: Delete [TYPE]' },
+        { 'es', '<Plug>(nvim-surround-change)', mode = { 'n' }, description = 'Surround: Change [FROM TYPE] [TO TYPE]' },
+        { 'eS', '<Plug>(nvim-surround-change-line)', mode = { 'n' }, description = 'Surround: Change with newlines [FROM TYPE] [TO TYPE]' },
+        { 'ps', '<Plug>(nvim-surroound-visual)', mode = { 'v' }, description = 'Surround: Add [TYPE]'},
+        { 'pS', '<Plug>(nvim-surround-visual-line)', mode = { 'v' }, description = 'Surround: Add with newlines [TYPE]' },
+        { '<C-p>s', '<Plug>(nvim-surround-insert)', mode = { 'i' }, description = 'Surround: Add [MOTION] [TYPE]' },
+        { '<C-p>S', '<Plug>(nvim-surround-insert-line)', mode = { 'i' }, description = 'Surround: Add with newlines [MOTION] [TYPE]' },
 
         -- Nvim-comment
         { 'pcc', mode = { 'n' }, description = 'Comment: Toggle line comment' },
