@@ -1,6 +1,6 @@
 * {
     /* `otf-font-awesome` may be required to be installed for icons */
-    font-family: FiraCodeNerdFont, FontAwesome, sans-serif;
+    font-family: VictorMono Medium, "0xProto", FiraCodeNerdFont, FontAwesome, sans-serif;
     font-size: 14px;
 }
 
