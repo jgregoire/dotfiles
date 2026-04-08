@@ -68,7 +68,7 @@ vim.opt.wildmenu = true
 vim.opt.showcmd = true
 vim.opt.completeopt = 'menu,menuone,noselect'
 
-vim.opt.cmdheight = 0
+-- vim.opt.cmdheight = 0 -- set this after modes.nvim config to avoid error msg
 vim.opt.shortmess = 'fFinoOxtT'
 
 -- Keycode timeout

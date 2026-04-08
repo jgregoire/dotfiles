@@ -330,6 +330,7 @@ require('lazy').setup({ -- Plugins
     },
     {
         'mvllow/modes.nvim',
+        -- tag = 'v0.2.1',
         config = function ()
             require('modes').setup({
                 colors = {
@@ -345,6 +346,7 @@ require('lazy').setup({ -- Plugins
                 set_number = true,
                 set_signcolumn = true,
             })
+            vim.o.cmdheight = 0
         end
     },
     {
