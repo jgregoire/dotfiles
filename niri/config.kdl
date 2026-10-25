@@ -143,6 +143,12 @@ animations {
 }
 
 window-rule {
+    match app-id="^ghostty$"
+    background-effect {
+        blur true
+    }
+}
+window-rule {
     geometry-corner-radius 8
     clip-to-geometry true
 }
@@ -183,6 +189,9 @@ layer-rule {
         draw-behind-window false
     }
     geometry-corner-radius 10
+    background-effect {
+        blur true
+    }
 }
 
 layer-rule {

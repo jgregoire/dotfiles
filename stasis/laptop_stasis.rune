@@ -5,6 +5,7 @@
 app_default_timeout 300
 
 default:
+    enable_loginctl_integration true
     pre_suspend_command "swaylock"
     monitor_media true
     ignore_remote_media true
@@ -18,9 +19,14 @@ default:
 
     # desktop-only idle actions (applies to all devices)
     dpms:
-    timeout 1860
-    command "niri msg action power-off-monitors"
-    resume-command "niri msg action power-on-monitors"
+        timeout 1860
+        command "niri msg action power-off-monitors"
+        resume-command "niri msg action power-on-monitors; waypaper --random"
+    end
+
+    startup:
+        timeout 0
+        command "waypaper --random"
     end
 
     on_ac:
@@ -54,12 +60,13 @@ default:
         dpms:
             timeout 1860
             command "niri msg action power-off-monitors"
-            resume-command "niri msg action power-on-monitors"
+            resume-command "niri msg action power-on-monitors; waypaper --random"
         end
 
         suspend:
             timeout 7200
             command "systemctl suspend"
+            resume-command "waypaper --random"
         end
     end
 end
