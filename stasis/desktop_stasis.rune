@@ -41,6 +41,6 @@ default:
   suspend:
     timeout 7200
     command "mpc disable 2 3 4; systemctl suspend"
-    # resume-command None
+    resume-command "systemctl --user restart waybar"
   end
 end
